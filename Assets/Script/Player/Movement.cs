@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Movement : MonoBehaviour
 {
@@ -27,20 +28,16 @@ public class Movement : MonoBehaviour
         float vertical = Input.GetAxis("Vertical");
 
         Vector3 move = new Vector3(horizontal * speed * Time.deltaTime, 0, vertical * speed * Time.deltaTime);
+        ani.SetFloat("Vertical", vertical);
+        ani.SetFloat("Horizontal", horizontal);
         transform.position += move;
-        if (vertical > 0)
+        if (vertical > 0|| vertical <0)
         {
-            ani.SetBool("Run", true);
-            ani.SetBool("Back", false);
-        }
-        else if (vertical < 0)
-        {
-            ani.SetBool("Back", true);
+            ani.SetBool("Walk", true);
         }
         else
         {
-            ani.SetBool("Run", false);
-            ani.SetBool("Back", false);
+            ani.SetBool("Walk", false);
         }
     }
 
