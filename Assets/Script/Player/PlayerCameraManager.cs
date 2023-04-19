@@ -34,6 +34,12 @@ public class PlayerCameraManager : MonoBehaviour
             Vector3 desired_position = player.position + offset;
             Vector3 smoothed_position = Vector3.Lerp(transform.position, desired_position, smooth_speed);
             transform.position = smoothed_position;
+            if(islockOn)
+            {
+                Vector3 dir = player.transform.position - transform.position;
+                //Quaternion.LookRotation(dir);
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime);
+            }
         }
     }
 
