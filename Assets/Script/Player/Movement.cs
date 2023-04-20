@@ -30,7 +30,7 @@ public class Movement : MonoBehaviour
         Vector3 move = new Vector3(horizontal * speed * Time.deltaTime, 0, vertical * speed * Time.deltaTime);
         ani.SetFloat("Vertical", vertical);
         ani.SetFloat("Horizontal", horizontal);
-        transform.position += move;
+        transform.position += move.x * transform.right + move.z * transform.forward;
         if (vertical > 0|| vertical <0)
         {
             ani.SetBool("Walk", true);
