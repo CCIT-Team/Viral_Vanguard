@@ -10,7 +10,10 @@ public class LockOn : MonoBehaviour
     {
         if (pcm.islockOn)
         {
-            pcm.player.transform.LookAt(lockonenemy.transform);
+            //pcm.player.transform.LookAt(lockonenemy.transform);
+            Vector3 dir = lockonenemy.transform.position - pcm.player.transform.position;
+            Quaternion rotation = Quaternion.LookRotation(dir, Vector3.up);
+            pcm.player.transform.rotation = rotation;
         }
     }
 
@@ -19,14 +22,9 @@ public class LockOn : MonoBehaviour
         if (pcm.islockOn)
         {
             Collider[] colls = Physics.OverlapSphere(transform.position, 15);
-
             lockonenemy = colls[0].gameObject;
             if (colls[0].CompareTag("Monster"))
             {
-                pcm.player.transform.LookAt(colls[0].transform);
-                //pcm.cam.transform.LookAt(pcm.player.transform)
-
-                //pcm.offset.z = colls[0].transform.position.z;
                 colls[0].gameObject.GetComponentInChildren<SpriteRenderer>().sprite = pcm.lockOnImage;
                 if (colls[0].gameObject.GetComponentInChildren<SpriteRenderer>().sprite == null)
                 {
