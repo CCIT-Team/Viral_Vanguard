@@ -44,6 +44,23 @@ public class PlayerBase : MonoBehaviour
     #endregion
 
     #region Main Methods
+    void MoveMent()
+    {
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
 
+        Vector3 move = new Vector3(horizontal * speed * Time.deltaTime, 0, vertical * speed * Time.deltaTime);
+        animator.SetFloat("Vertical", vertical);
+        animator.SetFloat("Horizontal", horizontal);
+        transform.position += move.x * transform.right + move.z * transform.forward;
+        if (vertical > 0 || vertical < 0)
+        {
+            animator.SetBool("Walk", true);
+        }
+        else
+        {
+            animator.SetBool("Walk", false);
+        }
+    }
     #endregion
 }
