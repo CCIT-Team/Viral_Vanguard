@@ -23,18 +23,19 @@ public class LockOn : MonoBehaviour
         {
             Collider[] colls = Physics.OverlapSphere(transform.position, 15);
             lockonenemy = colls[0].gameObject;
-            if (colls[0].CompareTag("Monster"))
+            if (lockonenemy.CompareTag("Monster"))
             {
-                colls[0].gameObject.GetComponentInChildren<SpriteRenderer>().sprite = pcm.lockOnImage;
-                if (colls[0].gameObject.GetComponentInChildren<SpriteRenderer>().sprite == null)
+                lockonenemy.gameObject.GetComponentInChildren<SpriteRenderer>().sprite = pcm.lockOnImage;
+                if (lockonenemy.gameObject.GetComponentInChildren<SpriteRenderer>().sprite == null)
                 {
-                    colls[0].gameObject.GetComponentInChildren<SpriteRenderer>().sprite = pcm.lockOnImage;
-                    colls[0] = null;
-                } 
+                    lockonenemy.gameObject.GetComponentInChildren<SpriteRenderer>().sprite = pcm.lockOnImage;
+                    lockonenemy = null;
+                }
             }
         }
         else
         {
+
             lockonenemy.gameObject.GetComponentInChildren<SpriteRenderer>().sprite = null;
             lockonenemy = null;
         }
