@@ -13,7 +13,7 @@ public class EventListener : MonoBehaviour, IListener
         set
         {
             sampleValue = value;
-            EventManager.instance.PostNotification(EVENT_TYPE.eHealthChange, this, SampleValue);
+            EventManager.instance.PostNotification(EVENT_TYPE.eSampleEvent, this, SampleValue);
         }
     }
     
