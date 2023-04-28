@@ -1,13 +1,65 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.AI;
 
 public class BossMove : MonoBehaviour
 {
+    enum BossBehavior { IDLE, TRACKING, MOVE, STUN, S_STUN, L_STUN }
+    [Header("현재 행동")]
+    [SerializeField] BossBehavior bossBehavior;
+
+    [Header("이동")]
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Transform target;
     [SerializeField] Animator animator;
+    bool noramlRange;
+    bool inductionRange;
+    bool specialRange;
+    public bool NormalRange
+    {
+        set
+        {
+            noramlRange = value;
+            TargetTracking(!NormalRange);
+            if (NormalRange) { NormalAttack(0); }
+        }
+        get { return noramlRange; }
+    }
+    public bool InductionRange
+    {
+        set
+        {
+            inductionRange = value;
+            TargetTracking(!InductionRange);
+            if (InductionRange) { NormalAttack(1); }
+        }
+        get { return inductionRange; }
+    }
+    public bool SpecialRange
+    {
+        set
+        {
+            specialRange = value;
+            TargetTracking(!SpecialRange);
+            if (SpecialRange) { NormalAttack(2); }
+        }
+        get { return specialRange; }
+    }
+
+    bool ready;
+    bool Ready
+    {
+        set
+        {
+            ready = value;
+            if (Ready) { NormalAttack(2); }
+        }
+        get { return ready; }
+    }
+
+    int AttackCount = 0;
 
     void Update()
     {
@@ -22,9 +74,9 @@ public class BossMove : MonoBehaviour
             TargetTracking(agent.isStopped);
         }
 
-        if (agent.velocity.sqrMagnitude <= 0 * 0.2f && agent.remainingDistance <= agent.stoppingDistance)
+        if (Input.GetKeyDown(KeyCode.S))
         {
-            print("끝!");
+            Ready = true;
         }
     }
 
@@ -32,5 +84,11 @@ public class BossMove : MonoBehaviour
     {
         agent.isStopped = b ? false : true;
         animator.SetBool("Walk", b);
+    }
+
+    void NormalAttack(int i)
+    {
+        animator.SetTrigger("Attack");
+        animator.SetInteger("AttackType", i);
     }
 }
