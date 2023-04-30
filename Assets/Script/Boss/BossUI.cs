@@ -9,12 +9,12 @@ public class BossUI : MonoBehaviour
     public float maxHP;
     public float currentHP;
 
-    //public BossStatus boss1;
-    //public BossStatus boss1;
-    //public BossStatus boss1;
-    //public BossStatus boss1;
-    //public BossStatus boss1;
+    public BossStatus boss1;
+    public BossStatus boss2;
+    public BossStatus boss3;
 
+    public BossStatus current;
+   
     void Start()
     {
         
@@ -22,15 +22,20 @@ public class BossUI : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.A))
+        if(Input.GetKeyDown(KeyCode.Q))
         {
-            //maxHP = boss1.maxHp;
-            //currentHP = boss1.currentHp;
+            maxHP = current.maxHP;
+            currentHP = boss1.currentHP;
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
             currentHP -= 10;
             HpUpdate();
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            current = boss1;
         }
     }
 
