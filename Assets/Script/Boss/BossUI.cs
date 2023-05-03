@@ -24,18 +24,30 @@ public class BossUI : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Q))
         {
+            current = boss1;
             maxHP = current.maxHP;
-            currentHP = boss1.currentHP;
+            currentHP = current.currentHP;
         }
-        if (Input.GetKeyDown(KeyCode.S))
+
+        if (Input.GetKeyDown(KeyCode.W))
         {
-            currentHP -= 10;
-            HpUpdate();
+            current = boss2;
+            maxHP = current.maxHP;
+            currentHP = current.currentHP;
         }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            current = boss1;
+            current = boss3;
+            maxHP = current.maxHP;
+            currentHP = current.currentHP;
+        }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            currentHP -= 10;
+            current.currentHP = currentHP;
+            HpUpdate();
         }
     }
 
@@ -44,10 +56,3 @@ public class BossUI : MonoBehaviour
         fillImage.fillAmount = currentHP / maxHP;
     }
 }
-
-//public class BossStatus
-//{
-//    public int maxHp;
-//    public int currentHp;
-//    public string name;
-//}
