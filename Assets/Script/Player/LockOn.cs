@@ -21,6 +21,7 @@ public class LockOn : MonoBehaviour
     {
         if (pcm.islockOn)
         {
+            pcm.inputMode = false;
             Collider[] colls = Physics.OverlapSphere(transform.position, 15);
             lockonenemy = colls[0].gameObject;
             if (lockonenemy.CompareTag("Monster"))
