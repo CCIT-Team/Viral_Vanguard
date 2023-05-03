@@ -94,8 +94,6 @@ public class PlayerCameraManager : MonoBehaviour
                 Vector3 smoothed_position = Vector3.Lerp(transform.position, desired_position, smooth_speed);
                 transform.position = smoothed_position;
             }
-
-
         }
     }
 
@@ -153,7 +151,6 @@ public class PlayerCameraManager : MonoBehaviour
             {
                 inputMode = false;
                 islockOn = true;
-
             }
             lockOn.Lock();
         }

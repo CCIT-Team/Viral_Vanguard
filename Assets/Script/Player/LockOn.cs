@@ -36,7 +36,7 @@ public class LockOn : MonoBehaviour
         }
         else
         {
-
+            //pcm.transform.position = transform.position;
             lockonenemy.gameObject.GetComponentInChildren<SpriteRenderer>().sprite = null;
             lockonenemy = null;
         }
