@@ -83,7 +83,7 @@ public class PlayerCameraManager : MonoBehaviour
     {
         if (player != null)
         {
-            if (lockOn)
+            if (islockOn)
             {
                 //Vector3 dir = player.transform.localEulerAngles - transform.localEulerAngles;
                 Quaternion rotation = Quaternion.LookRotation(player.forward, player.up);
@@ -101,47 +101,50 @@ public class PlayerCameraManager : MonoBehaviour
 
     void Update()
     {
-       
-        angleH += Mathf.Clamp(Input.GetAxis("Mouse X"), -1f, 1f) * horizontalAimingSpeed;
-        angleV += Mathf.Clamp(Input.GetAxis("Mouse Y"), -1f, 1f) * verticalAimingSpeed;
-
-        angleV = Mathf.Clamp(angleV, minVerticalAngle, targetMaxVerticleAngle);
-
-        angleV = Mathf.LerpAngle(angleV, angleV + shakeAngle, 10f * Time.deltaTime);
-
-        //카메라 회전
-        Quaternion camYRotation = Quaternion.Euler(0.0f, angleH, 0.0f);
-        Quaternion aimRotation = Quaternion.Euler(-angleV, angleH, 0.0f);
-        cameraTransform.rotation = aimRotation;
-
-        //Set FOV
-        myCamera.fieldOfView = Mathf.Lerp(myCamera.fieldOfView, targetFOV, Time.deltaTime); 
-
-        Vector3 baseTempPosition = player.position + camYRotation * targetPivotOffset;
-        Vector3 noCollisionOffset = targetCamOffset; 
-
-        for (float zOffset = targetCamOffset.z; zOffset <= 0f; zOffset += 0.5f)
+       if(!islockOn)
         {
-            noCollisionOffset.z = zOffset;
-            if (DoubleViewingCheck(baseTempPosition + aimRotation * noCollisionOffset, Mathf.Abs(zOffset)) || zOffset == 0f)
+            angleH += Mathf.Clamp(Input.GetAxis("Mouse X"), -1f, 1f) * horizontalAimingSpeed;
+            angleV += Mathf.Clamp(Input.GetAxis("Mouse Y"), -1f, 1f) * verticalAimingSpeed;
+
+            angleV = Mathf.Clamp(angleV, minVerticalAngle, targetMaxVerticleAngle);
+
+            angleV = Mathf.LerpAngle(angleV, angleV + shakeAngle, 10f * Time.deltaTime);
+
+            //카메라 회전
+            Quaternion camYRotation = Quaternion.Euler(0.0f, angleH, 0.0f);
+            Quaternion aimRotation = Quaternion.Euler(-angleV, angleH, 0.0f);
+            cameraTransform.rotation = aimRotation;
+
+            //Set FOV
+            myCamera.fieldOfView = Mathf.Lerp(myCamera.fieldOfView, targetFOV, Time.deltaTime);
+
+            Vector3 baseTempPosition = player.position + camYRotation * targetPivotOffset;
+            Vector3 noCollisionOffset = targetCamOffset;
+
+            for (float zOffset = targetCamOffset.z; zOffset <= 0f; zOffset += 0.5f)
             {
-                break;
+                noCollisionOffset.z = zOffset;
+                if (DoubleViewingCheck(baseTempPosition + aimRotation * noCollisionOffset, Mathf.Abs(zOffset)) || zOffset == 0f)
+                {
+                    break;
+                }
+            }
+
+            smoothPivotOffset = Vector3.Lerp(smoothPivotOffset, targetPivotOffset, smooth * Time.deltaTime);
+            smoothCamOffset = Vector3.Lerp(smoothCamOffset, noCollisionOffset, smooth * Time.deltaTime);
+
+            cameraTransform.position = player.position + camYRotation * smoothPivotOffset + aimRotation * smoothCamOffset;
+
+            if (shakeAngle > 0.0f)
+            {
+                shakeAngle -= camShakeBounce * Time.deltaTime;
+            }
+            else if (shakeAngle < 0.0f)
+            {
+                shakeAngle += camShakeBounce * Time.deltaTime;
             }
         }
-
-        smoothPivotOffset = Vector3.Lerp(smoothPivotOffset, targetPivotOffset, smooth * Time.deltaTime);
-        smoothCamOffset = Vector3.Lerp(smoothCamOffset, noCollisionOffset, smooth * Time.deltaTime);
-
-        cameraTransform.position = player.position + camYRotation * smoothPivotOffset + aimRotation * smoothCamOffset;
-
-        if (shakeAngle > 0.0f)
-        {
-            shakeAngle -= camShakeBounce * Time.deltaTime;
-        }
-        else if (shakeAngle < 0.0f)
-        {
-            shakeAngle += camShakeBounce * Time.deltaTime;
-        }
+        
 
         if (Input.GetKeyDown(KeyCode.R))
         {
