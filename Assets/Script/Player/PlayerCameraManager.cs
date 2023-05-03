@@ -18,7 +18,7 @@ public class PlayerCameraManager : MonoBehaviour
     //
     public float maxVerticalAngle = 30.0f;
     public float minVerticalAngle = -60.0f;
-    public float camShake = 4f;
+    public float camShakeBounce = 4f;
     private float angleH = 0.0f;
     private float angleV = 0.0f;
 
@@ -47,13 +47,14 @@ public class PlayerCameraManager : MonoBehaviour
     //
     public float smooth_speed = 0.125f;
     public Vector3 offset;
-    bool inputMode = false;
+    public bool inputMode = true;
 
     [SerializeField]
     public bool islockOn = false;
 
     public LockOn lockOn;
     public Sprite lockOnImage;
+
     private void Awake()
     {
         cameraTransform = transform;
@@ -80,34 +81,80 @@ public class PlayerCameraManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (player != null && inputMode == false)
+        if (player != null)
         {
-            if (!islockOn)
-            {
-                Vector3 desired_position = player.position + offset;
-                Vector3 smoothed_position = Vector3.Lerp(transform.position, desired_position, smooth_speed);
-                transform.position = smoothed_position;
-            }
-            else
+            if (lockOn)
             {
                 //Vector3 dir = player.transform.localEulerAngles - transform.localEulerAngles;
                 Quaternion rotation = Quaternion.LookRotation(player.forward, player.up);
                 //rotation.eulerAngles = new Vector3(rotation.eulerAngles.x + 22.3f, rotation.eulerAngles.y, rotation.eulerAngles.z);
                 rotation.eulerAngles = rotation.eulerAngles + new Vector3(22.3f, 0, 0);
                 transform.rotation = rotation;
-                Vector3 desired_position = player.position + new Vector3(offset.x, offset.y ,0) + offset.z * player.forward;
+                Vector3 desired_position = player.position + new Vector3(offset.x, offset.y, 0) + offset.z * player.forward;
                 Vector3 smoothed_position = Vector3.Lerp(transform.position, desired_position, smooth_speed);
                 transform.position = smoothed_position;
             }
+
+
         }
     }
 
     void Update()
     {
+       
+        angleH += Mathf.Clamp(Input.GetAxis("Mouse X"), -1f, 1f) * horizontalAimingSpeed;
+        angleV += Mathf.Clamp(Input.GetAxis("Mouse Y"), -1f, 1f) * verticalAimingSpeed;
+
+        angleV = Mathf.Clamp(angleV, minVerticalAngle, targetMaxVerticleAngle);
+
+        angleV = Mathf.LerpAngle(angleV, angleV + shakeAngle, 10f * Time.deltaTime);
+
+        //카메라 회전
+        Quaternion camYRotation = Quaternion.Euler(0.0f, angleH, 0.0f);
+        Quaternion aimRotation = Quaternion.Euler(-angleV, angleH, 0.0f);
+        cameraTransform.rotation = aimRotation;
+
+        //Set FOV
+        myCamera.fieldOfView = Mathf.Lerp(myCamera.fieldOfView, targetFOV, Time.deltaTime); 
+
+        Vector3 baseTempPosition = player.position + camYRotation * targetPivotOffset;
+        Vector3 noCollisionOffset = targetCamOffset; 
+
+        for (float zOffset = targetCamOffset.z; zOffset <= 0f; zOffset += 0.5f)
+        {
+            noCollisionOffset.z = zOffset;
+            if (DoubleViewingCheck(baseTempPosition + aimRotation * noCollisionOffset, Mathf.Abs(zOffset)) || zOffset == 0f)
+            {
+                break;
+            }
+        }
+
+        smoothPivotOffset = Vector3.Lerp(smoothPivotOffset, targetPivotOffset, smooth * Time.deltaTime);
+        smoothCamOffset = Vector3.Lerp(smoothCamOffset, noCollisionOffset, smooth * Time.deltaTime);
+
+        cameraTransform.position = player.position + camYRotation * smoothPivotOffset + aimRotation * smoothCamOffset;
+
+        if (shakeAngle > 0.0f)
+        {
+            shakeAngle -= camShakeBounce * Time.deltaTime;
+        }
+        else if (shakeAngle < 0.0f)
+        {
+            shakeAngle += camShakeBounce * Time.deltaTime;
+        }
+
         if (Input.GetKeyDown(KeyCode.R))
         {
-            if (islockOn) { islockOn = false; }
-            else { islockOn = true; }
+            if (islockOn)
+            {
+                islockOn = false;
+            }
+            else
+            {
+                inputMode = false;
+                islockOn = true;
+
+            }
             lockOn.Lock();
         }
     }
