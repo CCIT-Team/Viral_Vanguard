@@ -36,7 +36,8 @@ public class LockOn : MonoBehaviour
         }
         else
         {
-            //pcm.transform.position = transform.position;
+            //t
+            pcm.transform.localRotation = transform.localRotation;
             lockonenemy.gameObject.GetComponentInChildren<SpriteRenderer>().sprite = null;
             lockonenemy = null;
         }
