@@ -76,10 +76,10 @@ MonoBehaviour:
   active: 1
   quality:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 2
   intensity:
     m_OverrideState: 1
-    m_Value: 8
+    m_Value: 1.39
   maximumVelocity:
     m_OverrideState: 0
     m_Value: 200
@@ -106,4 +106,4 @@ MonoBehaviour:
     m_Value: 1
   m_SampleCount:
     m_OverrideState: 1
-    m_Value: 4
+    m_Value: 12
