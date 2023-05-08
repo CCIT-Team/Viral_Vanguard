@@ -16,6 +16,7 @@ public class MoveBehaviour : GenericBehaviour
     //private bool isColliding;
     private CapsuleCollider capsuleCollider;
     private Transform myTransform;
+    private bool isColliding;
 
     private void Start()
     {
@@ -54,7 +55,7 @@ public class MoveBehaviour : GenericBehaviour
         return targetDirection;
     }
 
-    private void ReMoveVerticalVelocity()
+    private void RemoveVerticalVelocity()
     {
         Vector3 horizontalVelocity = behaviourController.GetRigidbody.velocity;
         horizontalVelocity.y = 0.0f;
@@ -69,13 +70,32 @@ public class MoveBehaviour : GenericBehaviour
         }
         else if(behaviourController.GetRigidbody.velocity.y > 0)
         {
-            ReMoveVerticalVelocity();
+            RemoveVerticalVelocity();
         }
         Rotating(horizontal, vertical);
         Vector2 dir = new Vector2(horizontal, vertical);
         speed = Vector2.ClampMagnitude(dir, 1f).magnitude * runSpeed;
         behaviourController.GetAnimator.SetFloat(speedFloat, speed, speedDampTime, Time.deltaTime);
     }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        isColliding = true;
+
+        if (behaviourController.IsCurrentBehaviour(GetBehaviourCode) && collision.GetContact(0).normal.y <= 0.1f)
+        {
+            float vel = behaviourController.GetAnimator.velocity.magnitude;
+            Vector3 targetMove = Vector3.ProjectOnPlane(myTransform.forward, collision.GetContact(0).normal).normalized * vel;
+            behaviourController.GetRigidbody.AddForce(targetMove, ForceMode.VelocityChange);
+
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        isColliding = false;
+    }
+
 
     private void Update()
     {

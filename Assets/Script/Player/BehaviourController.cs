@@ -20,16 +20,15 @@ public class BehaviourController : MonoBehaviour
     private Transform myTransform;
     private Animator myAnimator;
     private Rigidbody myRigidbody;
-    private LockOn camScript;
+    private PlayerCameraManager camScript;
 
-    public float h;
-    public float v;
+    private float h;
+    private float v;
     public float turnSmooth = 0.06f;
     private bool changedFOV;
-    public float sprintFOV = 100;
+    public float FOV = 50;
 
     private Vector3 lastDirection;
-    private bool sprint;
     private int hFloat;
     private int vFloat;
     private int groundedBool;
@@ -37,7 +36,7 @@ public class BehaviourController : MonoBehaviour
 
     public float GetH { get => h; }
     public float GetV { get => v; }
-    public LockOn GetCamScript { get => camScript; }
+    public PlayerCameraManager GetCamScript { get => camScript; }
     public Rigidbody GetRigidbody { get => myRigidbody; }
     public Animator GetAnimator { get => myAnimator; }
     public int GetDefailtBehaviour { get => defaultBehaviour; }
@@ -50,7 +49,7 @@ public class BehaviourController : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         hFloat = Animator.StringToHash(AnimatorKey.Horizontal);
         vFloat = Animator.StringToHash(AnimatorKey.Vertical);
-        camScript = playerCamera.GetComponent<LockOn>();
+        camScript = playerCamera.GetComponent<PlayerCameraManager>();
         myRigidbody = GetComponent<Rigidbody>();
 
         groundedBool = Animator.StringToHash(AnimatorKey.Grounded);
@@ -59,7 +58,7 @@ public class BehaviourController : MonoBehaviour
 
     public bool IsMoving()
     {
-        return ((int)h != 0) || ((int)v != 0);
+        return Mathf.Abs(h) > Mathf.Epsilon || Mathf.Abs(v) > Mathf.Epsilon;
     }
 
     public bool IsHorizontalMoving()
@@ -80,8 +79,8 @@ public class BehaviourController : MonoBehaviour
 
         myAnimator.SetFloat(hFloat, h, 0.1f, Time.deltaTime);
         myAnimator.SetFloat(vFloat, v, 0.1f, Time.deltaTime);
+        //transform.position += h * transform.right + v * transform.forward;
 
-        
 
         myAnimator.SetBool(groundedBool, IsGrounded());
     }
@@ -124,6 +123,27 @@ public class BehaviourController : MonoBehaviour
         {
             myRigidbody.useGravity = true;
             Repositioning();
+        }
+    }
+
+    private void LateUpdate()
+    {
+        if (behaviourLocked > 0 || overrideBehaviours.Count == 0)
+        {
+            foreach (GenericBehaviour behaviour in behaviours)
+            {
+                if (behaviour.isActiveAndEnabled && currentBehaviours == behaviour.GetBehaviourCode)
+                {
+                    behaviour.LocalLateUpdate();
+                }
+            }
+        }
+        else
+        {
+            foreach (GenericBehaviour behaviour in overrideBehaviours)
+            {
+                behaviour.LocalLateUpdate();
+            }
         }
     }
 
@@ -171,6 +191,16 @@ public class BehaviourController : MonoBehaviour
                 }
             }
             overrideBehaviours.Add(behaviour);
+            return true;
+        }
+        return false;
+    }
+
+    public bool RevokeOverridingBehaviour(GenericBehaviour behaviour) //«ÿ¡¶
+    {
+        if (overrideBehaviours.Contains(behaviour))
+        {
+            overrideBehaviours.Remove(behaviour);
             return true;
         }
         return false;
