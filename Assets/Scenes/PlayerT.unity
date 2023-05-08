@@ -872,7 +872,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9caaebef5f065bd4483906a9b0b1ef02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pcm: {fileID: 2104932140}
+  playerCameraManager: {fileID: 2104932140}
+  ischeckMonster: 0
 --- !u!4 &41204758559668280
 Transform:
   m_ObjectHideFlags: 0
