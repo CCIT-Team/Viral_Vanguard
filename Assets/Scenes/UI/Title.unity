@@ -836,13 +836,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63053f73b7444b74ca5ba178ae698fac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSaveDataExist: 1
   buttonArrays:
     noSaveDataVisualizationElements:
     - {fileID: 1596799986}
     - {fileID: 1093629614}
     - {fileID: 1350543414}
-    SaveDataVisualizationElements:
+    saveDataVisualizationElements:
     - {fileID: 1150071489}
     - {fileID: 659179404}
     - {fileID: 1093629614}
@@ -1931,7 +1930,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonArrays:
     noSaveDataVisualizationElements: []
-    SaveDataVisualizationElements: []
+    saveDataVisualizationElements: []
     saveDataArrays: []
 --- !u!4 &987767407
 Transform:
@@ -2620,13 +2619,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e3447bb6968e754aa0cf94bbf7e3745, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  saveDataValue:
+  saveData:
     stateHpUpCount: 0
     stateSteminaUpCount: 0
     equipWeaponID: 0
+    obtainWeaponList: []
     bossCount: 5
     playTime: 0
-  mainSceneEvent: {fileID: 430198224}
+  isSaveDataExist: 1
 --- !u!4 &1246949445
 Transform:
   m_ObjectHideFlags: 0
