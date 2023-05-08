@@ -15,16 +15,17 @@ public class ButtonArrays
 
 public class MainSceneEvent : MonoBehaviour
 {
+    public bool isSaveDataExist = false;
     public ButtonArrays buttonArrays = new ButtonArrays();
 
-    public void Start()
+    public void Awake()
     {
-        if (SavaDataManager.Instance.isSaveDataExist)
+        if (isSaveDataExist)
         {
             for (int i = 0; i < buttonArrays.SaveDataVisualizationElements.Length; i++)
                 buttonArrays.SaveDataVisualizationElements[i].SetActive(true);
         }
-        else if(!SavaDataManager.Instance.isSaveDataExist)
+        else
         {
             for (int i = 0; i < buttonArrays.noSaveDataVisualizationElements.Length; i++)
                 buttonArrays.noSaveDataVisualizationElements[i].SetActive(true);

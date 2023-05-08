@@ -2620,13 +2620,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e3447bb6968e754aa0cf94bbf7e3745, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  saveDataValue:
-    stateHpUpCount: 0
-    stateSteminaUpCount: 0
-    equipWeaponID: 0
-    bossCount: 5
-    playTime: 0
-  mainSceneEvent: {fileID: 430198224}
 --- !u!4 &1246949445
 Transform:
   m_ObjectHideFlags: 0
