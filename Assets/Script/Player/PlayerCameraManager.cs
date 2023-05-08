@@ -81,20 +81,20 @@ public class PlayerCameraManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (player != null)
-        {
-            if (islockOn)
-            {
-                //Vector3 dir = player.transform.localEulerAngles - transform.localEulerAngles;
-                Quaternion rotation = Quaternion.LookRotation(player.forward, player.up);
-                //rotation.eulerAngles = new Vector3(rotation.eulerAngles.x + 22.3f, rotation.eulerAngles.y, rotation.eulerAngles.z);
-                rotation.eulerAngles = rotation.eulerAngles + new Vector3(22.3f, 0, 0);
-                transform.rotation = rotation;
-                Vector3 desired_position = player.position + new Vector3(offset.x, offset.y, 0) + offset.z * player.forward;
-                Vector3 smoothed_position = Vector3.Lerp(transform.position, desired_position, smooth_speed);
-                transform.position = smoothed_position;
-            }
-        }
+        //if (player != null)
+        //{
+        //    //if (islockOn)
+        //    //{
+        //    //    //Vector3 dir = player.transform.localEulerAngles - transform.localEulerAngles;
+        //    //    Quaternion rotation = Quaternion.LookRotation(player.forward, player.up);
+        //    //    //rotation.eulerAngles = new Vector3(rotation.eulerAngles.x + 22.3f, rotation.eulerAngles.y, rotation.eulerAngles.z);
+        //    //    rotation.eulerAngles = rotation.eulerAngles + new Vector3(22.3f, 0, 0);
+        //    //    transform.rotation = rotation;
+        //    //    Vector3 desired_position = player.position + new Vector3(offset.x, offset.y, 0) + offset.z * player.forward;
+        //    //    Vector3 smoothed_position = Vector3.Lerp(transform.position, desired_position, smooth_speed);
+        //    //    transform.position = smoothed_position;
+        //    //}
+        //}
     }
 
     void Update()
@@ -154,8 +154,9 @@ public class PlayerCameraManager : MonoBehaviour
             {
                 inputMode = false;
                 islockOn = true;
-            }
-            lockOn.Lock();
+                lockOn.Lock();
+                Debug.Log("lock on Method");
+            }     
         }
     }
 
