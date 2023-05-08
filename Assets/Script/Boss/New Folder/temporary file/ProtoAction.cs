@@ -16,7 +16,7 @@ public class ProtoAction : MonoBehaviour, IListener
     void Start()
     {
         animator = GetComponent<Animator>();
-        EventManager.instance.AddListener(EVENT_TYPE.bFindPlayer, this);
+        EventManager.instance.AddListener(EVENT_TYPE.eFindPlayer, this);
         sphere = GetComponent<SphereCollider>();
         agent = GetComponent<NavMeshAgent>();
         target = this.gameObject;
@@ -33,7 +33,7 @@ public class ProtoAction : MonoBehaviour, IListener
         if(other.CompareTag("Player"))
         {
             dummyTarget = other.gameObject;
-            EventManager.instance.PostNotification(EVENT_TYPE.bFindPlayer, this,other);
+            EventManager.instance.PostNotification(EVENT_TYPE.eFindPlayer, this,other);
         }
     }
 
@@ -43,7 +43,7 @@ public class ProtoAction : MonoBehaviour, IListener
         Debug.Log(animator.GetCurrentAnimatorClipInfo(0));
         switch (EventType)
         {
-            case EVENT_TYPE.bFindPlayer:
+            case EVENT_TYPE.eFindPlayer:
                 Destroy(sphere);
                 animator.SetTrigger("EnterBattle");
                 return;

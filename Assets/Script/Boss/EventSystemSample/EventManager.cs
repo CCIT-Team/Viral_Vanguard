@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+#pragma warning disable IDE0018 // 인라인 변수 선언 알림 끄기
+#pragma warning disable IDE0059 // 불필요한 값 할당 알림 끄기
+
 public class EventManager : MonoBehaviour
 {
 
@@ -23,8 +26,6 @@ public class EventManager : MonoBehaviour
     //다른 곳에서 시작 시 호출하는 코드
     public void AddListener(EVENT_TYPE eventType, IListener Listener)
     {
-#pragma warning disable IDE0018 // 인라인 변수 선언
-#pragma warning disable IDE0059 // 불필요한 값 할당
         List<IListener> ListenList = null;
 
         if (Listeners.TryGetValue(eventType, out ListenList))
@@ -49,7 +50,6 @@ public class EventManager : MonoBehaviour
         {
             return;
         }
-            
 
         for (int i = 0; i < ListenList.Count; i++)
             ListenList?[i].OnEvent(eventType, Sender, param);
@@ -80,19 +80,20 @@ public class EventManager : MonoBehaviour
 //이벤트 이넘값
 public enum EVENT_TYPE  //
 {
-    eGameInit,
-    eGameEnd,
-    eAmmoCharge,
+    eSampleEvent,
+    eDead,
+    eHit,
+    eFindPlayer,
+    eEnterBattle,
+    eGuarded,
+    eParried,
     eHealthChange,
-    EDead,
-    bHit,
-    bFindPlayer,
-    bEnterBattle,
-    bGuarded,
-    bParried,
-    bHealthChange,
-    bDead,
-    eSampleEvent
+    eDefaultRange1,
+    eDefaultRange2,
+    eSpecialRange1,
+    eSpecialRange2,
+    eSpecialRange3,
+    eActTime
 }
 public interface IListener
 {

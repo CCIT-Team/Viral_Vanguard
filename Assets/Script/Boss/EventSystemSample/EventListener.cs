@@ -20,6 +20,7 @@ public class EventListener : MonoBehaviour, IListener
     void Start()
     {
         EventManager.instance.AddListener(EVENT_TYPE.eSampleEvent, this);
+        EventManager.instance.AddListener(EVENT_TYPE.eFindPlayer, this);
     }
 
     // Update is called once per frame
@@ -43,6 +44,9 @@ public class EventListener : MonoBehaviour, IListener
         {
             case EVENT_TYPE.eSampleEvent:
                 Debug.Log("이벤트 실행. HP : "+ Param);
+                break;
+            case EVENT_TYPE.eFindPlayer:
+                Debug.Log("리스너실행됨");
                 break;
         }
     }
