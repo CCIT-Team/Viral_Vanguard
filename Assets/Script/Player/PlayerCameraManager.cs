@@ -37,7 +37,7 @@ public class PlayerCameraManager : MonoBehaviour
     private float defaultFOV; //기본 시야값
     private float targetFOV; //타겟 시야값
     private float targetMaxVerticleAngle; //카메라 수직 최대 각도
-    private float shakeAngle = 0f; 
+    private float shakeAngle = 0f;
 
     public float GetH
     {
@@ -81,9 +81,9 @@ public class PlayerCameraManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (player != null)
+        if (player != null)//1
         {
-            if (islockOn &&  lockOn.ischeckMonster)
+            if (islockOn && lockOn.ischeckMonster)
             {
                 Quaternion rotation = Quaternion.LookRotation(player.forward, player.up);
                 rotation.eulerAngles = rotation.eulerAngles + new Vector3(22.3f, 0, 0);
@@ -97,7 +97,7 @@ public class PlayerCameraManager : MonoBehaviour
 
     void Update()
     {
-       if(!islockOn)
+        if (!islockOn)
         {
             angleH += Mathf.Clamp(Input.GetAxis("Mouse X"), -1f, 1f) * horizontalAimingSpeed;
             angleV += Mathf.Clamp(Input.GetAxis("Mouse Y"), -1f, 1f) * verticalAimingSpeed;
@@ -140,20 +140,22 @@ public class PlayerCameraManager : MonoBehaviour
                 shakeAngle += camShakeBounce * Time.deltaTime;
             }
         }
-        
+
 
         if (Input.GetKeyDown(KeyCode.R))
         {
             if (islockOn)
             {
                 islockOn = false;
+                Vector3.Slerp(transform.position, transform.position, smooth_speed);
+                Quaternion.Slerp(transform.rotation,transform.rotation, smooth_speed);
             }
             else
             {
                 inputMode = false;
                 islockOn = true;
                 lockOn.Lock();
-            }     
+            }
         }
     }
 
@@ -173,18 +175,18 @@ public class PlayerCameraManager : MonoBehaviour
         targetMaxVerticleAngle = maxVerticalAngle;
     }
 
-    public void ShakeVertical(float degree) 
+    public void ShakeVertical(float degree)
     {
         shakeAngle = degree;
     }
 
-    public void SetTargetOffset(Vector3 newPivotOffset, Vector3 newCamOffset) 
+    public void SetTargetOffset(Vector3 newPivotOffset, Vector3 newCamOffset)
     {
         targetPivotOffset = newPivotOffset;
         targetCamOffset = newCamOffset;
     }
 
-    public void SetFOV(float customFOV) 
+    public void SetFOV(float customFOV)
     {
         targetFOV = customFOV;
     }
@@ -192,9 +194,9 @@ public class PlayerCameraManager : MonoBehaviour
     bool ViewingPosCheck(Vector3 checkPos, float playerHeight)
     {
         Vector3 target = player.position + (Vector3.up * playerHeight);
-        if(Physics.SphereCast(checkPos, 0.2f, target - checkPos, out RaycastHit hit, relCameraPosMag))
+        if (Physics.SphereCast(checkPos, 0.2f, target - checkPos, out RaycastHit hit, relCameraPosMag))
         {
-            if(hit.transform != player && !hit.transform.GetComponent<Collider>().isTrigger)
+            if (hit.transform != player && !hit.transform.GetComponent<Collider>().isTrigger)
             {
                 return false;
             }
@@ -205,9 +207,9 @@ public class PlayerCameraManager : MonoBehaviour
     bool ReverseViewingPosCheck(Vector3 checkPos, float playerHeight, float maxDistance)
     {
         Vector3 origin = player.position + (Vector3.up * playerHeight);
-        if(Physics.SphereCast(origin, 0.2f, checkPos - origin, out RaycastHit hit, maxDistance))
+        if (Physics.SphereCast(origin, 0.2f, checkPos - origin, out RaycastHit hit, maxDistance))
         {
-            if(hit.transform != player && hit.transform != transform && !hit.transform.GetComponent<Collider>().isTrigger)
+            if (hit.transform != player && hit.transform != transform && !hit.transform.GetComponent<Collider>().isTrigger)
             {
                 return false;
             }
