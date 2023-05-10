@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 261.8021, g: 324.32925, b: 429.24924, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -456,7 +456,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1255909562
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -871,9 +871,10 @@ GameObject:
   - component: {fileID: 6832512289473269507}
   - component: {fileID: 6832512289473269506}
   - component: {fileID: 6832512289473269505}
+  - component: {fileID: 6832512289473269508}
   m_Layer: 0
   m_Name: Y Bot 1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -932,7 +933,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 250523459145567804}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.41}
+  m_LocalPosition: {x: -4, y: 0, z: 4.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2579,6 +2580,7 @@ MonoBehaviour:
   runSpeed: 1
   speedDampTime: 0.1
   speed: 0
+  myTransform: {fileID: 590492095399482502}
 --- !u!114 &6832512289473269502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2592,8 +2594,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 2104932138}
+  myTransform: {fileID: 590492095399482502}
+  myAnimator: {fileID: 6832512289473269500}
+  myRigidbody: {fileID: 6832512289473269504}
+  camScript: {fileID: 2104932140}
   turnSmooth: 0.06
-  FOV: 50
 --- !u!136 &6832512289473269503
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2636,9 +2641,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 504d3cfcff0bbe646823664ae90fe2d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  evasion: 0
   keyLock: 0
   mouseLock: 0
+  evasionDelay: 0.3
 --- !u!114 &6832512289473269506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2651,6 +2656,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78ab5daf90501964f9e156c8a85669b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clicks: 0
+  attackDelay: 0.5
+  myTransform: {fileID: 590492095399482502}
+  keyLock: 0
+  mouseLock: 0
 --- !u!114 &6832512289473269507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2665,7 +2675,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   guardTurnSmoothing: 0.05
   turnSmoothing: 0.05
-  guardFOV: 50
+  guardFieldOfView: 50
+  myTransform: {fileID: 590492095399482502}
+--- !u!114 &6832512289473269508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 250523459145567804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a720fcc4955aeac46ab2a4bca1f12c6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myTransform: {fileID: 590492095399482502}
+  keyLock: 0
+  mouseLock: 0
+  count: 0
 --- !u!137 &6878599332639467342
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0

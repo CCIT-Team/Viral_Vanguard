@@ -10,17 +10,22 @@ public class GuardBehaviour : GenericBehaviour
 {
     public float guardTurnSmoothing;
     public float turnSmoothing;
-    public float guardFOV = 50;
+    public float guardFieldOfView = 50;
     private int guardBool;
     private bool guard;
-    private Transform myTransform;
+    public Transform myTransform;
     private EvasionBehaviour evasionBehaviour; //참조
+    private AttackBehaviour attackBehaviour;   //참조
+    private BigBangBehaviour bigBangBehaviour; //참조
+
+    //각 행동 쿨타임
 
     private void Start()
     {
-        myTransform = transform;
         guardBool = Animator.StringToHash(AnimatorKey.Guard);
         evasionBehaviour = GetComponent<EvasionBehaviour>();
+        attackBehaviour = GetComponent<AttackBehaviour>();
+        bigBangBehaviour = GetComponent<BigBangBehaviour>();
     }
 
     void Rotating()
@@ -29,7 +34,7 @@ public class GuardBehaviour : GenericBehaviour
         forward.y = 0;
         forward = forward.normalized;
 
-        Quaternion targetRotation = Quaternion.Euler(0f, behaviourController.GetCamScript.GetH, 0.0f);
+        Quaternion targetRotation = Quaternion.Euler(0f, behaviourController.camScript._getHorizotal, 0.0f);
         float mimSpeed = Quaternion.Angle(myTransform.rotation, targetRotation) * turnSmoothing;
 
         behaviourController.SetLastDirection(forward);
@@ -45,15 +50,15 @@ public class GuardBehaviour : GenericBehaviour
     {
         yield return new WaitForSeconds(0.05f);
 
-        if (behaviourController.GetTempLockStatus(behaviourCode) || behaviourController.IsOverrideing(this)) //스테미나 없으면 가드 불가 또는 회피중, 공격중
+        if (behaviourController.GetTempLockStatus(behaviourCode) || behaviourController.IsOverrideing(this))
         {
             yield return false;
         }
         else
         {
             guard = true;
-            behaviourController.GetCamScript.SetFOV(guardFOV);
-            behaviourController.GetAnimator.SetBool(guardBool, guard);
+            behaviourController.camScript.SetFieldOfView(guardFieldOfView);
+            behaviourController.myAnimator.SetBool(guardBool, guard);
             yield return new WaitForSeconds(0.1f);
             //behaviourController.GetAnimator.SetFloat(speedFloat, 0.0f);
             behaviourController.OverrideWithBehaviour(this);
@@ -63,9 +68,9 @@ public class GuardBehaviour : GenericBehaviour
     private IEnumerator ToggleGuardOff()
     {
         guard = false;
-        behaviourController.GetAnimator.SetBool(guardBool, guard);
+        behaviourController.myAnimator.SetBool(guardBool, guard);
         yield return new WaitForSeconds(0.3f);
-        behaviourController.GetCamScript.ResetFOV();
+        behaviourController.camScript.ResetFieldOfView();
         yield return new WaitForSeconds(0.1f);
         behaviourController.RevokeOverridingBehaviour(this);
 
@@ -82,17 +87,20 @@ public class GuardBehaviour : GenericBehaviour
         if(Input.GetMouseButtonDown(1))
         {
             evasionBehaviour.mouseLock = false;
-            behaviourController.GetAnimator.SetBool(evasionBehaviour.keyLock, evasionBehaviour.mouseLock);
+            attackBehaviour.mouseLock = false;
+            bigBangBehaviour.mouseLock = false;
+            behaviourController.myAnimator.SetBool(evasionBehaviour.keyLock, evasionBehaviour.mouseLock);
+            behaviourController.myAnimator.SetBool(attackBehaviour.keyLock, attackBehaviour.mouseLock);
+            behaviourController.myAnimator.SetBool(bigBangBehaviour.keyLock, bigBangBehaviour.mouseLock);
         }
-        if(Input.GetAxisRaw(ButtonKey.Guard) !=0 && !guard)
+        if (Input.GetAxisRaw(ButtonKey.Guard) != 0 && !guard && !evasionBehaviour.mouseLock && !attackBehaviour.mouseLock && !bigBangBehaviour.mouseLock) //스테미나 없으면 불가능
         {
             StartCoroutine(ToggleGuardOn());
         }
-        else if(guard && Input.GetAxisRaw(ButtonKey.Guard) == 0)
+        else if (guard && Input.GetAxisRaw(ButtonKey.Guard) == 0 || evasionBehaviour.mouseLock || attackBehaviour.mouseLock || bigBangBehaviour.mouseLock)
         {
             StartCoroutine(ToggleGuardOff());
         }
         //걷기만 가능한지?
-        
     }
 }

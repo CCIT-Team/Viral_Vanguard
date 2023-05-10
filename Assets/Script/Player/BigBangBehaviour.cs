@@ -2,38 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-/// <summary>
-/// 회피 캐릭터가 보고 있는 방향으로 회피가 진행됨 공격중 회피X, 회피중 공격X
-/// </summary>
-public class EvasionBehaviour : GenericBehaviour
+public class BigBangBehaviour : GenericBehaviour
 {
-    private int evasionTrigger;
-    private bool evasion;
-    private Transform myTransform;
-    private int groundedBool;
+    private int grounded;//애니용
+    private int bigBangTrigger;
+    private bool bigBang;
+    public Transform myTransform;
     [HideInInspector]
     public int keyLock;
     public bool mouseLock;
-    public float evasionDelay = 0.2f;
-
-    //각 행동 쿨타임
-
+    public float count;
+    //게이지 카운트 필요
 
     private void Start()
     {
-        myTransform = transform;
-        evasionTrigger = Animator.StringToHash(AnimatorKey.Evasion);
-        groundedBool = Animator.StringToHash(AnimatorKey.Grounded);
+        grounded = Animator.StringToHash(AnimatorKey.Grounded);
+        bigBangTrigger = Animator.StringToHash(AnimatorKey.BigBang);
         keyLock = Animator.StringToHash(AnimatorKey.MouseLock);
-        mouseLock = false;
     }
 
-    //회전
     Vector3 Rotation(float horizontal, float vertical)
     {
         Vector3 forward = behaviourController.playerCamera.TransformDirection(Vector3.forward);
-        forward.y = 0.0f; 
+        forward.y = 0.0f;
         forward = forward.normalized;
 
         Vector3 right = new Vector3(forward.z, 0.0f, -forward.x);
@@ -60,7 +51,7 @@ public class EvasionBehaviour : GenericBehaviour
         behaviourController.myRigidbody.velocity = horizotalVelocity;
     }
 
-    void RotationManagement(float horizontal, float vertical)
+    private void RotationManagment(float horizontal, float vertical)
     {
         if (behaviourController.IsGrounded())
         {
@@ -73,63 +64,62 @@ public class EvasionBehaviour : GenericBehaviour
         Rotation(horizontal, vertical);
     }
 
-    private void EvasionManagement()
+    private void BigBangManagement()
     {
-        if(!behaviourController.IsGrounded()) //공격이 아닌 상황
+        if (!behaviourController.IsGrounded()) //빅뱅이 아닌 상황
         {
             return;
         }
         else
         {
-            RotationManagement(behaviourController._horizontal, behaviourController._vertical);
-        }    
+            RotationManagment(behaviourController._horizontal, behaviourController._vertical);
+        }
     }
-
-
-    private IEnumerator ToggleEvasionOn()
+    private IEnumerator ToggleBigBangOn()
     {
         yield return new WaitForSeconds(0.05f);
-        if (behaviourController.GetTempLockStatus(behaviourCode) || behaviourController.IsOverrideing(this))
+        if (behaviourController.IsOverrideing(this))
         {
             yield return false;
         }
         else
         {
-            evasion = true;
+            bigBang = true;
             mouseLock = true;
             behaviourController.OverrideWithBehaviour(this);
-            behaviourController.myAnimator.SetTrigger(evasionTrigger);
-            behaviourController.myAnimator.SetBool(keyLock, mouseLock);
             behaviourController.LockTempBehaviour(behaviourCode);
+            behaviourController.myAnimator.SetTrigger(bigBangTrigger);
+            behaviourController.myAnimator.SetBool(keyLock, mouseLock);
+            count = 0;
         }
-        
+
+
     }
 
-    private IEnumerator ToggleEvasionOff()
+    private IEnumerator ToggleBigBangOff()
     {
-        evasion = false;
-        yield return new WaitForSeconds(evasionDelay); //회피 딜레이
+        bigBang = false;
+        yield return new WaitForSeconds(0.5f);
         behaviourController.UnLockTempBehaviour(behaviourCode);
-        yield return new WaitForSeconds(1f);
         behaviourController.RevokeOverridingBehaviour(this);
     }
 
     public override void LocalLateUpdate()
     {
-        EvasionManagement();
+        BigBangManagement();
     }
 
     private void Update()
     {
-        if(Input.GetAxisRaw(ButtonKey.Evasion) !=0 && !evasion)
+        if (Input.GetAxisRaw(ButtonKey.BigBnag) != 0 && !bigBang && count>= 100f) //일정 게이지 이상 혹은 같으면 작동
         {
-            StartCoroutine(ToggleEvasionOn());
+            StartCoroutine(ToggleBigBangOn());
         }
-        else if(evasion && Input.GetAxisRaw(ButtonKey.Evasion) == 0)
+        else if (bigBang && Input.GetAxisRaw(ButtonKey.BigBnag) == 0)
         {
-            StartCoroutine(ToggleEvasionOff());
+            StartCoroutine(ToggleBigBangOff());
         }
-        
+
     }
 
 

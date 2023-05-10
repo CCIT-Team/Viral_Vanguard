@@ -15,17 +15,14 @@ public class PlayerCameraManager : MonoBehaviour
     public float horizontalAimingSpeed;
     public float verticalAimingSpeed;
 
-    //
     public float maxVerticalAngle = 30.0f;
     public float minVerticalAngle = -60.0f;
     public float camShakeBounce = 4f;
-    private float angleH = 0.0f;
-    private float angleV = 0.0f;
+    private float angleHorizontal = 0.0f;
+    private float angleVertical = 0.0f;
 
-    //
     private Transform cameraTransform;
 
-    //
     private Vector3 relCameraPos;
     private float relCameraPosMag;
 
@@ -34,14 +31,14 @@ public class PlayerCameraManager : MonoBehaviour
     private Vector3 smoothCamOffset;
     private Vector3 targetCamOffset;
 
-    private float defaultFOV; //기본 시야값
-    private float targetFOV; //타겟 시야값
+    private float defaultFieldOfView; //기본 시야값
+    private float targetFieldOfView; //타겟 시야값
     private float targetMaxVerticleAngle; //카메라 수직 최대 각도
-    private float shakeAngle = 0f; 
+    private float shakeAngle = 0f;
 
-    public float GetH
+    public float _getHorizotal
     {
-        get => angleH;
+        get => angleHorizontal;
     }
 
     //
@@ -60,22 +57,20 @@ public class PlayerCameraManager : MonoBehaviour
         cameraTransform = transform;
         myCamera = cameraTransform.GetComponent<Camera>();
 
-        //
         cameraTransform.position = player.position + Quaternion.identity * pivotOffset + Quaternion.identity * camOffset;
         cameraTransform.rotation = Quaternion.identity;
 
-        //
         relCameraPos = cameraTransform.position - player.position;
         relCameraPosMag = relCameraPos.magnitude - 0.5f;
 
         smoothPivotOffset = pivotOffset;
         smoothCamOffset = camOffset;
-        defaultFOV = myCamera.fieldOfView;
-        angleH = player.eulerAngles.y;
+        defaultFieldOfView = myCamera.fieldOfView;
+        angleHorizontal = player.eulerAngles.y;
         if (lockOn == null) { GetComponent<LockOn>(); }
 
         ResetTargetOffsets();
-        ResetFOV();
+        ResetFieldOfView();
         ResetMaxVerticalAngle();
     }
 
@@ -85,9 +80,7 @@ public class PlayerCameraManager : MonoBehaviour
         {
             if (islockOn)
             {
-                //Vector3 dir = player.transform.localEulerAngles - transform.localEulerAngles;
                 Quaternion rotation = Quaternion.LookRotation(player.forward, player.up);
-                //rotation.eulerAngles = new Vector3(rotation.eulerAngles.x + 22.3f, rotation.eulerAngles.y, rotation.eulerAngles.z);
                 rotation.eulerAngles = rotation.eulerAngles + new Vector3(22.3f, 0, 0);
                 transform.rotation = rotation;
                 Vector3 desired_position = player.position + new Vector3(offset.x, offset.y, 0) + offset.z * player.forward;
@@ -103,20 +96,19 @@ public class PlayerCameraManager : MonoBehaviour
     {
        if(!islockOn)
         {
-            angleH += Mathf.Clamp(Input.GetAxis("Mouse X"), -1f, 1f) * horizontalAimingSpeed;
-            angleV += Mathf.Clamp(Input.GetAxis("Mouse Y"), -1f, 1f) * verticalAimingSpeed;
+            angleHorizontal += Mathf.Clamp(Input.GetAxis("Mouse X"), -1f, 1f) * horizontalAimingSpeed;
+            angleVertical += Mathf.Clamp(Input.GetAxis("Mouse Y"), -1f, 1f) * verticalAimingSpeed;
+            angleVertical = Mathf.Clamp(angleVertical, minVerticalAngle, targetMaxVerticleAngle);
 
-            angleV = Mathf.Clamp(angleV, minVerticalAngle, targetMaxVerticleAngle);
-
-            angleV = Mathf.LerpAngle(angleV, angleV + shakeAngle, 10f * Time.deltaTime);
+            angleVertical = Mathf.LerpAngle(angleVertical, angleVertical + shakeAngle, 10f * Time.deltaTime);
 
             //카메라 회전
-            Quaternion camYRotation = Quaternion.Euler(0.0f, angleH, 0.0f);
-            Quaternion aimRotation = Quaternion.Euler(-angleV, angleH, 0.0f);
+            Quaternion camYRotation = Quaternion.Euler(0.0f, angleHorizontal, 0.0f);
+            Quaternion aimRotation = Quaternion.Euler(-angleVertical, angleHorizontal, 0.0f);
             cameraTransform.rotation = aimRotation;
 
-            //Set FOV
-            myCamera.fieldOfView = Mathf.Lerp(myCamera.fieldOfView, targetFOV, Time.deltaTime);
+            //Set fieldOfView
+            myCamera.fieldOfView = Mathf.Lerp(myCamera.fieldOfView, targetFieldOfView, Time.deltaTime);
 
             Vector3 baseTempPosition = player.position + camYRotation * targetPivotOffset;
             Vector3 noCollisionOffset = targetCamOffset;
@@ -168,9 +160,9 @@ public class PlayerCameraManager : MonoBehaviour
         targetCamOffset = camOffset;
     }
 
-    public void ResetFOV()
+    public void ResetFieldOfView()
     {
-        targetFOV = defaultFOV;
+        targetFieldOfView = defaultFieldOfView;
     }
 
     public void ResetMaxVerticalAngle()
@@ -189,9 +181,9 @@ public class PlayerCameraManager : MonoBehaviour
         targetCamOffset = newCamOffset;
     }
 
-    public void SetFOV(float customFOV) 
+    public void SetFieldOfView(float customFieldOfView) 
     {
-        targetFOV = customFOV;
+        targetFieldOfView = customFieldOfView;
     }
 
     bool ViewingPosCheck(Vector3 checkPos, float playerHeight)
