@@ -35,10 +35,11 @@ public class BehaviourController : MonoBehaviour
 
     public bool Stiffen
     {
+        get { return stiffen; }
         set
         {
-            stiffen = value;
-            myAnimator.SetBool("Stiffen", value);
+                stiffen = value;
+                myAnimator.SetBool("Stiffen", value);
         }
     }
     public float _horizontal { get => horizontal; }

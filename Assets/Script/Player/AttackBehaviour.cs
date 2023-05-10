@@ -194,8 +194,10 @@ public class AttackBehaviour : GenericBehaviour
 
     public void DamageMonster()
     {
-        //몬스터 확인
-        //
+        //몬스터 컴포넌트 확인
+        //물리 확인
+        //몬스터 canStiffen 이라면
+        //stiffen = true;
     }
 
 }
