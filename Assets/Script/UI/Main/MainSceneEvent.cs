@@ -11,6 +11,7 @@ public class ButtonArrays
     public GameObject[] saveDataVisualizationElements;
 
     public GameObject[] saveDataArrays;
+    public GameObject[] saveDataCheckMark;
 }
 
 public class MainSceneEvent : MonoBehaviour
@@ -19,15 +20,21 @@ public class MainSceneEvent : MonoBehaviour
 
     public void Start()
     {
-        if (SavaDataManager.Instance.isSaveDataExist)
+        // 외부에서 Awake로 세이브 데이터를 로드하므로 순서중요!
+        if (SaveDataManager.Instance.isSaveDataExist)
         {
             for (int i = 0; i < buttonArrays.saveDataVisualizationElements.Length; i++)
                 buttonArrays.saveDataVisualizationElements[i].SetActive(true);
         }
-        else if(!SavaDataManager.Instance.isSaveDataExist)
+        else if(!SaveDataManager.Instance.isSaveDataExist)
         {
             for (int i = 0; i < buttonArrays.noSaveDataVisualizationElements.Length; i++)
                 buttonArrays.noSaveDataVisualizationElements[i].SetActive(true);
+        }
+
+        for(int i = 0; i < SaveDataManager.Instance.saveDataCount; i++)
+        {
+            buttonArrays.saveDataArrays[i].SetActive(true);
         }
     }
 
