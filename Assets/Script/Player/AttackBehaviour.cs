@@ -191,4 +191,11 @@ public class AttackBehaviour : GenericBehaviour
             mouseLock = true;
         }
     }
+
+    public void DamageMonster()
+    {
+        //몬스터 확인
+        //
+    }
+
 }

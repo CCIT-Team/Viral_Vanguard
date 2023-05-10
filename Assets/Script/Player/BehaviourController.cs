@@ -31,7 +31,16 @@ public class BehaviourController : MonoBehaviour
     private int verticalFloat;
     private int groundedBool;
     private Vector3 colliderExtents;
+    private bool stiffen;
 
+    public bool Stiffen
+    {
+        set
+        {
+            stiffen = value;
+            myAnimator.SetBool("Stiffen", value);
+        }
+    }
     public float _horizontal { get => horizontal; }
     public float _vertical { get => vertical; }
     public int _defailtBehaviour { get => defaultBehaviour; }
