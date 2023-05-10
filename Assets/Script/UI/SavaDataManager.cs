@@ -50,21 +50,21 @@ public class SavaDataManager : Singleton<SavaDataManager>
 {
     public SaveData saveData = new SaveData();
 
-    private string SAVE_DATA_DIRECTORY;  // 저장할 폴더 경로
-    private string SAVE_FILENAME = "/SaveFile.txt"; // 파일 이름
+    private string _SAVE_DATA_DIRECTORY;  // 저장할 폴더 경로
+    private string _SAVE_FILENAME;
 
     public bool isSaveDataExist = true;
 
-    
+    private string[] saveFileNumber = { "0","1","2", "3","4" };
 
     public void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
 
-        SAVE_DATA_DIRECTORY = Application.dataPath + "/SaveData/";
+        _SAVE_DATA_DIRECTORY = Application.dataPath + "/SaveData/";
 
         saveData.stateHpUpCount = 20;
-        GameSave("/SaveFile.txt");
+        GameSave("/SaveFile" + saveFileNumber[0] +".txt");
         GameLoad();
     }
 
@@ -75,8 +75,9 @@ public class SavaDataManager : Singleton<SavaDataManager>
 
     public void GameSave(string SAVE_FILENAME)
     {
+        this._SAVE_FILENAME = SAVE_FILENAME;
         string json = JsonUtility.ToJson(saveData);
-        File.WriteAllText(SAVE_DATA_DIRECTORY + SAVE_FILENAME, json);
+        File.WriteAllText(_SAVE_DATA_DIRECTORY + SAVE_FILENAME, json);
 
         Debug.Log(json);
     }
@@ -89,16 +90,16 @@ public class SavaDataManager : Singleton<SavaDataManager>
         //    Directory.CreateDirectory(SAVE_DATA_DIRECTORY);// SaveData 폴더 생성
         //}
 
-        if(File.Exists(SAVE_DATA_DIRECTORY + SAVE_FILENAME)) // 파일 존재하는 상황
+        if(File.Exists(_SAVE_DATA_DIRECTORY + _SAVE_FILENAME)) // 파일 존재하는 상황
         {
-            string loadJson = File.ReadAllText(SAVE_DATA_DIRECTORY + SAVE_FILENAME);
+            string loadJson = File.ReadAllText(_SAVE_DATA_DIRECTORY + _SAVE_FILENAME);
             saveData = JsonUtility.FromJson<SaveData>(loadJson);
             Debug.Log(saveData.stateHpUpCount);
         }
         else
         {
             isSaveDataExist = false;
-            Directory.CreateDirectory(SAVE_DATA_DIRECTORY);// SaveData 폴더 생성
+            Directory.CreateDirectory(_SAVE_DATA_DIRECTORY);// SaveData 폴더 생성
         }
     }
 }
