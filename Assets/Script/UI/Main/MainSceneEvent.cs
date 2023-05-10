@@ -8,7 +8,7 @@ public class ButtonArrays
     // 저장된 데이터가 없는 경우
     public GameObject[] noSaveDataVisualizationElements; 
     // 저장된 데이터가 있는 경우
-    public GameObject[] SaveDataVisualizationElements;
+    public GameObject[] saveDataVisualizationElements;
 
     public GameObject[] saveDataArrays;
 }
@@ -21,8 +21,8 @@ public class MainSceneEvent : MonoBehaviour
     {
         if (SavaDataManager.Instance.isSaveDataExist)
         {
-            for (int i = 0; i < buttonArrays.SaveDataVisualizationElements.Length; i++)
-                buttonArrays.SaveDataVisualizationElements[i].SetActive(true);
+            for (int i = 0; i < buttonArrays.saveDataVisualizationElements.Length; i++)
+                buttonArrays.saveDataVisualizationElements[i].SetActive(true);
         }
         else if(!SavaDataManager.Instance.isSaveDataExist)
         {
