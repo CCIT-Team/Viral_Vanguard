@@ -27,13 +27,6 @@ public class DistanceDetection : MonoBehaviour
 
     void test()
     {
-        BossMove.bm;
 
-        BossMove z;
-        BossMove x;
-        BossMove c;
-
-        z.bossName = "ø∞";
-        x.bossName = "∏€√ª¿Ã";
     }
 }
