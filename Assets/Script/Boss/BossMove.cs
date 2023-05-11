@@ -5,6 +5,9 @@ using UnityEngine.AI;
 
 public class BossMove : MonoBehaviour
 {
+    public static BossMove instacne;
+    void Awake() => instacne = this;
+
     [Header("보스 스테이터스")]
     public static string bossName;
     public float healthPoint;
