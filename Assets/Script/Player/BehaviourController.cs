@@ -9,6 +9,9 @@ using UnityEngine.Animations;
 /// </summary>
 public class BehaviourController : MonoBehaviour
 {
+    //변경가능
+    public static BehaviourController instance; 
+
     private List<GenericBehaviour> behaviours = new List<GenericBehaviour>();
     private List<GenericBehaviour> overrideBehaviours = new List<GenericBehaviour>();
     private int currentBehaviours;
@@ -48,6 +51,7 @@ public class BehaviourController : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
         horizontalFloat = Animator.StringToHash(AnimatorKey.Horizontal);
         verticalFloat = Animator.StringToHash(AnimatorKey.Vertical);
         groundedBool = Animator.StringToHash(AnimatorKey.Grounded);
