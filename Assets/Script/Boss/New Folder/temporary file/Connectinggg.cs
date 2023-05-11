@@ -25,17 +25,17 @@ public class Connectinggg : MonoBehaviour, IListener
     {
         switch(EventType)
         {
-            case EVENT_TYPE.eDefaultRange1:
-                bm.NormalRange = (bool)Param;
-                break;
-            case EVENT_TYPE.eSpecialRange1:
-                bm.SpecialRange = (bool)Param;
-                break;
-            case EVENT_TYPE.eSpecialRange3:
-                bm.InductionRange = (bool)Param;
-                break;
-            case EVENT_TYPE.eFindPlayer:
-                break;
+            //case EVENT_TYPE.eDefaultRange1:
+            //    bm.NormalRange = (bool)Param;
+            //    break;
+            //case EVENT_TYPE.eSpecialRange1:
+            //    bm.SpecialRange = (bool)Param;
+            //    break;
+            //case EVENT_TYPE.eSpecialRange3:
+            //    bm.InductionRange = (bool)Param;
+            //    break;
+            //case EVENT_TYPE.eFindPlayer:
+            //    break;
         }
     }
 }

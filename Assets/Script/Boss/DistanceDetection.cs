@@ -5,49 +5,15 @@ using UnityEngine;
 public class DistanceDetection : MonoBehaviour
 {
     [SerializeField] BossMove boss;
-    bool normalRange;
-    bool inductionRange;
-    bool specialRange;
-    bool NormalRange
-    {
-        set
-        {
-            normalRange = value;
-            boss.NormalRange = NormalRange;
-        }
-        get { return normalRange; }
-    }
 
-    bool InductionRange
-    {
-        set
-        {
-            inductionRange = value;
-            boss.NormalRange = InductionRange;
-        }
-        get { return inductionRange; }
-    }
-
-    bool SpecialRange
-    {
-        set
-        {
-            specialRange = value;
-            boss.NormalRange = SpecialRange;
-        }
-        get { return specialRange; }
-    }
-
-    void CheckRange(bool b)
-    {
-        NormalRange = b;
-    }
+    public enum DistanceType { NORAMLATTACK1, NORMALATTACK2, ACTIONATTACK1, ACTIONATTACK1_1, SPECIALATTACK1, SPECIALATTACK2, SPECIALATTACK2_1, SPECIALATTACK3, SPECIALATTACK3_1 }
+    public DistanceType distanceType;
 
     void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
         {
-            CheckRange(true);
+            boss.RangeCheck(distanceType, true);
         }
     }
 
@@ -55,7 +21,19 @@ public class DistanceDetection : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            CheckRange(false);
+            boss.RangeCheck(distanceType, false);
         }
+    }
+
+    void test()
+    {
+        BossMove.bm;
+
+        BossMove z;
+        BossMove x;
+        BossMove c;
+
+        z.bossName = "ø∞";
+        x.bossName = "∏€√ª¿Ã";
     }
 }
