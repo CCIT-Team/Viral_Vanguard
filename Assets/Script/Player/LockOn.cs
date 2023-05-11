@@ -4,39 +4,43 @@ using UnityEngine;
 
 public class LockOn : MonoBehaviour
 {
-    public PlayerCameraManager pcm;
+    public PlayerCameraManager playerCameraManager;
     GameObject lockonenemy;
-    private void Update()
-    {
-        if (pcm.islockOn)
-        {
-            //pcm.player.transform.LookAt(lockonenemy.transform);
-            Vector3 dir = lockonenemy.transform.position - pcm.player.transform.position;
-            Quaternion rotation = Quaternion.LookRotation(dir, Vector3.up);
-            pcm.player.transform.rotation = rotation;
-        }
-    }
 
+    [HideInInspector]
+    public bool ischeckMonster = false;//몬스터가 감지 되었는가?
+    
     public void Lock()//몬스터 락온
     {
-        if (pcm.islockOn)
+        if (playerCameraManager.islockOn)
         {
-            pcm.inputMode = false;
             Collider[] colls = Physics.OverlapSphere(transform.position, 15);
-            lockonenemy = colls[0].gameObject;
-            if (colls[0].CompareTag("Monster"))
+            for(int i = 0; i < 10; i++)
             {
-                colls[0].gameObject.GetComponentInChildren<SpriteRenderer>().sprite = pcm.lockOnImage;
-                if (colls[0].gameObject.GetComponentInChildren<SpriteRenderer>().sprite == null)
+                if(colls[i].CompareTag("Monster"))
                 {
-                    colls[0].gameObject.GetComponentInChildren<SpriteRenderer>().sprite = pcm.lockOnImage;
-                    colls[0] = null;
-                } 
+                    lockonenemy = colls[i].gameObject;
+                    ischeckMonster = true;
+                    OnLockOnImage();
+                    break;
+                }
             }
         }
         else
         {
+            ischeckMonster = false;
+            playerCameraManager.transform.localRotation = transform.localRotation;
             lockonenemy.gameObject.GetComponentInChildren<SpriteRenderer>().sprite = null;
+            lockonenemy = null;
+        }
+    }
+
+    void OnLockOnImage()
+    {
+        lockonenemy.gameObject.GetComponentInChildren<SpriteRenderer>().sprite = playerCameraManager.lockOnImage;
+        if (lockonenemy.gameObject.GetComponentInChildren<SpriteRenderer>().sprite == null)
+        {
+            lockonenemy.gameObject.GetComponentInChildren<SpriteRenderer>().sprite = playerCameraManager.lockOnImage;
             lockonenemy = null;
         }
     }
