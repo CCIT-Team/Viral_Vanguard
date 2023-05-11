@@ -17,6 +17,7 @@ public class GuardBehaviour : GenericBehaviour
     private EvasionBehaviour evasionBehaviour; //참조
     private AttackBehaviour attackBehaviour;   //참조
     private BigBangBehaviour bigBangBehaviour; //참조
+    public float reducedStaminaGuard;
 
     //각 행동 쿨타임
 
@@ -93,14 +94,19 @@ public class GuardBehaviour : GenericBehaviour
             behaviourController.myAnimator.SetBool(attackBehaviour.keyLock, attackBehaviour.mouseLock);
             behaviourController.myAnimator.SetBool(bigBangBehaviour.keyLock, bigBangBehaviour.mouseLock);
         }
-        if (Input.GetAxisRaw(ButtonKey.Guard) != 0 && !guard && !evasionBehaviour.mouseLock && !attackBehaviour.mouseLock && !bigBangBehaviour.mouseLock) //스테미나 없으면 불가능
+        if (Input.GetAxisRaw(ButtonKey.Guard) != 0 && !guard && !evasionBehaviour.mouseLock && !attackBehaviour.mouseLock && !bigBangBehaviour.mouseLock && behaviourController.stamina >= reducedStaminaGuard) //스테미나 없으면 불가능
         {
             StartCoroutine(ToggleGuardOn());
+            
         }
-        else if (guard && Input.GetAxisRaw(ButtonKey.Guard) == 0 || evasionBehaviour.mouseLock || attackBehaviour.mouseLock || bigBangBehaviour.mouseLock)
+        else if (guard && Input.GetAxisRaw(ButtonKey.Guard) == 0 || evasionBehaviour.mouseLock || attackBehaviour.mouseLock || bigBangBehaviour.mouseLock || behaviourController.stamina <= 0)
         {
             StartCoroutine(ToggleGuardOff());
         }
-        //걷기만 가능한지?
+    }
+
+    public void ReducedStaminaGuard()
+    {
+        behaviourController.stamina -= reducedStaminaGuard;
     }
 }
