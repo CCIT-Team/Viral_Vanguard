@@ -16,6 +16,18 @@ public class BossMove : MonoBehaviour
     public float closeAttackSpeed;
     public float longRangeAttackSpeed;
 
+    public float HealthPoint
+    {
+        set
+        {
+            healthPoint = value;
+        }
+        get
+        {
+            return healthPoint;
+        }
+    }
+
     enum BossBehavior { IDLE, TRACKING, MOVE, STUN, S_STUN, L_STUN }
     [Header("현재 행동")]
     [SerializeField] BossBehavior bossBehavior;
@@ -48,15 +60,19 @@ public class BossMove : MonoBehaviour
     }
 
     bool stiffen; //현재 경직상태인지?
-    bool Stiffen
+    public bool Stiffen
     {
         set
         {
             stiffen = value;
             animator.SetBool("Stiffen", value);
         }
+        get
+        {
+            return stiffen;
+        }
     }
-    bool canStiffen; //경직 상태가 될 수 있는지?
+    public bool canStiffen; //경직 상태가 될 수 있는지?
 
     int AttackCount = 0;
 
@@ -145,12 +161,11 @@ public class BossMove : MonoBehaviour
 
     void PlayerStiffen()
     {
-        //if(player.canStiffen)
-            //player.Stiffen = true;
+        BehaviourController.instance.Stiffen = true;
     }
 
     void PlayerDamage(int damage)
     {
-        //
+        //BehaviourController.instance.
     }
 }
