@@ -7,78 +7,80 @@ using UnityEngine.Animations;
 /// 현재, 기본, 오버라이딩, 잠긴 동작들 + 마우스 이동값, 땅 확인, GenericBehaviour업데이트 시켜줌
 /// 플러거블 패턴
 /// </summary>
-[RequireComponent(typeof(CapsuleCollider)), RequireComponent(typeof(Rigidbody))]
 public class BehaviourController : MonoBehaviour
 {
-    private List<GenericBehaviour> behaviours;
-    private List<GenericBehaviour> overrideBehaviours;
+    //변경가능
+    public static BehaviourController instance; 
+
+    private List<GenericBehaviour> behaviours = new List<GenericBehaviour>();
+    private List<GenericBehaviour> overrideBehaviours = new List<GenericBehaviour>();
     private int currentBehaviours;
     private int defaultBehaviour;
     private int behaviourLocked;
 
     public Transform playerCamera;
-    private Transform myTransform;
-    private Animator myAnimator;
-    private Rigidbody myRigidbody;
-    private PlayerCameraManager camScript;
+    public Transform myTransform;
+    public Animator myAnimator;
+    public Rigidbody myRigidbody;
+    public PlayerCameraManager camScript;
 
-    private float h;
-    private float v;
+    private float horizontal;
+    private float vertical;
     public float turnSmooth = 0.06f;
-    private bool changedFOV;
-    public float FOV = 50;
+    private bool changedFieldOfView;
 
     private Vector3 lastDirection;
-    private int hFloat;
-    private int vFloat;
+    private int horizontalFloat;
+    private int verticalFloat;
     private int groundedBool;
-    private Vector3 colExtents;
+    private Vector3 colliderExtents;
+    private bool stiffen;
 
-    public float GetH { get => h; }
-    public float GetV { get => v; }
-    public PlayerCameraManager GetCamScript { get => camScript; }
-    public Rigidbody GetRigidbody { get => myRigidbody; }
-    public Animator GetAnimator { get => myAnimator; }
-    public int GetDefailtBehaviour { get => defaultBehaviour; }
+    public bool Stiffen
+    {
+        get { return stiffen; }
+        set
+        {
+                stiffen = value;
+                myAnimator.SetBool("Stiffen", value);
+        }
+    }
+    public float _horizontal { get => horizontal; }
+    public float _vertical { get => vertical; }
+    public int _defailtBehaviour { get => defaultBehaviour; }
 
     private void Awake()
     {
-        myTransform = transform;
-        behaviours = new List<GenericBehaviour>();
-        overrideBehaviours = new List<GenericBehaviour>();
-        myAnimator = GetComponent<Animator>();
-        hFloat = Animator.StringToHash(AnimatorKey.Horizontal);
-        vFloat = Animator.StringToHash(AnimatorKey.Vertical);
-        camScript = playerCamera.GetComponent<PlayerCameraManager>();
-        myRigidbody = GetComponent<Rigidbody>();
-
+        instance = this;
+        horizontalFloat = Animator.StringToHash(AnimatorKey.Horizontal);
+        verticalFloat = Animator.StringToHash(AnimatorKey.Vertical);
         groundedBool = Animator.StringToHash(AnimatorKey.Grounded);
-        colExtents = GetComponent<Collider>().bounds.extents;
+        colliderExtents = GetComponent<Collider>().bounds.extents;
     }
 
     public bool IsMoving()
     {
-        return Mathf.Abs(h) > Mathf.Epsilon || Mathf.Abs(v) > Mathf.Epsilon;
+        return Mathf.Abs(horizontal) > Mathf.Epsilon || Mathf.Abs(vertical) > Mathf.Epsilon;
     }
 
     public bool IsHorizontalMoving()
     {
-        return Mathf.Abs(h) > Mathf.Epsilon;
+        return Mathf.Abs(horizontal) > Mathf.Epsilon;
     }
 
     public bool IsGrounded()
     {
-        Ray ray = new Ray(myTransform.position + Vector3.up * 2 * colExtents.x, Vector3.down);
-        return Physics.SphereCast(ray, colExtents.x, colExtents.x + 0.2f);
+        Ray ray = new Ray(myTransform.position + Vector3.up * 2 * colliderExtents.x, Vector3.down);
+        return Physics.SphereCast(ray, colliderExtents.x, colliderExtents.x + 0.2f);
     }
 
     private void Update()
     {
-        h = Input.GetAxis("Horizontal");
-        v = Input.GetAxis("Vertical");
+        horizontal = Input.GetAxis("Horizontal");
+        vertical = Input.GetAxis("Vertical");
 
-        myAnimator.SetFloat(hFloat, h, 0.1f, Time.deltaTime);
-        myAnimator.SetFloat(vFloat, v, 0.1f, Time.deltaTime);
+        myAnimator.SetFloat(horizontalFloat, horizontal, 0.1f, Time.deltaTime);
+        myAnimator.SetFloat(verticalFloat, vertical, 0.1f, Time.deltaTime);
         //transform.position += h * transform.right + v * transform.forward;
 
 
@@ -258,14 +260,11 @@ public abstract class GenericBehaviour : MonoBehaviour
     protected int speedFloat;
     protected BehaviourController behaviourController;
     protected int behaviourCode;
-    protected bool canSpint;
 
     private void Awake()
     {
         behaviourController = GetComponent<BehaviourController>();
         speedFloat = Animator.StringToHash(AnimatorKey.Speed);
-        canSpint = true;
-
         behaviourCode = GetType().GetHashCode();
     }
 

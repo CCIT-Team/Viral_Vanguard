@@ -13,18 +13,13 @@ public class MoveBehaviour : GenericBehaviour
 
     //여기서는 회피 구현 X 회피는 최우선 사항으로 생각해서 회피 행동으로 따로 뺄 예정
     private int groundedBool;
-    //private bool isColliding;
-    private CapsuleCollider capsuleCollider;
-    private Transform myTransform;
+    public Transform myTransform;
     private bool isColliding;
 
     private void Start()
     {
-        myTransform = transform;
-        capsuleCollider = GetComponent<CapsuleCollider>();
         groundedBool = Animator.StringToHash(AnimatorKey.Grounded);
-        behaviourController.GetAnimator.SetBool(groundedBool, true);
-
+        behaviourController.myAnimator.SetBool(groundedBool, true);
         behaviourController.SubscribeBehaviour(this);
         behaviourController.RegisterDefaultBehavior(behaviourCode);
     }
@@ -43,8 +38,8 @@ public class MoveBehaviour : GenericBehaviour
         if (behaviourController.IsMoving() && targetDirection != Vector3.zero)
         {
             Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
-            Quaternion newRotation = Quaternion.Slerp(behaviourController.GetRigidbody.rotation, targetRotation, behaviourController.turnSmooth);
-            behaviourController.GetRigidbody.MoveRotation(newRotation);
+            Quaternion newRotation = Quaternion.Slerp(behaviourController.myRigidbody.rotation, targetRotation, behaviourController.turnSmooth);
+            behaviourController.myRigidbody.MoveRotation(newRotation);
             behaviourController.SetLastDirection(targetDirection);
         }
 
@@ -57,25 +52,25 @@ public class MoveBehaviour : GenericBehaviour
 
     private void RemoveVerticalVelocity()
     {
-        Vector3 horizontalVelocity = behaviourController.GetRigidbody.velocity;
+        Vector3 horizontalVelocity = behaviourController.myRigidbody.velocity;
         horizontalVelocity.y = 0.0f;
-        behaviourController.GetRigidbody.velocity = horizontalVelocity;
+        behaviourController.myRigidbody.velocity = horizontalVelocity;
     }
 
     void MovementManagement(float horizontal, float vertical)
     {
         if(behaviourController.IsGrounded())
         {
-            behaviourController.GetRigidbody.useGravity = true;
+            behaviourController.myRigidbody.useGravity = true;
         }
-        else if(behaviourController.GetRigidbody.velocity.y > 0)
+        else if(behaviourController.myRigidbody.velocity.y > 0)
         {
             RemoveVerticalVelocity();
         }
         Rotating(horizontal, vertical);
         Vector2 dir = new Vector2(horizontal, vertical);
         speed = Vector2.ClampMagnitude(dir, 1f).magnitude * runSpeed;
-        behaviourController.GetAnimator.SetFloat(speedFloat, speed, speedDampTime, Time.deltaTime);
+        behaviourController.myAnimator.SetFloat(speedFloat, speed, speedDampTime, Time.deltaTime);
     }
 
     private void OnCollisionStay(Collision collision)
@@ -84,9 +79,9 @@ public class MoveBehaviour : GenericBehaviour
 
         if (behaviourController.IsCurrentBehaviour(GetBehaviourCode) && collision.GetContact(0).normal.y <= 0.1f)
         {
-            float vel = behaviourController.GetAnimator.velocity.magnitude;
+            float vel = behaviourController.myAnimator.velocity.magnitude;
             Vector3 targetMove = Vector3.ProjectOnPlane(myTransform.forward, collision.GetContact(0).normal).normalized * vel;
-            behaviourController.GetRigidbody.AddForce(targetMove, ForceMode.VelocityChange);
+            behaviourController.myRigidbody.AddForce(targetMove, ForceMode.VelocityChange);
 
         }
     }
@@ -96,15 +91,9 @@ public class MoveBehaviour : GenericBehaviour
         isColliding = false;
     }
 
-
-    private void Update()
-    {
-        
-    }
-
     public override void LocalFixedUpdate()
     {
-        MovementManagement(behaviourController.GetH, behaviourController.GetV);
+        MovementManagement(behaviourController._horizontal, behaviourController._vertical);
     }
 
 }
