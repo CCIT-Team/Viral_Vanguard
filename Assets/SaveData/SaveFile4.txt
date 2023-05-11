@@ -1,0 +1,1 @@
+{"stateHpUpCount":5,"stateSteminaUpCount":0,"equipWeaponID":0.0,"obtainWeaponList":[],"bossCount":5,"bossClearList":[],"playTime":0.0}

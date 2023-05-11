@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class ButtonArrays
@@ -11,7 +12,6 @@ public class ButtonArrays
     public GameObject[] saveDataVisualizationElements;
 
     public GameObject[] saveDataArrays;
-    public GameObject[] saveDataCheckMark;
 }
 
 public class MainSceneEvent : MonoBehaviour
@@ -36,10 +36,5 @@ public class MainSceneEvent : MonoBehaviour
         {
             buttonArrays.saveDataArrays[i].SetActive(true);
         }
-    }
-
-    public void Update()
-    {
-        
     }
 }

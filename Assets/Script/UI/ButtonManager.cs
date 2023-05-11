@@ -30,6 +30,33 @@ public class ButtonManager : MonoBehaviour
         SaveDataManager.Instance.GameLoad();
     }
 
+    public void NewGame(GameObject saveDataMax)
+    {
+        if(SaveDataManager.Instance.saveDataCount < 5)
+        {
+            int count = SaveDataManager.Instance.saveDataCount;
+            SaveDataManager.Instance.GameSave(
+                "/SaveFile" + 
+                count + 
+                ".txt", 
+                count);
+            SaveDataManager.Instance.saveDataCount++;
+        }
+        else if(SaveDataManager.Instance.saveDataCount == 5)
+        {
+            saveDataMax.SetActive(true);
+            //UIManager.Instance.OpenUI(saveDataMax);
+        }
+    }
+
+    public void MaxSaveDataInNewGame(GameObject pleaseDeleteSaveData)
+    {
+        if(SaveDataManager.Instance.saveDataCount == 5)
+        {
+            pleaseDeleteSaveData.SetActive(true);
+        }
+    }
+
     public void GameClose()
     {
         Debug.Log("게임을 종료합니다.");
