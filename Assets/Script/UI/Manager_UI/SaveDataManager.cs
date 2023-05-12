@@ -52,10 +52,10 @@ public class SaveDataManager : Singleton<SaveDataManager>
     [HideInInspector] public SaveData saveData1 = new SaveData();
     [HideInInspector] public SaveData saveData2 = new SaveData();
     [HideInInspector] public SaveData saveData3 = new SaveData();
-    public SaveData saveData4 = new SaveData();
+    [HideInInspector] public SaveData saveData4 = new SaveData();
 
-    public SaveData[] saveDatas = new SaveData[5];
-    public SaveData saveData;
+    [HideInInspector] public SaveData[] saveDatas = new SaveData[5];
+    [HideInInspector] public SaveData saveData;
 
     public string _SAVE_DATA_DIRECTORY;  // 저장할 폴더 경로
     public string _SAVE_FILENAME;

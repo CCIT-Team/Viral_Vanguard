@@ -15,6 +15,7 @@ public class ButtonManager : MonoBehaviour
         SaveDataManager.Instance.currentSaveFileIndex = 0;
         SaveDataManager.Instance.GameSave("/SaveFile" + 0 + ".txt",0);
         SaveDataManager.Instance.GameLoad();
+
         SceneController.LoadScene("Lobby");
     }
 
@@ -29,6 +30,8 @@ public class ButtonManager : MonoBehaviour
             "/SaveFile" + SaveDataManager.Instance.currentSaveFileIndex + ".txt",
             SaveDataManager.Instance.currentSaveFileIndex);
         SaveDataManager.Instance.GameLoad();
+
+        SceneController.LoadScene("Lobby");
     }
 
     public void NewGame(GameObject saveDataMax)

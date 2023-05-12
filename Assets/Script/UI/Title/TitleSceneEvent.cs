@@ -14,7 +14,7 @@ public class ButtonArrays
     public GameObject[] saveDataArrays;
 }
 
-public class MainSceneEvent : MonoBehaviour
+public class TitleSceneEvent : MonoBehaviour
 {
     public ButtonArrays buttonArrays = new ButtonArrays();
 

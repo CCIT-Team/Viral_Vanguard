@@ -46,6 +46,14 @@ public class UIManager : Singleton<UIManager>
         {
             CloseLastUI();
         }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            SceneController.LoadScene("Lobby");
+        }
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            SceneController.LoadScene("NikeMainRoad");
+        }
     }
 
 }
