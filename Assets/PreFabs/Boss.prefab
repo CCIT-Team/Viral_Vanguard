@@ -1408,16 +1408,28 @@ MonoBehaviour:
   bossBehavior: {fileID: 4461455124528947219}
   rangeChecks:
   - rangeName: rangeNormalAttack1
+    rangeCheck: 0
+    willDo: 0
     indexNum: 0
   - rangeName: rangeNormalAttack2
+    rangeCheck: 0
+    willDo: 0
     indexNum: 1
   - rangeName: rangeActionAttack1
+    rangeCheck: 0
+    willDo: 0
     indexNum: 2
   - rangeName: rangeSpecialAttack1
+    rangeCheck: 0
+    willDo: 0
     indexNum: 3
   - rangeName: rangeSpecialAttack2
+    rangeCheck: 0
+    willDo: 0
     indexNum: 4
   - rangeName: rangeSpecialAttack3
+    rangeCheck: 0
+    willDo: 0
     indexNum: 5
   canStiffen: 0
   canAttack: 0
@@ -1456,21 +1468,21 @@ MonoBehaviour:
   - behaviorName: rangeActionAttack1
     weight: 10
     bossAction: {fileID: 11400000, guid: ebd8f1213ef53fb42ae1581f709613f7, type: 2}
-  - behaviorName: rangeActionAttack1_1
-    weight: 0
-    bossAction: {fileID: 11400000, guid: 6067c61b67fea4d4a995a381d6584210, type: 2}
   - behaviorName: rangeSpecialAttack1
     weight: 10
     bossAction: {fileID: 11400000, guid: 11c991d5706a2c1429c63dcca01ab15d, type: 2}
   - behaviorName: rangeSpecialAttack2
     weight: 10
     bossAction: {fileID: 11400000, guid: fdd5b5925a031a843a7a776d9512d22f, type: 2}
-  - behaviorName: rangeSpecialAttack2_1
-    weight: 0
-    bossAction: {fileID: 11400000, guid: 48016da70796eb64eaa26a2f333ea9d9, type: 2}
   - behaviorName: rangeSpecialAttack3
     weight: 10
     bossAction: {fileID: 11400000, guid: 2d2c983e875ff904aab7ba85a8ab3c8d, type: 2}
+  - behaviorName: rangeActionAttack1_1
+    weight: 0
+    bossAction: {fileID: 11400000, guid: 6067c61b67fea4d4a995a381d6584210, type: 2}
+  - behaviorName: rangeSpecialAttack2_1
+    weight: 0
+    bossAction: {fileID: 11400000, guid: 48016da70796eb64eaa26a2f333ea9d9, type: 2}
   - behaviorName: rangeSpecialAttack3_1
     weight: 0
     bossAction: {fileID: 11400000, guid: 4ef9c37941be9f04f924d3e819f76e08, type: 2}

@@ -35,9 +35,10 @@ public class BossBehavior : MonoBehaviour
         {
             weight += weights[i];
             if (pivot <= weight)
+            {
                 return i;
+            }
         }
-        
         return 1;
     }
 
