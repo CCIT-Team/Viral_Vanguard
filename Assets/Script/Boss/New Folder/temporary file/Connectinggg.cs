@@ -9,7 +9,7 @@ public class Connectinggg : MonoBehaviour, IListener
     public BossMove bm;
     void Start()
     {
-        EventManager.instance.AddListener(EVENT_TYPE.eDefaultRange1, this);
+        EventManager.instance.AddListener(EVENT_TYPE.eNormalRange1, this);
         EventManager.instance.AddListener(EVENT_TYPE.eSpecialRange1, this);
         EventManager.instance.AddListener(EVENT_TYPE.eSpecialRange3, this);
         EventManager.instance.AddListener(EVENT_TYPE.eFindPlayer, this);

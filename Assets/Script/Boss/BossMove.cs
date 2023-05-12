@@ -10,43 +10,44 @@ public class BossMove : MonoBehaviour
 
     [Header("보스 스테이터스")]
     public static string bossName;
-    public float healthPoint;
+    public float maxHealthPoint;
+    public float currentHealthPoint;
     public float attackPoint;
     public float moveSpeed;
     public float closeAttackSpeed;
     public float longRangeAttackSpeed;
 
-    public float HealthPoint
+    public float CurrentHealthPoint
     {
         set
         {
-            healthPoint = value;
+            currentHealthPoint = value;
         }
         get
         {
-            return healthPoint;
+            return currentHealthPoint;
         }
     }
 
-    enum BossBehavior { IDLE, TRACKING, MOVE, STUN, S_STUN, L_STUN }
-    [Header("현재 행동")]
-    [SerializeField] BossBehavior bossBehavior;
-
     [Header("이동")]
+    [SerializeField] bool targetCheck;
+    bool TargetCheck
+    {
+        set
+        {
+            targetCheck = value;
+            StartTracking();
+            bossBehavior.BehaviorStart(bossBehavior.GetRandomIndex());
+        }
+        get { return targetCheck; }
+    }
     [SerializeField] NavMeshAgent agent;
-    [SerializeField] Transform target;
+    public Transform target;
     [SerializeField] Animator animator;
 
     [Header("공격 사거리 확인")]
-    [SerializeField] bool rangeNormalAttack1;
-    [SerializeField] bool rangeNormalAttack2;
-    [SerializeField] bool rangeActionAttack1;
-    [SerializeField] bool rangeActionAttack1_1;
-    [SerializeField] bool rangeSpecialAttack1;
-    [SerializeField] bool rangeSpecialAttack2;
-    [SerializeField] bool rangeSpecialAttack2_1;
-    [SerializeField] bool rangeSpecialAttack3;
-    [SerializeField] bool rangeSpecialAttack3_1;
+    public BossBehavior bossBehavior;
+    public BossRangeCheck[] rangeChecks;
 
     bool ready;
     bool Ready
@@ -74,8 +75,10 @@ public class BossMove : MonoBehaviour
     }
     public bool canStiffen; //경직 상태가 될 수 있는지?
 
-    int AttackCount = 0;
+    public bool canAttack;
+    int attackCount = 0;
 
+    //지울겨
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -100,7 +103,13 @@ public class BossMove : MonoBehaviour
         }
     }
 
-    void TargetTracking(bool b)
+    void StartTracking()
+    {
+        agent.SetDestination(target.position);
+        animator.SetBool("Walk", true);
+    }
+
+    public void TargetTracking(bool b)
     {
         agent.isStopped = b ? false : true;
         animator.SetBool("Walk", b);
@@ -127,45 +136,78 @@ public class BossMove : MonoBehaviour
     {
         switch(type)
         {
+            case DistanceDetection.DistanceType.PLAYERCHECK:
+                TargetCheck = b;
+                break;
             case DistanceDetection.DistanceType.NORAMLATTACK1:
-                rangeNormalAttack1 = b;
+                rangeChecks[0].RangeCheck = b;
                 break;
             case DistanceDetection.DistanceType.NORMALATTACK2:
-                rangeNormalAttack2 = b;
+                rangeChecks[1].RangeCheck = b;
                 break;
             case DistanceDetection.DistanceType.ACTIONATTACK1:
-                rangeActionAttack1 = b;
-                break;
-            case DistanceDetection.DistanceType.ACTIONATTACK1_1:
-                rangeActionAttack1_1 = b;
+                rangeChecks[2].RangeCheck = b;
                 break;
             case DistanceDetection.DistanceType.SPECIALATTACK1:
-                rangeSpecialAttack1 = b;
+                rangeChecks[3].RangeCheck = b;
                 break;
             case DistanceDetection.DistanceType.SPECIALATTACK2:
-                rangeSpecialAttack2 = b;
-                break;
-            case DistanceDetection.DistanceType.SPECIALATTACK2_1:
-                rangeSpecialAttack2_1 = b;
+                rangeChecks[4].RangeCheck = b;
                 break;
             case DistanceDetection.DistanceType.SPECIALATTACK3:
-                rangeSpecialAttack3 = b;
-                break;
-            case DistanceDetection.DistanceType.SPECIALATTACK3_1:
-                rangeSpecialAttack3_1 = b;
+                rangeChecks[5].RangeCheck = b;
                 break;
         }
-
-        if (b) { }
     }
 
-    void PlayerStiffen()
+    public void PlayerStiffen()
     {
         BehaviourController.instance.Stiffen = true;
     }
 
-    void PlayerDamage(int damage)
+    public bool CanAttack(int i)
     {
-        //BehaviourController.instance.
+        return rangeChecks[i].RangeCheck;
+    }
+}
+
+[System.Serializable]
+public class BossRangeCheck
+{
+    public string rangeName;
+    private bool rangeCheck;
+    private bool willDo;
+    public int indexNum;
+
+    public bool RangeCheck
+    {
+        set
+        {
+            rangeCheck = value;
+            CanAction(indexNum);
+        }
+        get { return rangeCheck; }
+    }
+
+    public bool WillDo
+    {
+        set
+        {
+            willDo = value;
+            CanAction(indexNum);
+        }
+        get { return willDo; }
+    }
+
+    public void CanAction(int i)
+    {
+        if (RangeCheck && WillDo)
+            Action(i);
+    }
+
+    void Action(int i)
+    {
+        BossBehavior.instance.behaviorElemList[i].bossAction.Action();
+        WillDo = false;
     }
 }

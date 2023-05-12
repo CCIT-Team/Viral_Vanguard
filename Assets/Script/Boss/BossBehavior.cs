@@ -4,21 +4,24 @@ using UnityEngine;
 
 public class BossBehavior : MonoBehaviour
 {
-    public BossStatus bs;
-    public List<BehaviorElem> beHaviorElemList = new List<BehaviorElem>();
+    public static BossBehavior instance;
+    void Awake() => instance = this;
+
+    public BossMove boss;
+    public List<BehaviorElem> behaviorElemList = new List<BehaviorElem>();
     
-    void BehaviorStart(int i)
+    public void BehaviorStart(int i)
     {
-        beHaviorElemList[i].bossAction.Action();
+        BossMove.instacne.rangeChecks[i].WillDo = true;
     }
 
-    int GetRandomIndex()
+    public int GetRandomIndex()
     {
         List<int> weights = new List<int>();
 
-        for(int i = 0; i < beHaviorElemList.Count; i++)
+        for(int i = 0; i < behaviorElemList.Count; i++)
         {
-            weights.Add(beHaviorElemList[i].weight);
+            weights.Add(behaviorElemList[i].weight);
         }
 
         int total = 0;
@@ -34,21 +37,14 @@ public class BossBehavior : MonoBehaviour
             if (pivot <= weight)
                 return i;
         }
-
+        
         return 1;
     }
 
-    //가중치 변경
+    //가중치 변경 플레이어에 넣어야하남
     void ChangeWeight(int index, int value)
     {
-        beHaviorElemList[index].weight += value;
-    }
-
-    //지울 거
-    void Update()
-    {
-        if (Input.GetKey(KeyCode.Z)) { print(beHaviorElemList[GetRandomIndex()].behaviorName); }
-        if (Input.GetKey(KeyCode.Z)) { BehaviorStart(GetRandomIndex()); }
+        behaviorElemList[index].weight += value;
     }
 }
 

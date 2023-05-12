@@ -15,5 +15,4 @@ public class SampleBossAction : BossActionBase
     {
         
     }
-
 }

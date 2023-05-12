@@ -39,9 +39,9 @@ public class BossMoveControler : MonoBehaviour, IListener
                 break;
             case EVENT_TYPE.eParried:
                 break;
-            case EVENT_TYPE.eDefaultRange1:
+            case EVENT_TYPE.eNormalRange1:
                 break;
-            case EVENT_TYPE.eDefaultRange2:
+            case EVENT_TYPE.eNormalRange2:
                 break;
             case EVENT_TYPE.eSpecialRange1:
                 break;

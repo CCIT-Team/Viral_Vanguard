@@ -2,32 +2,46 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//피격 등 보스 기본 상호작용 스크립트
 public abstract class BossActionBase : MonoBehaviour
 {
     public Collider[] colliders;
+    HitBox hitbox;
 
-    public virtual void AttackD1()
+    float bossHealth = 1000;
+    public float BossHealth
     {
-        colliders[0].enabled =! colliders[0].enabled;
+        get { return bossHealth; }
+        set
+        {
+            bossHealth = value;
+            EventManager.instance.PostNotification(EVENT_TYPE.eHealthChange, this, BossHealth);
+        }
     }
 
-    public virtual void AttackD2()
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            BossHealth -= 20;
+        }
+    }
+
+    //애니메이션 이벤트들
+    public virtual void NormalAttack(int i = 0)
+    {
+        hitbox = colliders[i].GetComponent<HitBox>();
+        hitbox.damage = i;
+        colliders[i].enabled =! colliders[i].enabled;
+    }
+
+    public virtual void SpecialAttack()
     {
         colliders[1].enabled =! colliders[1].enabled;
     }
 
-    public virtual void AttackS1()
+    public virtual void Attack()
     {
-        colliders[2].enabled =! colliders[2].enabled;
-    }
-
-    public virtual void AttackS2()
-    {
-        colliders[3].enabled =! colliders[3].enabled;
-    }
-
-    public virtual void AttackS3()
-    {
-        colliders[4].enabled =!colliders[4].enabled;
+        colliders[2].enabled =!colliders[2].enabled;
     }
 }
