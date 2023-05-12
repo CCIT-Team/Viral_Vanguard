@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 261.8021, g: 324.32925, b: 429.24924, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -179,12 +179,12 @@ GameObject:
   - component: {fileID: 154202381}
   - component: {fileID: 154202382}
   m_Layer: 0
-  m_Name: BigBang
+  m_Name: Attack&BigbangCollsion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &154202380
 Transform:
   m_ObjectHideFlags: 0
@@ -4841,6 +4841,7 @@ MonoBehaviour:
   camScript: {fileID: 2104932140}
   turnSmooth: 0.06
   isDead: 0
+  staminaChargeSpeed: 5
   stamina: 100
   totalStamina: 0
   kineticEnergy: 1000
@@ -4967,6 +4968,7 @@ MonoBehaviour:
   camScript: {fileID: 2104932140}
   turnSmooth: 0.06
   isDead: 0
+  staminaChargeSpeed: 0
   stamina: 100
   totalStamina: 0
   kineticEnergy: 1000

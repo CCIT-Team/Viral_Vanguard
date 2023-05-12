@@ -41,6 +41,8 @@ public class BehaviourController : MonoBehaviour
     private bool stiffen;
     public bool isDead;
 
+    private bool staminaCharge;
+    public float staminaChargeSpeed;
     public float stamina = 100f;
     public float totalStamina;
     public float kineticEnergy;
@@ -73,6 +75,15 @@ public class BehaviourController : MonoBehaviour
         verticalFloat = Animator.StringToHash(AnimatorKey.Vertical);
         groundedBool = Animator.StringToHash(AnimatorKey.Grounded);
         colliderExtents = GetComponent<Collider>().bounds.extents;
+    }
+    public void StaminaChargeOn()
+    {
+        staminaCharge = true;
+    }
+
+    public void StaminaChargeOff()
+    {
+        staminaCharge = false;
     }
 
     private void IsDead()
@@ -119,6 +130,11 @@ public class BehaviourController : MonoBehaviour
 
 
         myAnimator.SetBool(groundedBool, IsGrounded());
+        if (staminaCharge == true)
+        {
+            if(stamina <= totalStamina)
+            stamina += staminaChargeSpeed * Time.deltaTime;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
