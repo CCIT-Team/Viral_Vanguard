@@ -358,20 +358,20 @@ ModelImporter:
       curves: []
       events:
       - time: 0.2626393
-        functionName: AttackS1
+        functionName: NormalAttack
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 015db63cbcb446c41b734b4c0f8de13f,
           type: 3}
         floatParameter: 0
-        intParameter: 0
+        intParameter: 1
         messageOptions: 0
       - time: 0.7833528
-        functionName: AttackS1
+        functionName: NormalAttack
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 015db63cbcb446c41b734b4c0f8de13f,
           type: 3}
         floatParameter: 0
-        intParameter: 0
+        intParameter: 1
         messageOptions: 0
       transformMask: []
       maskType: 3
