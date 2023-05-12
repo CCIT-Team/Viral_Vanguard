@@ -148,10 +148,10 @@ public class AttackBehaviour : GenericBehaviour
             //clicks = Mathf.Clamp(clicks, 0, 3);
         }
 
-        if(damageChecker.activeSelf)
-        {
-            StiffenMonster();
-        }
+        //if(damageChecker.activeSelf)
+        //{
+        //    StiffenMonster();
+        //}
         
     }
 
@@ -211,27 +211,28 @@ public class AttackBehaviour : GenericBehaviour
         damageChecker.SetActive(false);
     }
 
-    public void StiffenMonster(GameObject target = null)
-    {
-        //타겟을 검사
-        Collider[] colliders = playerAttackCollsion.CheckOverlapBox();
-        foreach (Collider collider in colliders)
-        {
-            if(collider.gameObject.CompareTag("Monster"))
-            {
-                target = collider.gameObject;
-            }
-        }
-        //타겟 상태 확인
-        if (target)
-        {
-            Debug.LogError("Test");
-            //if (BossMove.instacne.canStiffen)
-            //{//경직 
-            //    BossMove.instacne.Stiffen = true;
-            //}
-        }
-    }
+    //public void StiffenMonster(GameObject target = null)
+    //{
+    //    //타겟을 검사
+    //    Collider[] colliders = playerAttackCollsion.CheckOverlapBox();
+    //    foreach (Collider collider in colliders)
+    //    {
+    //        if(collider.gameObject.CompareTag("Monster"))
+    //        {
+    //            target = collider.gameObject;
+    //        }
+    //    }
+    //    //타겟 상태 확인
+    //    if (target)
+    //    {
+    //        Debug.Log("Test");
+    //        //BossMove.instacne.currentHealthPoint -= damage[1];
+    //        //if (BossMove.instacne.canStiffen)
+    //        //{//경직 
+    //        //    BossMove.instacne.Stiffen = true;
+    //        //}
+    //    }
+    //}
     //적을 공격 했을때 콜리전 엔터를 통해서 공격 데미지를 넣어줄건지
 
 

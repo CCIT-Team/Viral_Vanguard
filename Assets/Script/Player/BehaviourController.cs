@@ -36,8 +36,8 @@ public class BehaviourController : MonoBehaviour
     private Vector3 colliderExtents;
 
     //
-    private float totalHealth;
-    private float healthPoint = 100f;
+    private float MaxHealth;
+    private float currentHealthPoint = 100f;
     private bool stiffen;
     public bool isDead;
 
@@ -47,8 +47,8 @@ public class BehaviourController : MonoBehaviour
 
     public float HealthPoint
     {
-        get => healthPoint;
-        set => healthPoint = value;
+        get => currentHealthPoint;
+        set => currentHealthPoint = value;
     }
     public bool Stiffen
     {
@@ -66,7 +66,7 @@ public class BehaviourController : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        totalHealth = healthPoint;
+        MaxHealth = currentHealthPoint;
         totalStamina = stamina;
         isDead = false;
         horizontalFloat = Animator.StringToHash(AnimatorKey.Horizontal);

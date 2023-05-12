@@ -94,7 +94,7 @@ public class GuardBehaviour : GenericBehaviour
             behaviourController.myAnimator.SetBool(attackBehaviour.keyLock, attackBehaviour.mouseLock);
             behaviourController.myAnimator.SetBool(bigBangBehaviour.keyLock, bigBangBehaviour.mouseLock);
         }
-        if (Input.GetAxisRaw(ButtonKey.Guard) != 0 && !guard && !evasionBehaviour.mouseLock && !attackBehaviour.mouseLock && !bigBangBehaviour.mouseLock && behaviourController.stamina >= reducedStaminaGuard) //스테미나 없으면 불가능
+        if (Input.GetAxisRaw(ButtonKey.Guard) != 0 && !guard && !evasionBehaviour.mouseLock && !attackBehaviour.mouseLock && !bigBangBehaviour.mouseLock && behaviourController.stamina >= 0) //스테미나 없으면 불가능
         {
             StartCoroutine(ToggleGuardOn());
             
@@ -104,9 +104,5 @@ public class GuardBehaviour : GenericBehaviour
             StartCoroutine(ToggleGuardOff());
         }
     }
-
-    public void ReducedStaminaGuard()
-    {
-        behaviourController.stamina -= reducedStaminaGuard;
-    }
+    //콜리전 엔터 확인 후 가드 히든 애니메이션 실행
 }
