@@ -52,7 +52,7 @@ public class SaveDataManager : Singleton<SaveDataManager>
     [HideInInspector] public SaveData saveData1 = new SaveData();
     [HideInInspector] public SaveData saveData2 = new SaveData();
     [HideInInspector] public SaveData saveData3 = new SaveData();
-    [HideInInspector] public SaveData saveData4 = new SaveData();
+    public SaveData saveData4 = new SaveData();
 
     public SaveData[] saveDatas = new SaveData[5];
     public SaveData saveData;
@@ -89,7 +89,6 @@ public class SaveDataManager : Singleton<SaveDataManager>
         //GameSave("/SaveFile" + saveFileNumber[2] + ".txt",2);
         //GameSave("/SaveFile" + saveFileNumber[3] + ".txt",3);
         //GameSave("/SaveFile" + saveFileNumber[4] + ".txt",4);
-
         GameLoadAllData();
     }
 
@@ -145,5 +144,10 @@ public class SaveDataManager : Singleton<SaveDataManager>
                 return;
             }
         }
+    }
+
+    public void DeleteGameData(int currentsavefileindex)
+    {
+        File.Delete(_SAVE_DATA_DIRECTORY + "/SaveFile" + saveFileNumber[currentsavefileindex] + ".txt");
     }
 }

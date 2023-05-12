@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UIManager : Singleton<UIManager>
 {
-    Stack<GameObject> uiStack = new Stack<GameObject>();   
+    public Stack<GameObject> uiStack = new Stack<GameObject>();   
 
     // 매개변수에는 해당 ui를 켰을 때 그걸 끄는 버튼을 할당해주세요
     // 값을 초기화 해줘야 하는 onClick Method를 포함하는!
@@ -29,23 +29,18 @@ public class UIManager : Singleton<UIManager>
         if(uiStack.Count > 0)
         {
             GameObject lastUI = uiStack.Pop();
-            
             lastUI.SetActive(false);
 
             Button button = lastUI.GetComponent<Button>();
-            if (button == null)
-                return;
-            else if (button != null)
-            {
-                Debug.Log("버튼이 없어요");
-                button.onClick.Invoke();
-            }
+            if (button == null) Debug.Log("버튼이 없어요");
+            else if (button != null) button.onClick.Invoke();
         }
     }
 
     public void Update()
     {
         Debug.Log(uiStack.Count);
+       
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
