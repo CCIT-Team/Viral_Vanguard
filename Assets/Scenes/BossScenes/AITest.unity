@@ -2526,6 +2526,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1789331568}
   - component: {fileID: 1789331567}
+  - component: {fileID: 1789331569}
   m_Layer: 0
   m_Name: SphereR
   m_TagString: Untagged
@@ -2561,6 +2562,19 @@ Transform:
   m_Father: {fileID: 1281152908}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1789331569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1789331566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f54cfcb9aef9584a813353e7e35e81e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
 --- !u!1 &1808071876
 GameObject:
   m_ObjectHideFlags: 0
@@ -2665,6 +2679,7 @@ GameObject:
   - component: {fileID: 1870411793}
   - component: {fileID: 1870411792}
   - component: {fileID: 1870411797}
+  - component: {fileID: 1870411798}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -2696,10 +2711,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70d16e0da7f512d4b9a11b500292b99b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthPoint: 0
+  attackPoint: 0
+  moveSpeed: 0
+  closeAttackSpeed: 0
+  longRangeAttackSpeed: 0
   bossBehavior: 0
   agent: {fileID: 1870411794}
-  target: {fileID: 0}
+  target: {fileID: 729404560}
   animator: {fileID: 1870411795}
+  rangeNormalAttack1: 0
+  rangeNormalAttack2: 0
+  rangeActionAttack1: 0
+  rangeActionAttack1_1: 0
+  rangeSpecialAttack1: 0
+  rangeSpecialAttack2: 0
+  rangeSpecialAttack2_1: 0
+  rangeSpecialAttack3: 0
+  rangeSpecialAttack3_1: 0
 --- !u!195 &1870411794
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2775,11 +2804,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colliders:
-  - {fileID: 1877250406}
-  - {fileID: 1789331567}
   - {fileID: 1789331567}
   - {fileID: 1877250406}
   - {fileID: 1877250406}
+  - {fileID: 1789331567}
+  - {fileID: 1789331567}
+--- !u!65 &1870411798
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870411791}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.4437833, y: 2.4982963, z: 1.1859436}
+  m_Center: {x: 0.00000011920929, y: 1.2483737, z: 0.07878971}
 --- !u!1 &1877250404
 GameObject:
   m_ObjectHideFlags: 0
@@ -2790,6 +2832,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1877250405}
   - component: {fileID: 1877250406}
+  - component: {fileID: 1877250407}
   m_Layer: 0
   m_Name: SphereL
   m_TagString: Untagged
@@ -2825,6 +2868,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1877250407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1877250404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f54cfcb9aef9584a813353e7e35e81e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
 --- !u!1 &1998776694
 GameObject:
   m_ObjectHideFlags: 0
