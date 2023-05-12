@@ -8,7 +8,8 @@ using UnityEngine;
 /// </summary>
 public class AttackBehaviour : GenericBehaviour
 {
-
+    public PlayerAttackCollsion playerAttackCollsion;
+    public float[] damage;
     private int grounded;//애니용
     private int attack1;
     private int attack2;
@@ -20,6 +21,8 @@ public class AttackBehaviour : GenericBehaviour
     [HideInInspector]
     public int keyLock;
     public bool mouseLock;
+    public GameObject damageChecker;
+
 
     //각 행동 쿨타임
 
@@ -144,6 +147,12 @@ public class AttackBehaviour : GenericBehaviour
             //}
             //clicks = Mathf.Clamp(clicks, 0, 3);
         }
+
+        //if(damageChecker.activeSelf)
+        //{
+        //    StiffenMonster();
+        //}
+        
     }
 
     public void AttackReturn1()
@@ -192,12 +201,39 @@ public class AttackBehaviour : GenericBehaviour
         }
     }
 
-    public void DamageMonster()
+    public void StiffenCheckStart()
     {
-        //몬스터 컴포넌트 확인
-        //물리 확인
-        //몬스터 canStiffen 이라면
-        //stiffen = true;
+        damageChecker.SetActive(true);
     }
+
+    public void StiffenCheckEnd()
+    {
+        damageChecker.SetActive(false);
+    }
+
+    //public void StiffenMonster(GameObject target = null)
+    //{
+    //    //타겟을 검사
+    //    Collider[] colliders = playerAttackCollsion.CheckOverlapBox();
+    //    foreach (Collider collider in colliders)
+    //    {
+    //        if(collider.gameObject.CompareTag("Monster"))
+    //        {
+    //            target = collider.gameObject;
+    //        }
+    //    }
+    //    //타겟 상태 확인
+    //    if (target)
+    //    {
+    //        Debug.Log("Test");
+    //        //BossMove.instacne.currentHealthPoint -= damage[1];
+    //        //if (BossMove.instacne.canStiffen)
+    //        //{//경직 
+    //        //    BossMove.instacne.Stiffen = true;
+    //        //}
+    //    }
+    //}
+    //적을 공격 했을때 콜리전 엔터를 통해서 공격 데미지를 넣어줄건지
+
 
 }

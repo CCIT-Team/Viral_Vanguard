@@ -16,7 +16,7 @@ public class EvasionBehaviour : GenericBehaviour
     public int keyLock;
     public bool mouseLock;
     public float evasionDelay = 0.2f;
-
+    public float reducedStaminaEvasion = 10f;
     //각 행동 쿨타임
 
 
@@ -75,7 +75,7 @@ public class EvasionBehaviour : GenericBehaviour
 
     private void EvasionManagement()
     {
-        if(!behaviourController.IsGrounded()) //공격이 아닌 상황
+        if(!behaviourController.IsGrounded())
         {
             return;
         }
@@ -121,7 +121,7 @@ public class EvasionBehaviour : GenericBehaviour
 
     private void Update()
     {
-        if(Input.GetAxisRaw(ButtonKey.Evasion) !=0 && !evasion)
+        if(Input.GetAxisRaw(ButtonKey.Evasion) !=0 && !evasion && behaviourController.stamina >= reducedStaminaEvasion)
         {
             StartCoroutine(ToggleEvasionOn());
         }
@@ -132,5 +132,9 @@ public class EvasionBehaviour : GenericBehaviour
         
     }
 
+    public void ReducedstaminaEvasion()
+    {
+        behaviourController.stamina -= reducedStaminaEvasion;
+    }
 
 }

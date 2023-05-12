@@ -11,7 +11,6 @@ public class BigBangBehaviour : GenericBehaviour
     [HideInInspector]
     public int keyLock;
     public bool mouseLock;
-    public float count;
     //게이지 카운트 필요
 
     private void Start()
@@ -90,10 +89,7 @@ public class BigBangBehaviour : GenericBehaviour
             behaviourController.LockTempBehaviour(behaviourCode);
             behaviourController.myAnimator.SetTrigger(bigBangTrigger);
             behaviourController.myAnimator.SetBool(keyLock, mouseLock);
-            count = 0;
         }
-
-
     }
 
     private IEnumerator ToggleBigBangOff()
@@ -111,7 +107,7 @@ public class BigBangBehaviour : GenericBehaviour
 
     private void Update()
     {
-        if (Input.GetAxisRaw(ButtonKey.BigBnag) != 0 && !bigBang && count>= 100f) //일정 게이지 이상 혹은 같으면 작동
+        if (Input.GetButtonDown(ButtonKey.BigBnag) && !bigBang && behaviourController.kineticEnergy >= 100f) //일정 게이지 이상 혹은 같으면 작동
         {
             StartCoroutine(ToggleBigBangOn());
         }
@@ -119,8 +115,10 @@ public class BigBangBehaviour : GenericBehaviour
         {
             StartCoroutine(ToggleBigBangOff());
         }
-
     }
 
-
+    public void ReducedKineticEnergyBigBang()
+    {
+        behaviourController.kineticEnergy -= 20;
+    }
 }
