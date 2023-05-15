@@ -47,8 +47,10 @@ public class BehaviourController : MonoBehaviour
     public float totalStamina;
     public float kineticEnergy;
 
+    public bool guard;
     private bool guardAttackBool;       //가드중 몬스터가 때리면
-    private bool justGuardAttackBool;   //가드중 저스트 가드 성공
+    public bool justGuard;
+    private bool justGuardSuccess;   //가드중 저스트 가드 성공
 
     public bool GuardBool
     {
@@ -56,17 +58,23 @@ public class BehaviourController : MonoBehaviour
         set
         {
             guardAttackBool = value;
-            myAnimator.SetBool("GuradHit", value);
+            if (guard == true)
+            {
+                myAnimator.SetBool("GuradHit", value);
+            }
         }
     }
 
-    public bool JustGuardAttackBool
+    public bool JustGuardSuccess
     {
-        get { return justGuardAttackBool; }
+        get { return justGuardSuccess; }
         set
         {
-            justGuardAttackBool = value;
-            myAnimator.SetBool("JustGuard", value);
+            justGuardSuccess = value;
+            if (justGuard == true)
+            {
+                myAnimator.SetBool("JustGuard", value);
+            }
         }
     }
 
@@ -80,16 +88,22 @@ public class BehaviourController : MonoBehaviour
         get { return stiffen; }
         set
         {
-                stiffen = value;
+            stiffen = value;
+            if (guard == false)
+            {
                 myAnimator.SetBool("Stiffen", value);
+            }
         }
     }
     public float _horizontal { get => horizontal; }
     public float _vertical { get => vertical; }
     public int _defailtBehaviour { get => defaultBehaviour; }
 
+
     private void Awake()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         instance = this;
         MaxHealth = currentHealthPoint;
         totalStamina = stamina;

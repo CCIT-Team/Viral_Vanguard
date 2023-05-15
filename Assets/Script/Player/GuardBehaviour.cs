@@ -12,7 +12,6 @@ public class GuardBehaviour : GenericBehaviour
     public float turnSmoothing;
     public float guardFieldOfView = 50;
     private int guardBool;
-    private bool guard;
     public Transform myTransform;
     private EvasionBehaviour evasionBehaviour; //참조
     private AttackBehaviour attackBehaviour;   //참조
@@ -57,9 +56,9 @@ public class GuardBehaviour : GenericBehaviour
         }
         else
         {
-            guard = true;
+            behaviourController.guard = true;
             behaviourController.camScript.SetFieldOfView(guardFieldOfView);
-            behaviourController.myAnimator.SetBool(guardBool, guard);
+            behaviourController.myAnimator.SetBool(guardBool, behaviourController.guard);
             yield return new WaitForSeconds(0.1f);
             //behaviourController.GetAnimator.SetFloat(speedFloat, 0.0f);
             behaviourController.OverrideWithBehaviour(this);
@@ -68,8 +67,8 @@ public class GuardBehaviour : GenericBehaviour
 
     private IEnumerator ToggleGuardOff()
     {
-        guard = false;
-        behaviourController.myAnimator.SetBool(guardBool, guard);
+        behaviourController.guard = false;
+        behaviourController.myAnimator.SetBool(guardBool, behaviourController.guard);
         yield return new WaitForSeconds(0.3f);
         behaviourController.camScript.ResetFieldOfView();
         yield return new WaitForSeconds(0.1f);
@@ -94,15 +93,24 @@ public class GuardBehaviour : GenericBehaviour
             behaviourController.myAnimator.SetBool(attackBehaviour.keyLock, attackBehaviour.mouseLock);
             behaviourController.myAnimator.SetBool(bigBangBehaviour.keyLock, bigBangBehaviour.mouseLock);
         }
-        if (Input.GetAxisRaw(ButtonKey.Guard) != 0 && !guard && !evasionBehaviour.mouseLock && !attackBehaviour.mouseLock && !bigBangBehaviour.mouseLock && behaviourController.stamina >= 0) //스테미나 없으면 불가능
+        if (Input.GetAxisRaw(ButtonKey.Guard) != 0 && !behaviourController.guard && !evasionBehaviour.mouseLock && !attackBehaviour.mouseLock && !bigBangBehaviour.mouseLock && behaviourController.stamina >= 0) //스테미나 없으면 불가능
         {
             StartCoroutine(ToggleGuardOn());
             
         }
-        else if (guard && Input.GetAxisRaw(ButtonKey.Guard) == 0 || evasionBehaviour.mouseLock || attackBehaviour.mouseLock || bigBangBehaviour.mouseLock || behaviourController.stamina <= 0)
+        else if (behaviourController.guard && Input.GetAxisRaw(ButtonKey.Guard) == 0 || evasionBehaviour.mouseLock || attackBehaviour.mouseLock || bigBangBehaviour.mouseLock || behaviourController.stamina <= 0)
         {
             StartCoroutine(ToggleGuardOff());
         }
+
+        //저스트 가드
+        if (Input.GetAxisRaw(ButtonKey.JustGuard) != 0 && behaviourController.guard)
+        {
+            behaviourController.justGuard = true;
+        }
+        else if (Input.GetAxisRaw(ButtonKey.JustGuard) == 0)
+        {
+            behaviourController.justGuard = false;
+        }
     }
-    //콜리전 엔터 확인 후 가드 히든 애니메이션 실행
 }

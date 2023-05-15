@@ -21,14 +21,14 @@ public class StiffenBehaviour : GenericBehaviour
     }
     private void Update()
     {
-        if (Input.GetAxisRaw(ButtonKey.JustGuard) != 0)
-        {
-            behaviourController.Stiffen = true;
-        }
-        else if (Input.GetAxisRaw(ButtonKey.JustGuard) == 0)
-        {
-            behaviourController.Stiffen = false;
-        }
+        //if (Input.GetAxisRaw(ButtonKey.JustGuard) != 0)
+        //{
+        //    behaviourController.Stiffen = true;
+        //}
+        //else if (Input.GetAxisRaw(ButtonKey.JustGuard) == 0)
+        //{
+        //    behaviourController.Stiffen = false;
+        //}
         if (behaviourController.Stiffen)
         {
             StartCoroutine(StiffenDelay());
