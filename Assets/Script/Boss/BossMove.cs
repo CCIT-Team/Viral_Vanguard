@@ -8,6 +8,15 @@ public class BossMove : MonoBehaviour
     public static BossMove instacne;
     void Awake() => instacne = this;
 
+    IEnumerator update()
+    {
+        while(true)
+        {
+            agent.SetDestination(target.position);
+            yield return new WaitForSeconds(0.5f);
+        }
+    }
+
     [Header("보스 스테이터스")]
     public static string bossName;
     public float maxHealthPoint;
@@ -78,34 +87,9 @@ public class BossMove : MonoBehaviour
     public bool canAttack;
     int attackCount = 0;
 
-    //지울겨
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            agent.SetDestination(target.position);
-            animator.SetBool("Walk", true);
-        }
-
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            TargetTracking(agent.isStopped);
-        }
-
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            Ready = true;
-        }
-
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            StiffenStart();
-        }
-    }
-
     void StartTracking()
     {
-        agent.SetDestination(target.position);
+        StartCoroutine(update());
         animator.SetBool("Walk", true);
     }
 
@@ -115,7 +99,14 @@ public class BossMove : MonoBehaviour
         animator.SetBool("Walk", b);
     }
 
-    void NormalAttack(int i)
+    public void NextAction()
+    {
+        agent.isStopped = false;
+        animator.SetBool("Walk", true);
+        bossBehavior.BehaviorStart(bossBehavior.GetRandomIndex());
+    }
+
+    public void NormalAttack(int i)
     {
         animator.SetTrigger("Attack");
         animator.SetInteger("AttackType", i);
@@ -175,8 +166,8 @@ public class BossMove : MonoBehaviour
 public class BossRangeCheck
 {
     public string rangeName;
-    private bool rangeCheck;
-    private bool willDo;
+    public bool rangeCheck;
+    public bool willDo;
     public int indexNum;
 
     public bool RangeCheck
