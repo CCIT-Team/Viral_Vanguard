@@ -47,6 +47,29 @@ public class BehaviourController : MonoBehaviour
     public float totalStamina;
     public float kineticEnergy;
 
+    private bool guardAttackBool;       //가드중 몬스터가 때리면
+    private bool justGuardAttackBool;   //가드중 저스트 가드 성공
+
+    public bool GuardBool
+    {
+        get { return guardAttackBool; }
+        set
+        {
+            guardAttackBool = value;
+            myAnimator.SetBool("GuradHit", value);
+        }
+    }
+
+    public bool JustGuardAttackBool
+    {
+        get { return justGuardAttackBool; }
+        set
+        {
+            justGuardAttackBool = value;
+            myAnimator.SetBool("JustGuard", value);
+        }
+    }
+
     public float HealthPoint
     {
         get => currentHealthPoint;
