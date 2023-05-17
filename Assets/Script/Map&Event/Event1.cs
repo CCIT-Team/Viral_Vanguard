@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class Event1 : MonoBehaviour
 {
-    public Animation ani;
+    public Animator ani;
+    public Camera playerCam;
+    public GameObject event1;
 
     private void OnTriggerEnter(Collider other)
     {
-        ani.Play();
+        event1.SetActive(true);
+        ani.SetTrigger("Q");
+        playerCam.gameObject.SetActive(false);
     }
 }
