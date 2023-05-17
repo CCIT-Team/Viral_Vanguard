@@ -254,14 +254,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 302026817}
-  m_LocalRotation: {x: 0.49148226, y: 0.09264843, z: 0.1359534, w: 0.85520655}
+  m_LocalRotation: {x: 0.16208348, y: 0.0393705, z: 0.15974051, w: 0.97296554}
   m_LocalPosition: {x: 91.1, y: 40.8, z: 57.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 54.631, y: 30.308, z: 33.991}
+  m_LocalEulerAnglesHint: {x: 17.627, y: 7.742, z: 19.849}
 --- !u!114 &302026820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -537,7 +537,6 @@ GameObject:
   - component: {fileID: 1126266915}
   - component: {fileID: 1126266914}
   - component: {fileID: 1126266913}
-  - component: {fileID: 1126266912}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -545,19 +544,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!135 &1126266912
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1126266911}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1126266913
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5215,8 +5201,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4315249521810617626}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.029, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0.9981043, z: -0, w: -0.061546177}
+  m_LocalPosition: {x: 1.0273315, y: 0, z: 0.027062364}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5229,7 +5215,7 @@ Transform:
   - {fileID: 6221805596898139802}
   m_Father: {fileID: 0}
   m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -187.057, z: 0}
 --- !u!4 &3506342852430737709
 Transform:
   m_ObjectHideFlags: 0
@@ -9927,7 +9913,7 @@ Animator:
   m_GameObject: {fileID: 4315249521810617626}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 9e1731dd636f6874eb5a9435655f8273, type: 3}
-  m_Controller: {fileID: 9100000, guid: 4775ccfcc5dd08b46962f86c2c57e286, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1ac2a1891f6a2814dbcb83cbd24d5ee1, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
