@@ -87,6 +87,8 @@ public class BossMove : MonoBehaviour
     public bool canAttack;
     int attackCount = 0;
 
+    public EventListener listener;
+
     void StartTracking()
     {
         StartCoroutine(update());

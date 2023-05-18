@@ -6,7 +6,7 @@ using UnityEngine;
 public class RedarmsBehavior : ScriptableObject
 {
     public enum BossBehaviorEnum { NORAMLATTACK1, NORMALATTACK2, ACTIONATTACK1, ACTIONATTACK1_1, SPECIALATTACK1, SPECIALATTACK2, SPECIALATTACK2_1, SPECIALATTACK3, SPECIALATTACK3_1 }
-    public BossBehaviorEnum bossBehavior;
+    public BossBehaviorEnum bossAttack;
     public RedarmsBehavior linkedBehavior;
 
     public delegate void BossActionDelegate();
@@ -16,7 +16,7 @@ public class RedarmsBehavior : ScriptableObject
     {
         BossMove.instacne.TargetTracking(false);
 
-        switch (bossBehavior)
+        switch (bossAttack)
         {
             case BossBehaviorEnum.NORAMLATTACK1:
                 BossAction = NormalAttack1;

@@ -1116,31 +1116,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boss: {fileID: 823957850351672667}
   behaviorElemList:
-  - behaviorName: rangeNormalAttack1
-    weight: 10
+  - behaviorName: NormalAttack1
+    weight: 110
     bossAction: {fileID: 11400000, guid: 62c5e0356263f5f429dba88f81627dbc, type: 2}
-  - behaviorName: rangeNormalAttack2
-    weight: 10
+  - behaviorName: NormalAttack2
+    weight: 110
     bossAction: {fileID: 11400000, guid: d7a12a18998163e42bfbbd2202bf13ad, type: 2}
-  - behaviorName: rangeActionAttack1
-    weight: 10
+  - behaviorName: ActionAttack1
+    weight: 50
     bossAction: {fileID: 11400000, guid: ebd8f1213ef53fb42ae1581f709613f7, type: 2}
-  - behaviorName: rangeSpecialAttack1
-    weight: 10
+  - behaviorName: SpecialAttack1
+    weight: 30
     bossAction: {fileID: 11400000, guid: 11c991d5706a2c1429c63dcca01ab15d, type: 2}
-  - behaviorName: rangeSpecialAttack2
-    weight: 10
+  - behaviorName: SpecialAttack2
+    weight: 20
     bossAction: {fileID: 11400000, guid: fdd5b5925a031a843a7a776d9512d22f, type: 2}
-  - behaviorName: rangeSpecialAttack3
-    weight: 10
+  - behaviorName: SpecialAttack3
+    weight: 30
     bossAction: {fileID: 11400000, guid: 2d2c983e875ff904aab7ba85a8ab3c8d, type: 2}
-  - behaviorName: rangeActionAttack1_1
+  - behaviorName: ActionAttack1_1
     weight: 0
     bossAction: {fileID: 11400000, guid: 6067c61b67fea4d4a995a381d6584210, type: 2}
-  - behaviorName: rangeSpecialAttack2_1
+  - behaviorName: SpecialAttack2_1
     weight: 0
     bossAction: {fileID: 11400000, guid: 48016da70796eb64eaa26a2f333ea9d9, type: 2}
-  - behaviorName: rangeSpecialAttack3_1
+  - behaviorName: SpecialAttack3_1
     weight: 0
     bossAction: {fileID: 11400000, guid: 4ef9c37941be9f04f924d3e819f76e08, type: 2}
 --- !u!136 &823957850351672664
