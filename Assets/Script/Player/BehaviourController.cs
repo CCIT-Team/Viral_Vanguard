@@ -34,8 +34,24 @@ public class BehaviourController : MonoBehaviour
     private int verticalFloat;
     private int groundedBool;
     private Vector3 colliderExtents;
-    private bool stiffen;
 
+    //
+    private float MaxHealth;
+    private float currentHealthPoint = 100f;
+    private bool stiffen;
+    public bool isDead;
+
+    private bool staminaCharge;
+    public float staminaChargeSpeed;
+    public float stamina = 100f;
+    public float totalStamina;
+    public float kineticEnergy;
+
+    public float HealthPoint
+    {
+        get => currentHealthPoint;
+        set => currentHealthPoint = value;
+    }
     public bool Stiffen
     {
         get { return stiffen; }
@@ -52,10 +68,39 @@ public class BehaviourController : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        MaxHealth = currentHealthPoint;
+        totalStamina = stamina;
+        isDead = false;
         horizontalFloat = Animator.StringToHash(AnimatorKey.Horizontal);
         verticalFloat = Animator.StringToHash(AnimatorKey.Vertical);
         groundedBool = Animator.StringToHash(AnimatorKey.Grounded);
         colliderExtents = GetComponent<Collider>().bounds.extents;
+    }
+    public void StaminaChargeOn()
+    {
+        staminaCharge = true;
+    }
+
+    public void StaminaChargeOff()
+    {
+        staminaCharge = false;
+    }
+
+    private void IsDead()
+    {
+        isDead = true;
+        gameObject.tag = "Untagged";
+        myAnimator.SetBool(AnimatorKey.Attack1, false);
+        myAnimator.SetBool(AnimatorKey.Attack2, false);
+        myAnimator.SetBool(AnimatorKey.Attack3, false);
+        myAnimator.SetBool(AnimatorKey.Guard, false);
+        myAnimator.SetBool(AnimatorKey.MouseLock, false);
+        myAnimator.SetBool("Stiffen", false);
+        foreach (GenericBehaviour behaviour in GetComponentsInChildren<GenericBehaviour>())
+        {
+            behaviour.enabled = false;
+        }
+        //사운드 or 이펙트
     }
 
     public bool IsMoving()
@@ -85,6 +130,17 @@ public class BehaviourController : MonoBehaviour
 
 
         myAnimator.SetBool(groundedBool, IsGrounded());
+        if (staminaCharge == true)
+        {
+            if(stamina <= totalStamina)
+            stamina += staminaChargeSpeed * Time.deltaTime;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        //공격 받으면 데미지
+        //공격 받는데 0이면 죽음 상태
     }
 
     //낌 방지
