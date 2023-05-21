@@ -71,7 +71,7 @@ public class BigBangBehaviour : GenericBehaviour
         }
         else
         {
-            RotationManagment(behaviourController._horizontal, behaviourController._vertical);
+            RotationManagment(behaviourController.Horizontal, behaviourController.Vertical);
         }
     }
     private IEnumerator ToggleBigBangOn()

@@ -17,7 +17,6 @@ public class AttackBehaviour : GenericBehaviour
     public int clicks = 0;
     private float lastClickedTime = 0;
     public float attackDelay = 0.5f;
-    public Transform myTransform;
     [HideInInspector]
     public int keyLock;
     public bool mouseLock;
@@ -88,7 +87,7 @@ public class AttackBehaviour : GenericBehaviour
         }
         else
         {
-            RotationManagment(behaviourController._horizontal, behaviourController._vertical);
+            RotationManagment(behaviourController.Horizontal, behaviourController.Vertical);
         }
     }
 

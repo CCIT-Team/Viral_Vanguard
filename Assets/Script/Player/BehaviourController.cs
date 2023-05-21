@@ -22,7 +22,7 @@ public class BehaviourController : MonoBehaviour
     public Transform myTransform;
     public Animator myAnimator;
     public Rigidbody myRigidbody;
-    public PlayerCameraManager camScript;
+    public PlayerCamera camScript;
 
     private float horizontal;
     private float vertical;
@@ -51,6 +51,7 @@ public class BehaviourController : MonoBehaviour
     private bool guardAttackBool;       //가드중 몬스터가 때리면
     public bool justGuard;
     private bool justGuardSuccess;   //가드중 저스트 가드 성공
+    public int lockOn;
 
     public bool GuardBool
     {
@@ -95,9 +96,9 @@ public class BehaviourController : MonoBehaviour
             }
         }
     }
-    public float _horizontal { get => horizontal; }
-    public float _vertical { get => vertical; }
-    public int _defailtBehaviour { get => defaultBehaviour; }
+    public float Horizontal { get => horizontal; }
+    public float Vertical { get => vertical; }
+    public int DefailtBehaviour { get => defaultBehaviour; }
 
 
     private void Awake()
@@ -112,6 +113,7 @@ public class BehaviourController : MonoBehaviour
         verticalFloat = Animator.StringToHash(AnimatorKey.Vertical);
         groundedBool = Animator.StringToHash(AnimatorKey.Grounded);
         colliderExtents = GetComponent<Collider>().bounds.extents;
+        lockOn = Animator.StringToHash(AnimatorKey.LockOn);
     }
     public void StaminaChargeOn()
     {
@@ -163,7 +165,7 @@ public class BehaviourController : MonoBehaviour
 
         myAnimator.SetFloat(horizontalFloat, horizontal, 0.1f, Time.deltaTime);
         myAnimator.SetFloat(verticalFloat, vertical, 0.1f, Time.deltaTime);
-        //transform.position += h * transform.right + v * transform.forward;
+
 
 
         myAnimator.SetBool(groundedBool, IsGrounded());

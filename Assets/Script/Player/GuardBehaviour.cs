@@ -13,9 +13,9 @@ public class GuardBehaviour : GenericBehaviour
     public float guardFieldOfView = 50;
     private int guardBool;
     public Transform myTransform;
-    private EvasionBehaviour evasionBehaviour; //참조
-    private AttackBehaviour attackBehaviour;   //참조
-    private BigBangBehaviour bigBangBehaviour; //참조
+    private EvasionBehaviour evasionBehaviour; 
+    private AttackBehaviour attackBehaviour;   
+    private BigBangBehaviour bigBangBehaviour; 
     public float reducedStaminaGuard;
 
     //각 행동 쿨타임
@@ -26,24 +26,6 @@ public class GuardBehaviour : GenericBehaviour
         evasionBehaviour = GetComponent<EvasionBehaviour>();
         attackBehaviour = GetComponent<AttackBehaviour>();
         bigBangBehaviour = GetComponent<BigBangBehaviour>();
-    }
-
-    void Rotating()
-    {
-        Vector3 forward = behaviourController.playerCamera.TransformDirection(Vector3.forward);
-        forward.y = 0;
-        forward = forward.normalized;
-
-        Quaternion targetRotation = Quaternion.Euler(0f, behaviourController.camScript._getHorizotal, 0.0f);
-        float mimSpeed = Quaternion.Angle(myTransform.rotation, targetRotation) * turnSmoothing;
-
-        behaviourController.SetLastDirection(forward);
-        myTransform.rotation = Quaternion.Slerp(myTransform.rotation, targetRotation, mimSpeed * Time.deltaTime);
-    }
-
-    void GuardManagement()
-    {
-        Rotating();
     }
 
     private IEnumerator ToggleGuardOn()
@@ -60,8 +42,8 @@ public class GuardBehaviour : GenericBehaviour
             behaviourController.camScript.SetFieldOfView(guardFieldOfView);
             behaviourController.myAnimator.SetBool(guardBool, behaviourController.guard);
             yield return new WaitForSeconds(0.1f);
-            //behaviourController.GetAnimator.SetFloat(speedFloat, 0.0f);
-            behaviourController.OverrideWithBehaviour(this);
+            //behaviourController.myAnimator.SetFloat(speedFloat, 0.0f);
+            //behaviourController.OverrideWithBehaviour(this);
         }
     }
 
@@ -72,14 +54,8 @@ public class GuardBehaviour : GenericBehaviour
         yield return new WaitForSeconds(0.3f);
         behaviourController.camScript.ResetFieldOfView();
         yield return new WaitForSeconds(0.1f);
-        behaviourController.RevokeOverridingBehaviour(this);
+        //behaviourController.RevokeOverridingBehaviour(this);
 
-    }
-
-
-    public override void LocalLateUpdate()
-    {
-        GuardManagement();
     }
 
     private void Update()
@@ -93,6 +69,7 @@ public class GuardBehaviour : GenericBehaviour
             behaviourController.myAnimator.SetBool(attackBehaviour.keyLock, attackBehaviour.mouseLock);
             behaviourController.myAnimator.SetBool(bigBangBehaviour.keyLock, bigBangBehaviour.mouseLock);
         }
+
         if (Input.GetAxisRaw(ButtonKey.Guard) != 0 && !behaviourController.guard && !evasionBehaviour.mouseLock && !attackBehaviour.mouseLock && !bigBangBehaviour.mouseLock && behaviourController.stamina >= 0) //스테미나 없으면 불가능
         {
             StartCoroutine(ToggleGuardOn());

@@ -81,7 +81,7 @@ public class EvasionBehaviour : GenericBehaviour
         }
         else
         {
-            RotationManagement(behaviourController._horizontal, behaviourController._vertical);
+            RotationManagement(behaviourController.Horizontal, behaviourController.Vertical);
         }    
     }
 

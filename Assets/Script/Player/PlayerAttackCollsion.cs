@@ -11,11 +11,11 @@ public class PlayerAttackCollsion : MonoBehaviour
         {
             Debug.Log("Test");
             //BossMove.instacne.currentHealthPoint -= damage[1];
-            if (BossMove.instacne.canStiffen)
-            {//경직 
-                print("개느려");
-                BossMove.instacne.Stiffen = true;
-            }
+            //if (BossMove.instacne.canStiffen)
+            //{//경직 
+            //    print("개느려");
+            //    BossMove.instacne.Stiffen = true;
+            //}
         }
     }
     //public Vector3 boxSize = new Vector3(3, 2, 2);

@@ -14,6 +14,7 @@ public class AnimatorKey
     public const string BigBang = "BigBang";
     public const string Guard = "Guard";             //방어
     public const string MouseLock = "MouseLock";     //가드 후 회피 떄문에
+    public const string LockOn = "LockOn";
 
     public const string AngularSpeed = "AngularSpeed";
     public const string Horizontal = "H";
