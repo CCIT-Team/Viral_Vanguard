@@ -98,6 +98,8 @@ public class BossMove : MonoBehaviour
     public bool canAttack;
     int attackCount = 0;
 
+    public GameObject[] attackColliders;
+
     public EventListener listener;
 
     void StartTracking()
@@ -172,6 +174,12 @@ public class BossMove : MonoBehaviour
     public bool CanAttack(int i)
     {
         return rangeChecks[i].RangeCheck;
+    }
+
+    public void ActiveCollider(int i)
+    {
+        bool b = attackColliders[i].activeSelf ? false : true;
+        attackColliders[i].SetActive(b);
     }
 }
 
