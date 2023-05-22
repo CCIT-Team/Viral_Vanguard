@@ -18,14 +18,14 @@ public class PlayerAttackCollsion : MonoBehaviour
                 behaviourController.kineticEnergy += increasekineticEnergy[0];
                 print("1");
             }
-            else if(behaviourController.myAnimator.GetBool(AnimatorKey.Attack2))
+            else if(behaviourController.myAnimator.GetBool(AnimatorKey.Attack2)&& !behaviourController.myAnimator.GetBool(AnimatorKey.Attack3))
             {
                 //BossMove.instacne.currentHealthPoint -= damage[1];
                 behaviourController.kineticEnergy += increasekineticEnergy[1];
                 print("2");
 
             }
-            else if(behaviourController.myAnimator.GetBool(AnimatorKey.Attack3))
+            else if(behaviourController.myAnimator.GetBool(AnimatorKey.Attack3) && behaviourController.myAnimator.GetBool(AnimatorKey.Attack2))
             {
                 //BossMove.instacne.currentHealthPoint -= damage[2];
                 behaviourController.kineticEnergy += increasekineticEnergy[2];
