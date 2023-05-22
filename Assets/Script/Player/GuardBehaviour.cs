@@ -17,6 +17,7 @@ public class GuardBehaviour : GenericBehaviour
     private AttackBehaviour attackBehaviour;
     private BigBangBehaviour bigBangBehaviour;
     public float reducedStaminaGuard;
+    private bool isJustGuardDelay;
 
     //각 행동 쿨타임
 
@@ -80,38 +81,37 @@ public class GuardBehaviour : GenericBehaviour
         {
             StartCoroutine(ToggleGuardOff());
         }
-
-        //저스트 가드
-        if (Input.GetAxisRaw(ButtonKey.JustGuard) != 0 && behaviourController.guard)
-        {
-            behaviourController.justGuard = true;
-        }
-        else if (Input.GetAxisRaw(ButtonKey.JustGuard) == 0)
-        {
-            behaviourController.justGuard = false;
-        }
     }
 
-    public void ReducedstaminaGuard()
-    {
-        //공격력 만큼 스태미나 감소
-        //만약 스태미나가 공격력보다 떨어지면 계산후 나머지 데미지로 전환
-        
-    }
+    //    //저스트 가드
+    //    if (Input.GetAxisRaw(ButtonKey.JustGuard) != 0 && behaviourController.guard && !isJustGuardDelay)
+    //    {
+    //        StartCoroutine(JustGuardTime());
+    //    }
+    //    else if (Input.GetAxisRaw(ButtonKey.JustGuard) == 0)
+    //    {
+    //        StartCoroutine(JustGuardDelay());
+    //    }
+    //}
 
-    public void PlayerGuardStiffenFalse()
-    {
-        behaviourController.GuardHit = false;
-    }
+    ////public void ReducedstaminaGuard() //아마 몬스터 쪽에서 계산하면 될듯
+    ////{
+    ////    //공격력 만큼 스태미나 감소
+    ////    //만약 스태미나가 공격력보다 떨어지면 계산후 나머지 데미지로 전환
+    ////}
 
-    public void PlayerJustGuardSuccessFalse()
-    {
-        behaviourController.guard = true;
-        behaviourController.JustGuardSuccess = false;
-    }
+    //IEnumerator JustGuardTime()
+    //{
+    //    behaviourController.JustGuard = true;
+    //    isJustGuardDelay = true;
+    //    yield return new WaitForSeconds(0.2f);
+    //    behaviourController.JustGuard = false;
 
-    public void PlayerGuardBreakFalse()
-    {
-        behaviourController.myAnimator.SetBool("GuardBreak", false);
-    }
+    //}
+
+    //IEnumerator JustGuardDelay()
+    //{
+    //    yield return new WaitForSeconds(2f);
+    //    isJustGuardDelay = false;
+    //}
 }

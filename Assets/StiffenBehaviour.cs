@@ -51,5 +51,13 @@ public class StiffenBehaviour : GenericBehaviour
     {
         behaviourController.Stiffen = false;
     }
+    public void PlayerRightStiffenFalse()
+    {
+        behaviourController.RightStiffen = false;
+    }
+    public void PlayerLeftStiffenFalse()
+    {
+        behaviourController.LeftStiffen = false;
+    }
 
 }
