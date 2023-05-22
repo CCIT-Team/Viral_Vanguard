@@ -1012,10 +1012,10 @@ AnimatorStateMachine:
     m_Position: {x: 350, y: 110, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8616931012846087635}
-    m_Position: {x: 600, y: -10, z: 0}
+    m_Position: {x: 560, y: -50, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -863959811642074288}
-    m_Position: {x: 610, y: 40, z: 0}
+    m_Position: {x: 130, y: -70, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 6319885762330288401}
@@ -1034,7 +1034,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ARPG_Warrior_Hit2
+  m_Name: Left_Hit
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -7397,7 +7397,7 @@ AnimatorStateMachine:
     m_Position: {x: 680, y: -100, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -173486237171219538}
-    m_Position: {x: 150, y: -90, z: 0}
+    m_Position: {x: 140, y: -90, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -7759,7 +7759,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ARPG_Warrior_Hit1
+  m_Name: Right_Hit
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
