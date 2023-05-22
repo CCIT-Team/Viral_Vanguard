@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 261.8021, g: 324.32925, b: 429.24924, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5531,8 +5531,8 @@ MonoBehaviour:
   specialAttack3_1: 9
   canStiffen: 1
   canAttack: 0
-  attackColliders:
-  - {fileID: 881495924}
+  attackDetections:
+  - {fileID: 0}
   listener: {fileID: 919132148797091325}
 --- !u!195 &919132148797091327
 NavMeshAgent:

@@ -8,7 +8,7 @@ public class AttackDetection : MonoBehaviour
 
     public enum BossAttackEnum { NORAMLATTACK1, NORMALATTACK2, ACTIONATTACK1, ACTIONATTACK1_1, SPECIALATTACK1, SPECIALATTACK2, SPECIALATTACK2_1, SPECIALATTACK3, SPECIALATTACK3_1 }
     public BossAttackEnum bossAttack;
-    public int damage;
+    public float damage;
     public CapsuleCollider attackCollider;
 
     void Awake() => damage = GetDamage();
@@ -17,15 +17,14 @@ public class AttackDetection : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            BehaviourController.instance.Stiffen = true;
             BehaviourController.instance.HealthPoint -= damage;
             print(BehaviourController.instance.HealthPoint);
         }
     }
 
-    int GetDamage()
+    float GetDamage()
     {
-        int damage;
+        float damage;
 
         switch(bossAttack)
         {

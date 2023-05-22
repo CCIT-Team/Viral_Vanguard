@@ -59,15 +59,15 @@ public class BossMove : MonoBehaviour
     public BossRangeCheck[] rangeChecks;
 
     [Header("공격 데미지 세팅")]
-    public int normalAttack1;
-    public int normalAttack2;
-    public int actionAttack1;
-    public int actionAttack1_1;
-    public int specialAttack1;
-    public int specialAttack2;
-    public int specialAttack2_1;
-    public int specialAttack3;
-    public int specialAttack3_1;
+    public float normalAttack1;
+    public float normalAttack2;
+    public float actionAttack1;
+    public float actionAttack1_1;
+    public float specialAttack1;
+    public float specialAttack2;
+    public float specialAttack2_1;
+    public float specialAttack3;
+    public float specialAttack3_1;
 
     bool ready;
     bool Ready
@@ -80,17 +80,57 @@ public class BossMove : MonoBehaviour
         get { return ready; }
     }
 
-    bool stiffen; //현재 경직상태인지?
+    bool isStiffen;
+    bool rightStiffen;
+    bool leftStiffen;
+    bool stiffen;
+    bool bigStiffen;
+    public bool RightStiffen
+    {
+        set
+        {
+            rightStiffen = value;
+            animator.SetTrigger("RightStiffen");
+        }
+        get
+        {
+            return rightStiffen;
+        }
+    }
+    public bool LeftStiffen
+    {
+        set
+        {
+            leftStiffen = value;
+            animator.SetTrigger("LeftStiffen");
+        }
+        get
+        {
+            return leftStiffen;
+        }
+    }
     public bool Stiffen
     {
         set
         {
             stiffen = value;
-            animator.SetBool("Stiffen", value);
+            animator.SetTrigger("Stiffen");
         }
         get
         {
             return stiffen;
+        }
+    }
+    public bool BigStiffen
+    {
+        set
+        {
+            bigStiffen = value;
+            animator.SetTrigger("BigStiffen");
+        }
+        get
+        {
+            return bigStiffen;
         }
     }
     public bool canStiffen; //경직 상태가 될 수 있는지?
@@ -98,7 +138,7 @@ public class BossMove : MonoBehaviour
     public bool canAttack;
     int attackCount = 0;
 
-    public GameObject[] attackColliders;
+    public GameObject[] attackDetections;
 
     public EventListener listener;
 
@@ -135,7 +175,8 @@ public class BossMove : MonoBehaviour
 
     public void StiffenEnd()
     {
-        animator.SetBool("Stiffen", false);
+        isStiffen = false;
+        NextAction();
     }
 
     public void RangeCheck(DistanceDetection.DistanceType type, bool b)
@@ -178,8 +219,35 @@ public class BossMove : MonoBehaviour
 
     public void ActiveCollider(int i)
     {
-        bool b = attackColliders[i].activeSelf ? false : true;
-        attackColliders[i].SetActive(b);
+        bool b = attackDetections[i].activeSelf ? false : true;
+        attackDetections[i].SetActive(b);
+    }
+
+
+    public enum AttackDirection { NONE, RIGHT, LEFT}
+
+    public void SetStiffen(int stiffenNum, AttackDirection dir)
+    {
+        if(!isStiffen)
+        {
+            if (dir == AttackDirection.RIGHT)
+            {
+                RightStiffen = true;
+            }
+            else if (dir == AttackDirection.LEFT)
+            {
+                LeftStiffen = true;
+            }
+            else
+            {
+                if (stiffenNum == 2)
+                    Stiffen = true;
+                else if (stiffenNum == 3)
+                    BigStiffen = true;
+            }
+
+            isStiffen = true;
+        }
     }
 }
 
