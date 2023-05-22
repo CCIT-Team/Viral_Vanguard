@@ -14,41 +14,30 @@ public class PlayerAttackCollsion : MonoBehaviour
             Debug.Log("Test");
             if (behaviourController.myAnimator.GetBool(AnimatorKey.Attack1))
             {
-                //BossMove.instacne.currentHealthPoint -= damage[0];
+                BossMove.instacne.currentHealthPoint -= damages[0];
                 behaviourController.kineticEnergy += increasekineticEnergy[0];
-                print("1");
             }
             else if(behaviourController.myAnimator.GetBool(AnimatorKey.Attack2)&& !behaviourController.myAnimator.GetBool(AnimatorKey.Attack3))
             {
-                //BossMove.instacne.currentHealthPoint -= damage[1];
+                BossMove.instacne.currentHealthPoint -= damages[1];
                 behaviourController.kineticEnergy += increasekineticEnergy[1];
-                print("2");
 
             }
             else if(behaviourController.myAnimator.GetBool(AnimatorKey.Attack3) && behaviourController.myAnimator.GetBool(AnimatorKey.Attack2))
             {
-                //BossMove.instacne.currentHealthPoint -= damage[2];
+                BossMove.instacne.currentHealthPoint -= damages[2];
                 behaviourController.kineticEnergy += increasekineticEnergy[2];
-                print("3");
             }
-            //if (BossMove.instacne.canStiffen)
-            //{//경직 
-            //    print("1");
-            //    BossMove.instacne.Stiffen = true;
-            //}
+            else if(behaviourController.myAnimator.GetBool(AnimatorKey.BigBang))
+            {
+                BossMove.instacne.currentHealthPoint -= damages[3];
+                //대경직 넣어야됨
+            }
+            if (BossMove.instacne.canStiffen)
+            {//경직 
+                print("sss");
+                BossMove.instacne.Stiffen = true;
+            }
         }
     }
-    //public Vector3 boxSize = new Vector3(3, 2, 2);
-
-    //public Collider[] CheckOverlapBox()
-    //{
-    //    return Physics.OverlapBox(transform.position, boxSize * 0.5f, transform.rotation);
-    //}
-
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.matrix = transform.localToWorldMatrix;
-    //    Gizmos.color = Color.green;
-    //    Gizmos.DrawWireCube(Vector3.zero, boxSize);
-    //}
 }
