@@ -12,11 +12,21 @@ public class MonsterMovementSub : MonoBehaviour
         {
             switch(rangeType)
             {
-                case RangeType.Attack:
-                    mainmove.Attack();
-                    break;
                 case RangeType.Search:
                     mainmove.SetTarget(other.transform);
+                    break;
+            }
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            switch (rangeType)
+            {
+                case RangeType.Attack:
+                    mainmove.Attack();
                     break;
             }
         }
