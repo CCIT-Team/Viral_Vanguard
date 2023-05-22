@@ -58,6 +58,17 @@ public class BossMove : MonoBehaviour
     public BossBehavior bossBehavior;
     public BossRangeCheck[] rangeChecks;
 
+    [Header("공격 데미지 세팅")]
+    public int normalAttack1;
+    public int normalAttack2;
+    public int actionAttack1;
+    public int actionAttack1_1;
+    public int specialAttack1;
+    public int specialAttack2;
+    public int specialAttack2_1;
+    public int specialAttack3;
+    public int specialAttack3_1;
+
     bool ready;
     bool Ready
     {
