@@ -50,11 +50,11 @@ public class UIManager : Singleton<UIManager>
 
         if (Input.GetKeyDown(KeyCode.L))
         {
-            SceneController.LoadScene("Lobby");
+            SceneFader.Instance.StartFadeOut("Lobby");
         }
         if (Input.GetKeyDown(KeyCode.N))
         {
-            SceneController.LoadScene("NikeMainRoad");
+            SceneFader.Instance.StartFadeOut("NikeMainRoad");
         }
     }
 
