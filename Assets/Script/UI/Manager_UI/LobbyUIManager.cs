@@ -8,11 +8,29 @@ public class LobbyUIManager : MonoBehaviour
     [Header("보스 정보 리스트")]
     public List<BossInformation> bossInfoSave = new List<BossInformation>();
 
+
+
     [Header("보스 정보 판넬")]
     public GameObject bossInfoPanel; 
     public Image bossImage;
     public Text bossNameText;
     public Text bossDescriptionText;
+
+    [Header("로비 버튼 판넬")]
+    public GameObject lobbyButtonPanel;
+    public Image lobbyButton;
+
+
+    public void LobbyButtonOpen()
+    {
+        lobbyButtonPanel.SetActive(true);
+    }
+
+    public void LobbyButtonClose()
+    {
+        lobbyButtonPanel.SetActive(false);
+    }
+
 
     public void PanelOpen(int i)
     {
