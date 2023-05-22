@@ -106,6 +106,7 @@ public class GuardBehaviour : GenericBehaviour
 
     public void PlayerJustGuardSuccessFalse()
     {
+        behaviourController.guard = true;
         behaviourController.JustGuardSuccess = false;
     }
 

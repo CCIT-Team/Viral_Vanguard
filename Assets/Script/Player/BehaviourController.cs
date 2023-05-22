@@ -65,7 +65,7 @@ public class BehaviourController : MonoBehaviour
             guardHit = value;
             if (guard == true)
             {
-                if(monsterDamage > stamina)
+                if(monsterDamage >= stamina)
                 {
                     myAnimator.SetBool("GuardBreak", true);
                     calculateStaminaDamage = monsterDamage - stamina;

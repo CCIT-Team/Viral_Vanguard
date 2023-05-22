@@ -17,6 +17,12 @@ public class AttackDetection : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            if(BehaviourController.instance.guard)
+                BehaviourController.instance.GuardHit = true;
+            else if(BehaviourController.instance.justGuard)
+                BehaviourController.instance.JustGuardSuccess = true;
+            else
+                BehaviourController.instance.Stiffen = true;
             BehaviourController.instance.HealthPoint -= damage;
             print(BehaviourController.instance.HealthPoint);
         }
