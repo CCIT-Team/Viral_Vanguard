@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public static class SceneController
 {
+
     // ¾À ÀÌ¸§À¸·Î ¾À ÀüÈ¯
     public static void LoadScene(string sceneName)
     {
