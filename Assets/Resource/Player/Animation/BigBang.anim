@@ -92631,15 +92631,29 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.6666666
+  - time: 1.65
     functionName: StiffenCheckStart
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.75
+  - time: 1.65
+    functionName: IsBigBangTrue
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.8333334
     functionName: StiffenCheckEnd
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.8333334
+    functionName: IsBigBangFalse
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

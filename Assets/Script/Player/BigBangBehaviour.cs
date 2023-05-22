@@ -122,4 +122,14 @@ public class BigBangBehaviour : GenericBehaviour
     {
         behaviourController.kineticEnergy -= 20;
     }
+
+    public void IsBigBangTrue()
+    {
+        behaviourController.isBigBang = true;
+    }
+
+    public void IsBigBangFalse()
+    {
+        behaviourController.isBigBang = false;
+    }
 }

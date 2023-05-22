@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 261.8021, g: 324.32925, b: 429.24924, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3187,6 +3187,26 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.34006026
       objectReference: {fileID: 0}
+    - target: {fileID: 3118794107273675912, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
+        type: 3}
+      propertyPath: damages.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3118794107273675912, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
+        type: 3}
+      propertyPath: damages.Array.data[3]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3118794107273675912, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
+        type: 3}
+      propertyPath: increasekineticEnergy.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3118794107273675912, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
+        type: 3}
+      propertyPath: increasekineticEnergy.Array.data[3]
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3457548538104709980, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3952,6 +3972,11 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.9892409
       objectReference: {fileID: 0}
+    - target: {fileID: 5548727610369880072, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
+        type: 3}
+      propertyPath: damageChecker
+      value: 
+      objectReference: {fileID: 1919403378}
     - target: {fileID: 5548727610369880074, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
         type: 3}
       propertyPath: playerAttackCollsion
@@ -4586,7 +4611,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1586327694}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1919403378}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76cce07cef753564bb3a3ffd17948dc4, type: 3}
@@ -4896,6 +4921,12 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.5
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!1 &1919403378 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3118794107273675918, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
+    type: 3}
+  m_PrefabInstance: {fileID: 1586327694}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1977573852
 GameObject:
   m_ObjectHideFlags: 0
@@ -5532,7 +5563,7 @@ MonoBehaviour:
   canStiffen: 1
   canAttack: 0
   attackDetections:
-  - {fileID: 0}
+  - {fileID: 881495924}
   listener: {fileID: 919132148797091325}
 --- !u!195 &919132148797091327
 NavMeshAgent:

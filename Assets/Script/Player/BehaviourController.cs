@@ -47,6 +47,7 @@ public class BehaviourController : MonoBehaviour
     public float totalStamina;
     public float kineticEnergy;
 
+    public bool isBigBang = false;
     public bool guard;
     private bool guardHit;       //가드중 몬스터가 때리면
     public bool justGuard;

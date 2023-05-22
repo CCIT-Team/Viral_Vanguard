@@ -42,12 +42,13 @@ public class PlayerAttackCollsion : MonoBehaviour
                     BossMove.instacne.SetStiffen(2, BossMove.AttackDirection.NONE); 
                 }
             }
-            else if(behaviourController.myAnimator.GetBool(AnimatorKey.BigBang))
+            else if(behaviourController.isBigBang)
             {
                 BossMove.instacne.currentHealthPoint -= damages[3];
 
                 if (BossMove.instacne.canStiffen)
                 {
+                    print("1");
                     BossMove.instacne.SetStiffen(3, BossMove.AttackDirection.NONE); 
                 }
             }

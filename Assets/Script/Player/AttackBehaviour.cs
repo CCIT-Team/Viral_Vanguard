@@ -9,7 +9,6 @@ using UnityEngine;
 public class AttackBehaviour : GenericBehaviour
 {
     public PlayerAttackCollsion playerAttackCollsion;
-    public float[] damage;
     private int grounded;//¾Ö´Ï¿ë
     private int attack1;
     private int attack2;
