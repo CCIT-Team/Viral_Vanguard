@@ -80,7 +80,6 @@ public class BossMove : MonoBehaviour
         get { return ready; }
     }
 
-    bool isStiffen;
     bool rightStiffen;
     bool leftStiffen;
     bool stiffen;
@@ -175,7 +174,7 @@ public class BossMove : MonoBehaviour
 
     public void StiffenEnd()
     {
-        isStiffen = false;
+        canStiffen = true;
         NextAction();
     }
 
@@ -228,26 +227,23 @@ public class BossMove : MonoBehaviour
 
     public void SetStiffen(int stiffenNum, AttackDirection dir)
     {
-        if(!isStiffen)
+        if (dir == AttackDirection.RIGHT)
         {
-            if (dir == AttackDirection.RIGHT)
-            {
-                RightStiffen = true;
-            }
-            else if (dir == AttackDirection.LEFT)
-            {
-                LeftStiffen = true;
-            }
-            else
-            {
-                if (stiffenNum == 2)
-                    Stiffen = true;
-                else if (stiffenNum == 3)
-                    BigStiffen = true;
-            }
-
-            isStiffen = true;
+            RightStiffen = true;
         }
+        else if (dir == AttackDirection.LEFT)
+        {
+            LeftStiffen = true;
+        }
+        else
+        {
+            if (stiffenNum == 2)
+                Stiffen = true;
+            else if (stiffenNum == 3)
+                BigStiffen = true;
+        }
+
+        canStiffen = false;
     }
 }
 
