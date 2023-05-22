@@ -29,6 +29,7 @@ public class UIManager : Singleton<UIManager>
         if(uiStack.Count > 0)
         {
             GameObject lastUI = uiStack.Pop();
+            Debug.Log(lastUI.name);
             lastUI.SetActive(false);
 
             Button button = lastUI.GetComponent<Button>();
@@ -39,13 +40,14 @@ public class UIManager : Singleton<UIManager>
 
     public void Update()
     {
-        Debug.Log(uiStack.Count);
+            Debug.Log(uiStack.Count);
        
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             CloseLastUI();
         }
+
         if (Input.GetKeyDown(KeyCode.L))
         {
             SceneController.LoadScene("Lobby");

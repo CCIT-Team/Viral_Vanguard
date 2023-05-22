@@ -92,11 +92,6 @@ public class SaveDataManager : Singleton<SaveDataManager>
         GameLoadAllData();
     }
 
-    private void Update()
-    {
-    }
-
-
     public void GameSave(string SAVE_FILENAME, int currentsavefileindex)
     {
         this._SAVE_FILENAME = SAVE_FILENAME; 
