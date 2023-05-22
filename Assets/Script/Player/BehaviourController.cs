@@ -48,18 +48,18 @@ public class BehaviourController : MonoBehaviour
     public float kineticEnergy;
 
     public bool guard;
-    private bool guardAttackBool;       //가드중 몬스터가 때리면
+    private bool guardHit;       //가드중 몬스터가 때리면
     public bool justGuard;
     private bool justGuardSuccess;   //가드중 저스트 가드 성공
     [HideInInspector]
     public int lockOn;
 
-    public bool GuardBool
+    public bool GuardHit
     {
-        get { return guardAttackBool; }
+        get { return guardHit; }
         set
         {
-            guardAttackBool = value;
+            guardHit = value;
             if (guard == true)
             {
                 myAnimator.SetBool("GuradHit", value);

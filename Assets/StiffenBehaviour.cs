@@ -47,4 +47,9 @@ public class StiffenBehaviour : GenericBehaviour
         behaviourController.myAnimator.SetBool(guardBool, false);
     }
 
+    public void PlayerStiffenFalse()
+    {
+        behaviourController.Stiffen = false;
+    }
+
 }

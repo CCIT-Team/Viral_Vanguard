@@ -98,4 +98,14 @@ public class GuardBehaviour : GenericBehaviour
         //만약 스태미나가 공격력보다 떨어지면 계산후 나머지 데미지로 전환
         
     }
+
+    public void PlayerGuardStiffenFalse()
+    {
+        behaviourController.GuardHit = false;
+    }
+
+    public void PlayerJustGuardSuccessFalse()
+    {
+        behaviourController.JustGuardSuccess = false;
+    }
 }
