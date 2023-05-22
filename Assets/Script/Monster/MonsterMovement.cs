@@ -10,6 +10,7 @@ public class MonsterMovement : MonoBehaviour
     NavMeshAgent agent;
     Transform target;
     public Transform startPoint;
+    private bool stiffen;
 
     Animator animator;
 
@@ -20,6 +21,20 @@ public class MonsterMovement : MonoBehaviour
     public MonsterMovementSub searchRange;
 
     float healthPoint = 50;
+
+    public bool Stiffen
+    {
+        get { return stiffen; }
+        set
+        {
+            stiffen = value;
+            animator.SetTrigger("Stiffen");
+            if(value)
+            {
+                agent.isStopped = true;
+            }
+        }
+    }
     public float HealthPoint
     {
         get
