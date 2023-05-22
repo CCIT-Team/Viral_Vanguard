@@ -99,6 +99,7 @@ public class EvasionBehaviour : GenericBehaviour
             mouseLock = true;
             behaviourController.OverrideWithBehaviour(this);
             behaviourController.myAnimator.SetTrigger(evasionTrigger);
+            behaviourController.StaminaChargeOff();
             behaviourController.myAnimator.SetBool(keyLock, mouseLock);
             behaviourController.LockTempBehaviour(behaviourCode);
         }

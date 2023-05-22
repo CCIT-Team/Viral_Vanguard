@@ -4,16 +4,36 @@ using UnityEngine;
 
 public class PlayerAttackCollsion : MonoBehaviour
 {
-
+    public BehaviourController behaviourController;
+    public float[] damages;
+    public float[] increasekineticEnergy;
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Monster"))
         {
             Debug.Log("Test");
-            //BossMove.instacne.currentHealthPoint -= damage[1];
+            if (behaviourController.myAnimator.GetBool(AnimatorKey.Attack1))
+            {
+                //BossMove.instacne.currentHealthPoint -= damage[0];
+                behaviourController.kineticEnergy += increasekineticEnergy[0];
+                print("1");
+            }
+            else if(behaviourController.myAnimator.GetBool(AnimatorKey.Attack2))
+            {
+                //BossMove.instacne.currentHealthPoint -= damage[1];
+                behaviourController.kineticEnergy += increasekineticEnergy[1];
+                print("2");
+
+            }
+            else if(behaviourController.myAnimator.GetBool(AnimatorKey.Attack3))
+            {
+                //BossMove.instacne.currentHealthPoint -= damage[2];
+                behaviourController.kineticEnergy += increasekineticEnergy[2];
+                print("3");
+            }
             //if (BossMove.instacne.canStiffen)
             //{//경직 
-            //    print("개느려");
+            //    print("1");
             //    BossMove.instacne.Stiffen = true;
             //}
         }

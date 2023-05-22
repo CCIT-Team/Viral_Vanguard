@@ -13,9 +13,9 @@ public class GuardBehaviour : GenericBehaviour
     public float guardFieldOfView = 50;
     private int guardBool;
     public Transform myTransform;
-    private EvasionBehaviour evasionBehaviour; 
-    private AttackBehaviour attackBehaviour;   
-    private BigBangBehaviour bigBangBehaviour; 
+    private EvasionBehaviour evasionBehaviour;
+    private AttackBehaviour attackBehaviour;
+    private BigBangBehaviour bigBangBehaviour;
     public float reducedStaminaGuard;
 
     //각 행동 쿨타임
@@ -41,6 +41,7 @@ public class GuardBehaviour : GenericBehaviour
             behaviourController.guard = true;
             behaviourController.camScript.SetFieldOfView(guardFieldOfView);
             behaviourController.myAnimator.SetBool(guardBool, behaviourController.guard);
+            behaviourController.StaminaChargeOff();
             yield return new WaitForSeconds(0.1f);
             //behaviourController.myAnimator.SetFloat(speedFloat, 0.0f);
             //behaviourController.OverrideWithBehaviour(this);
@@ -60,7 +61,7 @@ public class GuardBehaviour : GenericBehaviour
 
     private void Update()
     {
-        if(Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1))
         {
             evasionBehaviour.mouseLock = false;
             attackBehaviour.mouseLock = false;
@@ -73,7 +74,7 @@ public class GuardBehaviour : GenericBehaviour
         if (Input.GetAxisRaw(ButtonKey.Guard) != 0 && !behaviourController.guard && !evasionBehaviour.mouseLock && !attackBehaviour.mouseLock && !bigBangBehaviour.mouseLock && behaviourController.stamina >= 0) //스테미나 없으면 불가능
         {
             StartCoroutine(ToggleGuardOn());
-            
+
         }
         else if (behaviourController.guard && Input.GetAxisRaw(ButtonKey.Guard) == 0 || evasionBehaviour.mouseLock || attackBehaviour.mouseLock || bigBangBehaviour.mouseLock || behaviourController.stamina <= 0)
         {
@@ -89,5 +90,12 @@ public class GuardBehaviour : GenericBehaviour
         {
             behaviourController.justGuard = false;
         }
+    }
+
+    public void ReducedstaminaGuard()
+    {
+        //공격력 만큼 스태미나 감소
+        //만약 스태미나가 공격력보다 떨어지면 계산후 나머지 데미지로 전환
+        
     }
 }

@@ -51,6 +51,7 @@ public class BehaviourController : MonoBehaviour
     private bool guardAttackBool;       //가드중 몬스터가 때리면
     public bool justGuard;
     private bool justGuardSuccess;   //가드중 저스트 가드 성공
+    [HideInInspector]
     public int lockOn;
 
     public bool GuardBool
@@ -74,7 +75,7 @@ public class BehaviourController : MonoBehaviour
             justGuardSuccess = value;
             if (justGuard == true)
             {
-                myAnimator.SetBool("JustGuard", value);
+                myAnimator.SetBool("JustGuardSuccess", value);
             }
         }
     }
@@ -115,9 +116,11 @@ public class BehaviourController : MonoBehaviour
         colliderExtents = GetComponent<Collider>().bounds.extents;
         lockOn = Animator.StringToHash(AnimatorKey.LockOn);
     }
-    public void StaminaChargeOn()
+    public IEnumerator StaminaChargeOn()
     {
-        staminaCharge = true;
+        yield return new WaitForSeconds(2f);
+        if (totalStamina >= stamina)
+            staminaCharge = true;
     }
 
     public void StaminaChargeOff()

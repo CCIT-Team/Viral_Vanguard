@@ -21,7 +21,9 @@ public class AttackBehaviour : GenericBehaviour
     public int keyLock;
     public bool mouseLock;
     public GameObject damageChecker;
-
+    public float attack1ShakeBounce = 1f;
+    public float attack2ShakeBounce = 2f;
+    public float attack3ShakeBounce = 3f;
 
     //각 행동 쿨타임
 
@@ -114,6 +116,7 @@ public class AttackBehaviour : GenericBehaviour
             if (clicks == 1)
             {
                 behaviourController.myAnimator.SetBool(attack1, true);
+                behaviourController.camScript.CamShakeTime(0.2f);
             }
             clicks = Mathf.Clamp(clicks, 0, 3);
         }
@@ -159,6 +162,7 @@ public class AttackBehaviour : GenericBehaviour
         if(clicks >= 2)
         {
             behaviourController.myAnimator.SetBool(attack2, true);
+            behaviourController.camScript.CamShakeTime(0.3f);
             behaviourController.myAnimator.SetBool(attack1, false);
         }
         else
@@ -172,6 +176,7 @@ public class AttackBehaviour : GenericBehaviour
         if (clicks >= 3)
         {
             behaviourController.myAnimator.SetBool(attack3, true);
+            behaviourController.camScript.CamShakeTime(1f);
         }
         else
         {

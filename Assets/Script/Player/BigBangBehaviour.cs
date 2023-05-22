@@ -88,6 +88,7 @@ public class BigBangBehaviour : GenericBehaviour
             behaviourController.OverrideWithBehaviour(this);
             behaviourController.LockTempBehaviour(behaviourCode);
             behaviourController.myAnimator.SetTrigger(bigBangTrigger);
+            behaviourController.StaminaChargeOff();
             behaviourController.myAnimator.SetBool(keyLock, mouseLock);
         }
     }

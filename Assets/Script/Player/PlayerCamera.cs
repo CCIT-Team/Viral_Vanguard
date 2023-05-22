@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
 {
+    #region 변수
     public Camera myCamera;
     public BehaviourController behaviourController;
     public Transform player;
@@ -15,7 +16,6 @@ public class PlayerCamera : MonoBehaviour
 
     public float maxVerticalAngle = 30.0f;
     public float minVerticalAngle = -60.0f;
-    public float camShakeBounce = 4f;
     private float angleHorizontal = 0.0f;
     private float angleVertical = 0.0f;
 
@@ -32,17 +32,24 @@ public class PlayerCamera : MonoBehaviour
     private float defaultFieldOfView; //기본 시야값
     private float targetFieldOfView; //타겟 시야값
     private float targetMaxVerticleAngle; //카메라 수직 최대 각도
-    private float shakeAngle = 0f;
+    public float camShakeAmount;
+    private float shakeTime;
+    Vector3 previousTransform;
 
     // 락온 리스트 만들어서 가장 가까운것 확인 후 벽있는지 확인 후 그게 맞다면 회전할 수 있도록 하기 가능하면 카메라 물리 연산도 같이 해서 카메라랑 플레이어 사이에 물체가 있다면 디폴트 카메라 처럼 움직이게 하기
-    List<TartgetLockOnTransform> lockOnTargets = new List<TartgetLockOnTransform>();
+    public List<TartgetLockOnTransform> lockOnTargets = new List<TartgetLockOnTransform>();
     public float lockOnSphere;
     public float maximumLockOnDistance;
     public Transform currentLockOnTarget;
     public Transform nearestLockOnTarget;
     public LayerMask targetLayerMask;
-    public bool islockOn = false;
+    public bool isLockOn = false;
+    public bool isLockOning = false;
+    private float lockOnTime;
+    public float minLockOnTime = 0.5f;
     public Sprite lockOnImage;
+    public bool isDelay;
+    #endregion
 
     public float _getHorizotal
     {
@@ -56,7 +63,7 @@ public class PlayerCamera : MonoBehaviour
         cameraTransform.rotation = Quaternion.identity;
 
         relCameraPos = cameraTransform.position - player.position;
-        relCameraPosMag = relCameraPos.sqrMagnitude - 0.25f;
+        relCameraPosMag = relCameraPos.magnitude - 0.5f;
 
         smoothPivotOffset = pivotOffset;
         smoothCamOffset = camOffset;
@@ -70,29 +77,46 @@ public class PlayerCamera : MonoBehaviour
 
     void Update()
     {
-        if (!islockOn) //&&currentLockOnTarget == null)
+        if (!isLockOn)
         {
             DefaultCamera();
         }
         else
         {
+            //여기서 가까운거 리스트 정리해서 받고 커런트 트랜스톰에 넣기 + r누르면 다음으로 가까운 적으로 락온되게
             LockOnTarget();
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKey(KeyCode.R) && !isLockOn && !isDelay)
         {
-            if (islockOn)
+            isLockOning = true;
+            if(isLockOning)
             {
-                islockOn = false;
-                behaviourController.myAnimator.SetBool(behaviourController.lockOn, false);
-            }
-            else
-            {
-                islockOn = true;
-                LockOnTargetCheck();
-                behaviourController.myAnimator.SetBool(behaviourController.lockOn, true);
+                lockOnTime += Time.deltaTime;
+                if(lockOnTime >= minLockOnTime)
+                {
+                    LockOnActivate();
+                }
             }
         }
+        else if(Input.GetKey(KeyCode.R) && isLockOn && !isDelay)
+        {
+            isLockOning = true;
+            if(isLockOning)
+            {
+                lockOnTime += Time.deltaTime;
+                if (lockOnTime >= minLockOnTime)
+                {
+                    LockOnDeactivate();
+                }
+            }
+        }
+    }
+
+    IEnumerator LockOnLocked()
+    {
+        yield return new WaitForSeconds(2f);
+        isDelay = false;
     }
 
     public void DefaultCamera()
@@ -101,7 +125,7 @@ public class PlayerCamera : MonoBehaviour
         angleVertical += Mathf.Clamp(Input.GetAxis("Mouse Y"), -1f, 1f) * verticalAimingSpeed;
         angleVertical = Mathf.Clamp(angleVertical, minVerticalAngle, targetMaxVerticleAngle);
 
-        angleVertical = Mathf.LerpAngle(angleVertical, angleVertical + shakeAngle, 10f * Time.deltaTime);
+        //angleVertical = Mathf.LerpAngle(angleVertical, angleVertical + shakeAngle, 10f * Time.deltaTime);
 
         //카메라 회전
         Quaternion camYRotation = Quaternion.Euler(0.0f, angleHorizontal, 0.0f);
@@ -127,6 +151,19 @@ public class PlayerCamera : MonoBehaviour
         smoothCamOffset = Vector3.Lerp(smoothCamOffset, noCollisionOffset, smooth * Time.deltaTime);
 
         cameraTransform.position = player.position + camYRotation * smoothPivotOffset + aimRotation * smoothCamOffset;
+
+        //카메라 흔들기
+        previousTransform = cameraTransform.position;
+        if (shakeTime > 0f)
+        {
+            transform.position = Random.insideUnitSphere * camShakeAmount + previousTransform;
+            shakeTime -= Time.deltaTime;
+        }
+        else if( shakeTime < 0f)
+        {
+            shakeTime = 0.0f;
+            cameraTransform.position = previousTransform;
+        }
     }
 
     public void LockOnTargetCheck()
@@ -183,7 +220,41 @@ public class PlayerCamera : MonoBehaviour
             Vector3 camPosition = player.position + pivotOffset + camOffset.z * player.forward;
             Vector3 smoothed_position = Vector3.Lerp(transform.position, camPosition, smooth);
             transform.position = smoothed_position;
+
+            //카메라 흔들기
+            previousTransform = transform.position;
+            if (shakeTime > 0f)
+            {
+                transform.position = Random.insideUnitSphere * camShakeAmount + previousTransform;
+                shakeTime -= Time.deltaTime;
+            }
+            else if (shakeTime < 0f)
+            {
+                shakeTime = 0.0f;
+                transform.position = previousTransform;
+            }
         }
+    }
+
+    public void LockOnActivate()
+    {
+        isLockOn = true;
+        LockOnTargetCheck();
+        isDelay = true;
+        behaviourController.myAnimator.SetBool(behaviourController.lockOn, true);
+        StartCoroutine(LockOnLocked());
+        isLockOning = false;
+        lockOnTime = 0;
+    }
+
+    public void LockOnDeactivate()
+    {
+        isLockOn = false;
+        isDelay = true;
+        behaviourController.myAnimator.SetBool(behaviourController.lockOn, false);
+        StartCoroutine(LockOnLocked());
+        isLockOning = false;
+        lockOnTime = 0;
     }
 
     public void ResetLockOn()
@@ -207,9 +278,9 @@ public class PlayerCamera : MonoBehaviour
         targetMaxVerticleAngle = maxVerticalAngle;
     }
 
-    public void ShakeVertical(float degree) 
+    public void CamShakeTime(float time)
     {
-        shakeAngle = degree;
+        shakeTime = time;
     }
 
     public void SetTargetOffset(Vector3 newPivotOffset, Vector3 newCamOffset) 
