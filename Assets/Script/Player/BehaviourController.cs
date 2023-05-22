@@ -51,6 +51,8 @@ public class BehaviourController : MonoBehaviour
     private bool guardHit;       //가드중 몬스터가 때리면
     public bool justGuard;
     private bool justGuardSuccess;   //가드중 저스트 가드 성공
+    public float monsterDamage;
+    private float calculateStaminaDamage;
     [HideInInspector]
     public int lockOn;
 
@@ -62,7 +64,16 @@ public class BehaviourController : MonoBehaviour
             guardHit = value;
             if (guard == true)
             {
-                myAnimator.SetBool("GuradHit", value);
+                if(monsterDamage > stamina)
+                {
+                    myAnimator.SetBool("GuardBreak", true);
+                    calculateStaminaDamage = monsterDamage - stamina;
+                    HealthPoint -= calculateStaminaDamage;
+                }
+                else
+                {
+                    myAnimator.SetBool("GuardHit", value);
+                }
             }
         }
     }

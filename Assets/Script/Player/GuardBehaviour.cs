@@ -108,4 +108,9 @@ public class GuardBehaviour : GenericBehaviour
     {
         behaviourController.JustGuardSuccess = false;
     }
+
+    public void PlayerGuardBreakFalse()
+    {
+        behaviourController.myAnimator.SetBool("GuardBreak", false);
+    }
 }
