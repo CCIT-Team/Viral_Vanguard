@@ -40,7 +40,7 @@ public class UIManager : Singleton<UIManager>
 
     public void Update()
     {
-            Debug.Log(uiStack.Count);
+        Debug.Log(uiStack.Count);
        
 
         if (Input.GetKeyDown(KeyCode.Escape))
