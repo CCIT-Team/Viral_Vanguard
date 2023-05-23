@@ -222,26 +222,12 @@ public class BossMove : MonoBehaviour
         attackDetections[i].SetActive(b);
     }
 
-
-    public enum AttackDirection { NONE, RIGHT, LEFT}
-
-    public void SetStiffen(int stiffenNum, AttackDirection dir)
+    public void SetStiffen(int stiffenNum)
     {
-        if (dir == AttackDirection.RIGHT)
-        {
-            RightStiffen = true;
-        }
-        else if (dir == AttackDirection.LEFT)
-        {
-            LeftStiffen = true;
-        }
-        else
-        {
-            if (stiffenNum == 2)
-                Stiffen = true;
-            else if (stiffenNum == 3)
-                BigStiffen = true;
-        }
+        if (stiffenNum == 0)
+            Stiffen = true;
+        else if (stiffenNum == 1)
+            BigStiffen = true;
 
         canStiffen = false;
     }

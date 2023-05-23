@@ -3984,6 +3984,11 @@ PrefabInstance:
       objectReference: {fileID: 1586327696}
     - target: {fileID: 5548727610369880117, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
         type: 3}
+      propertyPath: stamina
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548727610369880117, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
+        type: 3}
       propertyPath: camScript
       value: 
       objectReference: {fileID: 879508582}
@@ -3992,6 +3997,16 @@ PrefabInstance:
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 879508583}
+    - target: {fileID: 5548727610369880117, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
+        type: 3}
+      propertyPath: kineticEnergy
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548727610369880117, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
+        type: 3}
+      propertyPath: staminaChargeSpeed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5598844270633050655, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5551,7 +5566,7 @@ MonoBehaviour:
     rangeCheck: 0
     willDo: 0
     indexNum: 5
-  normalAttack1: 1
+  normalAttack1: 5
   normalAttack2: 2
   actionAttack1: 3
   actionAttack1_1: 4
