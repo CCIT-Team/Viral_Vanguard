@@ -17,6 +17,7 @@ public class GuardBehaviour : GenericBehaviour
     private AttackBehaviour attackBehaviour;
     private BigBangBehaviour bigBangBehaviour;
     public float reducedStaminaGuard;
+    private bool isJustGuardDelay;
 
     //각 행동 쿨타임
 
@@ -83,11 +84,19 @@ public class GuardBehaviour : GenericBehaviour
 
 
         //저스트 가드
-        if (behaviourController.MonsterAttack == true && Input.GetAxisRaw(ButtonKey.JustGuard) != 0 && behaviourController.guard)
+        if (behaviourController.MonsterAttack && !isJustGuardDelay && Input.GetKeyDown(ButtonKey.JustGuard) && behaviourController.guard) //조건넣기
         {
             behaviourController.JustGuard = true;
             BossMove.instacne.SetStiffen(0);
+            StartCoroutine(JustGuardOnce());
         }
+    }
+
+    IEnumerator JustGuardOnce()
+    {
+        isJustGuardDelay = true;
+        yield return new WaitForSeconds(1f);
+        isJustGuardDelay = false;
     }
 
     public void playerJustGuardFalse()
