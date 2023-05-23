@@ -39,6 +39,8 @@ public class BehaviourController : MonoBehaviour
     private float MaxHealth;
     private float currentHealthPoint = 100f;
     private bool stiffen;
+    private bool rightStiffen;
+    private bool leftStiffen;
     public bool isDead;
 
     private bool staminaCharge;
@@ -50,10 +52,9 @@ public class BehaviourController : MonoBehaviour
     public bool isBigBang = false;
     public bool guard;
     private bool guardHit;       //가드중 몬스터가 때리면
-    public bool justGuard;
-    private bool justGuardSuccess;   //가드중 저스트 가드 성공
-    public float monsterDamage;
-    private float calculateStaminaDamage;
+    private bool justGuard;
+    private bool guardBreak;
+    private bool monsterAttack;
     [HideInInspector]
     public int lockOn;
 
@@ -65,38 +66,46 @@ public class BehaviourController : MonoBehaviour
             guardHit = value;
             if (guard == true)
             {
-                if(monsterDamage >= stamina)
-                {
-                    myAnimator.SetBool("GuardBreak", true);
-                    calculateStaminaDamage = monsterDamage - stamina;
-                    HealthPoint -= calculateStaminaDamage;
-                }
-                else
-                {
-                    myAnimator.SetBool("GuardHit", value);
-                }
+                myAnimator.SetTrigger("GuardHit");
             }
         }
     }
 
-    public bool JustGuardSuccess
+    public bool GuardBreak
     {
-        get { return justGuardSuccess; }
+        get { return guardBreak; }
         set
         {
-            justGuardSuccess = value;
-            if (justGuard == true)
+            guardBreak = value;
+            if(guard == true)
             {
-                myAnimator.SetBool("JustGuardSuccess", value);
+                myAnimator.SetTrigger("GuardBreak");
             }
         }
     }
 
-    public float HealthPoint
+    public bool MonsterAttack
     {
-        get => currentHealthPoint;
-        set => currentHealthPoint = value;
+        get { return monsterAttack; }
+        set
+        {
+            monsterAttack = value;
+        }
     }
+
+    public bool JustGuard //적이 공격할때
+    {
+        get { return justGuard; }
+        set
+        {
+            justGuard = value;
+            if (justGuard == true)
+            {
+                myAnimator.SetTrigger("JustGuard");
+            }
+        }
+    }
+
     public bool Stiffen
     {
         get { return stiffen; }
@@ -108,6 +117,52 @@ public class BehaviourController : MonoBehaviour
                 myAnimator.SetBool("Stiffen", value);
             }
         }
+    }
+    public bool RightStiffen
+    {
+        get { return rightStiffen; }
+        set
+        {
+            rightStiffen = value;
+            if (guard == false)
+            {
+                myAnimator.SetBool("RightStiffen", value);
+            }
+        }
+    }
+
+    public bool LeftStiffen
+    {
+        get { return leftStiffen; }
+        set
+        {
+            leftStiffen = value;
+            if (guard == false)
+            {
+                myAnimator.SetBool("LeftStiffen", value);
+            }
+        }
+    }
+
+    public void SetStiffen(int stiffenNum) //출처 해성이 BOSSMOVE
+    {
+        if (stiffenNum == 1)
+        {
+            RightStiffen = true;
+        }
+        else if (stiffenNum == 2)
+        {
+            LeftStiffen = true;
+        }
+        else if (stiffenNum == 3) //일반 경직
+        {
+                Stiffen = true;
+        }
+    }
+    public float HealthPoint
+    {
+        get => currentHealthPoint;
+        set => currentHealthPoint = value;
     }
     public float Horizontal { get => horizontal; }
     public float Vertical { get => vertical; }
