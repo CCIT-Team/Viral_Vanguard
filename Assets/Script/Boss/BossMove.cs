@@ -212,7 +212,7 @@ public class BossMove : MonoBehaviour
 
     public void DoAttack()
     {
-        BehaviourController.instance.MonsterAttack = true;
+        BehaviourController.instance.MonsterAttack = BehaviourController.instance.MonsterAttack ? false : true;
     }
 }
 
