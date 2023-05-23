@@ -6,7 +6,7 @@ public class AttackDetection : MonoBehaviour
 {
     [SerializeField] BossMove boss;
 
-    public enum BossAttackEnum { NORAMLATTACK1, NORMALATTACK2, ACTIONATTACK1, ACTIONATTACK1_1, SPECIALATTACK1, SPECIALATTACK2, SPECIALATTACK2_1, SPECIALATTACK3, SPECIALATTACK3_1 }
+    public enum BossAttackEnum { NORAMLATTACK1, NORMALATTACK2, NORMALATTACK3, ACTIONATTACK1, ACTIONATTACK1_1, SPECIALATTACK1, SPECIALATTACK2, SPECIALATTACK2_1, SPECIALATTACK3, SPECIALATTACK3_1 }
     public BossAttackEnum bossAttack;
     public float damage;
     public CapsuleCollider attackCollider;
@@ -17,12 +17,16 @@ public class AttackDetection : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if(BehaviourController.instance.guard)
+            if(BehaviourController.instance.guard && !boss.canBigStiffen)
+            {
                 BehaviourController.instance.GuardHit = true;
+                SteminaCheck();
+            }
             else
+            {
                 BehaviourController.instance.Stiffen = true;
-            BehaviourController.instance.HealthPoint -= damage;
-            print(BehaviourController.instance.HealthPoint);
+                Damage();
+            }
         }
     }
 
@@ -37,6 +41,9 @@ public class AttackDetection : MonoBehaviour
                 break;
             case BossAttackEnum.NORMALATTACK2:
                 damage = boss.normalAttack2;
+                break;
+            case BossAttackEnum.NORMALATTACK3:
+                damage = boss.normalAttack3;
                 break;
             case BossAttackEnum.ACTIONATTACK1:
                 damage = boss.actionAttack1;
@@ -65,5 +72,23 @@ public class AttackDetection : MonoBehaviour
         }
 
         return damage;
+    }
+
+    void SteminaCheck()
+    {
+        if (BehaviourController.instance.stamina < damage)
+        {
+            BehaviourController.instance.HealthPoint -= damage - BehaviourController.instance.stamina;
+            BehaviourController.instance.GuardBreak = true;
+            print(BehaviourController.instance.HealthPoint);
+        }
+
+        BehaviourController.instance.stamina -= damage;
+    }
+
+    void Damage()
+    {
+        BehaviourController.instance.HealthPoint -= damage;
+        print(BehaviourController.instance.HealthPoint);
     }
 }

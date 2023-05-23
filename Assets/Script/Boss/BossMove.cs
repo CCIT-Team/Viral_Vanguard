@@ -61,6 +61,7 @@ public class BossMove : MonoBehaviour
     [Header("공격 데미지 세팅")]
     public float normalAttack1;
     public float normalAttack2;
+    public float normalAttack3;
     public float actionAttack1;
     public float actionAttack1_1;
     public float specialAttack1;
@@ -69,19 +70,8 @@ public class BossMove : MonoBehaviour
     public float specialAttack3;
     public float specialAttack3_1;
 
-    bool ready;
-    bool Ready
-    {
-        set
-        {
-            ready = value;
-            if (Ready) { NormalAttack(2); }
-        }
-        get { return ready; }
-    }
-
     bool stiffen;
-    bool bigStiffen;
+    public bool bigStiffen;
     public bool Stiffen
     {
         set
@@ -166,17 +156,20 @@ public class BossMove : MonoBehaviour
             case DistanceDetection.DistanceType.NORMALATTACK2:
                 rangeChecks[1].RangeCheck = b;
                 break;
-            case DistanceDetection.DistanceType.ACTIONATTACK1:
+            case DistanceDetection.DistanceType.NORMALATTACK3:
                 rangeChecks[2].RangeCheck = b;
                 break;
-            case DistanceDetection.DistanceType.SPECIALATTACK1:
+            case DistanceDetection.DistanceType.ACTIONATTACK1:
                 rangeChecks[3].RangeCheck = b;
                 break;
-            case DistanceDetection.DistanceType.SPECIALATTACK2:
+            case DistanceDetection.DistanceType.SPECIALATTACK1:
                 rangeChecks[4].RangeCheck = b;
                 break;
-            case DistanceDetection.DistanceType.SPECIALATTACK3:
+            case DistanceDetection.DistanceType.SPECIALATTACK2:
                 rangeChecks[5].RangeCheck = b;
+                break;
+            case DistanceDetection.DistanceType.SPECIALATTACK3:
+                rangeChecks[6].RangeCheck = b;
                 break;
         }
     }
@@ -201,7 +194,7 @@ public class BossMove : MonoBehaviour
     {
         if (stiffenNum == 0 && canStiffen)
             Stiffen = true;
-        else if (stiffenNum == 1 && canBigStiffen)
+        else if (stiffenNum == 1)
             BigStiffen = true;
     }
 

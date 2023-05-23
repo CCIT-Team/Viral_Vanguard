@@ -11,6 +11,7 @@ public class DistanceDetection : MonoBehaviour
         PLAYERCHECK,
         NORAMLATTACK1,
         NORMALATTACK2,
+        NORMALATTACK3,
         ACTIONATTACK1,
         ACTIONATTACK1_1,
         SPECIALATTACK1,
@@ -39,10 +40,5 @@ public class DistanceDetection : MonoBehaviour
                 return;
             boss.RangeCheck(distanceType, false);
         }
-    }
-
-    void test()
-    {
-
     }
 }
