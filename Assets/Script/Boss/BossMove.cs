@@ -80,34 +80,8 @@ public class BossMove : MonoBehaviour
         get { return ready; }
     }
 
-    bool rightStiffen;
-    bool leftStiffen;
     bool stiffen;
     bool bigStiffen;
-    public bool RightStiffen
-    {
-        set
-        {
-            rightStiffen = value;
-            animator.SetTrigger("RightStiffen");
-        }
-        get
-        {
-            return rightStiffen;
-        }
-    }
-    public bool LeftStiffen
-    {
-        set
-        {
-            leftStiffen = value;
-            animator.SetTrigger("LeftStiffen");
-        }
-        get
-        {
-            return leftStiffen;
-        }
-    }
     public bool Stiffen
     {
         set
@@ -132,7 +106,8 @@ public class BossMove : MonoBehaviour
             return bigStiffen;
         }
     }
-    public bool canStiffen; //경직 상태가 될 수 있는지?
+    public bool canStiffen;
+    public bool canBigStiffen;
 
     public bool canAttack;
     int attackCount = 0;
@@ -224,12 +199,20 @@ public class BossMove : MonoBehaviour
 
     public void SetStiffen(int stiffenNum)
     {
-        if (stiffenNum == 0)
+        if (stiffenNum == 0 && canStiffen)
             Stiffen = true;
-        else if (stiffenNum == 1)
+        else if (stiffenNum == 1 && canBigStiffen)
             BigStiffen = true;
+    }
 
-        canStiffen = false;
+    public void CanJustGuard()
+    {
+        canBigStiffen = canBigStiffen ? false : true;
+    }
+
+    public void DoAttack()
+    {
+        BehaviourController.instance.MonsterAttack = true;
     }
 }
 

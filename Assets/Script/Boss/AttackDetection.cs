@@ -19,8 +19,6 @@ public class AttackDetection : MonoBehaviour
         {
             if(BehaviourController.instance.guard)
                 BehaviourController.instance.GuardHit = true;
-            //else if(BehaviourController.instance.justGuard) //플레이어 변경점으로 인해서 잠시 주석처리
-            //    BehaviourController.instance.JustGuardSuccess = true;
             else
                 BehaviourController.instance.Stiffen = true;
             BehaviourController.instance.HealthPoint -= damage;
