@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 59a3445d7a50d714bb752c9be97d255e
 ModelImporter:
-  serializedVersion: 20200
+  serializedVersion: 21300
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
@@ -17,6 +17,7 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
@@ -46,7 +47,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 1
       loopBlendPositionY: 1
@@ -75,6 +76,7 @@ ModelImporter:
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    nodeNameCollisionStrategy: 0
     fileIdsGeneration: 2
     swapUVChannels: 0
     generateSecondaryUV: 0
@@ -86,6 +88,7 @@ ModelImporter:
     skinWeightsMode: 0
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
+    optimizeBones: 1
     meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
@@ -829,7 +832,8 @@ ModelImporter:
     - name: Bip001 R Finger42
       parentName: Bip001 R Finger41
       position: {x: -0.03260071, y: 0.00000015258789, z: 0}
-      rotation: {x: -0.000000011181809, y: -0.0000000018266462, z: -0.0032202618, w: 0.9999948}
+      rotation: {x: -0.000000011181809, y: -0.0000000018266462, z: -0.0032202618,
+        w: 0.9999948}
       scale: {x: 1, y: 1.0000001, z: 1.0000001}
     - name: Bip001 R ForeTwist
       parentName: Bip001 R UpperArm
@@ -853,12 +857,14 @@ ModelImporter:
     hasTranslationDoF: 1
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: e33ec2acca3cc1944be7b31f19d21403, type: 3}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: e33ec2acca3cc1944be7b31f19d21403,
+    type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
   avatarSetup: 2
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
