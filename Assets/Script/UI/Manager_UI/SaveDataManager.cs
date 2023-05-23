@@ -26,6 +26,7 @@ public class SaveData
 
     void Initialization()
     {
+        // 변경 예정
         stateHpUpCount = 0;
         stateSteminaUpCount = 0;
         equipWeaponID = 0;

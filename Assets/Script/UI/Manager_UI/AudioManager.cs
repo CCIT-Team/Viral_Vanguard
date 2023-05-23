@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class AudioManager : Singleton<AudioManager>
 {
-    public AudioSource[] sounds;
-    public AudioSource[] musics;
+    public AudioSource[] sounds; // 효과음
+    public AudioSource[] musics; // 배경음
 }
