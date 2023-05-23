@@ -81,37 +81,40 @@ public class GuardBehaviour : GenericBehaviour
         {
             StartCoroutine(ToggleGuardOff());
         }
+
+
+        //저스트 가드
+        if (behaviourController.MonsterAttack == true && Input.GetAxisRaw(ButtonKey.JustGuard) != 0 && behaviourController.guard && !isJustGuardDelay)
+        {
+            StartCoroutine(JustGuardTime());
+        }
+        else if (behaviourController.MonsterAttack == false )//&& Input.GetAxisRaw(ButtonKey.JustGuard) == 0)
+        {
+            StartCoroutine(JustGuardDelay());
+        }
     }
 
-    //    //저스트 가드
-    //    if (Input.GetAxisRaw(ButtonKey.JustGuard) != 0 && behaviourController.guard && !isJustGuardDelay)
-    //    {
-    //        StartCoroutine(JustGuardTime());
-    //    }
-    //    else if (Input.GetAxisRaw(ButtonKey.JustGuard) == 0)
-    //    {
-    //        StartCoroutine(JustGuardDelay());
-    //    }
-    //}
-
-    ////public void ReducedstaminaGuard() //아마 몬스터 쪽에서 계산하면 될듯
-    ////{
-    ////    //공격력 만큼 스태미나 감소
-    ////    //만약 스태미나가 공격력보다 떨어지면 계산후 나머지 데미지로 전환
-    ////}
-
-    //IEnumerator JustGuardTime()
+    //public void ReducedstaminaGuard() //아마 몬스터 쪽에서 계산하면 될듯
     //{
-    //    behaviourController.JustGuard = true;
-    //    isJustGuardDelay = true;
-    //    yield return new WaitForSeconds(0.2f);
-    //    behaviourController.JustGuard = false;
-
+    //    //공격력 만큼 스태미나 감소
+    //    //만약 스태미나가 공격력보다 떨어지면 계산후 나머지 데미지로 전환
     //}
 
-    //IEnumerator JustGuardDelay()
-    //{
-    //    yield return new WaitForSeconds(2f);
-    //    isJustGuardDelay = false;
-    //}
+    IEnumerator JustGuardTime()
+    {
+        behaviourController.JustGuard = true;
+        isJustGuardDelay = true;
+        yield return new WaitForSeconds(0.05f);
+    }
+
+    IEnumerator JustGuardDelay()
+    {
+        yield return new WaitForSeconds(2f);
+        isJustGuardDelay = false;
+    }
+
+    public void playerJustGuardFalse()
+    {
+        behaviourController.JustGuard = false;
+    }
 }

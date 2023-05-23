@@ -54,6 +54,7 @@ public class BehaviourController : MonoBehaviour
     private bool guardHit;       //가드중 몬스터가 때리면
     private bool justGuard;
     private bool guardBreak;
+    private bool monsterAttack;
     [HideInInspector]
     public int lockOn;
 
@@ -80,6 +81,15 @@ public class BehaviourController : MonoBehaviour
             {
                 myAnimator.SetTrigger("GuardBreak");
             }
+        }
+    }
+
+    public bool MonsterAttack
+    {
+        get { return monsterAttack; }
+        set
+        {
+            monsterAttack = value;
         }
     }
 
