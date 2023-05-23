@@ -144,20 +144,18 @@ public class BehaviourController : MonoBehaviour
         }
     }
 
-    public enum AttackDirection { NONE, RIGHT, LEFT }
-    public void SetStiffen(int stiffenNum, AttackDirection dir) //출처 해성이 BOSSMOVE
+    public void SetStiffen(int stiffenNum) //출처 해성이 BOSSMOVE
     {
-        if (dir == AttackDirection.RIGHT)
+        if (stiffenNum == 1)
         {
             RightStiffen = true;
         }
-        else if (dir == AttackDirection.LEFT)
+        else if (stiffenNum == 2)
         {
             LeftStiffen = true;
         }
-        else
+        else if (stiffenNum == 3) //일반 경직
         {
-            if (stiffenNum == 2)
                 Stiffen = true;
         }
     }

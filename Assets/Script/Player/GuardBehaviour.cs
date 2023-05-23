@@ -103,6 +103,7 @@ public class GuardBehaviour : GenericBehaviour
     IEnumerator JustGuardTime()
     {
         behaviourController.JustGuard = true;
+        BossMove.instacne.SetStiffen(2);
         isJustGuardDelay = true;
         yield return new WaitForSeconds(0.05f);
     }
