@@ -17,7 +17,6 @@ public class GuardBehaviour : GenericBehaviour
     private AttackBehaviour attackBehaviour;
     private BigBangBehaviour bigBangBehaviour;
     public float reducedStaminaGuard;
-    private bool isJustGuardDelay;
 
     //각 행동 쿨타임
 
@@ -84,38 +83,16 @@ public class GuardBehaviour : GenericBehaviour
 
 
         //저스트 가드
-        if (behaviourController.MonsterAttack == true && Input.GetAxisRaw(ButtonKey.JustGuard) != 0 && behaviourController.guard && !isJustGuardDelay)
+        if (behaviourController.MonsterAttack == true && Input.GetAxisRaw(ButtonKey.JustGuard) != 0 && behaviourController.guard)
         {
-            StartCoroutine(JustGuardTime());
+            behaviourController.JustGuard = true;
+            BossMove.instacne.SetStiffen(0);
         }
-        else if (behaviourController.MonsterAttack == false )//&& Input.GetAxisRaw(ButtonKey.JustGuard) == 0)
-        {
-            StartCoroutine(JustGuardDelay());
-        }
-    }
-
-    //public void ReducedstaminaGuard() //아마 몬스터 쪽에서 계산하면 될듯
-    //{
-    //    //공격력 만큼 스태미나 감소
-    //    //만약 스태미나가 공격력보다 떨어지면 계산후 나머지 데미지로 전환
-    //}
-
-    IEnumerator JustGuardTime()
-    {
-        behaviourController.JustGuard = true;
-        BossMove.instacne.SetStiffen(2);
-        isJustGuardDelay = true;
-        yield return new WaitForSeconds(0.05f);
-    }
-
-    IEnumerator JustGuardDelay()
-    {
-        yield return new WaitForSeconds(2f);
-        isJustGuardDelay = false;
     }
 
     public void playerJustGuardFalse()
     {
         behaviourController.JustGuard = false;
+        behaviourController.MonsterAttack = false;
     }
 }
