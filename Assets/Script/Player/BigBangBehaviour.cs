@@ -71,7 +71,7 @@ public class BigBangBehaviour : GenericBehaviour
         }
         else
         {
-            RotationManagment(behaviourController._horizontal, behaviourController._vertical);
+            RotationManagment(behaviourController.Horizontal, behaviourController.Vertical);
         }
     }
     private IEnumerator ToggleBigBangOn()
@@ -88,6 +88,7 @@ public class BigBangBehaviour : GenericBehaviour
             behaviourController.OverrideWithBehaviour(this);
             behaviourController.LockTempBehaviour(behaviourCode);
             behaviourController.myAnimator.SetTrigger(bigBangTrigger);
+            behaviourController.StaminaChargeOff();
             behaviourController.myAnimator.SetBool(keyLock, mouseLock);
         }
     }
@@ -107,7 +108,7 @@ public class BigBangBehaviour : GenericBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown(ButtonKey.BigBnag) && !bigBang && behaviourController.kineticEnergy >= 100f) //일정 게이지 이상 혹은 같으면 작동
+        if (Input.GetButtonDown(ButtonKey.BigBnag) && !bigBang && behaviourController.currentKineticEnergy >= 100f) //일정 게이지 이상 혹은 같으면 작동
         {
             StartCoroutine(ToggleBigBangOn());
         }
@@ -119,6 +120,17 @@ public class BigBangBehaviour : GenericBehaviour
 
     public void ReducedKineticEnergyBigBang()
     {
-        behaviourController.kineticEnergy -= 20;
+        behaviourController.currentKineticEnergy -= 20;
+        behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
+    }
+
+    public void IsBigBangTrue()
+    {
+        behaviourController.isBigBang = true;
+    }
+
+    public void IsBigBangFalse()
+    {
+        behaviourController.isBigBang = false;
     }
 }

@@ -42,12 +42,42 @@ public class EventListener : MonoBehaviour, IListener
     {
         switch(EventType)
         {
-            case EVENT_TYPE.eSampleEvent:
-                Debug.Log("이벤트 실행. HP : "+ Param);
-                break;
             case EVENT_TYPE.eFindPlayer:
-                Debug.Log("리스너실행됨");
+                TrackingStart();
+                break;
+            case EVENT_TYPE.eHit:
+                WeightChange(0);
+                break;
+            case EVENT_TYPE.eParried:
+                Parried();
+                WeightChange(1);
+                break;
+            case EVENT_TYPE.eGuarded:
+                WeightChange(2);
+                break;
+            case EVENT_TYPE.eNormalRange1:
+                RangeCheck();
+                break;
+            case EVENT_TYPE.eNormalRange2:
+                RangeCheck();
+                break;
+            case EVENT_TYPE.eActionRange1:
+                RangeCheck();
+                break;
+            case EVENT_TYPE.eSpecialRange1:
+                RangeCheck();
+                break;
+            case EVENT_TYPE.eSpecialRange2:
+                RangeCheck();
+                break;
+            case EVENT_TYPE.eSpecialRange3:
+                RangeCheck();
                 break;
         }
     }
+
+    void TrackingStart() { }
+    void RangeCheck() { }
+    void Parried() { }
+    void WeightChange(int i) { }
 }

@@ -69,8 +69,20 @@ public class MoveBehaviour : GenericBehaviour
         }
         Rotating(horizontal, vertical);
         Vector2 dir = new Vector2(horizontal, vertical);
-        speed = Vector2.ClampMagnitude(dir, 1f).magnitude * runSpeed;
-        behaviourController.myAnimator.SetFloat(speedFloat, speed, speedDampTime, Time.deltaTime);
+        speed = Vector2.ClampMagnitude(dir, 1f).sqrMagnitude * runSpeed;
+        behaviourController.myAnimator.SetFloat(speedFloat, speed*speed, speedDampTime, Time.deltaTime);
+    }
+
+    void LockOnMovementManament(float horizontal, float vertical)
+    {
+        if(behaviourController.IsGrounded())
+        {
+            behaviourController.myRigidbody.useGravity = true;
+        }
+        else if (behaviourController.myRigidbody.velocity.y > 0)
+        {
+            RemoveVerticalVelocity();
+        }
     }
 
     private void OnCollisionStay(Collision collision)
@@ -93,7 +105,14 @@ public class MoveBehaviour : GenericBehaviour
 
     public override void LocalFixedUpdate()
     {
-        MovementManagement(behaviourController._horizontal, behaviourController._vertical);
+        if(!behaviourController.myAnimator.GetBool(behaviourController.lockOn))
+        {
+            MovementManagement(behaviourController.Horizontal, behaviourController.Vertical);
+        }
+        else if(behaviourController.myAnimator.GetBool(behaviourController.lockOn))
+        {
+            LockOnMovementManament(behaviourController.Horizontal, behaviourController.Vertical);
+        }
     }
 
 }

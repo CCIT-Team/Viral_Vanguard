@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dec8c496fd394d2428033a2d8de8411a, type: 3}
   m_Name: ActionAttack1
   m_EditorClassIdentifier: 
-  bossBehavior: 2
+  bossAttack: 3
   linkedBehavior: {fileID: 11400000, guid: 6067c61b67fea4d4a995a381d6584210, type: 2}

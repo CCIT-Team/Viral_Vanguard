@@ -21,14 +21,6 @@ public class StiffenBehaviour : GenericBehaviour
     }
     private void Update()
     {
-        if (Input.GetAxisRaw(ButtonKey.JustGuard) != 0)
-        {
-            behaviourController.Stiffen = true;
-        }
-        else if (Input.GetAxisRaw(ButtonKey.JustGuard) == 0)
-        {
-            behaviourController.Stiffen = false;
-        }
         if (behaviourController.Stiffen)
         {
             StartCoroutine(StiffenDelay());
@@ -41,6 +33,7 @@ public class StiffenBehaviour : GenericBehaviour
         yield return new WaitForSeconds(0.05f);
         behaviourController.LockTempBehaviour(behaviourCode);
         behaviourController.OverrideWithBehaviour(this);
+        behaviourController.StaminaChargeOff();
         yield return new WaitForSeconds(0.5f);
         behaviourController.UnLockTempBehaviour(behaviourCode);
         behaviourController.RevokeOverridingBehaviour(this);
@@ -52,6 +45,19 @@ public class StiffenBehaviour : GenericBehaviour
         behaviourController.myAnimator.SetBool(attack2, false);
         behaviourController.myAnimator.SetBool(attack3, false);
         behaviourController.myAnimator.SetBool(guardBool, false);
+    }
+
+    public void PlayerStiffenFalse()
+    {
+        behaviourController.Stiffen = false;
+    }
+    public void PlayerRightStiffenFalse()
+    {
+        behaviourController.RightStiffen = false;
+    }
+    public void PlayerLeftStiffenFalse()
+    {
+        behaviourController.LeftStiffen = false;
     }
 
 }

@@ -4,31 +4,37 @@ using UnityEngine;
 
 public class PlayerAttackCollsion : MonoBehaviour
 {
-
+    public BehaviourController behaviourController;
+    public float[] damages;
+    public float[] increasekineticEnergy;
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Monster"))
         {
-            Debug.Log("Test");
-            //BossMove.instacne.currentHealthPoint -= damage[1];
-            if (BossMove.instacne.canStiffen)
-            {//경직 
-                print("개느려");
-                BossMove.instacne.Stiffen = true;
+            if (behaviourController.myAnimator.GetBool(AnimatorKey.Attack1))
+            {
+                BossMove.instacne.CurrentHealthPoint -= damages[0];
+                behaviourController.currentKineticEnergy += increasekineticEnergy[0];
+                behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
+            }
+            else if(behaviourController.myAnimator.GetBool(AnimatorKey.Attack2)&& !behaviourController.myAnimator.GetBool(AnimatorKey.Attack3))
+            {
+                BossMove.instacne.CurrentHealthPoint -= damages[1];
+                behaviourController.currentKineticEnergy += increasekineticEnergy[1];
+                behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
+            }
+            else if(behaviourController.myAnimator.GetBool(AnimatorKey.Attack3) && behaviourController.myAnimator.GetBool(AnimatorKey.Attack2))
+            {
+                BossMove.instacne.CurrentHealthPoint -= damages[2];
+                behaviourController.currentKineticEnergy += increasekineticEnergy[2];
+                behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
+            }
+            else if(behaviourController.isBigBang)
+            {
+                BossMove.instacne.CurrentHealthPoint -= damages[3];
+                BossMove.instacne.SetStiffen(1);
+                behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
             }
         }
     }
-    //public Vector3 boxSize = new Vector3(3, 2, 2);
-
-    //public Collider[] CheckOverlapBox()
-    //{
-    //    return Physics.OverlapBox(transform.position, boxSize * 0.5f, transform.rotation);
-    //}
-
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.matrix = transform.localToWorldMatrix;
-    //    Gizmos.color = Color.green;
-    //    Gizmos.DrawWireCube(Vector3.zero, boxSize);
-    //}
 }

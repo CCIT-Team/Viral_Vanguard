@@ -9,7 +9,6 @@ using UnityEngine;
 public class AttackBehaviour : GenericBehaviour
 {
     public PlayerAttackCollsion playerAttackCollsion;
-    public float[] damage;
     private int grounded;//애니용
     private int attack1;
     private int attack2;
@@ -17,12 +16,10 @@ public class AttackBehaviour : GenericBehaviour
     public int clicks = 0;
     private float lastClickedTime = 0;
     public float attackDelay = 0.5f;
-    public Transform myTransform;
     [HideInInspector]
     public int keyLock;
     public bool mouseLock;
     public GameObject damageChecker;
-
 
     //각 행동 쿨타임
 
@@ -88,7 +85,7 @@ public class AttackBehaviour : GenericBehaviour
         }
         else
         {
-            RotationManagment(behaviourController._horizontal, behaviourController._vertical);
+            RotationManagment(behaviourController.Horizontal, behaviourController.Vertical);
         }
     }
 
@@ -115,6 +112,7 @@ public class AttackBehaviour : GenericBehaviour
             if (clicks == 1)
             {
                 behaviourController.myAnimator.SetBool(attack1, true);
+                behaviourController.camScript.CamShakeTime(0.2f, 0.01f);
             }
             clicks = Mathf.Clamp(clicks, 0, 3);
         }
@@ -160,6 +158,7 @@ public class AttackBehaviour : GenericBehaviour
         if(clicks >= 2)
         {
             behaviourController.myAnimator.SetBool(attack2, true);
+            behaviourController.camScript.CamShakeTime(0.3f, 0.02f);
             behaviourController.myAnimator.SetBool(attack1, false);
         }
         else
@@ -173,6 +172,7 @@ public class AttackBehaviour : GenericBehaviour
         if (clicks >= 3)
         {
             behaviourController.myAnimator.SetBool(attack3, true);
+            behaviourController.camScript.CamShakeTime(1f, 0.03f);
         }
         else
         {

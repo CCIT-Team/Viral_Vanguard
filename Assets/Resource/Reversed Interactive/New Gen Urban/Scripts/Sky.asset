@@ -51,10 +51,10 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 1
   upperHemisphereLuxValue:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 2.2399383
   upperHemisphereLuxColor:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: {x: 0.39749065, y: 0.4409508, z: 0.5}
   desiredLuxValue:
     m_OverrideState: 0
@@ -331,7 +331,7 @@ MonoBehaviour:
     m_Value: 0
   windSpeed:
     m_OverrideState: 0
-    m_Value: 100
+    m_Value: 0
   fogType:
     m_OverrideState: 1
     m_Value: 0

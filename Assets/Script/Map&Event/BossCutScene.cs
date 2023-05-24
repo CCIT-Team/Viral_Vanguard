@@ -5,6 +5,7 @@ using UnityEngine;
 public class BossCutScene : MonoBehaviour
 {
     bool checkPlayer = false;
+    bool eventend = false;
     Transform playerPos;
 
     public Animator bossAnimator;
