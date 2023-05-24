@@ -84,10 +84,11 @@ public class GuardBehaviour : GenericBehaviour
 
 
         //저스트 가드
-        if (behaviourController.MonsterAttack && !isJustGuardDelay && Input.GetKeyDown(KeyCode.Space) && behaviourController.guard) //조건넣기
+        if (behaviourController.MonsterAttack && !isJustGuardDelay && Input.GetKeyDown(KeyCode.Space) && behaviourController.guard)
         {
             behaviourController.JustGuard = true;
             BossMove.instacne.SetStiffen(0);
+            behaviourController.currentKineticEnergy += 20f;
             //StartCoroutine(JustGuardOnce());
         }
     }

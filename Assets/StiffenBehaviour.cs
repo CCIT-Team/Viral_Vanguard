@@ -34,7 +34,7 @@ public class StiffenBehaviour : GenericBehaviour
         behaviourController.LockTempBehaviour(behaviourCode);
         behaviourController.OverrideWithBehaviour(this);
         behaviourController.StaminaChargeOff();
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
         behaviourController.UnLockTempBehaviour(behaviourCode);
         behaviourController.RevokeOverridingBehaviour(this);
     }

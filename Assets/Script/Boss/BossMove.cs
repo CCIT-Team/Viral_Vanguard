@@ -33,6 +33,8 @@ public class BossMove : MonoBehaviour
         {
             currentHealthPoint = value;
             stageUIManager.BossUpdateHP();
+            if (CurrentHealthPoint <= 0)
+                BossDead();
         }
         get
         {
@@ -211,6 +213,44 @@ public class BossMove : MonoBehaviour
     {
         BehaviourController.instance.MonsterAttack = BehaviourController.instance.MonsterAttack ? false : true;
     }
+
+    public void StartDash(float speed)
+    {
+        StartCoroutine("Dash", speed);
+    }
+
+    public void EndDash()
+    {
+        StopCoroutine("Dash");
+    }
+
+    IEnumerator Dash(float speed)
+    {
+        transform.Translate(Vector3.forward * speed);
+
+        yield return new WaitForSeconds(0.01f);
+
+        StartCoroutine("Dash", speed);
+    }
+
+    public void BossDead()
+    {
+        animator.SetTrigger("Dead");
+    }
+
+    #region 플레이어 방향으로 돌기
+    Vector3 PlayerDirection(Vector3 playerPos, Vector3 bossPos)
+    {
+        Vector3 playerDirection = playerPos - bossPos;
+        return playerDirection;
+    }
+
+    void RotateBoss()
+    {
+        Vector3 playerDirection = PlayerDirection(target.position, transform.position);
+
+    }
+    #endregion
 }
 
 [System.Serializable]
