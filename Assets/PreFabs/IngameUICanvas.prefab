@@ -950,6 +950,17 @@ MonoBehaviour:
   playerKineticEnergyImage: {fileID: 3847436020777514837}
   bossNameText: {fileID: 3847436020259307192}
   bossHealthPointImage: {fileID: 3847436020354507221}
+  playerHealthPointText: {fileID: 3847436022029650605}
+  playerKineticEnergyText: {fileID: 3847436022103357398}
+  playerMaxHealthPoint: 0
+  playerCurrentHealthPoint: 0
+  playerMaxStamina: 0
+  playerCurrentStamina: 0
+  playerMaxKineticEnergy: 0
+  playerCurrentKineticEnergy: 0
+  bossName: 
+  bossMaxHp: 0
+  bossCurrentHp: 0
 --- !u!1 &3847436021680441829
 GameObject:
   m_ObjectHideFlags: 0
