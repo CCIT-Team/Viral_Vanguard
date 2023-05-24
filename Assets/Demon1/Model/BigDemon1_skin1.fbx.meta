@@ -1,7 +1,11 @@
 fileFormatVersion: 2
 guid: 0cc680aa368d2b64ea1d4adbf5ab9a81
 ModelImporter:
+<<<<<<< HEAD
+  serializedVersion: 20300
+=======
   serializedVersion: 21300
+>>>>>>> develop/integrated
   internalIDToNameTable: []
   externalObjects: {}
   materials:
@@ -14,7 +18,10 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
+<<<<<<< HEAD
+=======
     removeConstantScaleCurves: 0
+>>>>>>> develop/integrated
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
@@ -24,7 +31,11 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
+<<<<<<< HEAD
+    animationCompression: 1
+=======
     animationCompression: 3
+>>>>>>> develop/integrated
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -44,7 +55,10 @@ ModelImporter:
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+<<<<<<< HEAD
+=======
     nodeNameCollisionStrategy: 0
+>>>>>>> develop/integrated
     fileIdsGeneration: 2
     swapUVChannels: 0
     generateSecondaryUV: 0
@@ -56,7 +70,10 @@ ModelImporter:
     skinWeightsMode: 0
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
+<<<<<<< HEAD
+=======
     optimizeBones: 1
+>>>>>>> develop/integrated
     meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
@@ -91,6 +108,15 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
+<<<<<<< HEAD
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+=======
     hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
@@ -98,6 +124,7 @@ ModelImporter:
   animationType: 3
   humanoidOversampling: 1
   avatarSetup: 1
+>>>>>>> develop/integrated
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0

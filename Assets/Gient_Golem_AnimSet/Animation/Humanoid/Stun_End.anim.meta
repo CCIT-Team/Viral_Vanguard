@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Demon1/Animation/attak.anim.meta
+guid: c07ab8e37625cff4f914190fbc46f56e
+========
 guid: 0288c43fde8aa0741bddc69f6e03862d
+>>>>>>>> develop/integrated:Assets/Gient_Golem_AnimSet/Animation/Humanoid/Stun_End.anim.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 7400000

@@ -1,11 +1,19 @@
 fileFormatVersion: 2
 guid: d46061ba63f3f2946845add1369c2ef4
 ModelImporter:
+<<<<<<< HEAD
+  serializedVersion: 19301
+  internalIDToNameTable: []
+  externalObjects: {}
+  materials:
+    materialImportMode: 1
+=======
   serializedVersion: 21300
   internalIDToNameTable: []
   externalObjects: {}
   materials:
     materialImportMode: 2
+>>>>>>> develop/integrated
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -14,7 +22,10 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
+<<<<<<< HEAD
+=======
     removeConstantScaleCurves: 1
+>>>>>>> develop/integrated
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
@@ -36,7 +47,11 @@ ModelImporter:
   meshes:
     lODScreenPercentages: []
     globalScale: 1
+<<<<<<< HEAD
     meshCompression: 0
+=======
+    meshCompression: 2
+>>>>>>> develop/integrated
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
@@ -44,27 +59,39 @@ ModelImporter:
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+<<<<<<< HEAD
+=======
     nodeNameCollisionStrategy: 1
+>>>>>>> develop/integrated
     fileIdsGeneration: 2
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
+<<<<<<< HEAD
+=======
     bakeAxisConversion: 0
+>>>>>>> develop/integrated
     preserveHierarchy: 0
     skinWeightsMode: 0
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
+<<<<<<< HEAD
+=======
     optimizeBones: 1
+>>>>>>> develop/integrated
     meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+<<<<<<< HEAD
+=======
     secondaryUVMarginMethod: 1
     secondaryUVMinLightmapResolution: 40
     secondaryUVMinObjectScale: 1
+>>>>>>> develop/integrated
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
@@ -98,8 +125,11 @@ ModelImporter:
   animationType: 2
   humanoidOversampling: 1
   avatarSetup: 0
+<<<<<<< HEAD
+=======
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
+>>>>>>> develop/integrated
   additionalBone: 0
   userData: 
   assetBundleName: 
