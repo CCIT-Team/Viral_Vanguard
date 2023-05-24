@@ -1970,13 +1970,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65e5305559c982d44932885b9f0a5423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCamera: {fileID: 9195696617009796785, guid: 00c49b4cc84b26548988acb94af22e1b,
-    type: 3}
+  playerCamera: {fileID: 0}
   myTransform: {fileID: 1227000441163751126}
   myAnimator: {fileID: 5181112864130057388}
   myRigidbody: {fileID: 5181112864130057365}
-  camScript: {fileID: 9195696617009796791, guid: 00c49b4cc84b26548988acb94af22e1b,
-    type: 3}
+  camScript: {fileID: 0}
   turnSmooth: 0.06
   isDead: 0
   staminaChargeSpeed: 5
@@ -2031,15 +2029,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78ab5daf90501964f9e156c8a85669b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAttackCollsion: {fileID: 2426919414763057194}
+  playerAttackCollsion: {fileID: 0}
   clicks: 0
   attackDelay: 0.5
   keyLock: 0
   mouseLock: 0
   damageChecker: {fileID: 2426919414763057196}
-  attack1ShakeBounce: 1
-  attack2ShakeBounce: 2
-  attack3ShakeBounce: 3
 --- !u!114 &5181112864130057387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3087,13 +3082,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   behaviourController: {fileID: 5181112864130057367}
   damages:
-  - 1
-  - 2
-  - 3
+  - 5
+  - 6
+  - 13
+  - 350
   increasekineticEnergy:
-  - 1
   - 2
   - 3
+  - 7
 --- !u!65 &2426919414763057197
 BoxCollider:
   m_ObjectHideFlags: 0

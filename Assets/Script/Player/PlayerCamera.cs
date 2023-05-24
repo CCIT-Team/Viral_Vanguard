@@ -32,7 +32,7 @@ public class PlayerCamera : MonoBehaviour
     private float defaultFieldOfView; //기본 시야값
     private float targetFieldOfView; //타겟 시야값
     private float targetMaxVerticleAngle; //카메라 수직 최대 각도
-    public float camShakeAmount;
+    private float camShakeAmount;
     private float shakeTime;
     Vector3 previousTransform;
 
@@ -278,9 +278,10 @@ public class PlayerCamera : MonoBehaviour
         targetMaxVerticleAngle = maxVerticalAngle;
     }
 
-    public void CamShakeTime(float time)
+    public void CamShakeTime(float time, float shakeAmount)
     {
         shakeTime = time;
+        camShakeAmount = shakeAmount;
     }
 
     public void SetTargetOffset(Vector3 newPivotOffset, Vector3 newCamOffset) 
