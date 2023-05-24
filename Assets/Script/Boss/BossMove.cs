@@ -18,7 +18,7 @@ public class BossMove : MonoBehaviour
     }
 
     [Header("보스 스테이터스")]
-    public static string bossName;
+    public string bossName;
     public float maxHealthPoint;
     public float currentHealthPoint;
     public float attackPoint;
