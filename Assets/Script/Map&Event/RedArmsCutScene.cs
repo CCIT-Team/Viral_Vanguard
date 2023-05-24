@@ -7,6 +7,7 @@ public class RedArmsCutScene : MonoBehaviour
 {
     public Animator redArmsAnimator;
     public CinemachineImpulseSource impulseSource;
+    public CinemachineImpulseSource impulseSourceGrowl;
     public float moveSpeed;
     
     void Update()
@@ -34,8 +35,8 @@ public class RedArmsCutScene : MonoBehaviour
 
     void Inpulseglow()
     {
-        impulseSource.m_DefaultVelocity = new Vector3(-3.5f, 2f, -3.5f);
-        impulseSource.m_ImpulseDefinition.m_ImpulseDuration = 1f;
-        impulseSource.GenerateImpulse();
+        impulseSourceGrowl.m_DefaultVelocity = new Vector3(Random.Range(-6,7), Random.Range(-7, 9), Random.Range(-6, 7));
+        impulseSourceGrowl.m_ImpulseDefinition.m_ImpulseDuration = 3f;
+        impulseSourceGrowl.GenerateImpulse();
     }
 }
