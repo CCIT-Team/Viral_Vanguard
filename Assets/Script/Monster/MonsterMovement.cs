@@ -5,9 +5,12 @@ using UnityEngine.AI;
 
 public class MonsterMovement : MonoBehaviour
 {
+    public static MonsterMovement instance;
+
     NavMeshAgent agent;
     Transform target;
     public Transform startPoint;
+    private bool stiffen;
 
     Animator animator;
 
@@ -16,17 +19,53 @@ public class MonsterMovement : MonoBehaviour
 
     public MonsterMovementSub attackRange;
     public MonsterMovementSub searchRange;
+
+    float healthPoint = 50;
+
+    public bool Stiffen
+    {
+        get { return stiffen; }
+        set
+        {
+            stiffen = value;
+            animator.SetTrigger("Stiffen");
+            if(value)
+            {
+                agent.isStopped = true;
+            }
+        }
+    }
+    public float HealthPoint
+    {
+        get
+        {
+            return healthPoint;
+        }
+        set
+        {
+            healthPoint = value;
+            if(healthPoint <= 0)
+            {
+                agent.enabled = false;
+                this.enabled = false;
+                animator.SetTrigger("Death");
+            }
+        }
+    }
     void Start()
     {
+        instance = this;
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        target = this.transform;
+        target = startPoint;
 
         attackRange.mainmove = this;
         attackRange.rangeType = RangeType.Attack;
 
         searchRange.mainmove = this;
         searchRange.rangeType = RangeType.Search;
+
+        StartCoroutine("Patrol");
     }
 
     void Update()
@@ -36,10 +75,15 @@ public class MonsterMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(!chase && other.CompareTag("MonsterPoint"))
+        if(other.CompareTag("MonsterPoint"))
         {
-            animator.SetBool("FindPlayer", chase);
-            chase = true;
+            if(!chase)
+            {
+                animator.SetBool("FindPlayer", chase);
+                chase = true;
+            }
+            animator.SetBool("Patrol", false);
+            StartCoroutine("Patrol");
         }
     }
 
@@ -48,6 +92,7 @@ public class MonsterMovement : MonoBehaviour
         if (other.CompareTag("MonsterSpawn"))
         {
             chase = false;
+            StopCoroutine("Patrol");
             target = startPoint;
         }
     }
@@ -59,7 +104,6 @@ public class MonsterMovement : MonoBehaviour
             target = transform;
             animator.SetBool("FindPlayer", chase);
         }
-        
     }
 
     public void Attack()
@@ -79,5 +123,17 @@ public class MonsterMovement : MonoBehaviour
         agent.isStopped = false;
     }
 
-    //안된거 = 돌아가면 기본모션으로 돌아옴
+    IEnumerator Patrol()
+    {
+        yield return new WaitForSeconds(Random.Range(3f, 9));
+        animator.SetBool("Patrol", true);
+        float x = Random.Range(-3, 3);
+        float z = Random.Range(-3, 3);
+        startPoint.position = startPoint.position + new Vector3(x, 0, z);
+    }
+
+    public void MonsterDead()
+    {
+        gameObject.SetActive(false);
+    }
 }
