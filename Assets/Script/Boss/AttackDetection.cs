@@ -85,7 +85,10 @@ public class AttackDetection : MonoBehaviour
         {
             BehaviourController.instance.HealthPoint -= damage - BehaviourController.instance.currentStamina;
             BehaviourController.instance.GuardBreak = true;
-            print(BehaviourController.instance.HealthPoint);
+
+            BehaviourController.instance.currentStamina = 0;
+
+            return;
         }
 
         BehaviourController.instance.currentStamina -= damage;

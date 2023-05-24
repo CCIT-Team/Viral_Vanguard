@@ -2719,11 +2719,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7735060496845134456, guid: 1b969a6f49e974a47be9c63ae35eb637,
+        type: 3}
+      propertyPath: behaviorElemList.Array.data[3].weight
+      value: 100000000
+      objectReference: {fileID: 0}
     - target: {fileID: 7735060496845134458, guid: 1b969a6f49e974a47be9c63ae35eb637,
         type: 3}
       propertyPath: stageUIManager
       value: 
       objectReference: {fileID: 710005982}
+    - target: {fileID: 7735060496845134459, guid: 1b969a6f49e974a47be9c63ae35eb637,
+        type: 3}
+      propertyPath: m_Speed
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7735060496845134462, guid: 1b969a6f49e974a47be9c63ae35eb637,
         type: 3}
       propertyPath: m_Name
