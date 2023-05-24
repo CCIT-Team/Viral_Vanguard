@@ -89,6 +89,5 @@ public class AttackDetection : MonoBehaviour
     void Damage()
     {
         BehaviourController.instance.HealthPoint -= damage;
-        print(BehaviourController.instance.HealthPoint);
     }
 }

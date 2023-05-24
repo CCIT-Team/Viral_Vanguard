@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class StageUIManager : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class StageUIManager : MonoBehaviour
 
     public Text bossNameText;
     public Image bossHealthPointImage;
+    public TextMeshProUGUI playerHealthPointText;
+    public TextMeshProUGUI playerKineticEnergyText;
 
     //플레이어 정보
     public float playerMaxHealthPoint;
@@ -57,6 +60,8 @@ public class StageUIManager : MonoBehaviour
     {
         playerCurrentHealthPoint = BehaviourController.instance.currentHealthPoint;
         playerHealthPointImage.fillAmount = playerCurrentHealthPoint / playerMaxHealthPoint;
+        playerHealthPointText.text = (playerHealthPointImage.fillAmount * 100).ToString();
+
     }
 
     public void PlayerUpdateStamina()
@@ -69,5 +74,6 @@ public class StageUIManager : MonoBehaviour
     {
         playerCurrentKineticEnergy = BehaviourController.instance.currentKineticEnergy;
         playerKineticEnergyImage.fillAmount = playerCurrentKineticEnergy / playerMaxKineticEnergy;
+        playerKineticEnergyText.text = (playerKineticEnergyImage.fillAmount * 100).ToString();
     }
 }

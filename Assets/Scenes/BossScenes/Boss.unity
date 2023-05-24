@@ -1755,6 +1755,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3847436020354507221, guid: 78a8ce50ee87eed4fb79cecbffa8fd20,
+        type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3847436020777514837, guid: 78a8ce50ee87eed4fb79cecbffa8fd20,
         type: 3}
       propertyPath: m_Type
@@ -1885,6 +1890,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3847436022029650605, guid: 78a8ce50ee87eed4fb79cecbffa8fd20,
+        type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3847436022103357398, guid: 78a8ce50ee87eed4fb79cecbffa8fd20,
+        type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462090596870148856, guid: 78a8ce50ee87eed4fb79cecbffa8fd20,
+        type: 3}
+      propertyPath: playerHealthPointText
+      value: 
+      objectReference: {fileID: 2058944235}
+    - target: {fileID: 5462090596870148856, guid: 78a8ce50ee87eed4fb79cecbffa8fd20,
+        type: 3}
+      propertyPath: playerKineticEnergyText
+      value: 
+      objectReference: {fileID: 1080824921}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78a8ce50ee87eed4fb79cecbffa8fd20, type: 3}
 --- !u!114 &710005982 stripped
@@ -2582,6 +2607,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1080824921 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3847436022103357398, guid: 78a8ce50ee87eed4fb79cecbffa8fd20,
+    type: 3}
+  m_PrefabInstance: {fileID: 710005981}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1135703440
 GameObject:
   m_ObjectHideFlags: 0
@@ -3903,6 +3940,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2058944235 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3847436022029650605, guid: 78a8ce50ee87eed4fb79cecbffa8fd20,
+    type: 3}
+  m_PrefabInstance: {fileID: 710005981}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &152159477073666324
 Transform:
   m_ObjectHideFlags: 0
@@ -4338,16 +4387,16 @@ MonoBehaviour:
     rangeCheck: 0
     willDo: 0
     indexNum: 6
-  normalAttack1: 5
-  normalAttack2: 2
-  normalAttack3: 6
-  actionAttack1: 3
-  actionAttack1_1: 4
-  specialAttack1: 5
-  specialAttack2: 6
-  specialAttack2_1: 7
-  specialAttack3: 8
-  specialAttack3_1: 9
+  normalAttack1: 10
+  normalAttack2: 10
+  normalAttack3: 10
+  actionAttack1: 10
+  actionAttack1_1: 10
+  specialAttack1: 10
+  specialAttack2: 10
+  specialAttack2_1: 10
+  specialAttack3: 10
+  specialAttack3_1: 10
   bigStiffen: 0
   canStiffen: 1
   canBigStiffen: 0
