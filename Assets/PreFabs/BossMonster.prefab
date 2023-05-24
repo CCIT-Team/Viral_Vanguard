@@ -3433,7 +3433,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.45
-  m_Speed: 2
+  m_Speed: 2.5
   m_Acceleration: 25
   avoidancePriority: 50
   m_AngularSpeed: 180
@@ -3559,7 +3559,7 @@ MonoBehaviour:
     weight: 110
     bossAction: {fileID: 11400000, guid: 06a2b01cd7df81a4ca7cc44b543f6e91, type: 2}
   - behaviorName: ActionAttack1
-    weight: 30
+    weight: 100000000
     bossAction: {fileID: 11400000, guid: ebd8f1213ef53fb42ae1581f709613f7, type: 2}
   - behaviorName: SpecialAttack1
     weight: 30
