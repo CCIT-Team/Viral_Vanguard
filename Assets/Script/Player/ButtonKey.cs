@@ -9,4 +9,5 @@ public class ButtonKey
     public const string Guard = "Guard";            //애도      마우스 오른쪽
     public const string JustGuard = "JustGuard";    //애도 마우스 오른쪽 + space
     public const string BigBnag = "BigBang";
+    public const string LockOn = "LockOn";
 }
