@@ -132,7 +132,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60d3af365405051478466217d5095ffe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myCamera: {fileID: 0}
+  ThickRotationSpeed: -15
+  SlimRotationSpeed: 10
+  OuterRotationSpeed: 20
 --- !u!1 &2251672632559008238
 GameObject:
   m_ObjectHideFlags: 0

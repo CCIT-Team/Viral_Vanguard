@@ -3,18 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LockOnIndicator : MonoBehaviour
-{
-    public Transform myCamera;
+{   
+    public float ThickRotationSpeed = 0.1f;
+    public float SlimRotationSpeed = 0.1f;
+    public float OuterRotationSpeed = 0.1f;
 
-    private void Awake()
+    private GameObject Thick;
+    private GameObject Slim;
+    private GameObject Outer;
+
+    // Start is called before the first frame update
+    void Start()
     {
-        myCamera = Camera.main.transform;
+        Thick = transform.GetChild(1).gameObject;
+        Slim = transform.GetChild(2).gameObject;
+        Outer = transform.GetChild(3).gameObject;
     }
 
-    private void Update()
+    // Update is called once per frame
+    void Update()
     {
-        transform.LookAt(transform.position + myCamera.rotation * Vector3.forward, myCamera.rotation * Vector3.up);
+        Thick.transform.Rotate(0, 0, ThickRotationSpeed * Time.deltaTime);
+        Slim.transform.Rotate(0, 0, SlimRotationSpeed * Time.deltaTime);
+        Outer.transform.Rotate(0, 0, OuterRotationSpeed * Time.deltaTime);
     }
 }
-
-

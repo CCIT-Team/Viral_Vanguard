@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 4
+  m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
@@ -2810,6 +2810,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1227000441163751126, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227000441163751126, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227000441163751126, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227000441163751126, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.038
       objectReference: {fileID: 0}
@@ -2862,6 +2877,46 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FreeTestCharacterAsunaMasterPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 2748496651394863751, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0605384
+      objectReference: {fileID: 0}
+    - target: {fileID: 2748496651394863751, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.31000897
+      objectReference: {fileID: 0}
+    - target: {fileID: 2748496651394863751, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0060940697
+      objectReference: {fileID: 0}
+    - target: {fileID: 2748496651394863751, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5634044
+      objectReference: {fileID: 0}
+    - target: {fileID: 2748496651394863751, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.42728868
+      objectReference: {fileID: 0}
+    - target: {fileID: 2748496651394863751, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.42728853
+      objectReference: {fileID: 0}
+    - target: {fileID: 2748496651394863751, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.56340426
+      objectReference: {fileID: 0}
+    - target: {fileID: 2748496651394863751, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -74.354
       objectReference: {fileID: 0}
     - target: {fileID: 5181112864130057367, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
         type: 3}
@@ -7690,6 +7745,27 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 3506342852265406368}
+    - target: {fileID: 9195696617009796791, guid: 00c49b4cc84b26548988acb94af22e1b,
+        type: 3}
+      propertyPath: camOffset.z
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9195696617009796791, guid: 00c49b4cc84b26548988acb94af22e1b,
+        type: 3}
+      propertyPath: lockOnImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 167629c483101fe459c632f7747ce31a,
+        type: 3}
+    - target: {fileID: 9195696617009796791, guid: 00c49b4cc84b26548988acb94af22e1b,
+        type: 3}
+      propertyPath: pivotOffset.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9195696617009796791, guid: 00c49b4cc84b26548988acb94af22e1b,
+        type: 3}
+      propertyPath: pivotOffset.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9195696617009796791, guid: 00c49b4cc84b26548988acb94af22e1b,
         type: 3}
       propertyPath: behaviourController

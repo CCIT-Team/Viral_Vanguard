@@ -47,8 +47,9 @@ public class PlayerCamera : MonoBehaviour
     public bool isLockOning = false;
     private float lockOnTime;
     public float minLockOnTime = 0.5f;
-    public Sprite lockOnImage;
     public bool isDelay;
+    public GameObject indicater;
+
     #endregion
 
     public float _getHorizotal
@@ -80,11 +81,13 @@ public class PlayerCamera : MonoBehaviour
         if (!isLockOn)
         {
             DefaultCamera();
+            ResetLockOnBillboardIndicater();
         }
         else
         {
             //여기서 가까운거 리스트 정리해서 받고 커런트 트랜스톰에 넣기 + r누르면 다음으로 가까운 적으로 락온되게
             LockOnTarget();
+            LockOnBillboardIndicater();
         }
 
         if (Input.GetKey(KeyCode.R) && !isLockOn && !isDelay)
@@ -168,6 +171,7 @@ public class PlayerCamera : MonoBehaviour
 
     public void LockOnTargetCheck()
     {
+        
         // 락온 리스트 만들어서 가장 가까운것 확인 후 벽있는지 확인 후 그게 맞다면 회전할 수 있도록 하기 가능하면 카메라 물리 연산도 같이 해서 카메라랑 플레이어 사이에 물체가 있다면 디폴트 카메라 처럼 움직이게 하기
         float shortestTarget = Mathf.Infinity;
         //가장 먼저 적이 있는지 확인
@@ -188,6 +192,12 @@ public class PlayerCamera : MonoBehaviour
                 }
             }
         }
+
+        if (lockOnTargets == null)
+        {
+            isLockOn = false;
+        }
+        
         //가장 가까운 적이 무엇인지 확인 + 벽이 막고 있는지 확인
         for (int j = 0; j < lockOnTargets.Count; j++)
         {
@@ -252,21 +262,33 @@ public class PlayerCamera : MonoBehaviour
         isLockOn = false;
         isDelay = true;
         behaviourController.myAnimator.SetBool(behaviourController.lockOn, false);
+        ResetLockOn();
         StartCoroutine(LockOnLocked());
         isLockOning = false;
         lockOnTime = 0;
     }
 
-    public void LockOnBillboardSprite(Transform target)
+    public void LockOnBillboardIndicater()
     {
-        //스프라이트 찍어주기
+        if(lockOnTargets != null)
+        {
+            indicater.transform.position = currentLockOnTarget.transform.position;
+            indicater.transform.LookAt(currentLockOnTarget.position + myCamera.transform.rotation * Vector3.forward, myCamera.transform.rotation * Vector3.up);
+        }
+    }
+
+    public void ResetLockOnBillboardIndicater()
+    {
+            indicater.transform.position = player.transform.position + Vector3.down * 100f;
     }
 
     public void ResetLockOn()
     {
-        //각 트렌스폼 리셋
-        //리스트 리셋
+        lockOnTargets.Clear();
+        currentLockOnTarget = null;
+        nearestLockOnTarget = null;
     }
+
     public void ResetTargetOffsets()
     {
         targetPivotOffset = pivotOffset;
