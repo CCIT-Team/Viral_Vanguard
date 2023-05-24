@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class MapSelect : MonoBehaviour,IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class MapSelect : MonoBehaviour, IPointerClickHandler
 {
     public GameObject sectionButton;
     public MeshRenderer meshRenderer;
@@ -22,16 +22,16 @@ public class MapSelect : MonoBehaviour,IPointerEnterHandler, IPointerExitHandler
         meshRenderer.materials[1].SetColor("_EmissiveColor", new Color(0, 0, 75, 100));
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        selectCursorImage.enabled = true; // 이미지 표시
-    }
+    //public void OnPointerEnter(PointerEventData eventData)
+    //{
+    //    selectCursorImage.enabled = true; // 이미지 표시
+    //}
 
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        if (isSelected == false)
-            selectCursorImage.enabled = false; // 이미지 숨김
-    }
+    //public void OnPointerExit(PointerEventData eventData)
+    //{
+    //    if (isSelected == false)
+    //        selectCursorImage.enabled = false; // 이미지 숨김
+    //}
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -45,7 +45,7 @@ public class MapSelect : MonoBehaviour,IPointerEnterHandler, IPointerExitHandler
     {
         foreach (MapSelect mapSelect in mapSelects)
         {
-            mapSelect.selectCursorImage.enabled = false;
+            //mapSelect.selectCursorImage.enabled = false;
             mapSelect.selectCursorImage.sprite = mapSelect.selectCursorOnSprite;
             mapSelect.meshRenderer.materials[0].SetColor("_EmissiveColor", new Color(18, 100, 65, 50));
             mapSelect.meshRenderer.materials[1].SetColor("_EmissiveColor", new Color(30, 10, 75, 100));
