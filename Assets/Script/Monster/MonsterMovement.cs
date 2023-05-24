@@ -11,6 +11,7 @@ public class MonsterMovement : MonoBehaviour
     Transform target;
     public Transform startPoint;
     private bool stiffen;
+    public float monsterDamage;
 
     Animator animator;
 
@@ -136,4 +137,46 @@ public class MonsterMovement : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+
+    public void PlayerStiffen(int direction)
+    {
+        if(direction == 1)
+            BehaviourController.instance.RightStiffen = true;
+        else
+            BehaviourController.instance.LeftStiffen = true;
+
+        //가드가 아닐시 
+        //데미지 넣기
+    }
+
+    public void PlayerGuardHit(int direction)
+    {
+        if(BehaviourController.instance.JustGuard == true)
+        {
+
+        }
+        else if (BehaviourController.instance.guard == true)
+        {
+            if (BehaviourController.instance.currentStamina >= 0)
+            {
+                BehaviourController.instance.GuardHit = true;
+                BehaviourController.instance.currentStamina -= monsterDamage;
+            }
+            else if (BehaviourController.instance.currentStamina <= monsterDamage)
+            {
+                BehaviourController.instance.GuardBreak = true;
+                BehaviourController.instance.currentHealthPoint -= monsterDamage - BehaviourController.instance.currentStamina;
+                BehaviourController.instance.currentStamina = 0;
+            }
+        }
+        else
+            PlayerStiffen(direction);
+    }
+
+    public void MonsterAttackCheck()
+    {
+        BehaviourController.instance.MonsterAttack = !BehaviourController.instance.MonsterAttack;
+    }
+
+    
 }

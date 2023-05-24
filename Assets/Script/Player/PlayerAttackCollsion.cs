@@ -14,25 +14,33 @@ public class PlayerAttackCollsion : MonoBehaviour
             if (behaviourController.myAnimator.GetBool(AnimatorKey.Attack1))
             {
                 BossMove.instacne.CurrentHealthPoint -= damages[0];
+                MonsterMovement.instance.HealthPoint -= damages[0];
+                MonsterMovement.instance.Stiffen = true;
                 behaviourController.currentKineticEnergy += increasekineticEnergy[0];
                 behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
             }
             else if(behaviourController.myAnimator.GetBool(AnimatorKey.Attack2)&& !behaviourController.myAnimator.GetBool(AnimatorKey.Attack3))
             {
                 BossMove.instacne.CurrentHealthPoint -= damages[1];
+                MonsterMovement.instance.HealthPoint -= damages[1];
+                MonsterMovement.instance.Stiffen = true;
                 behaviourController.currentKineticEnergy += increasekineticEnergy[1];
                 behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
             }
             else if(behaviourController.myAnimator.GetBool(AnimatorKey.Attack3) && behaviourController.myAnimator.GetBool(AnimatorKey.Attack2))
             {
                 BossMove.instacne.CurrentHealthPoint -= damages[2];
+                MonsterMovement.instance.HealthPoint -= damages[2];
+                MonsterMovement.instance.Stiffen = true;
                 behaviourController.currentKineticEnergy += increasekineticEnergy[2];
                 behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
             }
             else if(behaviourController.isBigBang)
             {
                 BossMove.instacne.CurrentHealthPoint -= damages[3];
+                MonsterMovement.instance.HealthPoint -= damages[3];
                 BossMove.instacne.SetStiffen(1);
+                MonsterMovement.instance.Stiffen = true;
                 behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
             }
         }
