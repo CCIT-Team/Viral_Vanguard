@@ -7,9 +7,9 @@ using UnityEngine.UI;
 public class ButtonArrays
 {
     // 저장된 데이터가 없는 경우
-    public GameObject[] noSaveDataVisualizationElements; 
+    public GameObject noSaveDataVisualizationElement; 
     // 저장된 데이터가 있는 경우
-    public GameObject[] saveDataVisualizationElements;
+    public GameObject saveDataVisualizationElement;
 
     public GameObject[] saveDataArrays;
 }
@@ -23,13 +23,11 @@ public class TitleSceneEvent : MonoBehaviour
         // 외부에서 Awake로 세이브 데이터를 로드하므로 순서중요!
         if (SaveDataManager.Instance.isSaveDataExist)
         {
-            for (int i = 0; i < buttonArrays.saveDataVisualizationElements.Length; i++)
-                buttonArrays.saveDataVisualizationElements[i].SetActive(true);
+            buttonArrays.saveDataVisualizationElement.SetActive(true);
         }
         else if(!SaveDataManager.Instance.isSaveDataExist)
         {
-            for (int i = 0; i < buttonArrays.noSaveDataVisualizationElements.Length; i++)
-                buttonArrays.noSaveDataVisualizationElements[i].SetActive(true);
+            buttonArrays.noSaveDataVisualizationElement.SetActive(!true);
         }
 
         for(int i = 0; i < SaveDataManager.Instance.saveDataCount; i++)
