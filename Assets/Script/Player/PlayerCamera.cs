@@ -257,6 +257,11 @@ public class PlayerCamera : MonoBehaviour
         lockOnTime = 0;
     }
 
+    public void LockOnBillboardSprite(Transform target)
+    {
+        //스프라이트 찍어주기
+    }
+
     public void ResetLockOn()
     {
         //각 트렌스폼 리셋
