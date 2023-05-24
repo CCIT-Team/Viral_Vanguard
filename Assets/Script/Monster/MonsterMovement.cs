@@ -11,6 +11,7 @@ public class MonsterMovement : MonoBehaviour
     Transform target;
     public Transform startPoint;
     private bool stiffen;
+    public float monsterDamage = 5;
 
     Animator animator;
 
@@ -19,8 +20,9 @@ public class MonsterMovement : MonoBehaviour
 
     public MonsterMovementSub attackRange;
     public MonsterMovementSub searchRange;
+    public MonsterAttack HitBox;
 
-    float healthPoint = 50;
+    float healthPoint = 1;
 
     public bool Stiffen
     {
@@ -28,7 +30,7 @@ public class MonsterMovement : MonoBehaviour
         set
         {
             stiffen = value;
-            animator.SetTrigger("Stiffen");
+            animator.SetBool("Stiffen",true);
             if(value)
             {
                 agent.isStopped = true;
@@ -47,8 +49,9 @@ public class MonsterMovement : MonoBehaviour
             if(healthPoint <= 0)
             {
                 agent.enabled = false;
+                animator.SetTrigger("Die");
+                animator.SetBool("Dead",true);
                 this.enabled = false;
-                animator.SetTrigger("Death");
             }
         }
     }
@@ -135,5 +138,62 @@ public class MonsterMovement : MonoBehaviour
     public void MonsterDead()
     {
         gameObject.SetActive(false);
+    }
+
+    public void PlayerStiffen(int direction)
+    {
+        if(direction == 1)
+            BehaviourController.instance.RightStiffen = true;
+        else
+            BehaviourController.instance.LeftStiffen = true;
+
+        //가드가 아닐시 
+        //데미지 넣기
+    }
+
+    public void PlayerGuardHit(int direction)
+    {
+        if(BehaviourController.instance.JustGuard == true)
+        {
+
+        }
+        else if (BehaviourController.instance.guard == true)
+        {
+            if (BehaviourController.instance.currentStamina >= 0)
+            {
+                BehaviourController.instance.GuardHit = true;
+                BehaviourController.instance.currentStamina -= monsterDamage;
+                BehaviourController.instance.camScript.CamShakeTime(0.1f, 0.02f);
+            }
+            else if (BehaviourController.instance.currentStamina <= monsterDamage)
+            {
+                BehaviourController.instance.GuardBreak = true;
+                BehaviourController.instance.currentHealthPoint -= monsterDamage - BehaviourController.instance.currentStamina;
+                BehaviourController.instance.currentStamina = 0;
+            }
+        }
+        else
+            PlayerStiffen(direction);
+    }
+
+    public void MonsterAttackCheck()
+    {
+        BehaviourController.instance.MonsterAttack = !BehaviourController.instance.MonsterAttack;
+    }
+
+    public void OnHitBox(int direction)
+    {
+        HitBox.OnCollider(direction);
+    }
+
+    public void OffHitBox()
+    {
+        HitBox.OffCollider();
+    }
+
+    void StiffenOff()
+    {
+        stiffen = false;
+        animator.SetBool("Stiffen", false);
     }
 }
