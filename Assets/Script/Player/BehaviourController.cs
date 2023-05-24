@@ -168,6 +168,10 @@ public class BehaviourController : MonoBehaviour
         {
             currentHealthPoint = value;
             stageUIManager.PlayerUpdateHP();
+            if(currentHealthPoint <= 0)
+            {
+                IsDead();
+            }
         }
             
     }
@@ -206,6 +210,7 @@ public class BehaviourController : MonoBehaviour
     {
         isDead = true;
         gameObject.tag = "Untagged";
+        myAnimator.SetBool(AnimatorKey.Dead, isDead);
         myAnimator.SetBool(AnimatorKey.Attack1, false);
         myAnimator.SetBool(AnimatorKey.Attack2, false);
         myAnimator.SetBool(AnimatorKey.Attack3, false);
