@@ -14,6 +14,8 @@ public class MapSelect : MonoBehaviour, IPointerClickHandler
 
     public MapSelect[] mapSelects;
 
+    public GameObject targetBossInfo;
+
     bool isSelected;
 
     public void CursorOnTheObjectroof()
@@ -37,11 +39,12 @@ public class MapSelect : MonoBehaviour, IPointerClickHandler
     {
         selectCursorImage.sprite = selectCursorClickSprite; // 클릭 이미지로 변경
         isSelected = true;
+        targetBossInfo.SetActive(true);
         CursorOnTheObjectroof();
         OnOff();
     }
 
-    void OnOff()
+    public void OnOff()
     {
         foreach (MapSelect mapSelect in mapSelects)
         {
@@ -50,5 +53,6 @@ public class MapSelect : MonoBehaviour, IPointerClickHandler
             mapSelect.meshRenderer.materials[0].SetColor("_EmissiveColor", new Color(18, 100, 65, 50));
             mapSelect.meshRenderer.materials[1].SetColor("_EmissiveColor", new Color(30, 10, 75, 100));
         }
+        targetBossInfo.SetActive(false);
     }
 }
