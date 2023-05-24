@@ -22,7 +22,8 @@ public class BehaviourController : MonoBehaviour
     public Transform myTransform;
     public Animator myAnimator;
     public Rigidbody myRigidbody;
-    public PlayerCameraManager camScript;
+    public PlayerCamera camScript;
+    public StageUIManager stageUIManager;
 
     private float horizontal;
     private float vertical;
@@ -36,49 +37,164 @@ public class BehaviourController : MonoBehaviour
     private Vector3 colliderExtents;
 
     //
-    private float MaxHealth;
-    private float currentHealthPoint = 100f;
+    public float maxHealthPoint;
+    public float currentHealthPoint = 100f;
     private bool stiffen;
+    private bool rightStiffen;
+    private bool leftStiffen;
     public bool isDead;
 
     private bool staminaCharge;
     public float staminaChargeSpeed;
-    public float stamina = 100f;
-    public float totalStamina;
-    public float kineticEnergy;
+    public float currentStamina = 100f;
+    public float maxStamina;
+    public float maxKineticEnergy = 100f;
+    public float currentKineticEnergy;
 
-    public float HealthPoint
+    public bool isBigBang = false;
+    public bool guard;
+    private bool guardHit;       //가드중 몬스터가 때리면
+    private bool justGuard;
+    private bool guardBreak;
+    private bool monsterAttack;
+    [HideInInspector]
+    public int lockOn;
+
+    public bool GuardHit
     {
-        get => currentHealthPoint;
-        set => currentHealthPoint = value;
+        get { return guardHit; }
+        set
+        {
+            guardHit = value;
+            if (guard == true)
+            {
+                myAnimator.SetTrigger("GuardHit");
+            }
+        }
     }
+
+    public bool GuardBreak
+    {
+        get { return guardBreak; }
+        set
+        {
+            guardBreak = value;
+            if(guard == true)
+            {
+                myAnimator.SetTrigger("GuardBreak");
+            }
+        }
+    }
+
+    public bool MonsterAttack
+    {
+        get { return monsterAttack; }
+        set
+        {
+            monsterAttack = value;
+        }
+    }
+
+    public bool JustGuard //적이 공격할때
+    {
+        get { return justGuard; }
+        set
+        {
+            justGuard = value;
+            if (justGuard == true)
+            {
+                myAnimator.SetTrigger("JustGuard");
+            }
+        }
+    }
+
     public bool Stiffen
     {
         get { return stiffen; }
         set
         {
-                stiffen = value;
+            stiffen = value;
+            if (guard == false)
+            {
                 myAnimator.SetBool("Stiffen", value);
+            }
         }
     }
-    public float _horizontal { get => horizontal; }
-    public float _vertical { get => vertical; }
-    public int _defailtBehaviour { get => defaultBehaviour; }
+    public bool RightStiffen
+    {
+        get { return rightStiffen; }
+        set
+        {
+            rightStiffen = value;
+            if (guard == false)
+            {
+                myAnimator.SetBool("RightStiffen", value);
+            }
+        }
+    }
+
+    public bool LeftStiffen
+    {
+        get { return leftStiffen; }
+        set
+        {
+            leftStiffen = value;
+            if (guard == false)
+            {
+                myAnimator.SetBool("LeftStiffen", value);
+            }
+        }
+    }
+
+    public void SetStiffen(int stiffenNum) //출처 해성이 BOSSMOVE
+    {
+        if (stiffenNum == 1)
+        {
+            RightStiffen = true;
+        }
+        else if (stiffenNum == 2)
+        {
+            LeftStiffen = true;
+        }
+        else if (stiffenNum == 3) //일반 경직
+        {
+                Stiffen = true;
+        }
+    }
+    public float HealthPoint
+    {
+        get => currentHealthPoint;
+        set
+        {
+            currentHealthPoint = value;
+            stageUIManager.PlayerUpdateHP();
+        }
+            
+    }
+    public float Horizontal { get => horizontal; }
+    public float Vertical { get => vertical; }
+    public int DefailtBehaviour { get => defaultBehaviour; }
+
 
     private void Awake()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         instance = this;
-        MaxHealth = currentHealthPoint;
-        totalStamina = stamina;
+        maxHealthPoint = currentHealthPoint;
+        maxStamina = currentStamina;
         isDead = false;
         horizontalFloat = Animator.StringToHash(AnimatorKey.Horizontal);
         verticalFloat = Animator.StringToHash(AnimatorKey.Vertical);
         groundedBool = Animator.StringToHash(AnimatorKey.Grounded);
         colliderExtents = GetComponent<Collider>().bounds.extents;
+        lockOn = Animator.StringToHash(AnimatorKey.LockOn);
     }
-    public void StaminaChargeOn()
+    public IEnumerator StaminaChargeOn()
     {
-        staminaCharge = true;
+        yield return new WaitForSeconds(2f);
+        if (maxStamina >= currentStamina)
+            staminaCharge = true;
     }
 
     public void StaminaChargeOff()
@@ -126,14 +242,15 @@ public class BehaviourController : MonoBehaviour
 
         myAnimator.SetFloat(horizontalFloat, horizontal, 0.1f, Time.deltaTime);
         myAnimator.SetFloat(verticalFloat, vertical, 0.1f, Time.deltaTime);
-        //transform.position += h * transform.right + v * transform.forward;
+
 
 
         myAnimator.SetBool(groundedBool, IsGrounded());
         if (staminaCharge == true)
         {
-            if(stamina <= totalStamina)
-            stamina += staminaChargeSpeed * Time.deltaTime;
+            if(currentStamina <= maxStamina)
+                currentStamina += staminaChargeSpeed * Time.deltaTime;
+            stageUIManager.PlayerUpdateStamina();
         }
     }
 

@@ -90,6 +90,7 @@ public enum EVENT_TYPE  //
     eHealthChange,
     eNormalRange1,
     eNormalRange2,
+    eActionRange1,
     eSpecialRange1,
     eSpecialRange2,
     eSpecialRange3,

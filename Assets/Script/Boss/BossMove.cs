@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class BossMove : MonoBehaviour
 {
     public static BossMove instacne;
+
     void Awake() => instacne = this;
 
     IEnumerator update()
@@ -18,7 +19,7 @@ public class BossMove : MonoBehaviour
     }
 
     [Header("보스 스테이터스")]
-    public static string bossName;
+    public string bossName;
     public float maxHealthPoint;
     public float currentHealthPoint;
     public float attackPoint;
@@ -31,6 +32,7 @@ public class BossMove : MonoBehaviour
         set
         {
             currentHealthPoint = value;
+            stageUIManager.BossUpdateHP();
         }
         get
         {
@@ -58,34 +60,55 @@ public class BossMove : MonoBehaviour
     public BossBehavior bossBehavior;
     public BossRangeCheck[] rangeChecks;
 
-    bool ready;
-    bool Ready
-    {
-        set
-        {
-            ready = value;
-            if (Ready) { NormalAttack(2); }
-        }
-        get { return ready; }
-    }
+    [Header("공격 데미지 세팅")]
+    public float normalAttack1;
+    public float normalAttack2;
+    public float normalAttack3;
+    public float actionAttack1;
+    public float actionAttack1_1;
+    public float specialAttack1;
+    public float specialAttack2;
+    public float specialAttack2_1;
+    public float specialAttack3;
+    public float specialAttack3_1;
 
-    bool stiffen; //현재 경직상태인지?
+    bool stiffen;
+    public bool bigStiffen;
     public bool Stiffen
     {
         set
         {
             stiffen = value;
-            animator.SetBool("Stiffen", value);
+            animator.SetTrigger("Stiffen");
         }
         get
         {
             return stiffen;
         }
     }
-    public bool canStiffen; //경직 상태가 될 수 있는지?
+    public bool BigStiffen
+    {
+        set
+        {
+            bigStiffen = value;
+            animator.SetTrigger("BigStiffen");
+        }
+        get
+        {
+            return bigStiffen;
+        }
+    }
+    public bool canStiffen;
+    public bool canBigStiffen;
 
     public bool canAttack;
     int attackCount = 0;
+
+    public GameObject[] attackDetections;
+
+    public EventListener listener;
+
+    public StageUIManager stageUIManager;
 
     void StartTracking()
     {
@@ -120,7 +143,8 @@ public class BossMove : MonoBehaviour
 
     public void StiffenEnd()
     {
-        animator.SetBool("Stiffen", false);
+        canStiffen = true;
+        NextAction();
     }
 
     public void RangeCheck(DistanceDetection.DistanceType type, bool b)
@@ -136,17 +160,20 @@ public class BossMove : MonoBehaviour
             case DistanceDetection.DistanceType.NORMALATTACK2:
                 rangeChecks[1].RangeCheck = b;
                 break;
-            case DistanceDetection.DistanceType.ACTIONATTACK1:
+            case DistanceDetection.DistanceType.NORMALATTACK3:
                 rangeChecks[2].RangeCheck = b;
                 break;
-            case DistanceDetection.DistanceType.SPECIALATTACK1:
+            case DistanceDetection.DistanceType.ACTIONATTACK1:
                 rangeChecks[3].RangeCheck = b;
                 break;
-            case DistanceDetection.DistanceType.SPECIALATTACK2:
+            case DistanceDetection.DistanceType.SPECIALATTACK1:
                 rangeChecks[4].RangeCheck = b;
                 break;
-            case DistanceDetection.DistanceType.SPECIALATTACK3:
+            case DistanceDetection.DistanceType.SPECIALATTACK2:
                 rangeChecks[5].RangeCheck = b;
+                break;
+            case DistanceDetection.DistanceType.SPECIALATTACK3:
+                rangeChecks[6].RangeCheck = b;
                 break;
         }
     }
@@ -159,6 +186,30 @@ public class BossMove : MonoBehaviour
     public bool CanAttack(int i)
     {
         return rangeChecks[i].RangeCheck;
+    }
+
+    public void ActiveCollider(int i)
+    {
+        bool b = attackDetections[i].activeSelf ? false : true;
+        attackDetections[i].SetActive(b);
+    }
+
+    public void SetStiffen(int stiffenNum)
+    {
+        if (stiffenNum == 0 && canStiffen)
+            Stiffen = true;
+        else if (stiffenNum == 1)
+            BigStiffen = true;
+    }
+
+    public void CanJustGuard()
+    {
+        canBigStiffen = canBigStiffen ? false : true;
+    }
+
+    public void DoAttack()
+    {
+        BehaviourController.instance.MonsterAttack = BehaviourController.instance.MonsterAttack ? false : true;
     }
 }
 

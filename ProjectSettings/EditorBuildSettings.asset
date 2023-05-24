@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/OutdoorsScene.unity
-    guid: 8124e5870f4fd4c779e7a5f994e84ad1
+    path: Assets/Scenes/UI/Title.unity
+    guid: a0aa09ffa2d145848a0711249da9c473
+  - enabled: 1
+    path: Assets/Scenes/UI/Lobby.unity
+    guid: 73ba104c82efebb4a9034d2f0af3fe64
+  - enabled: 1
+    path: Assets/Scenes/Game_Map/NikeMainRoad.unity
+    guid: 3168f315c564b0c438edd8ad9f85acb6
   m_configObjects: {}
