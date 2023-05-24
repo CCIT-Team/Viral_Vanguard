@@ -14,9 +14,19 @@ public class MapSelect : MonoBehaviour, IPointerClickHandler
 
     public MapSelect[] mapSelects;
 
-    public GameObject targetBossInfo;
+    // 2023-05-24 Jun
+    public GameObject[] targetBossInfo;
+    public ImageHover imageHover;
+    public Image dispatch;
+    public Sprite originalSprite;
+    public Sprite changeSprite;
 
     bool isSelected;
+
+    void Start()
+    {
+        imageHover.enabled = false;
+    }
 
     public void CursorOnTheObjectroof()
     {
@@ -24,24 +34,31 @@ public class MapSelect : MonoBehaviour, IPointerClickHandler
         meshRenderer.materials[1].SetColor("_EmissiveColor", new Color(0, 0, 75, 100));
     }
 
-    //public void OnPointerEnter(PointerEventData eventData)
-    //{
-    //    selectCursorImage.enabled = true; // 이미지 표시
-    //}
-
-    //public void OnPointerExit(PointerEventData eventData)
-    //{
-    //    if (isSelected == false)
-    //        selectCursorImage.enabled = false; // 이미지 숨김
-    //}
-
     public void OnPointerClick(PointerEventData eventData)
     {
-        selectCursorImage.sprite = selectCursorClickSprite; // 클릭 이미지로 변경
-        isSelected = true;
-        targetBossInfo.SetActive(true);
-        CursorOnTheObjectroof();
-        OnOff();
+        if (!isSelected)
+        {
+            selectCursorImage.sprite = selectCursorClickSprite; // 클릭 이미지로 변경
+            targetBossInfo[1].SetActive(false);
+            targetBossInfo[2].SetActive(false);
+            targetBossInfo[0].SetActive(true);
+            CursorOnTheObjectroof();
+            OnOff();
+            dispatch.sprite = changeSprite;
+            imageHover.enabled = true;
+            isSelected = true;
+        }
+        else if(isSelected)
+        {
+            selectCursorImage.sprite = selectCursorOnSprite; // Non클릭 이미지로 변경
+            targetBossInfo[0].SetActive(false);
+            meshRenderer.materials[0].SetColor("_EmissiveColor", new Color(18, 100, 65, 50));
+            meshRenderer.materials[1].SetColor("_EmissiveColor", new Color(30, 10, 75, 100));
+            dispatch.sprite = originalSprite;
+            imageHover.enabled = false;
+
+            isSelected = false;
+        }
     }
 
     public void OnOff()
@@ -53,6 +70,5 @@ public class MapSelect : MonoBehaviour, IPointerClickHandler
             mapSelect.meshRenderer.materials[0].SetColor("_EmissiveColor", new Color(18, 100, 65, 50));
             mapSelect.meshRenderer.materials[1].SetColor("_EmissiveColor", new Color(30, 10, 75, 100));
         }
-        targetBossInfo.SetActive(false);
     }
 }

@@ -25,8 +25,24 @@ public class LobbySceneEvent : MonoBehaviour
         for(int i=0; i < panels.Length; i++) { panels[i].SetActive(false); }
         //lobbyBackgroundImage.sprite = lobbyBackGrounds[backgroundimageNumber];
         panels[backgroundimageNumber].gameObject.SetActive(true);
-        
-        for(int i = 0; i < mapSelects.Length; i++) mapSelects[i].OnOff();
-      
+
+        if(backgroundimageNumber != 2)
+        for (int i = 0; i < mapSelects.Length; i++)
+        {
+            mapSelects[i].targetBossInfo[0].SetActive(false);
+            mapSelects[i].dispatch.sprite = mapSelects[i].originalSprite;
+            mapSelects[i].OnOff();
+        }
+    }
+
+    public void Dispatch(ImageHover imagehover)
+    {
+        if(imagehover.enabled)
+        {
+            //보스 정보 전달
+            //
+
+            SceneFader.Instance.StartFadeOut("NikeMainRoad");
+        }
     }
 }

@@ -40,6 +40,8 @@ public class SceneFader : Singleton<SceneFader>
         }
         if (typeof(T) == typeof(int)) SceneController.LoadSceneByIndex((int)(object)parameter);
         else if (typeof(T) == typeof(string)) SceneController.LoadScene(parameter.ToString());
+
+        yield return new WaitForSeconds(1f);
         color.a = 0f;
         fadeImage.color = color;
     }
