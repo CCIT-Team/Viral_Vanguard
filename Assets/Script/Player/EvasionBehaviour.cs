@@ -122,7 +122,7 @@ public class EvasionBehaviour : GenericBehaviour
 
     private void Update()
     {
-        if(Input.GetAxisRaw(ButtonKey.Evasion) !=0 && !evasion && behaviourController.stamina >= reducedStaminaEvasion)
+        if(Input.GetAxisRaw(ButtonKey.Evasion) !=0 && !evasion && behaviourController.currentStamina >= reducedStaminaEvasion)
         {
             StartCoroutine(ToggleEvasionOn());
         }
@@ -135,7 +135,7 @@ public class EvasionBehaviour : GenericBehaviour
 
     public void ReducedstaminaEvasion()
     {
-        behaviourController.stamina -= reducedStaminaEvasion;
+        behaviourController.currentStamina -= reducedStaminaEvasion;
     }
 
 }

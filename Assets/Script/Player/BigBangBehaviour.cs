@@ -108,7 +108,7 @@ public class BigBangBehaviour : GenericBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown(ButtonKey.BigBnag) && !bigBang && behaviourController.kineticEnergy >= 100f) //일정 게이지 이상 혹은 같으면 작동
+        if (Input.GetButtonDown(ButtonKey.BigBnag) && !bigBang && behaviourController.currentKineticEnergy >= 100f) //일정 게이지 이상 혹은 같으면 작동
         {
             StartCoroutine(ToggleBigBangOn());
         }
@@ -120,7 +120,8 @@ public class BigBangBehaviour : GenericBehaviour
 
     public void ReducedKineticEnergyBigBang()
     {
-        behaviourController.kineticEnergy -= 20;
+        behaviourController.currentKineticEnergy -= 20;
+        behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
     }
 
     public void IsBigBangTrue()

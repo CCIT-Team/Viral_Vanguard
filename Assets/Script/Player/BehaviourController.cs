@@ -23,6 +23,7 @@ public class BehaviourController : MonoBehaviour
     public Animator myAnimator;
     public Rigidbody myRigidbody;
     public PlayerCamera camScript;
+    public StageUIManager stageUIManager;
 
     private float horizontal;
     private float vertical;
@@ -36,8 +37,8 @@ public class BehaviourController : MonoBehaviour
     private Vector3 colliderExtents;
 
     //
-    private float MaxHealth;
-    private float currentHealthPoint = 100f;
+    public float maxHealthPoint;
+    public float currentHealthPoint = 100f;
     private bool stiffen;
     private bool rightStiffen;
     private bool leftStiffen;
@@ -45,9 +46,10 @@ public class BehaviourController : MonoBehaviour
 
     private bool staminaCharge;
     public float staminaChargeSpeed;
-    public float stamina = 100f;
-    public float totalStamina;
-    public float kineticEnergy;
+    public float currentStamina = 100f;
+    public float maxStamina;
+    public float maxKineticEnergy = 100f;
+    public float currentKineticEnergy;
 
     public bool isBigBang = false;
     public bool guard;
@@ -162,7 +164,12 @@ public class BehaviourController : MonoBehaviour
     public float HealthPoint
     {
         get => currentHealthPoint;
-        set => currentHealthPoint = value;
+        set
+        {
+            currentHealthPoint = value;
+            stageUIManager.PlayerUpdateHP();
+        }
+            
     }
     public float Horizontal { get => horizontal; }
     public float Vertical { get => vertical; }
@@ -174,8 +181,8 @@ public class BehaviourController : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         instance = this;
-        MaxHealth = currentHealthPoint;
-        totalStamina = stamina;
+        maxHealthPoint = currentHealthPoint;
+        maxStamina = currentStamina;
         isDead = false;
         horizontalFloat = Animator.StringToHash(AnimatorKey.Horizontal);
         verticalFloat = Animator.StringToHash(AnimatorKey.Vertical);
@@ -186,7 +193,7 @@ public class BehaviourController : MonoBehaviour
     public IEnumerator StaminaChargeOn()
     {
         yield return new WaitForSeconds(2f);
-        if (totalStamina >= stamina)
+        if (maxStamina >= currentStamina)
             staminaCharge = true;
     }
 
@@ -241,8 +248,9 @@ public class BehaviourController : MonoBehaviour
         myAnimator.SetBool(groundedBool, IsGrounded());
         if (staminaCharge == true)
         {
-            if(stamina <= totalStamina)
-            stamina += staminaChargeSpeed * Time.deltaTime;
+            if(currentStamina <= maxStamina)
+                currentStamina += staminaChargeSpeed * Time.deltaTime;
+            stageUIManager.PlayerUpdateStamina();
         }
     }
 

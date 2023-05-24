@@ -76,14 +76,14 @@ public class AttackDetection : MonoBehaviour
 
     void SteminaCheck()
     {
-        if (BehaviourController.instance.stamina < damage)
+        if (BehaviourController.instance.currentStamina < damage)
         {
-            BehaviourController.instance.HealthPoint -= damage - BehaviourController.instance.stamina;
+            BehaviourController.instance.HealthPoint -= damage - BehaviourController.instance.currentStamina;
             BehaviourController.instance.GuardBreak = true;
             print(BehaviourController.instance.HealthPoint);
         }
 
-        BehaviourController.instance.stamina -= damage;
+        BehaviourController.instance.currentStamina -= damage;
     }
 
     void Damage()

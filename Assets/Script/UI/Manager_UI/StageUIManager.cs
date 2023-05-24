@@ -13,54 +13,61 @@ public class StageUIManager : MonoBehaviour
     public Image bossHealthPointImage;
 
     //플레이어 정보
-    float playerMaxHealthPoint;
-    float playerCurrentHealthPoint;
-    float playerMaxStamina;
-    float playerCurrentStamina;
-    float playerMaxKineticEnergy;
-    float playerCurrentKineticEnergy;
+    public float playerMaxHealthPoint;
+    public float playerCurrentHealthPoint;
+    public float playerMaxStamina;
+    public float playerCurrentStamina;
+    public float playerMaxKineticEnergy;
+    public float playerCurrentKineticEnergy;
 
     //보스 정보
-    string bossName;
-    float bossMaxHp;
-    float bossCurrentHp;
+    public string bossName;
+    public float bossMaxHp;
+    public float bossCurrentHp;
 
-    void BossInitaialzation ()
+    void Start() => StatusInitaialzation();
+
+    void StatusInitaialzation()
     {
         bossName = BossMove.instacne.bossName;
         bossMaxHp = BossMove.instacne.maxHealthPoint;
         bossCurrentHp = BossMove.instacne.currentHealthPoint;
+
+        playerMaxHealthPoint = BehaviourController.instance.maxHealthPoint;
+        playerCurrentHealthPoint = BehaviourController.instance.currentHealthPoint;
+        playerMaxStamina = BehaviourController.instance.maxStamina;
+        playerCurrentStamina = BehaviourController.instance.currentStamina;
+        playerMaxKineticEnergy = BehaviourController.instance.maxKineticEnergy;
+        playerCurrentKineticEnergy = BehaviourController.instance.currentKineticEnergy;
+
+        BossUpdateHP();
+        PlayerUpdateHP();
+        PlayerUpdateStamina();
+        PlayerUpdateKineticEnergy();
     }
 
-    void BossUpdateHP()
+    public void BossUpdateHP()
     {
         bossNameText.text = bossName;
+        bossCurrentHp = BossMove.instacne.currentHealthPoint;
         bossHealthPointImage.fillAmount = bossCurrentHp / bossMaxHp;
-    }
-
-    void PlayerInitaialzation()
-    {
-        // 플레이어로 교체 예정
-        playerMaxHealthPoint = BossMove.instacne.maxHealthPoint;
-        playerCurrentHealthPoint = BossMove.instacne.currentHealthPoint;
-        playerMaxStamina = BossMove.instacne.currentHealthPoint;
-        playerCurrentStamina = BossMove.instacne.currentHealthPoint;
-        playerMaxKineticEnergy = BossMove.instacne.currentHealthPoint;
-        playerCurrentKineticEnergy = BossMove.instacne.currentHealthPoint;
     }
 
     public void PlayerUpdateHP()
     {
+        playerCurrentHealthPoint = BehaviourController.instance.currentHealthPoint;
         playerHealthPointImage.fillAmount = playerCurrentHealthPoint / playerMaxHealthPoint;
     }
 
     public void PlayerUpdateStamina()
     {
+        playerCurrentStamina = BehaviourController.instance.currentStamina;
         playerStaminaImage.fillAmount = playerCurrentStamina / playerMaxStamina;
     }
 
     public void PlayerUpdateKineticEnergy()
     {
+        playerCurrentKineticEnergy = BehaviourController.instance.currentKineticEnergy;
         playerKineticEnergyImage.fillAmount = playerCurrentKineticEnergy / playerMaxKineticEnergy;
     }
 }

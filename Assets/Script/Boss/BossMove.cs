@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class BossMove : MonoBehaviour
 {
     public static BossMove instacne;
+
     void Awake() => instacne = this;
 
     IEnumerator update()
@@ -31,6 +32,7 @@ public class BossMove : MonoBehaviour
         set
         {
             currentHealthPoint = value;
+            stageUIManager.BossUpdateHP();
         }
         get
         {
@@ -105,6 +107,8 @@ public class BossMove : MonoBehaviour
     public GameObject[] attackDetections;
 
     public EventListener listener;
+
+    public StageUIManager stageUIManager;
 
     void StartTracking()
     {
