@@ -10,7 +10,9 @@ public class AttackDetection : MonoBehaviour
     public BossAttackEnum bossAttack;
     public float damage;
     public CapsuleCollider attackCollider;
-
+    public float camShakeTime;
+    public float camShakeAmount;
+    public int stiffenNum;
     void Awake() => damage = GetDamage();
 
     void OnTriggerEnter(Collider other)
@@ -27,6 +29,9 @@ public class AttackDetection : MonoBehaviour
                 BehaviourController.instance.Stiffen = true;
                 Damage();
             }
+
+            BehaviourController.instance.camScript.CamShakeTime(camShakeTime, camShakeAmount);
+            BehaviourController.instance.SetStiffen(stiffenNum);
         }
     }
 
