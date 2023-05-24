@@ -29,6 +29,7 @@ public class UIManager : Singleton<UIManager>
         if(uiStack.Count > 0)
         {
             GameObject lastUI = uiStack.Pop();
+            Debug.Log(lastUI.name);
             lastUI.SetActive(false);
 
             Button button = lastUI.GetComponent<Button>();
@@ -46,13 +47,14 @@ public class UIManager : Singleton<UIManager>
         {
             CloseLastUI();
         }
+
         if (Input.GetKeyDown(KeyCode.L))
         {
-            SceneController.LoadScene("Lobby");
+            SceneFader.Instance.StartFadeOut("Lobby");
         }
         if (Input.GetKeyDown(KeyCode.N))
         {
-            SceneController.LoadScene("NikeMainRoad");
+            SceneFader.Instance.StartFadeOut("NikeMainRoad");
         }
     }
 
