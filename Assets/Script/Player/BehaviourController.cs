@@ -252,6 +252,7 @@ public class BehaviourController : MonoBehaviour
                 currentStamina += staminaChargeSpeed * Time.deltaTime;
             stageUIManager.PlayerUpdateStamina();
         }
+        
     }
 
     private void OnCollisionEnter(Collision collision)
