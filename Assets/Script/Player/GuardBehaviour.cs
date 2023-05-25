@@ -88,7 +88,11 @@ public class GuardBehaviour : GenericBehaviour
         {
             behaviourController.JustGuard = true;
             BossMove.instacne.SetStiffen(0);
-            behaviourController.currentKineticEnergy += 20f;
+            MonsterMovement.instance.Stiffen = true;
+            if (MonsterMovement.instance.Stiffen == true)
+            behaviourController.currentKineticEnergy += 5f;
+            else
+                behaviourController.currentKineticEnergy += 20f;
             //StartCoroutine(JustGuardOnce());
         }
     }

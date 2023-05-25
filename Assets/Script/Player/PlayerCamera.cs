@@ -78,19 +78,19 @@ public class PlayerCamera : MonoBehaviour
 
     void Update()
     {
-        if (!isLockOn)
+        if (!isLockOn && currentLockOnTarget == null)
         {
             DefaultCamera();
             ResetLockOnBillboardIndicater();
         }
-        else
+        else if(currentLockOnTarget != null)
         {
             //여기서 가까운거 리스트 정리해서 받고 커런트 트랜스톰에 넣기 + r누르면 다음으로 가까운 적으로 락온되게
             LockOnTarget();
             LockOnBillboardIndicater();
         }
 
-        if (Input.GetKey(KeyCode.R) && !isLockOn && !isDelay)
+        if (Input.GetKey(KeyCode.R) && !isLockOn && !isDelay) //계속 누르면 나중에 r한번 누르면 작동됨 따라서 변경 필요
         {
             isLockOning = true;
             if(isLockOning)
@@ -113,6 +113,10 @@ public class PlayerCamera : MonoBehaviour
                     LockOnDeactivate();
                 }
             }
+        }
+        if(currentLockOnTarget == null)
+        {
+            isLockOn = false;
         }
     }
 
@@ -192,11 +196,6 @@ public class PlayerCamera : MonoBehaviour
                 }
             }
         }
-
-        if (lockOnTargets == null)
-        {
-            isLockOn = false;
-        }
         
         //가장 가까운 적이 무엇인지 확인 + 벽이 막고 있는지 확인
         for (int j = 0; j < lockOnTargets.Count; j++)
@@ -250,11 +249,14 @@ public class PlayerCamera : MonoBehaviour
     {
         isLockOn = true;
         LockOnTargetCheck();
-        isDelay = true;
-        behaviourController.myAnimator.SetBool(behaviourController.lockOn, true);
-        StartCoroutine(LockOnLocked());
-        isLockOning = false;
-        lockOnTime = 0;
+        if(currentLockOnTarget != null)
+        {
+            isDelay = true;
+            behaviourController.myAnimator.SetBool(behaviourController.lockOn, true);
+            StartCoroutine(LockOnLocked());
+            isLockOning = false;
+            lockOnTime = 0;
+        }
     }
 
     public void LockOnDeactivate()
