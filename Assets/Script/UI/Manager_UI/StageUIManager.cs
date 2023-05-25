@@ -28,8 +28,6 @@ public class StageUIManager : MonoBehaviour
     public float bossMaxHp;
     public float bossCurrentHp;
 
-<<<<<<< HEAD
-=======
     float t = 0;
     Coroutine bossHealthCoroutine = null;
     Coroutine playerHealthCoroutine = null;
@@ -39,23 +37,10 @@ public class StageUIManager : MonoBehaviour
     public GameObject clearAnimationObject;
     public GameObject failAnimationObject;
 
->>>>>>> feature/UI
     void Start() => StatusInitaialzation();
 
     void StatusInitaialzation()
     {
-<<<<<<< HEAD
-        bossName = BossMove.instacne.bossName;
-        bossMaxHp = BossMove.instacne.maxHealthPoint;
-        bossCurrentHp = BossMove.instacne.currentHealthPoint;
-
-        playerMaxHealthPoint = BehaviourController.instance.maxHealthPoint;
-        playerCurrentHealthPoint = BehaviourController.instance.currentHealthPoint;
-        playerMaxStamina = BehaviourController.instance.maxStamina;
-        playerCurrentStamina = BehaviourController.instance.currentStamina;
-        playerMaxKineticEnergy = BehaviourController.instance.maxKineticEnergy;
-        playerCurrentKineticEnergy = BehaviourController.instance.currentKineticEnergy;
-=======
         //bossName = BossMove.instacne.bossName;
         //bossMaxHp = BossMove.instacne.maxHealthPoint;
         //bossCurrentHp = BossMove.instacne.currentHealthPoint;
@@ -66,7 +51,6 @@ public class StageUIManager : MonoBehaviour
         //playerCurrentStamina = BehaviourController.instance.currentStamina;
         //playerMaxKineticEnergy = BehaviourController.instance.maxKineticEnergy;
         //playerCurrentKineticEnergy = BehaviourController.instance.currentKineticEnergy;
->>>>>>> feature/UI
 
         BossUpdateHP();
         PlayerUpdateHP();
@@ -77,15 +61,6 @@ public class StageUIManager : MonoBehaviour
     public void BossUpdateHP()
     {
         bossNameText.text = bossName;
-<<<<<<< HEAD
-        bossCurrentHp = BossMove.instacne.currentHealthPoint;
-        bossHealthPointImage.fillAmount = bossCurrentHp / bossMaxHp;
-    }
-
-    public void PlayerUpdateHP()
-    {
-        playerCurrentHealthPoint = BehaviourController.instance.currentHealthPoint;
-=======
 
         float beforeAttackHP = bossCurrentHp;
         float afterAttackHP;
@@ -100,7 +75,6 @@ public class StageUIManager : MonoBehaviour
         float after;
         //playerCurrentHealthPoint = BehaviourController.instance.currentHealthPoint;
         after = playerCurrentHealthPoint;
->>>>>>> feature/UI
         playerHealthPointImage.fillAmount = playerCurrentHealthPoint / playerMaxHealthPoint;
         playerHealthPointText.text = (playerHealthPointImage.fillAmount * 100).ToString();
 
@@ -108,27 +82,19 @@ public class StageUIManager : MonoBehaviour
 
     public void PlayerUpdateStamina()
     {
-<<<<<<< HEAD
-        playerCurrentStamina = BehaviourController.instance.currentStamina;
-=======
         float before = playerCurrentStamina;
         float after;
         //playerCurrentStamina = BehaviourController.instance.currentStamina;
         after = playerCurrentStamina;
->>>>>>> feature/UI
         playerStaminaImage.fillAmount = playerCurrentStamina / playerMaxStamina;
     }
 
     public void PlayerUpdateKineticEnergy()
     {
-<<<<<<< HEAD
-        playerCurrentKineticEnergy = BehaviourController.instance.currentKineticEnergy;
-=======
         float before = playerCurrentKineticEnergy;
         float after;
         //playerCurrentKineticEnergy = BehaviourController.instance.currentKineticEnergy;
         after = playerCurrentKineticEnergy;
->>>>>>> feature/UI
         playerKineticEnergyImage.fillAmount = playerCurrentKineticEnergy / playerMaxKineticEnergy;
         playerKineticEnergyText.text = (playerKineticEnergyImage.fillAmount * 100).ToString();
     }
