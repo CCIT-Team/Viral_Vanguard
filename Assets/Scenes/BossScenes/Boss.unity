@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 261.8021, g: 324.32925, b: 429.24924, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -299,7 +299,7 @@ PrefabInstance:
     - target: {fileID: 4822846413045343801, guid: 00c49b4cc84b26548988acb94af22e1b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4822846413045343807, guid: 00c49b4cc84b26548988acb94af22e1b,
         type: 3}
@@ -1269,6 +1269,12 @@ Transform:
   m_Father: {fileID: 1456101003}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &659590019 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3847436021044432461, guid: 78a8ce50ee87eed4fb79cecbffa8fd20,
+    type: 3}
+  m_PrefabInstance: {fileID: 710005981}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &695965157
 GameObject:
   m_ObjectHideFlags: 0
@@ -1391,7 +1397,7 @@ PrefabInstance:
     - target: {fileID: 3847436021618237375, guid: 78a8ce50ee87eed4fb79cecbffa8fd20,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 3847436021618237375, guid: 78a8ce50ee87eed4fb79cecbffa8fd20,
         type: 3}
@@ -1483,6 +1489,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5462090596870148856, guid: 78a8ce50ee87eed4fb79cecbffa8fd20,
+        type: 3}
+      propertyPath: BossStatusObject
+      value: 
+      objectReference: {fileID: 659590019}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78a8ce50ee87eed4fb79cecbffa8fd20, type: 3}
 --- !u!114 &710005982 stripped
@@ -1996,7 +2007,7 @@ PrefabInstance:
     - target: {fileID: 2251672632231258803, guid: 9c0b0d073b4848449b0af85e6115a596,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2251672632231258803, guid: 9c0b0d073b4848449b0af85e6115a596,
         type: 3}
@@ -2527,7 +2538,7 @@ PrefabInstance:
     - target: {fileID: 1227000441163751126, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1227000441163751126, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
         type: 3}
@@ -2771,7 +2782,7 @@ PrefabInstance:
     - target: {fileID: 3662496979572467538, guid: 60d310309985b9d4e9917e6e851e63c9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3662496979572467538, guid: 60d310309985b9d4e9917e6e851e63c9,
         type: 3}
@@ -2942,7 +2953,7 @@ PrefabInstance:
     - target: {fileID: 5479372550839313222, guid: 6df457be0c4599f489080a889b08c803,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5479372550839313222, guid: 6df457be0c4599f489080a889b08c803,
         type: 3}
@@ -3350,6 +3361,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BossMonster
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735060496845134462, guid: 1b969a6f49e974a47be9c63ae35eb637,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b969a6f49e974a47be9c63ae35eb637, type: 3}

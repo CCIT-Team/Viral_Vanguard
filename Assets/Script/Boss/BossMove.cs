@@ -8,6 +8,10 @@ public class BossMove : MonoBehaviour
     public static BossMove instacne;
 
     void Awake() => instacne = this;
+    void Start()
+    {
+        stageUIManager.BossStatisInitailzation();
+    }
 
     IEnumerator update()
     {
