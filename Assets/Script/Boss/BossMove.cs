@@ -248,6 +248,7 @@ public class BossMove : MonoBehaviour
     public void BossDead()
     {
         bodyCollider.enabled = false;
+        agent.baseOffset = 0;
         animator.SetTrigger("Dead");
     }
 
