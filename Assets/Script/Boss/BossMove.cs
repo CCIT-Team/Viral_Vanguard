@@ -117,6 +117,8 @@ public class BossMove : MonoBehaviour
 
     public StageUIManager stageUIManager;
 
+    public Collider bodyCollider;
+
     void StartTracking()
     {
         StartCoroutine(update());
@@ -245,6 +247,7 @@ public class BossMove : MonoBehaviour
 
     public void BossDead()
     {
+        bodyCollider.enabled = false;
         animator.SetTrigger("Dead");
     }
 

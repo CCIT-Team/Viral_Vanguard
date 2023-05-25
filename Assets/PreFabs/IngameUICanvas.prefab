@@ -945,7 +945,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ae674fd3d4ea8d419c9c2a568b48e5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BossStatusObject: {fileID: 3847436021618237371}
+  BossStatusObject: {fileID: 3847436021044432461}
   playerHealthPointImage: {fileID: 3847436020534341558}
   playerStaminaImage: {fileID: 3847436020226842293}
   playerKineticEnergyImage: {fileID: 3847436020777514837}

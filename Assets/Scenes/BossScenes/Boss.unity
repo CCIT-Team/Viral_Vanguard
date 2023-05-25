@@ -1269,12 +1269,6 @@ Transform:
   m_Father: {fileID: 1456101003}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &659590019 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3847436021044432461, guid: 78a8ce50ee87eed4fb79cecbffa8fd20,
-    type: 3}
-  m_PrefabInstance: {fileID: 710005981}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &695965157
 GameObject:
   m_ObjectHideFlags: 0
@@ -1489,11 +1483,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5462090596870148856, guid: 78a8ce50ee87eed4fb79cecbffa8fd20,
-        type: 3}
-      propertyPath: BossStatusObject
-      value: 
-      objectReference: {fileID: 659590019}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78a8ce50ee87eed4fb79cecbffa8fd20, type: 3}
 --- !u!114 &710005982 stripped
@@ -3185,38 +3174,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 213664448, guid: 1b969a6f49e974a47be9c63ae35eb637, type: 3}
-      propertyPath: camShakeTime
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 213664448, guid: 1b969a6f49e974a47be9c63ae35eb637, type: 3}
-      propertyPath: camShakeAmount
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 903104875, guid: 1b969a6f49e974a47be9c63ae35eb637, type: 3}
-      propertyPath: camShakeTime
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 903104875, guid: 1b969a6f49e974a47be9c63ae35eb637, type: 3}
-      propertyPath: camShakeAmount
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 1752752382, guid: 1b969a6f49e974a47be9c63ae35eb637, type: 3}
-      propertyPath: camShakeTime
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 1752752382, guid: 1b969a6f49e974a47be9c63ae35eb637, type: 3}
-      propertyPath: camShakeAmount
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 2144467633, guid: 1b969a6f49e974a47be9c63ae35eb637, type: 3}
-      propertyPath: camShakeTime
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 2144467633, guid: 1b969a6f49e974a47be9c63ae35eb637, type: 3}
-      propertyPath: camShakeAmount
-      value: 0.03
-      objectReference: {fileID: 0}
     - target: {fileID: 6923057538337079492, guid: 1b969a6f49e974a47be9c63ae35eb637,
         type: 3}
       propertyPath: m_RootOrder
@@ -3272,86 +3229,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7465030136957794006, guid: 1b969a6f49e974a47be9c63ae35eb637,
-        type: 3}
-      propertyPath: camShakeTime
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 7465030136957794006, guid: 1b969a6f49e974a47be9c63ae35eb637,
-        type: 3}
-      propertyPath: camShakeAmount
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 7465030137129863596, guid: 1b969a6f49e974a47be9c63ae35eb637,
-        type: 3}
-      propertyPath: camShakeTime
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 7465030137129863596, guid: 1b969a6f49e974a47be9c63ae35eb637,
-        type: 3}
-      propertyPath: camShakeAmount
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 7465030137332675132, guid: 1b969a6f49e974a47be9c63ae35eb637,
-        type: 3}
-      propertyPath: camShakeTime
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 7465030137332675132, guid: 1b969a6f49e974a47be9c63ae35eb637,
-        type: 3}
-      propertyPath: camShakeAmount
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 7465030137590315250, guid: 1b969a6f49e974a47be9c63ae35eb637,
-        type: 3}
-      propertyPath: camShakeTime
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 7465030137590315250, guid: 1b969a6f49e974a47be9c63ae35eb637,
-        type: 3}
-      propertyPath: camShakeAmount
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 7465030137663554721, guid: 1b969a6f49e974a47be9c63ae35eb637,
-        type: 3}
-      propertyPath: camShakeTime
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 7465030137663554721, guid: 1b969a6f49e974a47be9c63ae35eb637,
-        type: 3}
-      propertyPath: camShakeAmount
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 7465030137692664670, guid: 1b969a6f49e974a47be9c63ae35eb637,
-        type: 3}
-      propertyPath: camShakeTime
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 7465030137692664670, guid: 1b969a6f49e974a47be9c63ae35eb637,
-        type: 3}
-      propertyPath: camShakeAmount
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 7465030138032853324, guid: 1b969a6f49e974a47be9c63ae35eb637,
-        type: 3}
-      propertyPath: camShakeTime
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 7465030138032853324, guid: 1b969a6f49e974a47be9c63ae35eb637,
-        type: 3}
-      propertyPath: camShakeAmount
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 7465030138089089603, guid: 1b969a6f49e974a47be9c63ae35eb637,
-        type: 3}
-      propertyPath: camShakeTime
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 7465030138089089603, guid: 1b969a6f49e974a47be9c63ae35eb637,
-        type: 3}
-      propertyPath: camShakeAmount
-      value: 0.03
-      objectReference: {fileID: 0}
     - target: {fileID: 7735060496845134458, guid: 1b969a6f49e974a47be9c63ae35eb637,
         type: 3}
       propertyPath: stageUIManager
@@ -3361,11 +3238,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BossMonster
-      objectReference: {fileID: 0}
-    - target: {fileID: 7735060496845134462, guid: 1b969a6f49e974a47be9c63ae35eb637,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b969a6f49e974a47be9c63ae35eb637, type: 3}
