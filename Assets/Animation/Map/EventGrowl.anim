@@ -168,35 +168,35 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
-    functionName: GenerateImpulse
+    functionName: WalkImpulse
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 1
-    functionName: GenerateImpulse
+    functionName: WalkImpulse
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 2
-    functionName: GenerateImpulse
+    functionName: WalkImpulse
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 2.5
-    functionName: GenerateImpulse
+    functionName: WalkImpulse
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 3
-    functionName: GenerateImpulse
+    functionName: GrowlImpulse
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
