@@ -34,6 +34,9 @@ public class StageUIManager : MonoBehaviour
     Coroutine playerKineticCoroutine = null;
     Coroutine playerSteminaCoroutine = null;
 
+    public GameObject clearAnimationObject;
+    public GameObject failAnimationObject;
+
     void Start() => StatusInitaialzation();
 
     void StatusInitaialzation()
@@ -122,5 +125,15 @@ public class StageUIManager : MonoBehaviour
             t = 0;
             StopAllCoroutines();
         }
+    }
+    
+    public void BossClearAnimation()
+    {
+        clearAnimationObject.SetActive(true);
+    }
+
+    public void BossFailAnimation()
+    {
+        failAnimationObject.SetActive(true);
     }
 }
