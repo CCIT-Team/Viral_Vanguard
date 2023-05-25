@@ -57,8 +57,9 @@ public class BossMove : MonoBehaviour
     [SerializeField] NavMeshAgent agent;
     public Transform target;
     [SerializeField] Animator animator;
+    public float forwardDetectAngle = 35f;
 
-    [Header("공격 사거리 확인")]
+    [Header("사거리 확인")]
     public BossBehavior bossBehavior;
     public BossRangeCheck[] rangeChecks;
 
@@ -104,7 +105,7 @@ public class BossMove : MonoBehaviour
     public bool canBigStiffen;
 
     public bool canAttack;
-    int attackCount = 0;
+    bool doingAttack;
 
     public GameObject[] attackDetections;
 
@@ -126,9 +127,14 @@ public class BossMove : MonoBehaviour
 
     public void NextAction()
     {
+        doingAttack = false;
         agent.isStopped = false;
         animator.SetBool("Walk", true);
-        bossBehavior.BehaviorStart(bossBehavior.GetRandomIndex());
+
+        if (DotProduct(PlayerDirection(target.position, transform.position), transform.forward) > forwardDetectAngle)
+            StartCoroutine("LookAtPlayer");
+        else
+            bossBehavior.BehaviorStart(bossBehavior.GetRandomIndex());
     }
 
     public void NormalAttack(int i)
@@ -239,16 +245,68 @@ public class BossMove : MonoBehaviour
     }
 
     #region 플레이어 방향으로 돌기
+
+    Quaternion targetRotation;
+    float t = 0;
+
     Vector3 PlayerDirection(Vector3 playerPos, Vector3 bossPos)
     {
         Vector3 playerDirection = playerPos - bossPos;
         return playerDirection;
     }
 
-    void RotateBoss()
+    Quaternion TargetRoation()
     {
-        Vector3 playerDirection = PlayerDirection(target.position, transform.position);
+        return Quaternion.LookRotation(target.position, transform.position);
+    }
 
+    public void DoingAttack()
+    {
+        doingAttack = doingAttack ? false : true;
+    }
+
+    void StartRotation()
+    {
+        targetRotation = TargetRoation();
+        t = 0;
+        StartCoroutine("LookAtPlayer");
+    }
+
+    IEnumerator LookAtPlayer()
+    {
+        if(targetRotation != TargetRoation())
+        {
+            targetRotation = TargetRoation();
+            t = 0;
+        }
+
+        t += 0.01f;
+
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, t);
+
+        yield return new WaitForSeconds(0.01f);
+
+        if (DotProduct(PlayerDirection(target.position, transform.position), transform.forward) > forwardDetectAngle)
+            StartCoroutine("LookAtPlayer");
+        else
+        {
+            NextAction();
+            StopCoroutine("LookAtPlayer");
+        }    
+    }
+
+    float DotProduct(Vector3 targetDir, Vector3 foward)
+    {
+        float dot = Vector3.Dot(targetDir, foward);
+
+        if (dot > 1.0f)
+            dot = 1.0f;
+        else if (dot < -1.0f)
+            dot = -1.0f;
+
+        float angle = Mathf.Acos(dot) * Mathf.Rad2Deg;
+
+        return angle;
     }
     #endregion
 }

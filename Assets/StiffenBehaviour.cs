@@ -33,8 +33,7 @@ public class StiffenBehaviour : GenericBehaviour
         yield return new WaitForSeconds(0.05f);
         behaviourController.LockTempBehaviour(behaviourCode);
         behaviourController.OverrideWithBehaviour(this);
-        behaviourController.StaminaChargeOff();
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.5f);
         behaviourController.UnLockTempBehaviour(behaviourCode);
         behaviourController.RevokeOverridingBehaviour(this);
     }
@@ -45,19 +44,25 @@ public class StiffenBehaviour : GenericBehaviour
         behaviourController.myAnimator.SetBool(attack2, false);
         behaviourController.myAnimator.SetBool(attack3, false);
         behaviourController.myAnimator.SetBool(guardBool, false);
+        behaviourController.myAnimator.SetBool("Stiffen", false);
+        behaviourController.myAnimator.SetBool("LeftStiffen", false);
+        behaviourController.myAnimator.SetBool("RightStiffen", false);
     }
 
     public void PlayerStiffenFalse()
     {
         behaviourController.Stiffen = false;
+        behaviourController.myAnimator.SetBool("Stiffen", false);
     }
     public void PlayerRightStiffenFalse()
     {
         behaviourController.RightStiffen = false;
+        behaviourController.myAnimator.SetBool("RightStiffen", false);
     }
     public void PlayerLeftStiffenFalse()
     {
         behaviourController.LeftStiffen = false;
+        behaviourController.myAnimator.SetBool("LeftStiffen", false);
     }
 
 }

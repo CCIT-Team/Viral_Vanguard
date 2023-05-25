@@ -38,11 +38,10 @@ public class BehaviourController : MonoBehaviour
 
     //
     public float maxHealthPoint;
-    public float currentHealthPoint = 100f;
+    public float currentHealthPoint;
     private bool stiffen;
     private bool rightStiffen;
     private bool leftStiffen;
-    public bool isDead;
 
     private bool staminaCharge;
     public float staminaChargeSpeed;
@@ -51,12 +50,14 @@ public class BehaviourController : MonoBehaviour
     public float maxKineticEnergy = 100f;
     public float currentKineticEnergy;
 
+    public bool isDead;
     public bool isBigBang = false;
     public bool guard;
     private bool guardHit;       //가드중 몬스터가 때리면
     private bool justGuard;
     private bool guardBreak;
     private bool monsterAttack;
+    private bool normalMosterAttack;
     [HideInInspector]
     public int lockOn;
 
@@ -92,6 +93,15 @@ public class BehaviourController : MonoBehaviour
         set
         {
             monsterAttack = value;
+        }
+    }
+
+    public bool NormalMonsterAttack
+    {
+        get { return normalMosterAttack; }
+        set
+        {
+            normalMosterAttack = value;
         }
     }
 
@@ -168,6 +178,10 @@ public class BehaviourController : MonoBehaviour
         {
             currentHealthPoint = value;
             stageUIManager.PlayerUpdateHP();
+            if(currentHealthPoint <= 0)
+            {
+                IsDead();
+            }
         }
             
     }
@@ -206,6 +220,7 @@ public class BehaviourController : MonoBehaviour
     {
         isDead = true;
         gameObject.tag = "Untagged";
+        myAnimator.SetBool(AnimatorKey.Dead, isDead);
         myAnimator.SetBool(AnimatorKey.Attack1, false);
         myAnimator.SetBool(AnimatorKey.Attack2, false);
         myAnimator.SetBool(AnimatorKey.Attack3, false);
@@ -253,12 +268,6 @@ public class BehaviourController : MonoBehaviour
             stageUIManager.PlayerUpdateStamina();
         }
         
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        //공격 받으면 데미지
-        //공격 받는데 0이면 죽음 상태
     }
 
     //낌 방지

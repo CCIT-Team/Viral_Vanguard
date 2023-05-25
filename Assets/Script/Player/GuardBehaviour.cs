@@ -91,6 +91,15 @@ public class GuardBehaviour : GenericBehaviour
             behaviourController.currentKineticEnergy += 20f;
             //StartCoroutine(JustGuardOnce());
         }
+
+        //일반 몬스터 저스트 가드
+        if (behaviourController.NormalMonsterAttack && !isJustGuardDelay && Input.GetKeyDown(KeyCode.Space) && behaviourController.guard)
+        {
+            behaviourController.JustGuard = true;
+            MonsterMovement.instance.Stiffen = true;
+            behaviourController.currentKineticEnergy += 5f;
+            //StartCoroutine(JustGuardOnce());
+        }
     }
 
     IEnumerator JustGuardOnce()
@@ -104,5 +113,6 @@ public class GuardBehaviour : GenericBehaviour
     {
         behaviourController.JustGuard = false;
         behaviourController.MonsterAttack = false;
+        behaviourController.NormalMonsterAttack = false;
     }
 }

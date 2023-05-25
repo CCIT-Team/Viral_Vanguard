@@ -18,7 +18,7 @@ public class DistanceDetection : MonoBehaviour
         SPECIALATTACK2,
         SPECIALATTACK2_1,
         SPECIALATTACK3,
-        SPECIALATTACK3_1
+        SPECIALATTACK3_1,
     }
     public DistanceType distanceType;
 

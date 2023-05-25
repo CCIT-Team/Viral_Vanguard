@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2251672632207440566}
   - component: {fileID: 2251672632207440565}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LockOn_Indicater_ThickBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2251672632231258803}
   - component: {fileID: 2251672632231258802}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LockOn_Indicater
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,6 +132,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60d3af365405051478466217d5095ffe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCamera: {fileID: 4822846413045343807, guid: 00c49b4cc84b26548988acb94af22e1b,
+    type: 3}
   ThickRotationSpeed: -15
   SlimRotationSpeed: 10
   OuterRotationSpeed: 20
@@ -145,7 +147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2251672632559008224}
   - component: {fileID: 2251672632559008239}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LockOn_Indicater_OuterCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -229,7 +231,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2251672632777612802}
   - component: {fileID: 2251672632777612801}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LockOn_Indicater_CenterCross
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -313,7 +315,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2251672632797564369}
   - component: {fileID: 2251672632797564368}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LockOn_Indicater_SlimBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -1,5 +1,269 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &213664446
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 213664447}
+  - component: {fileID: 213664449}
+  - component: {fileID: 213664448}
+  m_Layer: 0
+  m_Name: NormalAttack3_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &213664447
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213664446}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3451876644647595027}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &213664449
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213664446}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.36129564
+  m_Height: 0.9408699
+  m_Direction: 1
+  m_Center: {x: -0.000000013129857, y: 0.07940586, z: -0.0000000111538165}
+--- !u!114 &213664448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213664446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6151d7844bded1b43898a3cfdf742449, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boss: {fileID: 7735060496845134458}
+  bossAttack: 2
+  damage: 0
+  attackCollider: {fileID: 213664449}
+  camShakeTime: 0
+  camShakeAmount: 0
+  stiffenNum: 0
+--- !u!1 &903104873
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 903104874}
+  - component: {fileID: 903104876}
+  - component: {fileID: 903104875}
+  m_Layer: 0
+  m_Name: ActionAttack1_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &903104874
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903104873}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3451876644647595027}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &903104876
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903104873}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.36129564
+  m_Height: 0.9408699
+  m_Direction: 1
+  m_Center: {x: -0.000000013129857, y: 0.07940586, z: -0.0000000111538165}
+--- !u!114 &903104875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903104873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6151d7844bded1b43898a3cfdf742449, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boss: {fileID: 7735060496845134458}
+  bossAttack: 3
+  damage: 0
+  attackCollider: {fileID: 903104876}
+  camShakeTime: 0
+  camShakeAmount: 0
+  stiffenNum: 0
+--- !u!1 &1752752380
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1752752381}
+  - component: {fileID: 1752752383}
+  - component: {fileID: 1752752382}
+  m_Layer: 0
+  m_Name: NormalAttack3_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1752752381
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1752752380}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4742901942448951890}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &1752752383
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1752752380}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.36129564
+  m_Height: 0.9408699
+  m_Direction: 1
+  m_Center: {x: -0.000000013129857, y: 0.07940586, z: -0.0000000111538165}
+--- !u!114 &1752752382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1752752380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6151d7844bded1b43898a3cfdf742449, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boss: {fileID: 7735060496845134458}
+  bossAttack: 2
+  damage: 0
+  attackCollider: {fileID: 1752752383}
+  camShakeTime: 0
+  camShakeAmount: 0
+  stiffenNum: 0
+--- !u!1 &2144467631
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2144467632}
+  - component: {fileID: 2144467634}
+  - component: {fileID: 2144467633}
+  m_Layer: 0
+  m_Name: ActionAttack1_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &2144467632
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144467631}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4742901942448951890}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &2144467634
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144467631}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.36129564
+  m_Height: 0.9408699
+  m_Direction: 1
+  m_Center: {x: -0.000000013129857, y: 0.07940586, z: -0.0000000111538165}
+--- !u!114 &2144467633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144467631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6151d7844bded1b43898a3cfdf742449, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boss: {fileID: 7735060496845134458}
+  bossAttack: 4
+  damage: 0
+  attackCollider: {fileID: 2144467634}
+  camShakeTime: 0
+  camShakeAmount: 0
+  stiffenNum: 0
 --- !u!1 &161611154943928874
 GameObject:
   m_ObjectHideFlags: 0
@@ -1064,6 +1328,8 @@ Transform:
   - {fileID: 7465030137129863587}
   - {fileID: 7465030137692664669}
   - {fileID: 7465030137332675123}
+  - {fileID: 1752752381}
+  - {fileID: 2144467632}
   m_Father: {fileID: 1782813122436583819}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1264,6 +1530,8 @@ Transform:
   - {fileID: 7465030136957794005}
   - {fileID: 7465030138089089602}
   - {fileID: 7465030137663554720}
+  - {fileID: 213664447}
+  - {fileID: 903104874}
   m_Father: {fileID: 1849015883516607973}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2644,7 +2912,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 8
+  m_Radius: 3.4
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7465030137317324054
 MonoBehaviour:
@@ -2672,7 +2940,7 @@ GameObject:
   - component: {fileID: 7465030137332675133}
   - component: {fileID: 7465030137332675132}
   m_Layer: 0
-  m_Name: NormalAttack4_1
+  m_Name: SpecialAttack2_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2720,7 +2988,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boss: {fileID: 7735060496845134458}
-  bossAttack: 1
+  bossAttack: 6
   damage: 0
   attackCollider: {fileID: 7465030137332675133}
   camShakeTime: 0
@@ -2864,7 +3132,7 @@ GameObject:
   - component: {fileID: 7465030137663554722}
   - component: {fileID: 7465030137663554721}
   m_Layer: 0
-  m_Name: NormalAttack4_2
+  m_Name: SpecialAttack2_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2912,7 +3180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boss: {fileID: 7735060496845134458}
-  bossAttack: 1
+  bossAttack: 6
   damage: 0
   attackCollider: {fileID: 7465030137663554722}
   camShakeTime: 0
@@ -2930,7 +3198,7 @@ GameObject:
   - component: {fileID: 7465030137692664671}
   - component: {fileID: 7465030137692664670}
   m_Layer: 0
-  m_Name: NormalAttack3_1
+  m_Name: SpecialAttack1_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2978,7 +3246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boss: {fileID: 7735060496845134458}
-  bossAttack: 1
+  bossAttack: 5
   damage: 0
   attackCollider: {fileID: 7465030137692664671}
   camShakeTime: 0
@@ -3116,7 +3384,7 @@ GameObject:
   - component: {fileID: 7465030138032853325}
   - component: {fileID: 7465030138032853324}
   m_Layer: 0
-  m_Name: NormalAttack5
+  m_Name: SpecialAttack3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3164,7 +3432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boss: {fileID: 7735060496845134458}
-  bossAttack: 1
+  bossAttack: 8
   damage: 0
   attackCollider: {fileID: 7465030138032853325}
   camShakeTime: 0
@@ -3182,7 +3450,7 @@ GameObject:
   - component: {fileID: 7465030138089089612}
   - component: {fileID: 7465030138089089603}
   m_Layer: 0
-  m_Name: NormalAttack3_2
+  m_Name: SpecialAttack1_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3230,7 +3498,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boss: {fileID: 7735060496845134458}
-  bossAttack: 1
+  bossAttack: 5
   damage: 0
   attackCollider: {fileID: 7465030138089089612}
   camShakeTime: 0
@@ -3433,7 +3701,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.45
-  m_Speed: 2
+  m_Speed: 2.5
   m_Acceleration: 25
   avoidancePriority: 50
   m_AngularSpeed: 180
@@ -3468,6 +3736,7 @@ MonoBehaviour:
   agent: {fileID: 7735060496845134459}
   target: {fileID: 0}
   animator: {fileID: 7465030137421063977}
+  forwardDetectAngle: 35
   bossBehavior: {fileID: 7735060496845134456}
   rangeChecks:
   - rangeName: rangeNormalAttack1
@@ -3521,6 +3790,10 @@ MonoBehaviour:
   - {fileID: 7465030137332675122}
   - {fileID: 7465030137663554727}
   - {fileID: 7465030138032853314}
+  - {fileID: 1752752380}
+  - {fileID: 213664446}
+  - {fileID: 2144467631}
+  - {fileID: 903104873}
   listener: {fileID: 7735060496845134457}
   stageUIManager: {fileID: 0}
 --- !u!114 &7735060496845134457
