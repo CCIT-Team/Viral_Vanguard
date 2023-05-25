@@ -11,7 +11,7 @@ public class MonsterMovement : MonoBehaviour
     Transform target;
     public Transform startPoint;
     private bool stiffen;
-    public float monsterDamage;
+    public float monsterDamage = 5;
 
     Animator animator;
 
@@ -20,8 +20,9 @@ public class MonsterMovement : MonoBehaviour
 
     public MonsterMovementSub attackRange;
     public MonsterMovementSub searchRange;
+    public MonsterAttack HitBox;
 
-    float healthPoint = 50;
+    float healthPoint = 1;
 
     public bool Stiffen
     {
@@ -29,7 +30,7 @@ public class MonsterMovement : MonoBehaviour
         set
         {
             stiffen = value;
-            animator.SetTrigger("Stiffen");
+            animator.SetBool("Stiffen",true);
             if(value)
             {
                 agent.isStopped = true;
@@ -48,8 +49,9 @@ public class MonsterMovement : MonoBehaviour
             if(healthPoint <= 0)
             {
                 agent.enabled = false;
+                animator.SetTrigger("Die");
+                animator.SetBool("Dead",true);
                 this.enabled = false;
-                animator.SetTrigger("Death");
             }
         }
     }
@@ -161,6 +163,7 @@ public class MonsterMovement : MonoBehaviour
             {
                 BehaviourController.instance.GuardHit = true;
                 BehaviourController.instance.currentStamina -= monsterDamage;
+                BehaviourController.instance.camScript.CamShakeTime(0.1f, 0.02f);
             }
             else if (BehaviourController.instance.currentStamina <= monsterDamage)
             {
@@ -178,5 +181,19 @@ public class MonsterMovement : MonoBehaviour
         BehaviourController.instance.MonsterAttack = !BehaviourController.instance.MonsterAttack;
     }
 
-    
+    public void OnHitBox(int direction)
+    {
+        HitBox.OnCollider(direction);
+    }
+
+    public void OffHitBox()
+    {
+        HitBox.OffCollider();
+    }
+
+    void StiffenOff()
+    {
+        stiffen = false;
+        animator.SetBool("Stiffen", false);
+    }
 }
