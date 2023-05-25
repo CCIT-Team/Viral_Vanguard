@@ -24,10 +24,13 @@ public class CutSceneEvent : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        eventObject.SetActive(true);
-        playerCam.gameObject.SetActive(false);
-        if (haveAnimatorParameter){SelectType();}
-        Destroy(this);
+        if (other.CompareTag("Player"))
+        {
+            eventObject.SetActive(true);
+            playerCam.gameObject.SetActive(false);
+            if (haveAnimatorParameter) { SelectType(); }
+            Destroy(this);
+        }
     }
 
     void SelectType()
