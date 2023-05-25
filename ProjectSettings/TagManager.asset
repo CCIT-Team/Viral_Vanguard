@@ -7,17 +7,17 @@ TagManager:
   - Monster
   - MonsterSpawn
   - MonsterPoint
-  - BossEvent
+  - NormalMonster
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - Monster
   - Indicater
-  - PostProcessing
+  - NormalMonster
   - 
   - 
   - 

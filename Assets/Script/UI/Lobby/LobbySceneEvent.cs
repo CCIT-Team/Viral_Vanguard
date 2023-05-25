@@ -18,7 +18,23 @@ public class LobbySceneEvent : MonoBehaviour
     /// </summary>
     public MapSelect[] mapSelects;
     public GameObject[] targetBossInfo;
-    
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public GameObject[] operatorCall;
+
+
+    public void Start()
+    {
+        if (!SaveDataManager.Instance.saveDatas[SaveDataManager.Instance.currentSaveFileIndex].isLobbyTutorialClear)
+            operatorCall[0].SetActive(true);
+        if (!SaveDataManager.Instance.saveDatas[SaveDataManager.Instance.currentSaveFileIndex].isStateTutorialClear)
+            operatorCall[1].SetActive(true);
+        if (!SaveDataManager.Instance.saveDatas[SaveDataManager.Instance.currentSaveFileIndex].isOperatorTutorialClear)
+            operatorCall[2].SetActive(true);
+    }
+
 
     public void ChangeLobbyMenuImage(int backgroundimageNumber)
     {
@@ -44,5 +60,16 @@ public class LobbySceneEvent : MonoBehaviour
 
             SceneFader.Instance.StartFadeOut("NikeMainRoad");
         }
+    }
+
+    public void TutorialClear(int index)
+    {
+        if (index == 0)
+            SaveDataManager.Instance.saveDatas[SaveDataManager.Instance.currentSaveFileIndex].isLobbyTutorialClear = true;
+        else if(index == 1)
+            SaveDataManager.Instance.saveDatas[SaveDataManager.Instance.currentSaveFileIndex].isStateTutorialClear = true;
+        else if(index == 2)
+            SaveDataManager.Instance.saveDatas[SaveDataManager.Instance.currentSaveFileIndex].isOperatorTutorialClear = true;
+
     }
 }

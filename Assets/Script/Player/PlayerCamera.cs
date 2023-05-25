@@ -20,6 +20,7 @@ public class PlayerCamera : MonoBehaviour
     private float angleVertical = 0.0f;
 
     private Transform cameraTransform;
+    private Transform camLockOnPreviousTransform;
 
     private Vector3 relCameraPos;
     private float relCameraPosMag;
@@ -43,6 +44,7 @@ public class PlayerCamera : MonoBehaviour
     public Transform currentLockOnTarget;
     public Transform nearestLockOnTarget;
     public LayerMask targetLayerMask;
+    public LayerMask camCheckColliderLayerMask;
     public bool isLockOn = false;
     public bool isLockOning = false;
     private float lockOnTime;
@@ -78,41 +80,55 @@ public class PlayerCamera : MonoBehaviour
 
     void Update()
     {
-        if (!isLockOn)
+        if (!isLockOn && currentLockOnTarget == null)
         {
             DefaultCamera();
             ResetLockOnBillboardIndicater();
         }
-        else
+        else if(currentLockOnTarget != null)
         {
             //여기서 가까운거 리스트 정리해서 받고 커런트 트랜스톰에 넣기 + r누르면 다음으로 가까운 적으로 락온되게
             LockOnTarget();
             LockOnBillboardIndicater();
         }
 
-        if (Input.GetKey(KeyCode.R) && !isLockOn && !isDelay)
+
+        if (Input.GetKeyDown(KeyCode.F) && !isLockOn)
         {
-            isLockOning = true;
-            if(isLockOning)
-            {
-                lockOnTime += Time.deltaTime;
-                if(lockOnTime >= minLockOnTime)
-                {
-                    LockOnActivate();
-                }
-            }
+            LockOnActivate();
         }
-        else if(Input.GetKey(KeyCode.R) && isLockOn && !isDelay)
+        else if(Input.GetKeyDown(KeyCode.F) && isLockOn)
         {
-            isLockOning = true;
-            if(isLockOning)
-            {
-                lockOnTime += Time.deltaTime;
-                if (lockOnTime >= minLockOnTime)
-                {
-                    LockOnDeactivate();
-                }
-            }
+            LockOnDeactivate();
+        }
+            //아래는 r키 길게 누르면 락온되는 코드
+            //if (Input.GetKey(KeyCode.R) && !isLockOn && !isDelay) //계속 누르면 나중에 r한번 누르면 작동됨 따라서 변경 필요
+            //{
+            //    isLockOning = true;
+            //    if(isLockOning)
+            //    {
+            //        lockOnTime += Time.deltaTime;
+            //        if(lockOnTime >= minLockOnTime)
+            //        {
+            //            LockOnActivate();
+            //        }
+            //    }
+            //}
+            //else if(Input.GetKey(KeyCode.R) && isLockOn && !isDelay)
+            //{
+            //    isLockOning = true;
+            //    if(isLockOning)
+            //    {
+            //        lockOnTime += Time.deltaTime;
+            //        if (lockOnTime >= minLockOnTime)
+            //        {
+            //            LockOnDeactivate();
+            //        }
+            //    }
+            //}
+            if (currentLockOnTarget == null)
+        {
+            isLockOn = false;
         }
     }
 
@@ -124,6 +140,7 @@ public class PlayerCamera : MonoBehaviour
 
     public void DefaultCamera()
     {
+        
         angleHorizontal += Mathf.Clamp(Input.GetAxis("Mouse X"), -1f, 1f) * horizontalAimingSpeed;
         angleVertical += Mathf.Clamp(Input.GetAxis("Mouse Y"), -1f, 1f) * verticalAimingSpeed;
         angleVertical = Mathf.Clamp(angleVertical, minVerticalAngle, targetMaxVerticleAngle);
@@ -192,11 +209,6 @@ public class PlayerCamera : MonoBehaviour
                 }
             }
         }
-
-        if (lockOnTargets == null)
-        {
-            isLockOn = false;
-        }
         
         //가장 가까운 적이 무엇인지 확인 + 벽이 막고 있는지 확인
         for (int j = 0; j < lockOnTargets.Count; j++)
@@ -230,7 +242,7 @@ public class PlayerCamera : MonoBehaviour
             Vector3 camPosition = player.position + pivotOffset + camOffset.z * player.forward;
             Vector3 smoothed_position = Vector3.Lerp(transform.position, camPosition, smooth);
             transform.position = smoothed_position;
-
+            previousTransform = smoothed_position;
             //카메라 흔들기
             previousTransform = transform.position;
             if (shakeTime > 0f)
@@ -250,22 +262,26 @@ public class PlayerCamera : MonoBehaviour
     {
         isLockOn = true;
         LockOnTargetCheck();
-        isDelay = true;
-        behaviourController.myAnimator.SetBool(behaviourController.lockOn, true);
-        StartCoroutine(LockOnLocked());
-        isLockOning = false;
-        lockOnTime = 0;
+        if(currentLockOnTarget != null)
+        {
+            //isDelay = true;
+            behaviourController.myAnimator.SetBool(behaviourController.lockOn, true);
+            //StartCoroutine(LockOnLocked());
+            //isLockOning = false;
+            //lockOnTime = 0;
+        }
     }
 
     public void LockOnDeactivate()
     {
         isLockOn = false;
-        isDelay = true;
+        //isDelay = true;
         behaviourController.myAnimator.SetBool(behaviourController.lockOn, false);
+        cameraTransform = transform;
         ResetLockOn();
-        StartCoroutine(LockOnLocked());
-        isLockOning = false;
-        lockOnTime = 0;
+        //StartCoroutine(LockOnLocked());
+        //isLockOning = false;
+        //lockOnTime = 0;
     }
 
     public void LockOnBillboardIndicater()
@@ -325,7 +341,7 @@ public class PlayerCamera : MonoBehaviour
     bool ViewingPosCheck(Vector3 checkPos, float playerHeight)
     {
         Vector3 target = player.position + (Vector3.up * playerHeight);
-        if(Physics.SphereCast(checkPos, 0.2f, target - checkPos, out RaycastHit hit, relCameraPosMag))
+        if(Physics.SphereCast(checkPos, 0.2f, target - checkPos, out RaycastHit hit, relCameraPosMag, camCheckColliderLayerMask))
         {
             if(hit.transform != player && !hit.transform.GetComponent<Collider>().isTrigger)
             {
@@ -338,7 +354,7 @@ public class PlayerCamera : MonoBehaviour
     bool ReverseViewingPosCheck(Vector3 checkPos, float playerHeight, float maxDistance)
     {
         Vector3 origin = player.position + (Vector3.up * playerHeight);
-        if(Physics.SphereCast(origin, 0.2f, checkPos - origin, out RaycastHit hit, maxDistance))
+        if(Physics.SphereCast(origin, 0.2f, checkPos - origin, out RaycastHit hit, maxDistance, camCheckColliderLayerMask))
         {
             if(hit.transform != player && hit.transform != transform && !hit.transform.GetComponent<Collider>().isTrigger)
             {

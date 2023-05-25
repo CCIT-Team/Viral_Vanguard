@@ -15,7 +15,7 @@ public class AttackBehaviour : GenericBehaviour
     private int attack3;
     public int clicks = 0;
     private float lastClickedTime = 0;
-    public float attackDelay = 0.5f;
+    public float attackDelay = 0.2f;
     [HideInInspector]
     public int keyLock;
     public bool mouseLock;
@@ -112,7 +112,6 @@ public class AttackBehaviour : GenericBehaviour
             if (clicks == 1)
             {
                 behaviourController.myAnimator.SetBool(attack1, true);
-                behaviourController.camScript.CamShakeTime(0.2f, 0.01f);
             }
             clicks = Mathf.Clamp(clicks, 0, 3);
         }
@@ -130,35 +129,34 @@ public class AttackBehaviour : GenericBehaviour
         }
 
         //if (Input.GetButtonDown(ButtonKey.Attack))
-        if (Input.GetAxisRaw(ButtonKey.Attack) != 0)  
+
+        if (Input.GetAxisRaw(ButtonKey.Attack) != 0)
         {
             StartCoroutine(Attack());
-            //mouseLock = true;
-            //behaviourController.myAnimator.SetBool(keyLock, mouseLock);
-            //behaviourController.OverrideWithBehaviour(this);
-            //behaviourController.LockTempBehaviour(behaviourCode);
-            //lastClickedTime = Time.time;
-            //clicks++;
-            //if (clicks == 1)
-            //{
-            //    behaviourController.myAnimator.SetBool(attack1, true);
-            //}
-            //clicks = Mathf.Clamp(clicks, 0, 3);
         }
 
-        //if(damageChecker.activeSelf)
-        //{
-        //    StiffenMonster();
-        //}
-        
-    }
+            //if (Input.GetAxisRaw(ButtonKey.Attack) != 0)
+            //{
+            //    StartCoroutine(Attack());
+            //    //mouseLock = true;
+            //    //behaviourController.myAnimator.SetBool(keyLock, mouseLock);
+            //    //behaviourController.OverrideWithBehaviour(this);
+            //    //behaviourController.LockTempBehaviour(behaviourCode);
+            //    //lastClickedTime = Time.time;
+            //    //clicks++;
+            //    //if (clicks == 1)
+            //    //{
+            //    //    behaviourController.myAnimator.SetBool(attack1, true);
+            //    //}
+            //    //clicks = Mathf.Clamp(clicks, 0, 3);
+            //}
+        }
 
     public void AttackReturn1()
     {
         if(clicks >= 2)
         {
             behaviourController.myAnimator.SetBool(attack2, true);
-            behaviourController.camScript.CamShakeTime(0.3f, 0.02f);
             behaviourController.myAnimator.SetBool(attack1, false);
         }
         else
@@ -172,7 +170,6 @@ public class AttackBehaviour : GenericBehaviour
         if (clicks >= 3)
         {
             behaviourController.myAnimator.SetBool(attack3, true);
-            behaviourController.camScript.CamShakeTime(1f, 0.03f);
         }
         else
         {
@@ -211,29 +208,12 @@ public class AttackBehaviour : GenericBehaviour
         damageChecker.SetActive(false);
     }
 
-    //public void StiffenMonster(GameObject target = null)
-    //{
-    //    //타겟을 검사
-    //    Collider[] colliders = playerAttackCollsion.CheckOverlapBox();
-    //    foreach (Collider collider in colliders)
-    //    {
-    //        if(collider.gameObject.CompareTag("Monster"))
-    //        {
-    //            target = collider.gameObject;
-    //        }
-    //    }
-    //    //타겟 상태 확인
-    //    if (target)
-    //    {
-    //        Debug.Log("Test");
-    //        //BossMove.instacne.currentHealthPoint -= damage[1];
-    //        //if (BossMove.instacne.canStiffen)
-    //        //{//경직 
-    //        //    BossMove.instacne.Stiffen = true;
-    //        //}
-    //    }
-    //}
-    //적을 공격 했을때 콜리전 엔터를 통해서 공격 데미지를 넣어줄건지
-
-
+    public void StiffenAttackDelayReset()
+    {
+        attackDelay = 0f;
+    }
+    public void StiffenAttackDelay()
+    {
+        attackDelay = 0.5f;
+    }
 }
