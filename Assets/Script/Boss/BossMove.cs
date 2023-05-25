@@ -8,6 +8,10 @@ public class BossMove : MonoBehaviour
     public static BossMove instacne;
 
     void Awake() => instacne = this;
+    void Start()
+    {
+        stageUIManager.BossStatisInitailzation();
+    }
 
     IEnumerator update()
     {
@@ -112,6 +116,8 @@ public class BossMove : MonoBehaviour
     public EventListener listener;
 
     public StageUIManager stageUIManager;
+
+    public Collider bodyCollider;
 
     void StartTracking()
     {
@@ -241,6 +247,7 @@ public class BossMove : MonoBehaviour
 
     public void BossDead()
     {
+        bodyCollider.enabled = false;
         animator.SetTrigger("Dead");
     }
 

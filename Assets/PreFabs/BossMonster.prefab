@@ -63,8 +63,8 @@ MonoBehaviour:
   bossAttack: 2
   damage: 0
   attackCollider: {fileID: 213664449}
-  camShakeTime: 0
-  camShakeAmount: 0
+  camShakeTime: 0.15
+  camShakeAmount: 0.03
   stiffenNum: 0
 --- !u!1 &903104873
 GameObject:
@@ -129,8 +129,8 @@ MonoBehaviour:
   bossAttack: 3
   damage: 0
   attackCollider: {fileID: 903104876}
-  camShakeTime: 0
-  camShakeAmount: 0
+  camShakeTime: 0.15
+  camShakeAmount: 0.03
   stiffenNum: 0
 --- !u!1 &1752752380
 GameObject:
@@ -195,8 +195,8 @@ MonoBehaviour:
   bossAttack: 2
   damage: 0
   attackCollider: {fileID: 1752752383}
-  camShakeTime: 0
-  camShakeAmount: 0
+  camShakeTime: 0.15
+  camShakeAmount: 0.03
   stiffenNum: 0
 --- !u!1 &2144467631
 GameObject:
@@ -261,8 +261,8 @@ MonoBehaviour:
   bossAttack: 4
   damage: 0
   attackCollider: {fileID: 2144467634}
-  camShakeTime: 0
-  camShakeAmount: 0
+  camShakeTime: 0.15
+  camShakeAmount: 0.03
   stiffenNum: 0
 --- !u!1 &161611154943928874
 GameObject:
@@ -2739,8 +2739,8 @@ MonoBehaviour:
   bossAttack: 1
   damage: 0
   attackCollider: {fileID: 7465030136957794007}
-  camShakeTime: 0
-  camShakeAmount: 0
+  camShakeTime: 0.15
+  camShakeAmount: 0.03
   stiffenNum: 0
 --- !u!1 &7465030137129863586
 GameObject:
@@ -2805,8 +2805,8 @@ MonoBehaviour:
   bossAttack: 1
   damage: 0
   attackCollider: {fileID: 7465030137129863597}
-  camShakeTime: 0
-  camShakeAmount: 0
+  camShakeTime: 0.15
+  camShakeAmount: 0.03
   stiffenNum: 0
 --- !u!1 &7465030137218570803
 GameObject:
@@ -2991,8 +2991,8 @@ MonoBehaviour:
   bossAttack: 6
   damage: 0
   attackCollider: {fileID: 7465030137332675133}
-  camShakeTime: 0
-  camShakeAmount: 0
+  camShakeTime: 0.15
+  camShakeAmount: 0.03
   stiffenNum: 0
 --- !u!1 &7465030137415441028
 GameObject:
@@ -3117,8 +3117,8 @@ MonoBehaviour:
   bossAttack: 0
   damage: 0
   attackCollider: {fileID: 7465030137590315251}
-  camShakeTime: 0
-  camShakeAmount: 0
+  camShakeTime: 0.15
+  camShakeAmount: 0.03
   stiffenNum: 0
 --- !u!1 &7465030137663554727
 GameObject:
@@ -3183,8 +3183,8 @@ MonoBehaviour:
   bossAttack: 6
   damage: 0
   attackCollider: {fileID: 7465030137663554722}
-  camShakeTime: 0
-  camShakeAmount: 0
+  camShakeTime: 0.15
+  camShakeAmount: 0.03
   stiffenNum: 0
 --- !u!1 &7465030137692664668
 GameObject:
@@ -3249,8 +3249,8 @@ MonoBehaviour:
   bossAttack: 5
   damage: 0
   attackCollider: {fileID: 7465030137692664671}
-  camShakeTime: 0
-  camShakeAmount: 0
+  camShakeTime: 0.15
+  camShakeAmount: 0.03
   stiffenNum: 0
 --- !u!1 &7465030137817991628
 GameObject:
@@ -3435,8 +3435,8 @@ MonoBehaviour:
   bossAttack: 8
   damage: 0
   attackCollider: {fileID: 7465030138032853325}
-  camShakeTime: 0
-  camShakeAmount: 0
+  camShakeTime: 0.15
+  camShakeAmount: 0.03
   stiffenNum: 0
 --- !u!1 &7465030138089089601
 GameObject:
@@ -3501,8 +3501,8 @@ MonoBehaviour:
   bossAttack: 5
   damage: 0
   attackCollider: {fileID: 7465030138089089612}
-  camShakeTime: 0
-  camShakeAmount: 0
+  camShakeTime: 0.15
+  camShakeAmount: 0.03
   stiffenNum: 0
 --- !u!1 &7465030138107473126
 GameObject:
@@ -3652,7 +3652,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6923057538337079492
 Transform:
   m_ObjectHideFlags: 0
@@ -3796,6 +3796,7 @@ MonoBehaviour:
   - {fileID: 903104873}
   listener: {fileID: 7735060496845134457}
   stageUIManager: {fileID: 0}
+  bodyCollider: {fileID: 7735060496845134463}
 --- !u!114 &7735060496845134457
 MonoBehaviour:
   m_ObjectHideFlags: 0

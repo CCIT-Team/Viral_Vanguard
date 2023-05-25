@@ -6,6 +6,8 @@ using TMPro;
 
 public class StageUIManager : MonoBehaviour
 {
+    public GameObject BossStatusObject;
+
     public Image playerHealthPointImage;
     public Image playerStaminaImage;
     public Image playerKineticEnergyImage;
@@ -40,10 +42,6 @@ public class StageUIManager : MonoBehaviour
 
     void StatusInitaialzation()
     {
-        bossName = BossMove.instacne.bossName;
-        bossMaxHp = BossMove.instacne.maxHealthPoint;
-        bossCurrentHp = BossMove.instacne.currentHealthPoint;
-
         playerMaxHealthPoint = BehaviourController.instance.maxHealthPoint;
         playerCurrentHealthPoint = BehaviourController.instance.currentHealthPoint;
         playerMaxStamina = BehaviourController.instance.maxStamina;
@@ -51,10 +49,20 @@ public class StageUIManager : MonoBehaviour
         playerMaxKineticEnergy = BehaviourController.instance.maxKineticEnergy;
         playerCurrentKineticEnergy = BehaviourController.instance.currentKineticEnergy;
 
-        BossUpdateHP();
         PlayerUpdateHP();
         PlayerUpdateStamina();
         PlayerUpdateKineticEnergy();
+    }
+
+    public void BossStatisInitailzation()
+    {
+        BossStatusObject.SetActive(true);
+
+        bossName = BossMove.instacne.bossName;
+        bossMaxHp = BossMove.instacne.maxHealthPoint;
+        bossCurrentHp = BossMove.instacne.currentHealthPoint;
+
+        BossUpdateHP();
     }
 
     public void BossUpdateHP()
@@ -144,7 +152,7 @@ public class StageUIManager : MonoBehaviour
     {
         t += 0.1f;
         fill.fillAmount = Mathf.SmoothStep(before, after, t) / max;
-        print(before + ", " + after);
+
         yield return new WaitForSeconds(0.01f);
 
         if (t < 1 && after != player.currentStamina)
