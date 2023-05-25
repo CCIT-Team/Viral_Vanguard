@@ -132,6 +132,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60d3af365405051478466217d5095ffe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCamera: {fileID: 4822846413045343807, guid: 00c49b4cc84b26548988acb94af22e1b,
+    type: 3}
   ThickRotationSpeed: -15
   SlimRotationSpeed: 10
   OuterRotationSpeed: 20
