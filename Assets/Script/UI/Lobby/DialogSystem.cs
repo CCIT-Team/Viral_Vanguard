@@ -8,17 +8,14 @@ public class DialogSystem : MonoBehaviour
 {
     public string[] dialogueLines; // 대화 내용을 저장할 문자열 배열
     private int currentLineIndex = 0; // 현재 대화 인덱스
-
     private bool isDialogueActive = false; // 대화 활성화 여부
-
     public TextMeshProUGUI dialogueText; // 대화 텍스트를 표시할 TextMeshProUGUI 컴포넌트
+    public GameObject operatorDialogButton;
 
-    public void Awake()
+    public void OnEnable()
     {
-        //StartDialogue();
+        StartDialogue();
     }
-
-
 
     // 대화 시작
     public void StartDialogue()
@@ -54,7 +51,8 @@ public class DialogSystem : MonoBehaviour
             dialogueText.text += c;
             yield return new WaitForSeconds(0.1f); // 글자 간 딜레이 조정 가능
         }
-        DisplayNextLine();
+        operatorDialogButton.SetActive(true);
+        //DisplayNextLine();
     }
 
     // 대화 종료

@@ -23,6 +23,11 @@ public class SaveData
     //Time
     public float playTime = 0;
 
+    //
+    public bool isLobbyTutorialClear = false;
+    public bool isStateTutorialClear = false;
+    public bool isOperatorTutorialClear = false;
+
 
     void Initialization()
     {
