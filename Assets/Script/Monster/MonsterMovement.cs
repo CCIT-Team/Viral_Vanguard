@@ -22,7 +22,7 @@ public class MonsterMovement : MonoBehaviour
     public MonsterMovementSub searchRange;
     public MonsterAttack HitBox;
 
-    float healthPoint = 100;
+    float healthPoint = 100000;
 
     public bool Stiffen
     {
@@ -184,7 +184,7 @@ public class MonsterMovement : MonoBehaviour
 
     public void MonsterAttackCheck()
     {
-        BehaviourController.instance.MonsterAttack = !BehaviourController.instance.MonsterAttack;
+        BehaviourController.instance.NormalMonsterAttack = !BehaviourController.instance.NormalMonsterAttack;
     }
 
     public void OnHitBox(int direction)

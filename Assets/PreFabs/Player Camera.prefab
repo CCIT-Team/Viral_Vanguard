@@ -242,7 +242,7 @@ MonoBehaviour:
   nearestLockOnTarget: {fileID: 0}
   targetLayerMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 320
   camCheckColliderLayerMask:
     serializedVersion: 2
     m_Bits: 0
