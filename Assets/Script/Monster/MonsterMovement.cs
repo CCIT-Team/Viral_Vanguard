@@ -22,7 +22,7 @@ public class MonsterMovement : MonoBehaviour
     public MonsterMovementSub searchRange;
     public MonsterAttack HitBox;
 
-    float healthPoint = 100;
+    float healthPoint = 100000;
 
     public bool Stiffen
     {

@@ -7773,6 +7773,15 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: Attack1
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Stiffen
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: LeftStiffen
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: RightStiffen
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -7344753321465416197}
   m_Solo: 0
