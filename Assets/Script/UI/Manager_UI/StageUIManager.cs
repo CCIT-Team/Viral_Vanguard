@@ -27,6 +27,14 @@ public class StageUIManager : MonoBehaviour
     public string bossName;
     public float bossMaxHp;
     public float bossCurrentHp;
+    Coroutine bossHpCoroutine;
+    Coroutine playerHpCoroutine;
+    Coroutine playerSpCoroutine;
+    Coroutine playerKpCoroutine;
+    float bossHpT;
+    float playerHpT;
+    float playerSpT;
+    float playerKpT;
 
     void Start() => StatusInitaialzation();
 
@@ -52,28 +60,130 @@ public class StageUIManager : MonoBehaviour
     public void BossUpdateHP()
     {
         bossNameText.text = bossName;
+
+        float before = bossCurrentHp;
         bossCurrentHp = BossMove.instacne.currentHealthPoint;
-        bossHealthPointImage.fillAmount = bossCurrentHp / bossMaxHp;
+        float after = bossCurrentHp;
+
+        if (bossHpCoroutine != null)
+        {
+            bossHpT = 0;
+            StopCoroutine(bossHpCoroutine);
+        }
+        bossHpCoroutine = StartCoroutine(StartLerp(BossMove.instacne, bossHpCoroutine, bossHealthPointImage, before, after, bossMaxHp, bossHpT));
     }
 
     public void PlayerUpdateHP()
     {
+        float before = playerCurrentHealthPoint;
         playerCurrentHealthPoint = BehaviourController.instance.currentHealthPoint;
-        playerHealthPointImage.fillAmount = playerCurrentHealthPoint / playerMaxHealthPoint;
-        playerHealthPointText.text = (playerHealthPointImage.fillAmount * 100).ToString();
+        float after = playerCurrentHealthPoint;
 
+        if (playerHpCoroutine != null)
+        {
+            playerHpT = 0;
+            StopCoroutine(playerHpCoroutine);
+        }
+        playerHpCoroutine = StartCoroutine(StartLerp(BehaviourController.instance, playerHpCoroutine, playerHealthPointImage, before, after, playerMaxHealthPoint, playerHpT, playerHealthPointText));
     }
 
     public void PlayerUpdateStamina()
     {
         playerCurrentStamina = BehaviourController.instance.currentStamina;
         playerStaminaImage.fillAmount = playerCurrentStamina / playerMaxStamina;
+
+        float before = playerCurrentStamina;
+        playerCurrentStamina = BehaviourController.instance.currentStamina;
+        float after = playerCurrentStamina;
+
+        if (playerSpCoroutine != null)
+        {
+            playerSpT = 0;
+            StopCoroutine(playerSpCoroutine);
+        }
+        playerSpCoroutine = StartCoroutine(StartLerp(BehaviourController.instance, playerSpCoroutine, playerStaminaImage, before, after, playerMaxStamina, playerSpT));
     }
 
     public void PlayerUpdateKineticEnergy()
     {
+        float before = playerCurrentKineticEnergy;
         playerCurrentKineticEnergy = BehaviourController.instance.currentKineticEnergy;
-        playerKineticEnergyImage.fillAmount = playerCurrentKineticEnergy / playerMaxKineticEnergy;
-        playerKineticEnergyText.text = (playerKineticEnergyImage.fillAmount * 100).ToString();
+        float after = playerCurrentKineticEnergy;
+
+        if (playerKpCoroutine != null)
+        {
+            playerKpT = 0;
+            StopCoroutine(playerKpCoroutine);
+        }
+        playerKpCoroutine = StartCoroutine(StartLerp(BehaviourController.instance, playerKpCoroutine, playerKineticEnergyImage, before, after, playerMaxKineticEnergy, playerKpT, playerKineticEnergyText));
     }
+
+    #region 게이지 코루틴
+    IEnumerator StartLerp(BossMove boss, Coroutine couroutine, Image fill, float before, float after, float max, float t)
+    {
+        t += 0.1f;
+        fill.fillAmount = Mathf.Lerp(before, after, t) / max;
+        yield return null;
+
+        if(t < 1 && after != boss.currentHealthPoint)
+        {
+            before = fill.fillAmount * max;
+            after = boss.currentHealthPoint;
+            t = 0;
+
+            couroutine = StartCoroutine(StartLerp(boss, couroutine, fill, before, after, max, t));
+        }
+        else if(t < 1 && after == BossMove.instacne.currentHealthPoint)
+        {
+            couroutine = StartCoroutine(StartLerp(boss, couroutine, fill, before, after, max, t));
+        }
+    }
+
+    IEnumerator StartLerp(BehaviourController player, Coroutine couroutine, Image fill, float before, float after, float max, float t)
+    {
+        t += 0.1f;
+        fill.fillAmount = Mathf.Lerp(before, after, t) / max;
+        yield return null;
+
+        if (t < 1 && after != player.currentHealthPoint)
+        {
+            before = fill.fillAmount * max;
+            after = player.currentHealthPoint;
+            t = 0;
+
+            couroutine = StartCoroutine(StartLerp(player, couroutine, fill, before, after, max, t));
+        }
+        else if (t < 1 && after == player.currentHealthPoint)
+        {
+            couroutine = StartCoroutine(StartLerp(player, couroutine, fill, before, after, max, t));
+        }
+    }
+
+    IEnumerator StartLerp(BehaviourController player, Coroutine couroutine, Image fill, float before, float after, float max, float t, TextMeshProUGUI text)
+    {
+        t += 0.1f;
+        fill.fillAmount = Mathf.Lerp(before, after, t) / max;
+        text.text = (fill.fillAmount * 100).ToString();
+        yield return null;
+
+        if (t < 1 && after != player.currentHealthPoint)
+        {
+            before = fill.fillAmount * max;
+            after = player.currentHealthPoint;
+            t = 0;
+
+            couroutine = StartCoroutine(StartLerp(player, couroutine, fill, before, after, max, t));
+        }
+        else if (t < 1 && after == player.currentHealthPoint)
+        {
+            couroutine = StartCoroutine(StartLerp(player, couroutine, fill, before, after, max, t));
+        }
+    }
+#endregion
+}
+
+class GaugeValue
+{
+    public float max;
+    public float current;
 }

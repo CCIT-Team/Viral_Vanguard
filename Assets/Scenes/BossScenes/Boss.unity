@@ -1301,6 +1301,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3847436020777514837, guid: 78a8ce50ee87eed4fb79cecbffa8fd20,
+        type: 3}
+      propertyPath: m_FillAmount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3847436020777514837, guid: 78a8ce50ee87eed4fb79cecbffa8fd20,
+        type: 3}
+      propertyPath: m_FillOrigin
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3847436021618237371, guid: 78a8ce50ee87eed4fb79cecbffa8fd20,
         type: 3}
       propertyPath: m_Name
@@ -1899,6 +1909,42 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1142787419 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7735060496845134462, guid: 1b969a6f49e974a47be9c63ae35eb637,
+    type: 3}
+  m_PrefabInstance: {fileID: 7465030137783613316}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1142787424 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7735060496845134458, guid: 1b969a6f49e974a47be9c63ae35eb637,
+    type: 3}
+  m_PrefabInstance: {fileID: 7465030137783613316}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142787419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70d16e0da7f512d4b9a11b500292b99b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1142787428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142787419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 914036a3bc7b7ab41b79aee302a87dcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewAngle: 50
+  viewDistance: 10
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 8
+  boss: {fileID: 1142787424}
 --- !u!1001 &1201560721
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2487,6 +2533,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FreeTestCharacterAsunaMasterPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 1895169690517390444, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2426919414763057194, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
         type: 3}
       propertyPath: damages.Array.data[0]
@@ -2854,6 +2905,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7465030137317324055, guid: 1b969a6f49e974a47be9c63ae35eb637,
+        type: 3}
+      propertyPath: m_Radius
+      value: 3.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735060496845134456, guid: 1b969a6f49e974a47be9c63ae35eb637,
+        type: 3}
+      propertyPath: behaviorElemList.Array.data[3].weight
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 7735060496845134458, guid: 1b969a6f49e974a47be9c63ae35eb637,
         type: 3}
       propertyPath: stageUIManager
@@ -2863,6 +2924,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BossMonster
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735060496845134462, guid: 1b969a6f49e974a47be9c63ae35eb637,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b969a6f49e974a47be9c63ae35eb637, type: 3}

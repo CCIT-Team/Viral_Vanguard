@@ -58,7 +58,7 @@ public class BossMove : MonoBehaviour
     public Transform target;
     [SerializeField] Animator animator;
 
-    [Header("공격 사거리 확인")]
+    [Header("사거리 확인")]
     public BossBehavior bossBehavior;
     public BossRangeCheck[] rangeChecks;
 
@@ -104,7 +104,20 @@ public class BossMove : MonoBehaviour
     public bool canBigStiffen;
 
     public bool canAttack;
-    int attackCount = 0;
+    bool doingAttack;
+    public bool playerClose;
+    public bool PlayerClose
+    {
+        get { return playerClose; }
+        set
+        {
+            playerClose = value;
+            if (!PlayerClose)
+                StartRotateBoss();
+            else
+                EndRotateBoss();
+        }
+    }
 
     public GameObject[] attackDetections;
 
@@ -126,9 +139,13 @@ public class BossMove : MonoBehaviour
 
     public void NextAction()
     {
-        agent.isStopped = false;
-        animator.SetBool("Walk", true);
-        bossBehavior.BehaviorStart(bossBehavior.GetRandomIndex());
+        if(PlayerClose)
+        {
+            doingAttack = false;
+            agent.isStopped = false;
+            animator.SetBool("Walk", true);
+            bossBehavior.BehaviorStart(bossBehavior.GetRandomIndex());
+        }
     }
 
     public void NormalAttack(int i)
@@ -239,15 +256,61 @@ public class BossMove : MonoBehaviour
     }
 
     #region 플레이어 방향으로 돌기
+
+    Quaternion playerDirection;
+    Quaternion thisQuaternion;
+    float t = 0;
+
     Vector3 PlayerDirection(Vector3 playerPos, Vector3 bossPos)
     {
         Vector3 playerDirection = playerPos - bossPos;
         return playerDirection;
     }
 
-    void RotateBoss()
+    public void DoingAttack()
     {
-        Vector3 playerDirection = PlayerDirection(target.position, transform.position);
+        doingAttack = doingAttack ? false : true;
+    }
+
+    void StartRotateBoss()
+    {
+        agent.isStopped = true;
+        playerDirection = Quaternion.LookRotation(PlayerDirection(target.position, transform.position));
+        t = 0;
+        animator.SetBool("Walk", false);
+
+        StartCoroutine("RotateBoss");
+    }
+
+    void EndRotateBoss()
+    {
+        StopCoroutine("RotateBoss");
+    }
+
+    IEnumerator RotateBoss()
+    {
+        thisQuaternion = transform.rotation;
+
+        if (!doingAttack)
+            transform.rotation = Quaternion.Lerp(thisQuaternion, playerDirection, t);
+
+        yield return new WaitForSeconds(0.05f);
+
+        if (PlayerClose)
+        {
+            if (t <= 1)
+            {
+                t += 0.1f;
+                StartCoroutine("RotateBoss", playerDirection);
+            }
+            else
+            {
+                EndRotateBoss();
+                NextAction();
+            }
+        }
+        else
+            StartRotateBoss();
 
     }
     #endregion
