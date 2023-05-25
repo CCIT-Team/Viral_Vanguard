@@ -43,6 +43,7 @@ public class PlayerCamera : MonoBehaviour
     public Transform currentLockOnTarget;
     public Transform nearestLockOnTarget;
     public LayerMask targetLayerMask;
+    public LayerMask camCheckColliderLayerMask;
     public bool isLockOn = false;
     public bool isLockOning = false;
     private float lockOnTime;
@@ -327,7 +328,7 @@ public class PlayerCamera : MonoBehaviour
     bool ViewingPosCheck(Vector3 checkPos, float playerHeight)
     {
         Vector3 target = player.position + (Vector3.up * playerHeight);
-        if(Physics.SphereCast(checkPos, 0.2f, target - checkPos, out RaycastHit hit, relCameraPosMag))
+        if(Physics.SphereCast(checkPos, 0.2f, target - checkPos, out RaycastHit hit, relCameraPosMag, camCheckColliderLayerMask))
         {
             if(hit.transform != player && !hit.transform.GetComponent<Collider>().isTrigger)
             {
@@ -340,7 +341,7 @@ public class PlayerCamera : MonoBehaviour
     bool ReverseViewingPosCheck(Vector3 checkPos, float playerHeight, float maxDistance)
     {
         Vector3 origin = player.position + (Vector3.up * playerHeight);
-        if(Physics.SphereCast(origin, 0.2f, checkPos - origin, out RaycastHit hit, maxDistance))
+        if(Physics.SphereCast(origin, 0.2f, checkPos - origin, out RaycastHit hit, maxDistance, camCheckColliderLayerMask))
         {
             if(hit.transform != player && hit.transform != transform && !hit.transform.GetComponent<Collider>().isTrigger)
             {
