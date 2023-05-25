@@ -38,6 +38,7 @@ public class DialogSystem : MonoBehaviour
         else
         {
             // 대화 종료
+            this.gameObject.SetActive(false);
             EndDialogue();
         }
     }
