@@ -113,5 +113,6 @@ public class GuardBehaviour : GenericBehaviour
     {
         behaviourController.JustGuard = false;
         behaviourController.MonsterAttack = false;
+        behaviourController.NormalMonsterAttack = false;
     }
 }
