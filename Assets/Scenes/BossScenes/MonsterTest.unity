@@ -276,6 +276,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 4822846413045343800, guid: 00c49b4cc84b26548988acb94af22e1b,
+        type: 3}
+      propertyPath: probeLayerMask.m_Bits
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4822846413045343801, guid: 00c49b4cc84b26548988acb94af22e1b,
         type: 3}
       propertyPath: m_RootOrder
@@ -304,17 +309,17 @@ PrefabInstance:
     - target: {fileID: 4822846413045343801, guid: 00c49b4cc84b26548988acb94af22e1b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4822846413045343801, guid: 00c49b4cc84b26548988acb94af22e1b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4822846413045343801, guid: 00c49b4cc84b26548988acb94af22e1b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4822846413045343801, guid: 00c49b4cc84b26548988acb94af22e1b,
         type: 3}
@@ -331,6 +336,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4822846413045343802, guid: 00c49b4cc84b26548988acb94af22e1b,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 119
+      objectReference: {fileID: 0}
     - target: {fileID: 4822846413045343807, guid: 00c49b4cc84b26548988acb94af22e1b,
         type: 3}
       propertyPath: player
@@ -346,6 +356,16 @@ PrefabInstance:
       propertyPath: behaviourController
       value: 
       objectReference: {fileID: 708310917}
+    - target: {fileID: 4822846414730976545, guid: 00c49b4cc84b26548988acb94af22e1b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822846414730976549, guid: 00c49b4cc84b26548988acb94af22e1b,
+        type: 3}
+      propertyPath: orthographic
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00c49b4cc84b26548988acb94af22e1b, type: 3}
 --- !u!114 &1285166345 stripped
