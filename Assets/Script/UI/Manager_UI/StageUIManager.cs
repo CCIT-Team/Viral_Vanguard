@@ -144,7 +144,7 @@ public class StageUIManager : MonoBehaviour
     {
         t += 0.1f;
         fill.fillAmount = Mathf.SmoothStep(before, after, t) / max;
-        print(before + ", " + after);
+
         yield return new WaitForSeconds(0.01f);
 
         if (t < 1 && after != player.currentStamina)
