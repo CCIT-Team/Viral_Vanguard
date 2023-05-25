@@ -92,31 +92,41 @@ public class PlayerCamera : MonoBehaviour
             LockOnBillboardIndicater();
         }
 
-        if (Input.GetKey(KeyCode.R) && !isLockOn && !isDelay) //계속 누르면 나중에 r한번 누르면 작동됨 따라서 변경 필요
+
+        if (Input.GetKeyDown(KeyCode.F) && !isLockOn)
         {
-            isLockOning = true;
-            if(isLockOning)
-            {
-                lockOnTime += Time.deltaTime;
-                if(lockOnTime >= minLockOnTime)
-                {
-                    LockOnActivate();
-                }
-            }
+            LockOnActivate();
         }
-        else if(Input.GetKey(KeyCode.R) && isLockOn && !isDelay)
+        else if(Input.GetKeyDown(KeyCode.F) && isLockOn)
         {
-            isLockOning = true;
-            if(isLockOning)
-            {
-                lockOnTime += Time.deltaTime;
-                if (lockOnTime >= minLockOnTime)
-                {
-                    LockOnDeactivate();
-                }
-            }
+            LockOnDeactivate();
         }
-        if(currentLockOnTarget == null)
+            //아래는 r키 길게 누르면 락온되는 코드
+            //if (Input.GetKey(KeyCode.R) && !isLockOn && !isDelay) //계속 누르면 나중에 r한번 누르면 작동됨 따라서 변경 필요
+            //{
+            //    isLockOning = true;
+            //    if(isLockOning)
+            //    {
+            //        lockOnTime += Time.deltaTime;
+            //        if(lockOnTime >= minLockOnTime)
+            //        {
+            //            LockOnActivate();
+            //        }
+            //    }
+            //}
+            //else if(Input.GetKey(KeyCode.R) && isLockOn && !isDelay)
+            //{
+            //    isLockOning = true;
+            //    if(isLockOning)
+            //    {
+            //        lockOnTime += Time.deltaTime;
+            //        if (lockOnTime >= minLockOnTime)
+            //        {
+            //            LockOnDeactivate();
+            //        }
+            //    }
+            //}
+            if (currentLockOnTarget == null)
         {
             isLockOn = false;
         }
@@ -254,24 +264,24 @@ public class PlayerCamera : MonoBehaviour
         LockOnTargetCheck();
         if(currentLockOnTarget != null)
         {
-            isDelay = true;
+            //isDelay = true;
             behaviourController.myAnimator.SetBool(behaviourController.lockOn, true);
-            StartCoroutine(LockOnLocked());
-            isLockOning = false;
-            lockOnTime = 0;
+            //StartCoroutine(LockOnLocked());
+            //isLockOning = false;
+            //lockOnTime = 0;
         }
     }
 
     public void LockOnDeactivate()
     {
         isLockOn = false;
-        isDelay = true;
+        //isDelay = true;
         behaviourController.myAnimator.SetBool(behaviourController.lockOn, false);
         cameraTransform = transform;
         ResetLockOn();
-        StartCoroutine(LockOnLocked());
-        isLockOning = false;
-        lockOnTime = 0;
+        //StartCoroutine(LockOnLocked());
+        //isLockOning = false;
+        //lockOnTime = 0;
     }
 
     public void LockOnBillboardIndicater()
