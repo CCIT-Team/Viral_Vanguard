@@ -143,9 +143,15 @@ public class MonsterMovement : MonoBehaviour
     public void PlayerStiffen(int direction)
     {
         if(direction == 1)
+        {
             BehaviourController.instance.RightStiffen = true;
+            BehaviourController.instance.HealthPoint -= monsterDamage;
+        }
         else
+        {
             BehaviourController.instance.LeftStiffen = true;
+            BehaviourController.instance.HealthPoint -= monsterDamage;
+        }
 
         //가드가 아닐시 
         //데미지 넣기
@@ -168,7 +174,7 @@ public class MonsterMovement : MonoBehaviour
             else if (BehaviourController.instance.currentStamina <= monsterDamage)
             {
                 BehaviourController.instance.GuardBreak = true;
-                BehaviourController.instance.currentHealthPoint -= monsterDamage - BehaviourController.instance.currentStamina;
+                BehaviourController.instance.HealthPoint -= monsterDamage - BehaviourController.instance.currentStamina;
                 BehaviourController.instance.currentStamina = 0;
             }
         }

@@ -20,6 +20,7 @@ public class PlayerCamera : MonoBehaviour
     private float angleVertical = 0.0f;
 
     private Transform cameraTransform;
+    private Transform camLockOnPreviousTransform;
 
     private Vector3 relCameraPos;
     private float relCameraPosMag;
@@ -129,6 +130,7 @@ public class PlayerCamera : MonoBehaviour
 
     public void DefaultCamera()
     {
+        
         angleHorizontal += Mathf.Clamp(Input.GetAxis("Mouse X"), -1f, 1f) * horizontalAimingSpeed;
         angleVertical += Mathf.Clamp(Input.GetAxis("Mouse Y"), -1f, 1f) * verticalAimingSpeed;
         angleVertical = Mathf.Clamp(angleVertical, minVerticalAngle, targetMaxVerticleAngle);
@@ -230,7 +232,7 @@ public class PlayerCamera : MonoBehaviour
             Vector3 camPosition = player.position + pivotOffset + camOffset.z * player.forward;
             Vector3 smoothed_position = Vector3.Lerp(transform.position, camPosition, smooth);
             transform.position = smoothed_position;
-
+            previousTransform = smoothed_position;
             //카메라 흔들기
             previousTransform = transform.position;
             if (shakeTime > 0f)
@@ -265,6 +267,7 @@ public class PlayerCamera : MonoBehaviour
         isLockOn = false;
         isDelay = true;
         behaviourController.myAnimator.SetBool(behaviourController.lockOn, false);
+        cameraTransform = transform;
         ResetLockOn();
         StartCoroutine(LockOnLocked());
         isLockOning = false;

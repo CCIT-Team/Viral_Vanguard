@@ -38,11 +38,10 @@ public class BehaviourController : MonoBehaviour
 
     //
     public float maxHealthPoint;
-    public float currentHealthPoint = 100f;
+    public float currentHealthPoint;
     private bool stiffen;
     private bool rightStiffen;
     private bool leftStiffen;
-    public bool isDead;
 
     private bool staminaCharge;
     public float staminaChargeSpeed;
@@ -51,6 +50,7 @@ public class BehaviourController : MonoBehaviour
     public float maxKineticEnergy = 100f;
     public float currentKineticEnergy;
 
+    public bool isDead;
     public bool isBigBang = false;
     public bool guard;
     private bool guardHit;       //가드중 몬스터가 때리면
@@ -170,6 +170,7 @@ public class BehaviourController : MonoBehaviour
             stageUIManager.PlayerUpdateHP();
             if(currentHealthPoint <= 0)
             {
+                print("안도냐?");
                 IsDead();
             }
         }
@@ -258,12 +259,6 @@ public class BehaviourController : MonoBehaviour
             stageUIManager.PlayerUpdateStamina();
         }
         
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        //공격 받으면 데미지
-        //공격 받는데 0이면 죽음 상태
     }
 
     //낌 방지
