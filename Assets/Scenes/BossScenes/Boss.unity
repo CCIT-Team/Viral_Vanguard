@@ -606,6 +606,9 @@ MonoBehaviour:
   targetLayerMask:
     serializedVersion: 2
     m_Bits: 0
+  camCheckColliderLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
   isLockOn: 0
   isLockOning: 0
   minLockOnTime: 0.5
@@ -2850,6 +2853,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2057605208309027900, guid: 1b969a6f49e974a47be9c63ae35eb637,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6923057538337079492, guid: 1b969a6f49e974a47be9c63ae35eb637,
         type: 3}
       propertyPath: m_RootOrder
@@ -2873,7 +2881,7 @@ PrefabInstance:
     - target: {fileID: 6923057538337079492, guid: 1b969a6f49e974a47be9c63ae35eb637,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 6923057538337079492, guid: 1b969a6f49e974a47be9c63ae35eb637,
         type: 3}
@@ -2883,7 +2891,7 @@ PrefabInstance:
     - target: {fileID: 6923057538337079492, guid: 1b969a6f49e974a47be9c63ae35eb637,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 6923057538337079492, guid: 1b969a6f49e974a47be9c63ae35eb637,
         type: 3}
@@ -2898,7 +2906,7 @@ PrefabInstance:
     - target: {fileID: 6923057538337079492, guid: 1b969a6f49e974a47be9c63ae35eb637,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 6923057538337079492, guid: 1b969a6f49e974a47be9c63ae35eb637,
         type: 3}
@@ -2915,6 +2923,11 @@ PrefabInstance:
       propertyPath: behaviorElemList.Array.data[3].weight
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 7735060496845134458, guid: 1b969a6f49e974a47be9c63ae35eb637,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 794103017}
     - target: {fileID: 7735060496845134458, guid: 1b969a6f49e974a47be9c63ae35eb637,
         type: 3}
       propertyPath: stageUIManager
