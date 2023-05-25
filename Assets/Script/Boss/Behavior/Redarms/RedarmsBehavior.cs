@@ -55,61 +55,51 @@ public class RedarmsBehavior : ScriptableObject
 
     void NormalAttack1()
     {
-        Debug.Log("노말공격1");
         BossMove.instacne.NormalAttack(0);
     }
 
     void NormalAttack2()
     {
-        Debug.Log("노말공격2");
         BossMove.instacne.NormalAttack(1);
     }
 
     void NormalAttack3()
     {
-        Debug.Log("노말공격1");
         BossMove.instacne.NormalAttack(2);
     }
 
     void ActionAttack1()
     {
-        Debug.Log("액션 공격1");
         BossMove.instacne.NormalAttack(3);
     }
 
     void ActionAttack1_1()
     {
-        Debug.Log("액션 공격1_1");
         BossMove.instacne.NormalAttack(4);
     }
 
     void SpecialAttack1()
     {
-        Debug.Log("특수 공격1");
         BossMove.instacne.NormalAttack(5);
     }
 
     void SpecialAttack2()
     {
-        Debug.Log("특수 공격2");
         BossMove.instacne.NormalAttack(6);
     }
 
     void SpecialAttack2_1()
     {
-        Debug.Log("특수 공격2_1");
         BossMove.instacne.NormalAttack(7);
     }
 
     void SpecialAttack3()
     {
-        Debug.Log("특수 공격3");
         BossMove.instacne.NormalAttack(8);
     }
 
     void SpecialAttack3_1()
     {
-        Debug.Log("특수 공격3_1");
         BossMove.instacne.NormalAttack(9);
     }
 
