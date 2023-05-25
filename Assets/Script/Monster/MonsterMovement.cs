@@ -184,7 +184,7 @@ public class MonsterMovement : MonoBehaviour
 
     public void MonsterAttackCheck()
     {
-        BehaviourController.instance.MonsterAttack = !BehaviourController.instance.MonsterAttack;
+        BehaviourController.instance.NormalMonsterAttack = !BehaviourController.instance.NormalMonsterAttack;
     }
 
     public void OnHitBox(int direction)

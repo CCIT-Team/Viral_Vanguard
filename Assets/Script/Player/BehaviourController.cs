@@ -57,6 +57,7 @@ public class BehaviourController : MonoBehaviour
     private bool justGuard;
     private bool guardBreak;
     private bool monsterAttack;
+    private bool normalMosterAttack;
     [HideInInspector]
     public int lockOn;
 
@@ -92,6 +93,15 @@ public class BehaviourController : MonoBehaviour
         set
         {
             monsterAttack = value;
+        }
+    }
+
+    public bool NormalMonsterAttack
+    {
+        get { return normalMosterAttack; }
+        set
+        {
+            normalMosterAttack = value;
         }
     }
 
