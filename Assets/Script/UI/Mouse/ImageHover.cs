@@ -1,3 +1,4 @@
+using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -17,5 +18,13 @@ public class ImageHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public void OnPointerExit(PointerEventData eventData)
     {
         image.sprite = originalSprite;
+    }
+
+    public void EnabledImageHover()
+    {
+        if(this.enabled)
+            this.enabled = false;
+        else if(!this.enabled)
+            this.enabled = true;
     }
 }
