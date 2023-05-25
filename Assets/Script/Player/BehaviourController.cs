@@ -170,7 +170,6 @@ public class BehaviourController : MonoBehaviour
             stageUIManager.PlayerUpdateHP();
             if(currentHealthPoint <= 0)
             {
-                print("¾Èµµ³Ä?");
                 IsDead();
             }
         }
