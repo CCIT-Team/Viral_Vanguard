@@ -3,7 +3,7 @@ guid: b8003ceb14f81594b9c2a889685ef8ed
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
@@ -63,7 +63,6 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
-  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -1570,20 +1569,20 @@ TextureImporter:
       SpriteAnimation03_42: -2135919655
       SpriteAnimation03_1: -563245022
       SpriteAnimation03_26: 1790946943
-      SpriteAnimation03_31: 1625751049
-      SpriteAnimation03_38: -593409961
-      SpriteAnimation03_24: 631718634
       SpriteAnimation03_37: -140319440
-      SpriteAnimation03_12: -1946680340
-      SpriteAnimation03_6: 1318968260
-      SpriteAnimation03_0: 605874110
-      SpriteAnimation03_22: 453687184
-      SpriteAnimation03_33: -407538247
-      SpriteAnimation03_51: -1843170832
       SpriteAnimation03_14: 800043164
-      SpriteAnimation03_56: -1427846513
-      SpriteAnimation03_58: -1643680885
+      SpriteAnimation03_38: -593409961
+      SpriteAnimation03_12: -1946680340
       SpriteAnimation03_63: -1411914754
+      SpriteAnimation03_6: 1318968260
+      SpriteAnimation03_31: 1625751049
+      SpriteAnimation03_24: 631718634
+      SpriteAnimation03_33: -407538247
+      SpriteAnimation03_58: -1643680885
+      SpriteAnimation03_0: 605874110
+      SpriteAnimation03_51: -1843170832
+      SpriteAnimation03_22: 453687184
+      SpriteAnimation03_56: -1427846513
       SpriteAnimation03_7: 1657603656
       SpriteAnimation03_16: 127279165
       SpriteAnimation03_41: -319262155

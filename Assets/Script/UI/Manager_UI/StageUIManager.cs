@@ -224,11 +224,13 @@ public class StageUIManager : MonoBehaviour
     public void BossClearAnimation()
     {
         clearAnimationObject.SetActive(true);
+        SceneFader.Instance.StartFadeOut("Lobby",7f);
     }
 
     public void BossFailAnimation()
     {
         failAnimationObject.SetActive(true);
+        SceneFader.Instance.StartFadeOut("Lobby",9f);
     }
     #endregion
 }
