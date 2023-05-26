@@ -269,6 +269,7 @@ public class BossMove : MonoBehaviour
     {
         bodyCollider.enabled = false;
         agent.baseOffset = 0;
+        stageUIManager.BossClearAnimation();
         animator.SetTrigger("Dead");
     }
 
