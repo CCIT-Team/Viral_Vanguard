@@ -22,7 +22,10 @@ public class MonsterMovement : MonoBehaviour
     public MonsterMovementSub searchRange;
     public MonsterAttack HitBox;
 
-    float healthPoint = 100000;
+    public float maxHealth = 50;
+    float healthPoint = 50;
+
+    public float patrolRange = 5;
 
     public bool Stiffen
     {
@@ -57,6 +60,7 @@ public class MonsterMovement : MonoBehaviour
     }
     void Start()
     {
+        healthPoint = maxHealth;
         instance = this;
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
@@ -128,11 +132,12 @@ public class MonsterMovement : MonoBehaviour
 
     IEnumerator Patrol()
     {
-        yield return new WaitForSeconds(Random.Range(3f, 9));
+        yield return new WaitForSeconds(Random.Range(8f, 15));
         animator.SetBool("Patrol", true);
-        float x = Random.Range(-3, 3);
-        float z = Random.Range(-3, 3);
-        startPoint.position = startPoint.position + new Vector3(x, 0, z);
+        float x = Random.Range(-patrolRange * 0.6f, patrolRange * 0.6f);
+        float z = Random.Range(-patrolRange*0.6f, patrolRange * 0.6f);
+        //startPoint.position = startPoint.position + new Vector3(x, 0, z);
+        startPoint.localPosition = new Vector3(x, 0, z);
     }
 
     public void MonsterDead()
@@ -184,7 +189,7 @@ public class MonsterMovement : MonoBehaviour
 
     public void MonsterAttackCheck()
     {
-        BehaviourController.instance.NormalMonsterAttack = !BehaviourController.instance.NormalMonsterAttack;
+        BehaviourController.instance.MonsterAttack = !BehaviourController.instance.MonsterAttack;
     }
 
     public void OnHitBox(int direction)
