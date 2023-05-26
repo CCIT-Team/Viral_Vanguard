@@ -136,6 +136,7 @@ public class BigBangBehaviour : GenericBehaviour
 
     public void BigBangEffect2()
     {
+        behaviourController.camScript.CamShakeTime(0.2f, 0.1f);
         behaviourController.particleSystems[2].Play();
     }
 }
