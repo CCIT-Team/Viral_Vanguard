@@ -7159,7 +7159,7 @@ MonoBehaviour:
   turnSmooth: 0.06
   maxHealthPoint: 0
   currentHealthPoint: 100
-  staminaChargeSpeed: 0
+  staminaChargeSpeed: 5
   currentStamina: 100
   maxStamina: 0
   maxKineticEnergy: 100
