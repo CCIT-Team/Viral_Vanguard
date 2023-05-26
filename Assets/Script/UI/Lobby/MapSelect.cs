@@ -20,7 +20,6 @@ public class MapSelect : MonoBehaviour, IPointerClickHandler
     public Image dispatch;
     public Sprite originalSprite;
     public Sprite changeSprite;
-
     bool isSelected;
 
     void Start()
@@ -30,8 +29,10 @@ public class MapSelect : MonoBehaviour, IPointerClickHandler
 
     public void CursorOnTheObjectroof()
     {
-        meshRenderer.materials[0].SetColor("_EmissiveColor", new Color(0, 0, 38, 50));
-        meshRenderer.materials[1].SetColor("_EmissiveColor", new Color(0, 0, 75, 100));
+        Color wallColor = new Color(0.65f, 0.1939f, 0, 0.5019f);
+        Color roofColor = new Color(0.75f, 0.375f, 0, 1f);
+        meshRenderer.materials[0].SetColor("_EmissiveColor", wallColor);
+        meshRenderer.materials[1].SetColor("_EmissiveColor", roofColor);
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -52,8 +53,12 @@ public class MapSelect : MonoBehaviour, IPointerClickHandler
         {
             selectCursorImage.sprite = selectCursorOnSprite; // Non클릭 이미지로 변경
             targetBossInfo[0].SetActive(false);
-            meshRenderer.materials[0].SetColor("_EmissiveColor", new Color(18, 100, 65, 50));
-            meshRenderer.materials[1].SetColor("_EmissiveColor", new Color(30, 10, 75, 100));
+
+            Color wallColor = new Color(0.38f, 0.38f, 0.38f, 0.5019f);
+            Color roofColor = new Color(0.7490f, 0.7490f, 0.7490f, 1f);
+            meshRenderer.materials[0].SetColor("_EmissiveColor", wallColor);
+            meshRenderer.materials[1].SetColor("_EmissiveColor", roofColor);
+
             dispatch.sprite = originalSprite;
             imageHover.enabled = false;
 
@@ -63,12 +68,14 @@ public class MapSelect : MonoBehaviour, IPointerClickHandler
 
     public void OnOff()
     {
+        Color wallColor = new Color(0.38f, 0.38f, 0.38f, 0.5019f);
+        Color roofColor = new Color(0.7490f, 0.7490f, 0.7490f, 1f);
         foreach (MapSelect mapSelect in mapSelects)
         {
             //mapSelect.selectCursorImage.enabled = false;
             mapSelect.selectCursorImage.sprite = mapSelect.selectCursorOnSprite;
-            mapSelect.meshRenderer.materials[0].SetColor("_EmissiveColor", new Color(18, 100, 65, 50));
-            mapSelect.meshRenderer.materials[1].SetColor("_EmissiveColor", new Color(30, 10, 75, 100));
+            mapSelect.meshRenderer.materials[0].SetColor("_EmissiveColor", wallColor);
+            mapSelect.meshRenderer.materials[1].SetColor("_EmissiveColor", roofColor);
         }
     }
 }
