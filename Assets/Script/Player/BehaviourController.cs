@@ -11,7 +11,7 @@ using UnityEngine.VFX;
 public class BehaviourController : MonoBehaviour
 {
     //변경가능
-    public static BehaviourController instance; 
+    public static BehaviourController instance;
 
     private List<GenericBehaviour> behaviours = new List<GenericBehaviour>();
     private List<GenericBehaviour> overrideBehaviours = new List<GenericBehaviour>();
@@ -257,6 +257,8 @@ public class BehaviourController : MonoBehaviour
 
     private void Update()
     {
+        print(behaviourLocked);
+        print(overrideBehaviours);
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
 
