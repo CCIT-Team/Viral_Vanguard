@@ -28,6 +28,9 @@ public class MonsterMovementSub : MonoBehaviour
                 case RangeType.Attack:
                     mainmove.Attack();
                     break;
+                case RangeType.Search:
+                    mainmove.SetTarget(other.transform);
+                    break;
             }
         }
     }
