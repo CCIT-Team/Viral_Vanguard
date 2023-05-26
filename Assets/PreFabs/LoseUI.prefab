@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 6539474067057249017}
   - component: {fileID: 6539474067057249015}
   - component: {fileID: 6539474067057249016}
+  - component: {fileID: 52087391125909798}
   m_Layer: 5
   m_Name: LoseBackground
   m_TagString: Untagged
@@ -163,7 +164,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: eb8d0ac09e992e441998954882f6150d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3d22562a700bd6c43b94dbd9df1cc259, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -173,6 +174,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &52087391125909798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6539474067057249018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97bc2ebab6563400c95b036136d26ea6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Inverse: 0
+  m_MaskInteraction: 85
+  m_UseStencil: 1
+  m_RaycastFilter: 0
 --- !u!1 &6539474067322425806
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,7 +202,7 @@ GameObject:
   - component: {fileID: 6539474067322425802}
   - component: {fileID: 6539474067322425803}
   - component: {fileID: 6539474067322425804}
-  - component: {fileID: 6539474067322425801}
+  - component: {fileID: 1025924373852151290}
   m_Layer: 5
   m_Name: LoseMaskAnimation
   m_TagString: Untagged
@@ -272,7 +289,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &6539474067322425801
+--- !u!114 &1025924373852151290
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -281,10 +298,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 6539474067322425806}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 385b7d1277b6c4007a84c065696e0f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 0
+  m_DownSamplingRate: 1
+  m_Softness: 1
+  m_Alpha: 1
+  m_IgnoreParent: 0
+  m_PartOfParent: 0
+  m_IgnoreSelfGraphic: 0
+  m_IgnoreSelfStencil: 0
 --- !u!1 &6539474068008211038
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,7 +324,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6539474068008211037
 RectTransform:
   m_ObjectHideFlags: 0
