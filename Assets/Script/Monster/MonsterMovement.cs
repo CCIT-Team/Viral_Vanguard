@@ -30,6 +30,7 @@ public class MonsterMovement : MonoBehaviour
     public ParticleSystem[] blood;
 
     float[] damage = { 5, 6, 13, 10 };
+    bool isDead = false;
 
     public bool Stiffen
     {
@@ -40,7 +41,7 @@ public class MonsterMovement : MonoBehaviour
 
             animator.SetBool("Stiffen", true);
             blood[Random.Range(0, 2)].Play();
-            if(value)
+            if(value && !isDead)
             {
                 agent.isStopped = true;
             }
@@ -55,12 +56,14 @@ public class MonsterMovement : MonoBehaviour
         set
         {
             healthPoint = value;
-            if(healthPoint <= 0)
+            if(healthPoint <= 0&&!isDead)
             {
-                agent.enabled = false;
-                animator.SetTrigger("Die");
-                animator.SetBool("Dead",true);
                 this.enabled = false;
+                attackRange.enabled = false;
+                agent.enabled = false;
+                isDead = true;
+                animator.SetTrigger("Die");
+                animator.SetBool("Dead",isDead);
             }
         }
     }
@@ -134,7 +137,7 @@ public class MonsterMovement : MonoBehaviour
 
     public void Attack()
     {
-        if(!attack)
+        if(!attack&&!isDead)
         {
             attack = true;
             animator.SetInteger("AttackType", Random.Range(0, 2));
