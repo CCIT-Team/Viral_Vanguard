@@ -1023,6 +1023,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Monster
       objectReference: {fileID: 0}
+    - target: {fileID: 3543502830079493275, guid: ca7b81088d384894dad1282bf39ab333,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7999100099612454060, guid: ca7b81088d384894dad1282bf39ab333,
         type: 3}
       propertyPath: m_RootOrder

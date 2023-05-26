@@ -142162,14 +142162,21 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
-    functionName: ReducedKineticEnergyBigBang
+    functionName: StaminaChargeOff
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 0
-    functionName: StaminaChargeOff
+    functionName: IsBigBangTrue
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0
+    functionName: ReducedKineticEnergyBigBang
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -142204,14 +142211,21 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 2.8
-    functionName: IsBigBangTrue
+    functionName: StiffenCheckStart
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 2.8
-    functionName: StiffenCheckStart
+    functionName: IsBigBangTrue
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 2.8666666
+    functionName: BigBangEffect2
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
