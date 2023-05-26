@@ -23,6 +23,7 @@ public class PlayerAttackCollsion : MonoBehaviour
                 }
                 else if(behaviourController.currentKineticEnergy >= 100)
                 {
+                    behaviourController.gameObjectsEffects[0].SetActive(true);
                     behaviourController.gameObjectsEffects[1].SetActive(true);
                 }
                 else
@@ -43,6 +44,7 @@ public class PlayerAttackCollsion : MonoBehaviour
                 }
                 else if (behaviourController.currentKineticEnergy >= 100)
                 {
+                    behaviourController.gameObjectsEffects[0].SetActive(true);
                     behaviourController.gameObjectsEffects[1].SetActive(true);
                 }
                 else
@@ -63,6 +65,7 @@ public class PlayerAttackCollsion : MonoBehaviour
                 }
                 else if (behaviourController.currentKineticEnergy >= 100)
                 {
+                    behaviourController.gameObjectsEffects[0].SetActive(true);
                     behaviourController.gameObjectsEffects[1].SetActive(true);
                 }
                 else
@@ -82,6 +85,7 @@ public class PlayerAttackCollsion : MonoBehaviour
                 }
                 else if (behaviourController.currentKineticEnergy >= 100)
                 {
+                    behaviourController.gameObjectsEffects[0].SetActive(true);
                     behaviourController.gameObjectsEffects[1].SetActive(true);
                 }
                 else
@@ -103,6 +107,7 @@ public class PlayerAttackCollsion : MonoBehaviour
                 }
                 else if (behaviourController.currentKineticEnergy >= 100)
                 {
+                    behaviourController.gameObjectsEffects[0].SetActive(true);
                     behaviourController.gameObjectsEffects[1].SetActive(true);
                 }
                 else
@@ -121,6 +126,7 @@ public class PlayerAttackCollsion : MonoBehaviour
                 }
                 else if (behaviourController.currentKineticEnergy >= 100)
                 {
+                    behaviourController.gameObjectsEffects[0].SetActive(true);
                     behaviourController.gameObjectsEffects[1].SetActive(true);
                 }
                 else
@@ -139,6 +145,7 @@ public class PlayerAttackCollsion : MonoBehaviour
                 }
                 else if (behaviourController.currentKineticEnergy >= 100)
                 {
+                    behaviourController.gameObjectsEffects[0].SetActive(true);
                     behaviourController.gameObjectsEffects[1].SetActive(true);
                 }
                 else
@@ -156,6 +163,7 @@ public class PlayerAttackCollsion : MonoBehaviour
                 }
                 else if (behaviourController.currentKineticEnergy >= 100)
                 {
+                    behaviourController.gameObjectsEffects[0].SetActive(true);
                     behaviourController.gameObjectsEffects[1].SetActive(true);
                 }
                 else
@@ -164,6 +172,10 @@ public class PlayerAttackCollsion : MonoBehaviour
                     behaviourController.gameObjectsEffects[1].SetActive(false);
                 }
             }
+        }
+        if (behaviourController.currentKineticEnergy >= 100)
+        {
+            behaviourController.currentKineticEnergy = 100f;
         }
     }
 }
