@@ -10,9 +10,9 @@ public class SceneFader : Singleton<SceneFader>
 
     private void Start() => DontDestroyOnLoad(fadeImage);
 
-    public void StartFadeOut(string scenename)
+    public void StartFadeOut(string scenename , float time)
     {
-        StartCoroutine(FadeOut(3f, scenename));
+        StartCoroutine(FadeOut(time, scenename));
     }
     public void StartFadeOut(int sceneindex)
     {

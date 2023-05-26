@@ -16,7 +16,7 @@ public class ButtonManager : MonoBehaviour
         SaveDataManager.Instance.GameSave("/SaveFile" + 0 + ".txt",0);
         SaveDataManager.Instance.GameLoad();
 
-        SceneFader.Instance.StartFadeOut("Lobby");
+        SceneFader.Instance.StartFadeOut("Lobby",3f);
     }
 
     public void SaveDataSelect(int index)
@@ -31,7 +31,7 @@ public class ButtonManager : MonoBehaviour
             SaveDataManager.Instance.currentSaveFileIndex);
         SaveDataManager.Instance.GameLoad();
 
-        SceneFader.Instance.StartFadeOut("Lobby");
+        SceneFader.Instance.StartFadeOut("Lobby",3f);
     }
 
     public void NewGame(GameObject saveDataMax)
@@ -41,7 +41,7 @@ public class ButtonManager : MonoBehaviour
             int count = SaveDataManager.Instance.saveDataCount;
             SaveDataManager.Instance.GameSave("/SaveFile" + count + ".txt", count);
             SaveDataManager.Instance.saveDataCount++;
-            SceneFader.Instance.StartFadeOut("Lobby");
+            SceneFader.Instance.StartFadeOut("Lobby",3f);
         }
         else if(SaveDataManager.Instance.saveDataCount == 5)
         {
@@ -93,7 +93,7 @@ public class ButtonManager : MonoBehaviour
 
         SaveDataManager.Instance.GameSave("/SaveFile" + dataIndex + ".txt", dataIndex);
 
-        SceneFader.Instance.StartFadeOut("Lobby");
+        SceneFader.Instance.StartFadeOut("Lobby",3f);
     }
 
     public void GameClose()
