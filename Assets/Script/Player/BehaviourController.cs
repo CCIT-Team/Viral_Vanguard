@@ -61,7 +61,7 @@ public class BehaviourController : MonoBehaviour
     private bool normalMosterAttack;
     [HideInInspector]
     public int lockOn;
-    public ParticleSystem[] particleSystems;  //0 저스트 가드, 1 가드 히트, 2 빅뱅, 3피격 왼, 4 피격 오, 5 가드 브레이크
+    public ParticleSystem[] particleSystems;  //0 저스트 가드, 1 가드 히트, 2 빅뱅, 3피격 왼, 4 피격 오, 5 가드 브레이크 6:플레이어 오른공, 7: 플레이어 왼공
     public VisualEffect[] visualEffects; //0 빅뱅
     public GameObject[] gameObjectsEffects; //키네틱 온 오프
 
@@ -240,6 +240,7 @@ public class BehaviourController : MonoBehaviour
         {
             behaviour.enabled = false;
         }
+        stageUIManager.BossFailAnimation();
         //사운드 or 이펙트
     }
 
@@ -261,8 +262,6 @@ public class BehaviourController : MonoBehaviour
 
     private void Update()
     {
-        print(behaviourLocked);
-        print(overrideBehaviours);
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
 

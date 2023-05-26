@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.VFX;
 
 public class BossMove : MonoBehaviour
 {
@@ -119,6 +120,15 @@ public class BossMove : MonoBehaviour
 
     public Collider bodyCollider;
 
+    [Header("¿Ã∆Â∆Æ ∏ÆΩ∫∆Æ")]
+    public ParticleSystem[] particleSystems;
+    public VisualEffect[] visualEffects;
+    public GameObject[] effectObject;
+
+    [Header("¿Ã∆Â∆Æ ¿ßƒ°")]
+    public GameObject effectParent;
+    public GameObject leftHand;
+
     void StartTracking()
     {
         StartCoroutine(update());
@@ -210,10 +220,20 @@ public class BossMove : MonoBehaviour
 
     public void SetStiffen(int stiffenNum)
     {
+        OffAttackCollision();
+
         if (stiffenNum == 0 && canStiffen)
             Stiffen = true;
         else if (stiffenNum == 1)
             BigStiffen = true;
+    }
+
+    void OffAttackCollision()
+    {
+        foreach (var col in attackDetections)
+        {
+            col.SetActive(false);
+        }
     }
 
     public void CanJustGuard()
@@ -249,6 +269,7 @@ public class BossMove : MonoBehaviour
     {
         bodyCollider.enabled = false;
         agent.baseOffset = 0;
+        stageUIManager.BossClearAnimation();
         animator.SetTrigger("Dead");
     }
 
@@ -315,6 +336,25 @@ public class BossMove : MonoBehaviour
         float angle = Mathf.Acos(dot) * Mathf.Rad2Deg;
 
         return angle;
+    }
+    #endregion
+
+    #region ¿Ã∆Â∆Æ
+    public void OnVisualEffectObject(int i)
+    {
+        visualEffects[i].gameObject.SetActive(true);
+    }
+
+    public void OnParticleObject(int i)
+    {
+        particleSystems[i].gameObject.SetActive(true);
+    }
+
+    public void OnEffectObject(int i)
+    {
+        bool b = effectObject[i].activeSelf ? false : true;
+
+        effectObject[i].SetActive(b);
     }
     #endregion
 }

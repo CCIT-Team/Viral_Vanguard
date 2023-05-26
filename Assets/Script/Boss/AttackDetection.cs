@@ -19,7 +19,7 @@ public class AttackDetection : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if(BehaviourController.instance.guard && !boss.canBigStiffen)
+            if(BehaviourController.instance.guard)
             {
                 BehaviourController.instance.GuardHit = true;
                 SteminaCheck();
