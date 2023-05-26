@@ -79123,7 +79123,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.6666666
+  - time: 1.7
     functionName: ActiveCollider
     data: 
     objectReferenceParameter: {fileID: 0}
@@ -79131,14 +79131,14 @@ AnimationClip:
     intParameter: 7
     messageOptions: 0
   - time: 1.7
-    functionName: CanJustGuard
+    functionName: DoAttack
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 1.7
-    functionName: DoAttack
+    functionName: CanJustGuard
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -79146,6 +79146,13 @@ AnimationClip:
     messageOptions: 0
   - time: 1.9333333
     functionName: CanJustGuard
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.9333333
+    functionName: DoAttack
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -79156,14 +79163,7 @@ AnimationClip:
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 8
-    messageOptions: 0
-  - time: 1.9333333
-    functionName: DoAttack
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
+    intParameter: 7
     messageOptions: 0
   - time: 3.1
     functionName: NextAction

@@ -104,6 +104,7 @@ public class AttackBehaviour : GenericBehaviour
         else
         {
             mouseLock = true;
+            print("Attackclick");
             behaviourController.myAnimator.SetBool(keyLock, mouseLock);
             behaviourController.OverrideWithBehaviour(this);
             behaviourController.LockTempBehaviour(behaviourCode);

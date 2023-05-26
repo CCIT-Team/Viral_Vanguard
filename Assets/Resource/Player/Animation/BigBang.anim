@@ -92624,8 +92624,15 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.6166667
+  - time: 1.6
     functionName: ReducedKineticEnergyBigBang
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.65
+    functionName: BigBangEffect1
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -92640,6 +92647,13 @@ AnimationClip:
     messageOptions: 0
   - time: 1.65
     functionName: IsBigBangTrue
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.75
+    functionName: BigBangEffect2
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

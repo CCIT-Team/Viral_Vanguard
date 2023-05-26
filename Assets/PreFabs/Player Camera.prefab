@@ -245,7 +245,7 @@ MonoBehaviour:
     m_Bits: 320
   camCheckColliderLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   isLockOn: 0
   isLockOning: 0
   minLockOnTime: 0.5
