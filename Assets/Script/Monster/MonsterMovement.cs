@@ -27,13 +27,19 @@ public class MonsterMovement : MonoBehaviour
 
     public float patrolRange = 5;
 
+    public ParticleSystem[] blood;
+
+    float[] damage = { 5, 6, 13, 10 };
+
     public bool Stiffen
     {
         get { return stiffen; }
         set
         {
             stiffen = value;
-            animator.SetBool("Stiffen",true);
+
+            animator.SetBool("Stiffen", true);
+            blood[Random.Range(0, 2)].Play();
             if(value)
             {
                 agent.isStopped = true;
@@ -84,13 +90,26 @@ public class MonsterMovement : MonoBehaviour
     {
         if(other.CompareTag("MonsterPoint"))
         {
-            if(!chase)
+            if(Vector3.SqrMagnitude(this.transform.position - startPoint.position) <= 1)
             {
-                animator.SetBool("FindPlayer", chase);
-                chase = true;
+                if (!chase)
+                {
+                    animator.SetBool("FindPlayer", chase);
+                    chase = true;
+                }
+                animator.SetBool("Patrol", false);
+                StartCoroutine("Patrol");
             }
-            animator.SetBool("Patrol", false);
-            StartCoroutine("Patrol");
+        }
+        else if(other.CompareTag("PlayerAttackCollsion"))
+        {
+            Stiffen = true;
+            HealthPoint -= damage[
+                                    BehaviourController.instance.myAnimator.GetBool(AnimatorKey.Attack1) ? 0 :
+                                    BehaviourController.instance.myAnimator.GetBool(AnimatorKey.Attack2) ? 1 :
+                                    BehaviourController.instance.myAnimator.GetBool(AnimatorKey.Attack3) ? 2 :
+                                    3
+                                 ];
         }
     }
 

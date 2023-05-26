@@ -8,6 +8,8 @@ TagManager:
   - MonsterSpawn
   - MonsterPoint
   - NormalMonster
+  - BossEvent
+  - PlayerAttackCollsion
   layers:
   - Default
   - TransparentFX

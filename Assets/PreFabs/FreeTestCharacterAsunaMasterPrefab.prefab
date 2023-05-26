@@ -3061,7 +3061,7 @@ GameObject:
   - component: {fileID: 2426919414763057197}
   m_Layer: 3
   m_Name: Attack&BigbangCollsion
-  m_TagString: Untagged
+  m_TagString: PlayerAttackCollsion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
