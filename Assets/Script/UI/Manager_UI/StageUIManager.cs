@@ -38,6 +38,9 @@ public class StageUIManager : MonoBehaviour
     public float playerSpT;
     public float playerKpT;
 
+    public GameObject clearAnimationObject;
+    public GameObject failAnimationObject;
+
     void Start() => StatusInitaialzation();
 
     void StatusInitaialzation()
@@ -214,6 +217,18 @@ public class StageUIManager : MonoBehaviour
 
         int value = (int)Mathf.Round(after / max * 100);
         text.text = value.ToString();
+    }
+    #endregion
+
+    #region 결과 애니메이션
+    public void BossClearAnimation()
+    {
+        clearAnimationObject.SetActive(true);
+    }
+
+    public void BossFailAnimation()
+    {
+        failAnimationObject.SetActive(true);
     }
     #endregion
 }
