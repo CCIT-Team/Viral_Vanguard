@@ -61,8 +61,9 @@ public class BehaviourController : MonoBehaviour
     private bool normalMosterAttack;
     [HideInInspector]
     public int lockOn;
-    public ParticleSystem[] particleSystems;  //0 저스트 가드, 1 가드 히트, 3빅뱅
+    public ParticleSystem[] particleSystems;  //0 저스트 가드, 1 가드 히트, 2 빅뱅, 3피격 왼, 4 피격 오, 5 가드 브레이크
     public VisualEffect[] visualEffects; //0 빅뱅
+    public GameObject[] gameObjectsEffects; //키네틱 온 오프
 
     public bool GuardHit
     {
@@ -87,6 +88,7 @@ public class BehaviourController : MonoBehaviour
             if(guard == true)
             {
                 myAnimator.SetTrigger("GuardBreak");
+                particleSystems[5].Play();
             }
         }
     }
@@ -144,6 +146,7 @@ public class BehaviourController : MonoBehaviour
             if (guard == false)
             {
                 myAnimator.SetBool("RightStiffen", value);
+                particleSystems[4].Play();
             }
         }
     }
@@ -157,6 +160,7 @@ public class BehaviourController : MonoBehaviour
             if (guard == false)
             {
                 myAnimator.SetBool("LeftStiffen", value);
+                particleSystems[3].Play();
             }
         }
     }

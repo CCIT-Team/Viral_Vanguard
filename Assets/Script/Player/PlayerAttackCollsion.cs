@@ -16,24 +16,76 @@ public class PlayerAttackCollsion : MonoBehaviour
                 BossMove.instacne.CurrentHealthPoint -= damages[0];
                 behaviourController.currentKineticEnergy += increasekineticEnergy[0];
                 behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
+                if(behaviourController.currentKineticEnergy >= 50)
+                {
+                    behaviourController.gameObjectsEffects[0].SetActive(true);
+                }
+                else if(behaviourController.currentKineticEnergy >= 100)
+                {
+                    behaviourController.gameObjectsEffects[1].SetActive(true);
+                }
+                else
+                {
+                    behaviourController.gameObjectsEffects[0].SetActive(false);
+                    behaviourController.gameObjectsEffects[1].SetActive(false);
+                }    
             }
             else if(behaviourController.myAnimator.GetBool(AnimatorKey.Attack2)&& !behaviourController.myAnimator.GetBool(AnimatorKey.Attack3))
             {
                 BossMove.instacne.CurrentHealthPoint -= damages[1];
                 behaviourController.currentKineticEnergy += increasekineticEnergy[1];
                 behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
+                if (behaviourController.currentKineticEnergy >= 50)
+                {
+                    behaviourController.gameObjectsEffects[0].SetActive(true);
+                }
+                else if (behaviourController.currentKineticEnergy >= 100)
+                {
+                    behaviourController.gameObjectsEffects[1].SetActive(true);
+                }
+                else
+                {
+                    behaviourController.gameObjectsEffects[0].SetActive(false);
+                    behaviourController.gameObjectsEffects[1].SetActive(false);
+                }
             }
             else if(behaviourController.myAnimator.GetBool(AnimatorKey.Attack3) && behaviourController.myAnimator.GetBool(AnimatorKey.Attack2))
             {
                 BossMove.instacne.CurrentHealthPoint -= damages[2];
                 behaviourController.currentKineticEnergy += increasekineticEnergy[2];
                 behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
+                if (behaviourController.currentKineticEnergy >= 50)
+                {
+                    behaviourController.gameObjectsEffects[0].SetActive(true);
+                }
+                else if (behaviourController.currentKineticEnergy >= 100)
+                {
+                    behaviourController.gameObjectsEffects[1].SetActive(true);
+                }
+                else
+                {
+                    behaviourController.gameObjectsEffects[0].SetActive(false);
+                    behaviourController.gameObjectsEffects[1].SetActive(false);
+                }
             }
             else if(behaviourController.isBigBang)
             {
                 BossMove.instacne.CurrentHealthPoint -= damages[3];
                 BossMove.instacne.SetStiffen(1);
                 behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
+                if (behaviourController.currentKineticEnergy >= 50)
+                {
+                    behaviourController.gameObjectsEffects[0].SetActive(true);
+                }
+                else if (behaviourController.currentKineticEnergy >= 100)
+                {
+                    behaviourController.gameObjectsEffects[1].SetActive(true);
+                }
+                else
+                {
+                    behaviourController.gameObjectsEffects[0].SetActive(false);
+                    behaviourController.gameObjectsEffects[1].SetActive(false);
+                }
             }
         }
         else if(other.gameObject.CompareTag("NormalMonster"))
@@ -44,6 +96,19 @@ public class PlayerAttackCollsion : MonoBehaviour
                 //MonsterMovement.instance.Stiffen = true;
                 behaviourController.currentKineticEnergy += increasekineticEnergy[0];
                 behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
+                if (behaviourController.currentKineticEnergy >= 50)
+                {
+                    behaviourController.gameObjectsEffects[0].SetActive(true);
+                }
+                else if (behaviourController.currentKineticEnergy >= 100)
+                {
+                    behaviourController.gameObjectsEffects[1].SetActive(true);
+                }
+                else
+                {
+                    behaviourController.gameObjectsEffects[0].SetActive(false);
+                    behaviourController.gameObjectsEffects[1].SetActive(false);
+                }
             }
             else if (behaviourController.myAnimator.GetBool(AnimatorKey.Attack2) && !behaviourController.myAnimator.GetBool(AnimatorKey.Attack3))
             {
@@ -51,6 +116,19 @@ public class PlayerAttackCollsion : MonoBehaviour
                 //MonsterMovement.instance.Stiffen = true;
                 behaviourController.currentKineticEnergy += increasekineticEnergy[1];
                 behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
+                if (behaviourController.currentKineticEnergy >= 50)
+                {
+                    behaviourController.gameObjectsEffects[0].SetActive(true);
+                }
+                else if (behaviourController.currentKineticEnergy >= 100)
+                {
+                    behaviourController.gameObjectsEffects[1].SetActive(true);
+                }
+                else
+                {
+                    behaviourController.gameObjectsEffects[0].SetActive(false);
+                    behaviourController.gameObjectsEffects[1].SetActive(false);
+                }
             }
             else if (behaviourController.myAnimator.GetBool(AnimatorKey.Attack3) && behaviourController.myAnimator.GetBool(AnimatorKey.Attack2))
             {
@@ -58,12 +136,38 @@ public class PlayerAttackCollsion : MonoBehaviour
                 //MonsterMovement.instance.Stiffen = true;
                 behaviourController.currentKineticEnergy += increasekineticEnergy[2];
                 behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
+                if (behaviourController.currentKineticEnergy >= 50)
+                {
+                    behaviourController.gameObjectsEffects[0].SetActive(true);
+                }
+                else if (behaviourController.currentKineticEnergy >= 100)
+                {
+                    behaviourController.gameObjectsEffects[1].SetActive(true);
+                }
+                else
+                {
+                    behaviourController.gameObjectsEffects[0].SetActive(false);
+                    behaviourController.gameObjectsEffects[1].SetActive(false);
+                }
             }
             else if (behaviourController.isBigBang)
             {
                 MonsterMovement.instance.HealthPoint -= damages[3];
                 MonsterMovement.instance.Stiffen = true;
                 behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
+                if (behaviourController.currentKineticEnergy >= 50)
+                {
+                    behaviourController.gameObjectsEffects[0].SetActive(true);
+                }
+                else if (behaviourController.currentKineticEnergy >= 100)
+                {
+                    behaviourController.gameObjectsEffects[1].SetActive(true);
+                }
+                else
+                {
+                    behaviourController.gameObjectsEffects[0].SetActive(false);
+                    behaviourController.gameObjectsEffects[1].SetActive(false);
+                }
             }
         }
     }

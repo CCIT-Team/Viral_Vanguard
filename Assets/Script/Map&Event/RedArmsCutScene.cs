@@ -35,8 +35,8 @@ public class RedArmsCutScene : MonoBehaviour
 
     void Inpulseglow()
     {
-        impulseSourceGrowl.m_DefaultVelocity = new Vector3(0, 1, 0);
-        impulseSourceGrowl.m_ImpulseDefinition.m_ImpulseDuration = 2.75f;
+        impulseSourceGrowl.m_DefaultVelocity = new Vector3(0, 0.5f, 0);
+        impulseSourceGrowl.m_ImpulseDefinition.m_ImpulseDuration = 2.5f;
         impulseSourceGrowl.GenerateImpulse();
     }
 }
