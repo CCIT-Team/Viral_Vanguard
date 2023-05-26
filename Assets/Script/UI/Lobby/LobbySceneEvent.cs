@@ -58,7 +58,7 @@ public class LobbySceneEvent : MonoBehaviour
             //보스 정보 전달
             //
 
-            SceneFader.Instance.StartFadeOut("NikeMainRoad");
+            SceneFader.Instance.StartFadeOut("NikeMainRoad" , 3f);
         }
     }
 

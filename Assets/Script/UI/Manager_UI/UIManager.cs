@@ -47,11 +47,11 @@ public class UIManager : Singleton<UIManager>
 
         if (Input.GetKeyDown(KeyCode.L))
         {
-            SceneFader.Instance.StartFadeOut("Lobby");
+            SceneFader.Instance.StartFadeOut("Lobby",3f);
         }
         if (Input.GetKeyDown(KeyCode.N))
         {
-            SceneFader.Instance.StartFadeOut("NikeMainRoad");
+            SceneFader.Instance.StartFadeOut("NikeMainRoad",3f);
         }
     }
 
