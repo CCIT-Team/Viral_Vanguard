@@ -221,6 +221,7 @@ public class BossMove : MonoBehaviour
     public void SetStiffen(int stiffenNum)
     {
         OffAttackCollision();
+        OffEffectObject();
 
         if (stiffenNum == 0 && canStiffen)
             Stiffen = true;
@@ -228,11 +229,19 @@ public class BossMove : MonoBehaviour
             BigStiffen = true;
     }
 
-    void OffAttackCollision()
+    public void OffAttackCollision()
     {
         foreach (var col in attackDetections)
         {
             col.SetActive(false);
+        }
+    }
+
+    public void OffEffectObject()
+    {
+        foreach (var obj in effectObject)
+        {
+            obj.SetActive(false);
         }
     }
 
