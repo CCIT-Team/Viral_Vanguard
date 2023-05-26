@@ -72,7 +72,7 @@ public class GuardBehaviour : GenericBehaviour
             behaviourController.myAnimator.SetBool(bigBangBehaviour.keyLock, bigBangBehaviour.mouseLock);
         }
 
-        if (Input.GetAxisRaw(ButtonKey.Guard) != 0 && !behaviourController.guard && !evasionBehaviour.mouseLock && !attackBehaviour.mouseLock && !bigBangBehaviour.mouseLock && behaviourController.currentStamina >= 0) //스테미나 없으면 불가능
+        if (Input.GetAxisRaw(ButtonKey.Guard) != 0 && !behaviourController.guard && !evasionBehaviour.mouseLock && !attackBehaviour.mouseLock && !bigBangBehaviour.mouseLock && behaviourController.currentStamina >= 0.1) //스테미나 없으면 불가능
         {
             StartCoroutine(ToggleGuardOn());
 
@@ -89,6 +89,7 @@ public class GuardBehaviour : GenericBehaviour
             behaviourController.JustGuard = true;
             BossMove.instacne.SetStiffen(0);
             behaviourController.currentKineticEnergy += 20f;
+            behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
             //StartCoroutine(JustGuardOnce());
         }
 
@@ -98,6 +99,7 @@ public class GuardBehaviour : GenericBehaviour
             behaviourController.JustGuard = true;
             MonsterMovement.instance.Stiffen = true;
             behaviourController.currentKineticEnergy += 5f;
+            behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
             //StartCoroutine(JustGuardOnce());
         }
     }
@@ -112,7 +114,7 @@ public class GuardBehaviour : GenericBehaviour
     public void playerJustGuardFalse()
     {
         behaviourController.JustGuard = false;
-        behaviourController.MonsterAttack = false;
-        behaviourController.NormalMonsterAttack = false;
+        //behaviourController.MonsterAttack = false;
+        //behaviourController.NormalMonsterAttack = false;
     }
 }
