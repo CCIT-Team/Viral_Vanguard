@@ -11,7 +11,7 @@ public class DialogSystem : MonoBehaviour
     private bool isDialogueActive = false; // 대화 활성화 여부
     public TextMeshProUGUI dialogueText; // 대화 텍스트를 표시할 TextMeshProUGUI 컴포넌트
     public GameObject operatorDialogButton;
-
+    public GameObject operatorParent;
     public void OnEnable()
     {
         StartDialogue();
@@ -39,6 +39,7 @@ public class DialogSystem : MonoBehaviour
         {
             // 대화 종료
             this.gameObject.SetActive(false);
+            operatorParent.SetActive(false);
             EndDialogue();
         }
     }
