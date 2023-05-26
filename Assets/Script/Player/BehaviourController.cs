@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations;
+using UnityEngine.VFX;
 
 /// <summary>
 /// 현재, 기본, 오버라이딩, 잠긴 동작들 + 마우스 이동값, 땅 확인, GenericBehaviour업데이트 시켜줌
@@ -57,8 +58,11 @@ public class BehaviourController : MonoBehaviour
     private bool justGuard;
     private bool guardBreak;
     private bool monsterAttack;
+    private bool normalMosterAttack;
     [HideInInspector]
     public int lockOn;
+    public ParticleSystem[] particleSystems;  //0 저스트 가드, 1 가드 히트, 3빅뱅
+    public VisualEffect[] visualEffects; //0 빅뱅
 
     public bool GuardHit
     {
@@ -69,6 +73,7 @@ public class BehaviourController : MonoBehaviour
             if (guard == true)
             {
                 myAnimator.SetTrigger("GuardHit");
+                particleSystems[1].Play();
             }
         }
     }
@@ -95,6 +100,15 @@ public class BehaviourController : MonoBehaviour
         }
     }
 
+    public bool NormalMonsterAttack
+    {
+        get { return normalMosterAttack; }
+        set
+        {
+            normalMosterAttack = value;
+        }
+    }
+
     public bool JustGuard //적이 공격할때
     {
         get { return justGuard; }
@@ -104,6 +118,7 @@ public class BehaviourController : MonoBehaviour
             if (justGuard == true)
             {
                 myAnimator.SetTrigger("JustGuard");
+                particleSystems[0].Play();
             }
         }
     }

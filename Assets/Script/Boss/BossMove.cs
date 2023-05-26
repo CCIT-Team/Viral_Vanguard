@@ -8,6 +8,10 @@ public class BossMove : MonoBehaviour
     public static BossMove instacne;
 
     void Awake() => instacne = this;
+    void Start()
+    {
+        stageUIManager.BossStatisInitailzation();
+    }
 
     IEnumerator update()
     {
@@ -57,6 +61,7 @@ public class BossMove : MonoBehaviour
     [SerializeField] NavMeshAgent agent;
     public Transform target;
     [SerializeField] Animator animator;
+    public float forwardDetectAngle = 35f;
 
     [Header("사거리 확인")]
     public BossBehavior bossBehavior;
@@ -105,25 +110,14 @@ public class BossMove : MonoBehaviour
 
     public bool canAttack;
     bool doingAttack;
-    public bool playerClose;
-    public bool PlayerClose
-    {
-        get { return playerClose; }
-        set
-        {
-            playerClose = value;
-            if (!PlayerClose)
-                StartRotateBoss();
-            else
-                EndRotateBoss();
-        }
-    }
 
     public GameObject[] attackDetections;
 
     public EventListener listener;
 
     public StageUIManager stageUIManager;
+
+    public Collider bodyCollider;
 
     void StartTracking()
     {
@@ -139,13 +133,14 @@ public class BossMove : MonoBehaviour
 
     public void NextAction()
     {
-        if(PlayerClose)
-        {
-            doingAttack = false;
-            agent.isStopped = false;
-            animator.SetBool("Walk", true);
+        doingAttack = false;
+        agent.isStopped = false;
+        animator.SetBool("Walk", true);
+
+        if (DotProduct(PlayerDirection(target.position, transform.position), transform.forward) > forwardDetectAngle)
+            StartCoroutine("LookAtPlayer");
+        else
             bossBehavior.BehaviorStart(bossBehavior.GetRandomIndex());
-        }
     }
 
     public void NormalAttack(int i)
@@ -252,13 +247,14 @@ public class BossMove : MonoBehaviour
 
     public void BossDead()
     {
+        bodyCollider.enabled = false;
+        agent.baseOffset = 0;
         animator.SetTrigger("Dead");
     }
 
     #region 플레이어 방향으로 돌기
 
-    Quaternion playerDirection;
-    Quaternion thisQuaternion;
+    Quaternion targetRotation;
     float t = 0;
 
     Vector3 PlayerDirection(Vector3 playerPos, Vector3 bossPos)
@@ -267,51 +263,58 @@ public class BossMove : MonoBehaviour
         return playerDirection;
     }
 
+    Quaternion TargetRoation()
+    {
+        return Quaternion.LookRotation(target.position, transform.position);
+    }
+
     public void DoingAttack()
     {
         doingAttack = doingAttack ? false : true;
     }
 
-    void StartRotateBoss()
+    void StartRotation()
     {
-        agent.isStopped = true;
-        playerDirection = Quaternion.LookRotation(PlayerDirection(target.position, transform.position));
+        targetRotation = TargetRoation();
         t = 0;
-        animator.SetBool("Walk", false);
-
-        StartCoroutine("RotateBoss");
+        StartCoroutine("LookAtPlayer");
     }
 
-    void EndRotateBoss()
+    IEnumerator LookAtPlayer()
     {
-        StopCoroutine("RotateBoss");
-    }
-
-    IEnumerator RotateBoss()
-    {
-        thisQuaternion = transform.rotation;
-
-        if (!doingAttack)
-            transform.rotation = Quaternion.Lerp(thisQuaternion, playerDirection, t);
-
-        yield return new WaitForSeconds(0.05f);
-
-        if (PlayerClose)
+        if(targetRotation != TargetRoation())
         {
-            if (t <= 1)
-            {
-                t += 0.1f;
-                StartCoroutine("RotateBoss", playerDirection);
-            }
-            else
-            {
-                EndRotateBoss();
-                NextAction();
-            }
+            targetRotation = TargetRoation();
+            t = 0;
         }
-        else
-            StartRotateBoss();
 
+        t += 0.01f;
+
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, t);
+
+        yield return new WaitForSeconds(0.01f);
+
+        if (DotProduct(PlayerDirection(target.position, transform.position), transform.forward) > forwardDetectAngle)
+            StartCoroutine("LookAtPlayer");
+        else
+        {
+            NextAction();
+            StopCoroutine("LookAtPlayer");
+        }    
+    }
+
+    float DotProduct(Vector3 targetDir, Vector3 foward)
+    {
+        float dot = Vector3.Dot(targetDir, foward);
+
+        if (dot > 1.0f)
+            dot = 1.0f;
+        else if (dot < -1.0f)
+            dot = -1.0f;
+
+        float angle = Mathf.Acos(dot) * Mathf.Rad2Deg;
+
+        return angle;
     }
     #endregion
 }

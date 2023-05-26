@@ -79123,19 +79123,19 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 1.6666666
+    functionName: ActiveCollider
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 7
+    messageOptions: 0
   - time: 1.7
     functionName: CanJustGuard
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
-    messageOptions: 0
-  - time: 1.7
-    functionName: ActiveCollider
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 7
     messageOptions: 0
   - time: 1.7
     functionName: DoAttack

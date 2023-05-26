@@ -225,10 +225,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myCamera: {fileID: 4822846413045343802}
-  behaviourController: {fileID: 0}
-  player: {fileID: 0}
-  pivotOffset: {x: 0, y: 1.5, z: 0}
-  camOffset: {x: 0, y: 0, z: -3}
+  behaviourController: {fileID: 5181112864130057367, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
+    type: 3}
+  player: {fileID: 1227000441163751126, guid: 0e28c07e91a3cf34ab0f47657e1e3656, type: 3}
+  pivotOffset: {x: 0, y: 2, z: 0}
+  camOffset: {x: 0, y: 0, z: -4}
   smooth: 10
   horizontalAimingSpeed: 10
   verticalAimingSpeed: 10
@@ -241,12 +242,16 @@ MonoBehaviour:
   nearestLockOnTarget: {fileID: 0}
   targetLayerMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 320
+  camCheckColliderLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
   isLockOn: 0
   isLockOning: 0
   minLockOnTime: 0.5
   isDelay: 0
-  indicater: {fileID: 0}
+  indicater: {fileID: 2251672632231258801, guid: 9c0b0d073b4848449b0af85e6115a596,
+    type: 3}
 --- !u!1 &4822846414730976545
 GameObject:
   m_ObjectHideFlags: 0

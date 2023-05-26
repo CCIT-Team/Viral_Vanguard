@@ -6,6 +6,8 @@ using TMPro;
 
 public class StageUIManager : MonoBehaviour
 {
+    public GameObject BossStatusObject;
+
     public Image playerHealthPointImage;
     public Image playerStaminaImage;
     public Image playerKineticEnergyImage;
@@ -31,19 +33,15 @@ public class StageUIManager : MonoBehaviour
     Coroutine playerHpCoroutine;
     Coroutine playerSpCoroutine;
     Coroutine playerKpCoroutine;
-    float bossHpT;
-    float playerHpT;
-    float playerSpT;
-    float playerKpT;
+    public float bossHpT;
+    public float playerHpT;
+    public float playerSpT;
+    public float playerKpT;
 
     void Start() => StatusInitaialzation();
 
     void StatusInitaialzation()
     {
-        bossName = BossMove.instacne.bossName;
-        bossMaxHp = BossMove.instacne.maxHealthPoint;
-        bossCurrentHp = BossMove.instacne.currentHealthPoint;
-
         playerMaxHealthPoint = BehaviourController.instance.maxHealthPoint;
         playerCurrentHealthPoint = BehaviourController.instance.currentHealthPoint;
         playerMaxStamina = BehaviourController.instance.maxStamina;
@@ -51,10 +49,20 @@ public class StageUIManager : MonoBehaviour
         playerMaxKineticEnergy = BehaviourController.instance.maxKineticEnergy;
         playerCurrentKineticEnergy = BehaviourController.instance.currentKineticEnergy;
 
-        BossUpdateHP();
         PlayerUpdateHP();
         PlayerUpdateStamina();
         PlayerUpdateKineticEnergy();
+    }
+
+    public void BossStatisInitailzation()
+    {
+        BossStatusObject.SetActive(true);
+
+        bossName = BossMove.instacne.bossName;
+        bossMaxHp = BossMove.instacne.maxHealthPoint;
+        bossCurrentHp = BossMove.instacne.currentHealthPoint;
+
+        BossUpdateHP();
     }
 
     public void BossUpdateHP()
@@ -84,7 +92,7 @@ public class StageUIManager : MonoBehaviour
             playerHpT = 0;
             StopCoroutine(playerHpCoroutine);
         }
-        playerHpCoroutine = StartCoroutine(StartLerp(BehaviourController.instance, playerHpCoroutine, playerHealthPointImage, before, after, playerMaxHealthPoint, playerHpT, playerHealthPointText));
+        playerHpCoroutine = StartCoroutine(StartHpLerp(BehaviourController.instance, playerHpCoroutine, playerHealthPointImage, before, after, playerMaxHealthPoint, playerHpT, playerHealthPointText));
     }
 
     public void PlayerUpdateStamina()
@@ -115,15 +123,16 @@ public class StageUIManager : MonoBehaviour
             playerKpT = 0;
             StopCoroutine(playerKpCoroutine);
         }
-        playerKpCoroutine = StartCoroutine(StartLerp(BehaviourController.instance, playerKpCoroutine, playerKineticEnergyImage, before, after, playerMaxKineticEnergy, playerKpT, playerKineticEnergyText));
+
+        playerKpCoroutine = StartCoroutine(StartKpLerp(BehaviourController.instance, playerKpCoroutine, playerKineticEnergyImage, before, after, playerMaxKineticEnergy, playerKpT, playerKineticEnergyText));
     }
 
     #region 게이지 코루틴
     IEnumerator StartLerp(BossMove boss, Coroutine couroutine, Image fill, float before, float after, float max, float t)
     {
         t += 0.1f;
-        fill.fillAmount = Mathf.Lerp(before, after, t) / max;
-        yield return null;
+        fill.fillAmount = Mathf.SmoothStep(before, after, t) / max;
+        yield return new WaitForSeconds(0.01f);
 
         if(t < 1 && after != boss.currentHealthPoint)
         {
@@ -142,29 +151,29 @@ public class StageUIManager : MonoBehaviour
     IEnumerator StartLerp(BehaviourController player, Coroutine couroutine, Image fill, float before, float after, float max, float t)
     {
         t += 0.1f;
-        fill.fillAmount = Mathf.Lerp(before, after, t) / max;
-        yield return null;
+        fill.fillAmount = Mathf.SmoothStep(before, after, t) / max;
 
-        if (t < 1 && after != player.currentHealthPoint)
+        yield return new WaitForSeconds(0.01f);
+
+        if (t < 1 && after != player.currentStamina)
         {
             before = fill.fillAmount * max;
-            after = player.currentHealthPoint;
+            after = player.currentStamina;
             t = 0;
 
             couroutine = StartCoroutine(StartLerp(player, couroutine, fill, before, after, max, t));
         }
-        else if (t < 1 && after == player.currentHealthPoint)
+        else if (t < 1 && after == player.currentStamina)
         {
             couroutine = StartCoroutine(StartLerp(player, couroutine, fill, before, after, max, t));
         }
     }
 
-    IEnumerator StartLerp(BehaviourController player, Coroutine couroutine, Image fill, float before, float after, float max, float t, TextMeshProUGUI text)
+    IEnumerator StartHpLerp(BehaviourController player, Coroutine couroutine, Image fill, float before, float after, float max, float t, TextMeshProUGUI text)
     {
         t += 0.1f;
-        fill.fillAmount = Mathf.Lerp(before, after, t) / max;
-        text.text = (fill.fillAmount * 100).ToString();
-        yield return null;
+        fill.fillAmount = Mathf.SmoothStep(before, after, t) / max;
+        yield return new WaitForSeconds(0.01f);
 
         if (t < 1 && after != player.currentHealthPoint)
         {
@@ -172,14 +181,41 @@ public class StageUIManager : MonoBehaviour
             after = player.currentHealthPoint;
             t = 0;
 
-            couroutine = StartCoroutine(StartLerp(player, couroutine, fill, before, after, max, t));
+            couroutine = StartCoroutine(StartHpLerp(player, couroutine, fill, before, after, max, t, text));
         }
         else if (t < 1 && after == player.currentHealthPoint)
         {
-            couroutine = StartCoroutine(StartLerp(player, couroutine, fill, before, after, max, t));
+            couroutine = StartCoroutine(StartHpLerp(player, couroutine, fill, before, after, max, t, text));
         }
+
+        int value = (int)Mathf.Round(after / max * 100);
+        text.text = value.ToString();
     }
-#endregion
+
+    IEnumerator StartKpLerp(BehaviourController player, Coroutine couroutine, Image fill, float before, float after, float max, float t, TextMeshProUGUI text)
+    {
+        t += 0.1f;
+        fill.fillAmount = Mathf.SmoothStep(before, after, t) / max;
+
+        yield return new WaitForSeconds(0.01f);
+
+        if (t < 1 && after != player.currentKineticEnergy)
+        {
+            before = fill.fillAmount * max;
+            after = player.currentKineticEnergy;
+            t = 0;
+
+            couroutine = StartCoroutine(StartKpLerp(player, couroutine, fill, before, after, max, t, text));
+        }
+        else if (t < 1 && after == player.currentKineticEnergy)
+        {
+            couroutine = StartCoroutine(StartKpLerp(player, couroutine, fill, before, after, max, t, text));
+        }
+
+        int value = (int)Mathf.Round(after / max * 100);
+        text.text = value.ToString();
+    }
+    #endregion
 }
 
 class GaugeValue

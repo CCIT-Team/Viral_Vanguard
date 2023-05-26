@@ -133,4 +133,10 @@ public class BigBangBehaviour : GenericBehaviour
     {
         behaviourController.isBigBang = false;
     }
+
+    public void BigBangEffect2()
+    {
+        behaviourController.camScript.CamShakeTime(0.2f, 0.1f);
+        behaviourController.particleSystems[2].Play();
+    }
 }
