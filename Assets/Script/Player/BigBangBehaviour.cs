@@ -133,4 +133,14 @@ public class BigBangBehaviour : GenericBehaviour
     {
         behaviourController.isBigBang = false;
     }
+
+    public void BigBangEffect1()
+    {
+        behaviourController.visualEffects[0].Play();
+    }
+
+    public void BigBangEffect2()
+    {
+        behaviourController.particleSystems[2].Play();
+    }
 }
