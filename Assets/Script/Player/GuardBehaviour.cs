@@ -17,7 +17,7 @@ public class GuardBehaviour : GenericBehaviour
     private AttackBehaviour attackBehaviour;
     private BigBangBehaviour bigBangBehaviour;
     public float reducedStaminaGuard;
-    private bool isJustGuardDelay;
+    public bool isJustGuardDelay;
 
     //각 행동 쿨타임
 
@@ -82,39 +82,54 @@ public class GuardBehaviour : GenericBehaviour
             StartCoroutine(ToggleGuardOff());
         }
 
-
-        //저스트 가드
-        if (behaviourController.MonsterAttack && !isJustGuardDelay && Input.GetKeyDown(KeyCode.Space) && behaviourController.guard)
+        if(Input.GetKeyDown(KeyCode.Space) && behaviourController.guard)
         {
-            behaviourController.JustGuard = true;
-            BossMove.instacne.SetStiffen(0);
-            behaviourController.currentKineticEnergy += 20f;
-            behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
-            //StartCoroutine(JustGuardOnce());
+            
+            if (behaviourController.MonsterAttack && !isJustGuardDelay)
+            {
+                behaviourController.JustGuard = true;
+                BossMove.instacne.SetStiffen(0);
+                if (behaviourController.currentKineticEnergy >= behaviourController.maxKineticEnergy)
+                {
+                    behaviourController.currentKineticEnergy = 100f;
+                }
+                else
+                {
+                    behaviourController.currentKineticEnergy += 20f;
+                }
+                behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
+                
+            }
+            else if (behaviourController.NormalMonsterAttack && !isJustGuardDelay)
+            {
+                behaviourController.JustGuard = true;
+                MonsterMovement.instance.Stiffen = true;
+                if (behaviourController.currentKineticEnergy >= behaviourController.maxKineticEnergy)
+                {
+                    behaviourController.currentKineticEnergy = 100f;
+                }
+                else
+                {
+                    behaviourController.currentKineticEnergy += 5f;
+                }
+                behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
+            }
+            isJustGuardDelay = true;
+            StartCoroutine(JustGuardOnce());
         }
+        //저스트 가드
+        
 
         //일반 몬스터 저스트 가드
-        if (behaviourController.NormalMonsterAttack && !isJustGuardDelay && Input.GetKeyDown(KeyCode.Space) && behaviourController.guard)
-        {
-            behaviourController.JustGuard = true;
-            MonsterMovement.instance.Stiffen = true;
-            behaviourController.currentKineticEnergy += 5f;
-            behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
-            //StartCoroutine(JustGuardOnce());
-        }
+        
     }
-
     IEnumerator JustGuardOnce()
     {
-        isJustGuardDelay = true;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         isJustGuardDelay = false;
     }
-
     public void playerJustGuardFalse()
     {
         behaviourController.JustGuard = false;
-        //behaviourController.MonsterAttack = false;
-        //behaviourController.NormalMonsterAttack = false;
     }
 }

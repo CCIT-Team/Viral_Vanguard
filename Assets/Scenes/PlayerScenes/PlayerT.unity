@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 261.8021, g: 324.32925, b: 429.24924, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2916,7 +2916,7 @@ PrefabInstance:
     - target: {fileID: 1227000441163751126, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1227000441163751126, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
         type: 3}
@@ -2931,7 +2931,7 @@ PrefabInstance:
     - target: {fileID: 1227000441163751126, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1227000441163751126, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
         type: 3}
@@ -2941,7 +2941,7 @@ PrefabInstance:
     - target: {fileID: 1227000441163751126, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 360
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1227000441163751126, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
         type: 3}
@@ -3003,6 +3003,21 @@ PrefabInstance:
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 2104932138}
+    - target: {fileID: 5181112864130057367, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
+        type: 3}
+      propertyPath: staminaChargeSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5181112864130057388, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
+        type: 3}
+      propertyPath: m_UpdateMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5181112864130057388, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e28c07e91a3cf34ab0f47657e1e3656, type: 3}
 --- !u!4 &2450331837936784097
@@ -4379,6 +4394,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4822846413045343802, guid: 00c49b4cc84b26548988acb94af22e1b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4822846413045343807, guid: 00c49b4cc84b26548988acb94af22e1b,
         type: 3}
       propertyPath: player
@@ -4389,6 +4409,16 @@ PrefabInstance:
       propertyPath: indicater
       value: 
       objectReference: {fileID: 54908769}
+    - target: {fileID: 4822846413045343807, guid: 00c49b4cc84b26548988acb94af22e1b,
+        type: 3}
+      propertyPath: camOffset.z
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822846413045343807, guid: 00c49b4cc84b26548988acb94af22e1b,
+        type: 3}
+      propertyPath: pivotOffset.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4822846413045343807, guid: 00c49b4cc84b26548988acb94af22e1b,
         type: 3}
       propertyPath: behaviourController
@@ -5021,6 +5051,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60d3af365405051478466217d5095ffe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCamera: {fileID: 2104932140}
   ThickRotationSpeed: 0.1
   SlimRotationSpeed: 0.1
   OuterRotationSpeed: 0.1
@@ -5933,6 +5964,7 @@ MonoBehaviour:
   guardFieldOfView: 50
   myTransform: {fileID: 6764242949971911985}
   reducedStaminaGuard: 10
+  isJustGuardDelay: 0
 --- !u!114 &6764242949971911991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5970,15 +6002,18 @@ MonoBehaviour:
   turnSmooth: 0.06
   maxHealthPoint: 0
   currentHealthPoint: 100
-  isDead: 0
   staminaChargeSpeed: 5
   currentStamina: 100
   maxStamina: 0
   maxKineticEnergy: 100
   currentKineticEnergy: 0
+  isDead: 0
   isBigBang: 0
   guard: 0
   lockOn: 0
+  particleSystems: []
+  visualEffects: []
+  gameObjectsEffects: []
 --- !u!136 &6764242949971911993
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6104,15 +6139,18 @@ MonoBehaviour:
   turnSmooth: 0.06
   maxHealthPoint: 0
   currentHealthPoint: 100
-  isDead: 0
   staminaChargeSpeed: 0
   currentStamina: 100
   maxStamina: 0
   maxKineticEnergy: 100
   currentKineticEnergy: 0
+  isDead: 0
   isBigBang: 0
   guard: 0
   lockOn: 0
+  particleSystems: []
+  visualEffects: []
+  gameObjectsEffects: []
 --- !u!136 &6832512289473269503
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6194,6 +6232,7 @@ MonoBehaviour:
   guardFieldOfView: 50
   myTransform: {fileID: 590492095399482502}
   reducedStaminaGuard: 10
+  isJustGuardDelay: 0
 --- !u!114 &6832512289473269508
 MonoBehaviour:
   m_ObjectHideFlags: 0
