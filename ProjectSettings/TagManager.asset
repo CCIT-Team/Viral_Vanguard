@@ -5,17 +5,21 @@ TagManager:
   serializedVersion: 2
   tags:
   - Monster
+  - MonsterSpawn
+  - MonsterPoint
+  - NormalMonster
   - BossEvent
+  - PlayerAttackCollsion
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Monster
+  - Indicater
+  - NormalMonster
   - 
   - 
   - 

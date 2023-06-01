@@ -8,18 +8,18 @@ using UnityEngine;
 /// </summary>
 public class AttackBehaviour : GenericBehaviour
 {
-
+    public PlayerAttackCollsion playerAttackCollsion;
     private int grounded;//애니용
     private int attack1;
     private int attack2;
     private int attack3;
     public int clicks = 0;
     private float lastClickedTime = 0;
-    public float attackDelay = 0.5f;
-    public Transform myTransform;
+    public float attackDelay = 0.2f;
     [HideInInspector]
     public int keyLock;
     public bool mouseLock;
+    public GameObject damageChecker;
 
     //각 행동 쿨타임
 
@@ -85,7 +85,7 @@ public class AttackBehaviour : GenericBehaviour
         }
         else
         {
-            RotationManagment(behaviourController._horizontal, behaviourController._vertical);
+            RotationManagment(behaviourController.Horizontal, behaviourController.Vertical);
         }
     }
 
@@ -129,22 +129,28 @@ public class AttackBehaviour : GenericBehaviour
         }
 
         //if (Input.GetButtonDown(ButtonKey.Attack))
-        if (Input.GetAxisRaw(ButtonKey.Attack) != 0)  
+
+        if (Input.GetAxisRaw(ButtonKey.Attack) != 0)
         {
             StartCoroutine(Attack());
-            //mouseLock = true;
-            //behaviourController.myAnimator.SetBool(keyLock, mouseLock);
-            //behaviourController.OverrideWithBehaviour(this);
-            //behaviourController.LockTempBehaviour(behaviourCode);
-            //lastClickedTime = Time.time;
-            //clicks++;
-            //if (clicks == 1)
-            //{
-            //    behaviourController.myAnimator.SetBool(attack1, true);
-            //}
-            //clicks = Mathf.Clamp(clicks, 0, 3);
         }
-    }
+
+            //if (Input.GetAxisRaw(ButtonKey.Attack) != 0)
+            //{
+            //    StartCoroutine(Attack());
+            //    //mouseLock = true;
+            //    //behaviourController.myAnimator.SetBool(keyLock, mouseLock);
+            //    //behaviourController.OverrideWithBehaviour(this);
+            //    //behaviourController.LockTempBehaviour(behaviourCode);
+            //    //lastClickedTime = Time.time;
+            //    //clicks++;
+            //    //if (clicks == 1)
+            //    //{
+            //    //    behaviourController.myAnimator.SetBool(attack1, true);
+            //    //}
+            //    //clicks = Mathf.Clamp(clicks, 0, 3);
+            //}
+        }
 
     public void AttackReturn1()
     {
@@ -192,12 +198,22 @@ public class AttackBehaviour : GenericBehaviour
         }
     }
 
-    public void DamageMonster()
+    public void StiffenCheckStart()
     {
-        //몬스터 컴포넌트 확인
-        //물리 확인
-        //몬스터 canStiffen 이라면
-        //stiffen = true;
+        damageChecker.SetActive(true);
     }
 
+    public void StiffenCheckEnd()
+    {
+        damageChecker.SetActive(false);
+    }
+
+    public void StiffenAttackDelayReset()
+    {
+        attackDelay = 0f;
+    }
+    public void StiffenAttackDelay()
+    {
+        attackDelay = 0.5f;
+    }
 }

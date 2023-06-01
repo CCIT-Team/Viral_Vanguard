@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations;
+using UnityEngine.VFX;
 
 /// <summary>
 /// 현재, 기본, 오버라이딩, 잠긴 동작들 + 마우스 이동값, 땅 확인, GenericBehaviour업데이트 시켜줌
@@ -10,7 +11,7 @@ using UnityEngine.Animations;
 public class BehaviourController : MonoBehaviour
 {
     //변경가능
-    public static BehaviourController instance; 
+    public static BehaviourController instance;
 
     private List<GenericBehaviour> behaviours = new List<GenericBehaviour>();
     private List<GenericBehaviour> overrideBehaviours = new List<GenericBehaviour>();
@@ -22,7 +23,8 @@ public class BehaviourController : MonoBehaviour
     public Transform myTransform;
     public Animator myAnimator;
     public Rigidbody myRigidbody;
-    public PlayerCameraManager camScript;
+    public PlayerCamera camScript;
+    public StageUIManager stageUIManager;
 
     private float horizontal;
     private float vertical;
@@ -34,28 +36,212 @@ public class BehaviourController : MonoBehaviour
     private int verticalFloat;
     private int groundedBool;
     private Vector3 colliderExtents;
+
+    //
+    public float maxHealthPoint;
+    public float currentHealthPoint;
     private bool stiffen;
+    private bool rightStiffen;
+    private bool leftStiffen;
+
+    private bool staminaCharge;
+    public float staminaChargeSpeed;
+    public float currentStamina = 100f;
+    public float maxStamina;
+    public float maxKineticEnergy = 100f;
+    public float currentKineticEnergy;
+
+    public bool isDead;
+    public bool isBigBang = false;
+    public bool guard;
+    private bool guardHit;       //가드중 몬스터가 때리면
+    private bool justGuard;
+    private bool guardBreak;
+    private bool monsterAttack;
+    private bool normalMosterAttack;
+    [HideInInspector]
+    public int lockOn;
+    public ParticleSystem[] particleSystems;  //0 저스트 가드, 1 가드 히트, 2 빅뱅, 3피격 왼, 4 피격 오, 5 가드 브레이크 6:플레이어 오른공, 7: 플레이어 왼공
+    public VisualEffect[] visualEffects; //0 빅뱅
+    public GameObject[] gameObjectsEffects; //키네틱 온 오프
+
+    public bool GuardHit
+    {
+        get { return guardHit; }
+        set
+        {
+            guardHit = value;
+            if (guard == true)
+            {
+                myAnimator.SetTrigger("GuardHit");
+                particleSystems[1].Play();
+            }
+        }
+    }
+
+    public bool GuardBreak
+    {
+        get { return guardBreak; }
+        set
+        {
+            guardBreak = value;
+            if(guard == true)
+            {
+                myAnimator.SetTrigger("GuardBreak");
+                particleSystems[5].Play();
+            }
+        }
+    }
+
+    public bool MonsterAttack
+    {
+        get { return monsterAttack; }
+        set
+        {
+            monsterAttack = value;
+        }
+    }
+
+    public bool NormalMonsterAttack
+    {
+        get { return normalMosterAttack; }
+        set
+        {
+            normalMosterAttack = value;
+        }
+    }
+
+    public bool JustGuard //적이 공격할때
+    {
+        get { return justGuard; }
+        set
+        {
+            justGuard = value;
+            if (justGuard == true)
+            {
+                myAnimator.SetTrigger("JustGuard");
+                particleSystems[0].Play();
+            }
+        }
+    }
 
     public bool Stiffen
     {
         get { return stiffen; }
         set
         {
-                stiffen = value;
+            stiffen = value;
+            if (guard == false)
+            {
                 myAnimator.SetBool("Stiffen", value);
+            }
         }
     }
-    public float _horizontal { get => horizontal; }
-    public float _vertical { get => vertical; }
-    public int _defailtBehaviour { get => defaultBehaviour; }
+    public bool RightStiffen
+    {
+        get { return rightStiffen; }
+        set
+        {
+            rightStiffen = value;
+            if (guard == false)
+            {
+                myAnimator.SetBool("RightStiffen", value);
+                particleSystems[4].Play();
+            }
+        }
+    }
+
+    public bool LeftStiffen
+    {
+        get { return leftStiffen; }
+        set
+        {
+            leftStiffen = value;
+            if (guard == false)
+            {
+                myAnimator.SetBool("LeftStiffen", value);
+                particleSystems[3].Play();
+            }
+        }
+    }
+
+    public void SetStiffen(int stiffenNum) //출처 해성이 BOSSMOVE
+    {
+        if (stiffenNum == 1)
+        {
+            RightStiffen = true;
+        }
+        else if (stiffenNum == 2)
+        {
+            LeftStiffen = true;
+        }
+        else if (stiffenNum == 3) //일반 경직
+        {
+                Stiffen = true;
+        }
+    }
+    public float HealthPoint
+    {
+        get => currentHealthPoint;
+        set
+        {
+            currentHealthPoint = value;
+            stageUIManager.PlayerUpdateHP();
+            if(currentHealthPoint <= 0)
+            {
+                IsDead();
+            }
+        }
+            
+    }
+    public float Horizontal { get => horizontal; }
+    public float Vertical { get => vertical; }
+    public int DefailtBehaviour { get => defaultBehaviour; }
+
 
     private void Awake()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         instance = this;
+        maxHealthPoint = currentHealthPoint;
+        maxStamina = currentStamina;
+        isDead = false;
         horizontalFloat = Animator.StringToHash(AnimatorKey.Horizontal);
         verticalFloat = Animator.StringToHash(AnimatorKey.Vertical);
         groundedBool = Animator.StringToHash(AnimatorKey.Grounded);
         colliderExtents = GetComponent<Collider>().bounds.extents;
+        lockOn = Animator.StringToHash(AnimatorKey.LockOn);
+    }
+    public IEnumerator StaminaChargeOn()
+    {
+        yield return new WaitForSeconds(2f);
+        if (maxStamina >= currentStamina)
+            staminaCharge = true;
+    }
+
+    public void StaminaChargeOff()
+    {
+        staminaCharge = false;
+    }
+
+    private void IsDead()
+    {
+        isDead = true;
+        gameObject.tag = "Untagged";
+        myAnimator.SetBool(AnimatorKey.Dead, isDead);
+        myAnimator.SetBool(AnimatorKey.Attack1, false);
+        myAnimator.SetBool(AnimatorKey.Attack2, false);
+        myAnimator.SetBool(AnimatorKey.Attack3, false);
+        myAnimator.SetBool(AnimatorKey.Guard, false);
+        myAnimator.SetBool(AnimatorKey.MouseLock, false);
+        myAnimator.SetBool("Stiffen", false);
+        foreach (GenericBehaviour behaviour in GetComponentsInChildren<GenericBehaviour>())
+        {
+            behaviour.enabled = false;
+        }
+        stageUIManager.BossFailAnimation();
+        //사운드 or 이펙트
     }
 
     public bool IsMoving()
@@ -81,10 +267,17 @@ public class BehaviourController : MonoBehaviour
 
         myAnimator.SetFloat(horizontalFloat, horizontal, 0.1f, Time.deltaTime);
         myAnimator.SetFloat(verticalFloat, vertical, 0.1f, Time.deltaTime);
-        //transform.position += h * transform.right + v * transform.forward;
+
 
 
         myAnimator.SetBool(groundedBool, IsGrounded());
+        if (staminaCharge == true)
+        {
+            if(currentStamina <= maxStamina)
+                currentStamina += staminaChargeSpeed * Time.deltaTime;
+            stageUIManager.PlayerUpdateStamina();
+        }
+        
     }
 
     //낌 방지

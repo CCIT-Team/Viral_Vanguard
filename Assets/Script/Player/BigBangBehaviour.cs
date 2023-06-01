@@ -11,7 +11,6 @@ public class BigBangBehaviour : GenericBehaviour
     [HideInInspector]
     public int keyLock;
     public bool mouseLock;
-    public float count;
     //게이지 카운트 필요
 
     private void Start()
@@ -72,7 +71,7 @@ public class BigBangBehaviour : GenericBehaviour
         }
         else
         {
-            RotationManagment(behaviourController._horizontal, behaviourController._vertical);
+            RotationManagment(behaviourController.Horizontal, behaviourController.Vertical);
         }
     }
     private IEnumerator ToggleBigBangOn()
@@ -89,11 +88,9 @@ public class BigBangBehaviour : GenericBehaviour
             behaviourController.OverrideWithBehaviour(this);
             behaviourController.LockTempBehaviour(behaviourCode);
             behaviourController.myAnimator.SetTrigger(bigBangTrigger);
+            behaviourController.StaminaChargeOff();
             behaviourController.myAnimator.SetBool(keyLock, mouseLock);
-            count = 0;
         }
-
-
     }
 
     private IEnumerator ToggleBigBangOff()
@@ -111,7 +108,7 @@ public class BigBangBehaviour : GenericBehaviour
 
     private void Update()
     {
-        if (Input.GetAxisRaw(ButtonKey.BigBnag) != 0 && !bigBang && count>= 100f) //일정 게이지 이상 혹은 같으면 작동
+        if (Input.GetButtonDown(ButtonKey.BigBnag) && !bigBang && behaviourController.currentKineticEnergy >= 100f) //일정 게이지 이상 혹은 같으면 작동
         {
             StartCoroutine(ToggleBigBangOn());
         }
@@ -119,8 +116,27 @@ public class BigBangBehaviour : GenericBehaviour
         {
             StartCoroutine(ToggleBigBangOff());
         }
-
     }
 
+    public void ReducedKineticEnergyBigBang()
+    {
+        behaviourController.currentKineticEnergy -= 20;
+        behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
+    }
 
+    public void IsBigBangTrue()
+    {
+        behaviourController.isBigBang = true;
+    }
+
+    public void IsBigBangFalse()
+    {
+        behaviourController.isBigBang = false;
+    }
+
+    public void BigBangEffect2()
+    {
+        behaviourController.camScript.CamShakeTime(0.2f, 0.1f);
+        behaviourController.particleSystems[2].Play();
+    }
 }
