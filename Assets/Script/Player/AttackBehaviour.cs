@@ -13,6 +13,8 @@ public class AttackBehaviour : GenericBehaviour
     private int attack1;
     private int attack2;
     private int attack3;
+    private int attack4;
+
     public int clicks = 0;
     private float lastClickedTime = 0;
     public float attackDelay = 0.2f;
@@ -28,6 +30,7 @@ public class AttackBehaviour : GenericBehaviour
         attack1 = Animator.StringToHash(AnimatorKey.Attack1);
         attack2 = Animator.StringToHash(AnimatorKey.Attack2);
         attack3 = Animator.StringToHash(AnimatorKey.Attack3);
+        attack4 = Animator.StringToHash(AnimatorKey.Attack4);
         keyLock = Animator.StringToHash(AnimatorKey.MouseLock);
         grounded = Animator.StringToHash(AnimatorKey.Grounded);
         mouseLock = false;
@@ -113,7 +116,7 @@ public class AttackBehaviour : GenericBehaviour
             {
                 behaviourController.myAnimator.SetBool(attack1, true);
             }
-            clicks = Mathf.Clamp(clicks, 0, 3);
+            clicks = Mathf.Clamp(clicks, 0, 4);
         }
     }
 
@@ -179,20 +182,34 @@ public class AttackBehaviour : GenericBehaviour
     }
     public void AttackReturn3()
     {
+        if (clicks >= 4)
+        {
+            behaviourController.myAnimator.SetBool(attack4, true);
+        }
+        else
+        {
+            behaviourController.myAnimator.SetBool(attack3, false);
+            clicks = 0;
+        }
+
+    }
+    public void AttaackReture4()
+    {
         behaviourController.myAnimator.SetBool(attack1, false);
         behaviourController.myAnimator.SetBool(attack2, false);
         behaviourController.myAnimator.SetBool(attack3, false);
+        behaviourController.myAnimator.SetBool(attack4, false);
         clicks = 0;
-
     }
 
     public void AttackReturnReSet()
     {
-        if(behaviourController.myAnimator.GetBool(attack1) && behaviourController.myAnimator.GetBool(attack2) && behaviourController.myAnimator.GetBool(attack3))
+        if(behaviourController.myAnimator.GetBool(attack1) && behaviourController.myAnimator.GetBool(attack2) && behaviourController.myAnimator.GetBool(attack3) && behaviourController.myAnimator.GetBool(attack4))
         {
             behaviourController.myAnimator.SetBool(attack1, false);
             behaviourController.myAnimator.SetBool(attack2, false);
             behaviourController.myAnimator.SetBool(attack3, false);
+            behaviourController.myAnimator.SetBool(attack4, false);
             clicks = 0;
             mouseLock = true;
         }
@@ -215,5 +232,21 @@ public class AttackBehaviour : GenericBehaviour
     public void StiffenAttackDelay()
     {
         attackDelay = 0.5f;
+    }
+    public void Attack1Shake()
+    {
+        behaviourController.camScript.CamShakeTime(0.1f, 0.05f);
+    }
+    public void Attack2Shake()
+    {
+        behaviourController.camScript.CamShakeTime(0.1f, 0.06f);
+    }
+    public void Attack3Shake()
+    {
+        behaviourController.camScript.CamShakeTime(0.15f, 0.08f);
+    }
+    public void Attack4Shake()
+    {
+        behaviourController.camScript.CamShakeTime(0.2f, 0.1f);
     }
 }

@@ -55073,8 +55073,15 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.4
+  - time: 0.43333334
     functionName: StiffenCheckStart
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.45
+    functionName: Attack4Shake
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -55088,7 +55095,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 1
-    functionName: AttackReturn3
+    functionName: AttaackReture4
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

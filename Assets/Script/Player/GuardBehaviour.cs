@@ -131,5 +131,6 @@ public class GuardBehaviour : GenericBehaviour
     public void playerJustGuardFalse()
     {
         behaviourController.JustGuard = false;
+        behaviourController.guard = false;
     }
 }

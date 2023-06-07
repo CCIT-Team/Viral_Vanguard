@@ -7,6 +7,7 @@ public class StiffenBehaviour : GenericBehaviour
     private int attack1;
     private int attack2;
     private int attack3;
+    private int attack4;
     private int guardBool;
     [HideInInspector]
     public int keyLock;
@@ -16,6 +17,7 @@ public class StiffenBehaviour : GenericBehaviour
         attack1 = Animator.StringToHash(AnimatorKey.Attack1);
         attack2 = Animator.StringToHash(AnimatorKey.Attack2);
         attack3 = Animator.StringToHash(AnimatorKey.Attack3);
+        attack4 = Animator.StringToHash(AnimatorKey.Attack4);
         keyLock = Animator.StringToHash(AnimatorKey.MouseLock);
         guardBool = Animator.StringToHash(AnimatorKey.Guard);
     }
@@ -43,6 +45,7 @@ public class StiffenBehaviour : GenericBehaviour
         behaviourController.myAnimator.SetBool(attack1, false);
         behaviourController.myAnimator.SetBool(attack2, false);
         behaviourController.myAnimator.SetBool(attack3, false);
+        behaviourController.myAnimator.SetBool(attack4, false);
         behaviourController.myAnimator.SetBool(guardBool, false);
         behaviourController.myAnimator.SetBool("Stiffen", false);
         behaviourController.myAnimator.SetBool("LeftStiffen", false);

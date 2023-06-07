@@ -91,6 +91,10 @@ public class PlayerCamera : MonoBehaviour
             LockOnTarget();
             LockOnBillboardIndicater();
         }
+        else if(currentLockOnTarget == null) 
+        {
+            LockOnDeactivate();
+        }
 
 
         if (Input.GetKeyDown(KeyCode.F) && !isLockOn)
