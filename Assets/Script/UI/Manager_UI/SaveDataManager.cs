@@ -61,7 +61,7 @@ public class SaveDataManager : Singleton<SaveDataManager>
     [HideInInspector] public SaveData saveData4 = new SaveData();
 
     [HideInInspector] public SaveData[] saveDatas = new SaveData[5];
-    [HideInInspector] public SaveData saveData;
+    public SaveData saveData;
 
     public string _SAVE_DATA_DIRECTORY;  // 저장할 폴더 경로
     public string _SAVE_FILENAME;
@@ -90,11 +90,11 @@ public class SaveDataManager : Singleton<SaveDataManager>
         saveDatas[3] = saveData3;
         saveDatas[4] = saveData4;
 
-        //GameSave("/SaveFile" + saveFileNumber[0] + ".txt",0);
-        //GameSave("/SaveFile" + saveFileNumber[1] + ".txt",1);
-        //GameSave("/SaveFile" + saveFileNumber[2] + ".txt",2);
-        //GameSave("/SaveFile" + saveFileNumber[3] + ".txt",3);
-        //GameSave("/SaveFile" + saveFileNumber[4] + ".txt",4);
+        GameSave("/SaveFile" + saveFileNumber[0] + ".txt",0);
+        GameSave("/SaveFile" + saveFileNumber[1] + ".txt",1);
+        GameSave("/SaveFile" + saveFileNumber[2] + ".txt",2);
+        GameSave("/SaveFile" + saveFileNumber[3] + ".txt",3);
+        GameSave("/SaveFile" + saveFileNumber[4] + ".txt",4);
         GameLoadAllData();
     }
 
