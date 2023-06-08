@@ -272,8 +272,8 @@ public class BehaviourController : MonoBehaviour
         myAnimator.SetFloat(horizontalFloat, horizontal);
         myAnimator.SetFloat(verticalFloat, vertical);
         Vector3 dir = new Vector3(Horizontal, 0, Vertical);
-        dir.Normalize();
         float speeds = dir.sqrMagnitude;
+        
         
         myAnimator.SetFloat(speedFloat, speeds);
 
