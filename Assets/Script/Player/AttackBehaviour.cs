@@ -114,7 +114,7 @@ public class AttackBehaviour : GenericBehaviour
             behaviourController.LockTempBehaviour(behaviourCode);
             lastClickedTime = Time.time;
             clicks++;
-            if (clicks == 1)
+            if (clicks == 1 && behaviourController.currentStamina > 5f)
             {
                 behaviourController.myAnimator.SetBool(attack1, true);
             }
@@ -159,7 +159,7 @@ public class AttackBehaviour : GenericBehaviour
 
     public void AttackReturn1()
     {
-        if(clicks >= 2)
+        if(clicks >= 2 && behaviourController.currentStamina > 7f)
         {
             behaviourController.myAnimator.SetBool(attack2, true);
             behaviourController.myAnimator.SetBool(attack1, false);
@@ -172,7 +172,7 @@ public class AttackBehaviour : GenericBehaviour
     }
     public void AttackReturn2()
     {
-        if (clicks >= 3)
+        if (clicks >= 3 && behaviourController.currentStamina > 10f)
         {
             behaviourController.myAnimator.SetBool(attack3, true);
         }

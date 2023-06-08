@@ -45,12 +45,15 @@ public class BehaviourController : MonoBehaviour
     private bool rightStiffen;
     private bool leftStiffen;
 
-    private bool staminaCharge;
+    public bool staminaCharge;
     public float staminaChargeSpeed;
     public float currentStamina = 100f;
     public float maxStamina;
     public float maxKineticEnergy = 100f;
     public float currentKineticEnergy;
+
+    public float staminaCoolTime;
+    private float currentStaminaTime = 0f;
 
     public bool isDead;
     public bool isBigBang = false;
@@ -216,16 +219,25 @@ public class BehaviourController : MonoBehaviour
         lockOn = Animator.StringToHash(AnimatorKey.LockOn);
     }
 
-    public IEnumerator StaminaChargeOn()
+    public void StaminaChargeOn()
     {
-        yield return new WaitForSeconds(2f);
-        if (maxStamina >= currentStamina)
-            staminaCharge = true;
+        if (guard)
+            staminaCoolTime = 3f;
+        if(currentStaminaTime < staminaCoolTime)
+        {
+            staminaCoolTime -= Time.deltaTime;
+            if(currentStaminaTime >= staminaCoolTime)
+            {
+                staminaCharge = true;
+                staminaCoolTime = 3f;
+            }
+        }
     }
 
     public void StaminaChargeOff()
     {
         staminaCharge = false;
+        staminaCoolTime = 3f;
     }
 
     private void IsDead()
@@ -285,6 +297,10 @@ public class BehaviourController : MonoBehaviour
                 currentStamina += staminaChargeSpeed * Time.deltaTime;
             stageUIManager.PlayerUpdateStamina();
         }
+        else if (staminaCharge == false)
+        {
+            StaminaChargeOn();
+        }
 
         if (currentKineticEnergy >= 50f)
         {
@@ -299,6 +315,7 @@ public class BehaviourController : MonoBehaviour
             gameObjectsEffects[0].SetActive(false);
             gameObjectsEffects[1].SetActive(false);
         }
+
     }
 
     //³¦ ¹æÁö

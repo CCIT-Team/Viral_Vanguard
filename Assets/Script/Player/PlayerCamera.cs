@@ -144,7 +144,6 @@ public class PlayerCamera : MonoBehaviour
 
     public void DefaultCamera()
     {
-        
         angleHorizontal += Mathf.Clamp(Input.GetAxis("Mouse X"), -1f, 1f) * horizontalAimingSpeed;
         angleVertical += Mathf.Clamp(Input.GetAxis("Mouse Y"), -1f, 1f) * verticalAimingSpeed;
         angleVertical = Mathf.Clamp(angleVertical, minVerticalAngle, targetMaxVerticleAngle);
