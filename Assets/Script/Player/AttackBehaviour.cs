@@ -9,7 +9,6 @@ using UnityEngine;
 public class AttackBehaviour : GenericBehaviour
 {
     public PlayerAttackCollsion playerAttackCollsion;
-    private int grounded;//애니용
     private int attack1;
     private int attack2;
     private int attack3;
@@ -26,60 +25,13 @@ public class AttackBehaviour : GenericBehaviour
     public float AttackStamina2;
     public float AttackStamina3;
 
-    //각 행동 쿨타임
-
     private void Start()
     {
         attack1 = Animator.StringToHash(AnimatorKey.Attack1);
         attack2 = Animator.StringToHash(AnimatorKey.Attack2);
         attack3 = Animator.StringToHash(AnimatorKey.Attack3);
         keyLock = Animator.StringToHash(AnimatorKey.MouseLock);
-        grounded = Animator.StringToHash(AnimatorKey.Grounded);
         mouseLock = false;
-    }
-
-    //공격전 회전값
-    Vector3 Rotation(float horizontal, float vertical)
-    {
-        Vector3 forward = behaviourController.playerCamera.TransformDirection(Vector3.forward);
-        forward.y = 0.0f;
-        forward = forward.normalized;
-
-        Vector3 right = new Vector3(forward.z, 0.0f, -forward.x);
-        Vector3 targetDirection = Vector3.zero;
-        targetDirection = forward * vertical + right * horizontal;
-
-        Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
-        Quaternion newRotation = Quaternion.Slerp(behaviourController.myRigidbody.rotation, targetRotation, behaviourController.turnSmooth);
-        behaviourController.myRigidbody.MoveRotation(newRotation);
-        behaviourController.SetLastDirection(targetDirection);
-
-        if (!(Mathf.Abs(horizontal) > 0.9f || Mathf.Abs(vertical) > 0.9f))
-        {
-            behaviourController.Repositioning();
-        }
-        return targetDirection;
-    }
-
-
-    private void RemoveVerticalVelocity()
-    {
-        Vector3 horizotalVelocity = behaviourController.myRigidbody.velocity;
-        horizotalVelocity.y = 0.0f;
-        behaviourController.myRigidbody.velocity = horizotalVelocity;
-    }
-
-    private void RotationManagment(float horizontal, float vertical)
-    {
-        if(behaviourController.IsGrounded())
-        {
-            behaviourController.myRigidbody.useGravity = true;
-        }
-        else if (behaviourController.myRigidbody.velocity.y > 0)
-        {
-            RemoveVerticalVelocity();
-        }
-        Rotation(horizontal, vertical);
     }
 
     private void AttackManagement()
@@ -87,10 +39,6 @@ public class AttackBehaviour : GenericBehaviour
         if(!behaviourController.IsGrounded()) //빅뱅이 아닌 상황
         {
             return;
-        }
-        else
-        {
-            RotationManagment(behaviourController.Horizontal, behaviourController.Vertical);
         }
     }
 
@@ -122,8 +70,6 @@ public class AttackBehaviour : GenericBehaviour
         }
     }
 
-    
-
     private void Update()
     {
         if(Time.time - lastClickedTime > attackDelay)
@@ -133,29 +79,11 @@ public class AttackBehaviour : GenericBehaviour
             clicks = 0;
         }
 
-        //if (Input.GetButtonDown(ButtonKey.Attack))
-
         if (Input.GetAxisRaw(ButtonKey.Attack) != 0)
         {
             StartCoroutine(Attack());
         }
-
-            //if (Input.GetAxisRaw(ButtonKey.Attack) != 0)
-            //{
-            //    StartCoroutine(Attack());
-            //    //mouseLock = true;
-            //    //behaviourController.myAnimator.SetBool(keyLock, mouseLock);
-            //    //behaviourController.OverrideWithBehaviour(this);
-            //    //behaviourController.LockTempBehaviour(behaviourCode);
-            //    //lastClickedTime = Time.time;
-            //    //clicks++;
-            //    //if (clicks == 1)
-            //    //{
-            //    //    behaviourController.myAnimator.SetBool(attack1, true);
-            //    //}
-            //    //clicks = Mathf.Clamp(clicks, 0, 3);
-            //}
-        }
+    }
 
     public void AttackReturn1()
     {

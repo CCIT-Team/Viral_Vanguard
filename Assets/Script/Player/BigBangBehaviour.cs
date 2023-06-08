@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BigBangBehaviour : GenericBehaviour
 {
-    private int grounded;//¾Ö´Ï¿ë
     private int bigBangTrigger;
     private bool bigBang;
     public Transform myTransform;
@@ -17,52 +16,8 @@ public class BigBangBehaviour : GenericBehaviour
 
     private void Start()
     {
-        grounded = Animator.StringToHash(AnimatorKey.Grounded);
         bigBangTrigger = Animator.StringToHash(AnimatorKey.BigBang);
         keyLock = Animator.StringToHash(AnimatorKey.MouseLock);
-    }
-
-    Vector3 Rotation(float horizontal, float vertical)
-    {
-        Vector3 forward = behaviourController.playerCamera.TransformDirection(Vector3.forward);
-        forward.y = 0.0f;
-        forward = forward.normalized;
-
-        Vector3 right = new Vector3(forward.z, 0.0f, -forward.x);
-        Vector3 targetDirection = Vector3.zero;
-        targetDirection = forward * vertical + right * horizontal;
-
-        Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
-        Quaternion newRotation = Quaternion.Slerp(behaviourController.myRigidbody.rotation, targetRotation, behaviourController.turnSmooth);
-        behaviourController.myRigidbody.MoveRotation(newRotation);
-        behaviourController.SetLastDirection(targetDirection);
-
-        if (!(Mathf.Abs(horizontal) > 0.9f || Mathf.Abs(vertical) > 0.9f))
-        {
-            behaviourController.Repositioning();
-        }
-        return targetDirection;
-    }
-
-
-    private void RemoveVerticalVelocity()
-    {
-        Vector3 horizotalVelocity = behaviourController.myRigidbody.velocity;
-        horizotalVelocity.y = 0.0f;
-        behaviourController.myRigidbody.velocity = horizotalVelocity;
-    }
-
-    private void RotationManagment(float horizontal, float vertical)
-    {
-        if (behaviourController.IsGrounded())
-        {
-            behaviourController.myRigidbody.useGravity = true;
-        }
-        else if (behaviourController.myRigidbody.velocity.y > 0)
-        {
-            RemoveVerticalVelocity();
-        }
-        Rotation(horizontal, vertical);
     }
 
     private void BigBangManagement()
@@ -71,11 +26,8 @@ public class BigBangBehaviour : GenericBehaviour
         {
             return;
         }
-        else
-        {
-            RotationManagment(behaviourController.Horizontal, behaviourController.Vertical);
-        }
     }
+
     private IEnumerator ToggleBigBangOn()
     {
         yield return new WaitForSeconds(0.05f);
@@ -105,7 +57,7 @@ public class BigBangBehaviour : GenericBehaviour
 
     public override void LocalLateUpdate()
     {
-        //BigBangManagement();
+        BigBangManagement();
     }
 
     private void Update()

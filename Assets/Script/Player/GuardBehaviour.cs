@@ -117,12 +117,8 @@ public class GuardBehaviour : GenericBehaviour
             isJustGuardDelay = true;
             StartCoroutine(JustGuardOnce());
         }
-        //저스트 가드
-        
-
-        //일반 몬스터 저스트 가드
-        
     }
+
     IEnumerator JustGuardOnce()
     {
         yield return new WaitForSeconds(2f);
