@@ -226,9 +226,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myCamera: {fileID: 4822846413045343802}
-  behaviourController: {fileID: 5181112864130057367, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
+  behaviourController: {fileID: 144543998850936503, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
     type: 3}
-  player: {fileID: 1227000441163751126, guid: 0e28c07e91a3cf34ab0f47657e1e3656, type: 3}
+  player: {fileID: 6116357599887717622, guid: 0e28c07e91a3cf34ab0f47657e1e3656, type: 3}
   pivotOffset: {x: 0, y: 2, z: 0}
   camOffset: {x: 0, y: 0, z: -4}
   smooth: 10

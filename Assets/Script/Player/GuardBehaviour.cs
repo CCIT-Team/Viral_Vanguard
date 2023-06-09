@@ -129,4 +129,13 @@ public class GuardBehaviour : GenericBehaviour
         behaviourController.JustGuard = false;
         behaviourController.guard = false;
     }
+
+    public void JustGuardTimeScaleChage()
+    {
+        Time.timeScale = 0.1f;
+    }
+    public void JustGuardTimeScaleCurrent()
+    {
+        Time.timeScale = 1f;
+    }
 }

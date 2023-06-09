@@ -107,4 +107,14 @@ public class BigBangBehaviour : GenericBehaviour
     {
         bigBangDamageChecker.SetActive(false);
     }
+
+    //모든 몬슨터가 사용하는 이벤트
+    public IEnumerator BigBangTimeScaleChage()
+    {
+        behaviourController.myAnimator.speed = 0f;
+        yield return new WaitForSeconds(0.7f);
+        behaviourController.myAnimator.speed = 1f;
+    }
+
+    
 }
