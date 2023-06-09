@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerFootStep : MonoBehaviour
 {
     public AudioClip[] stepSounds;
+    public AudioManager audioManager;
     public Animator myAnimator;
     private int index;
     private Transform leftFoot, rightFoot;

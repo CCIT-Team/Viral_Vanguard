@@ -10,8 +10,6 @@ public class EvasionBehaviour : GenericBehaviour
 {
     private int evasionTrigger;
     private bool evasion;
-    private Transform myTransform;
-    private int groundedBool;
     [HideInInspector]
     public int keyLock;
     public bool mouseLock;
@@ -22,55 +20,9 @@ public class EvasionBehaviour : GenericBehaviour
 
     private void Start()
     {
-        myTransform = transform;
         evasionTrigger = Animator.StringToHash(AnimatorKey.Evasion);
-        groundedBool = Animator.StringToHash(AnimatorKey.Grounded);
         keyLock = Animator.StringToHash(AnimatorKey.MouseLock);
         mouseLock = false;
-    }
-
-    //회전
-    Vector3 Rotation(float horizontal, float vertical)
-    {
-        Vector3 forward = behaviourController.playerCamera.TransformDirection(Vector3.forward);
-        forward.y = 0.0f; 
-        forward = forward.normalized;
-
-        Vector3 right = new Vector3(forward.z, 0.0f, -forward.x);
-        Vector3 targetDirection = Vector3.zero;
-        targetDirection = forward * vertical + right * horizontal;
-
-        Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
-        Quaternion newRotation = Quaternion.Slerp(behaviourController.myRigidbody.rotation, targetRotation, behaviourController.turnSmooth);
-        behaviourController.myRigidbody.MoveRotation(newRotation);
-        behaviourController.SetLastDirection(targetDirection);
-
-        if (!(Mathf.Abs(horizontal) > 0.9f || Mathf.Abs(vertical) > 0.9f))
-        {
-            behaviourController.Repositioning();
-        }
-        return targetDirection;
-    }
-
-
-    private void RemoveVerticalVelocity()
-    {
-        Vector3 horizotalVelocity = behaviourController.myRigidbody.velocity;
-        horizotalVelocity.y = 0.0f;
-        behaviourController.myRigidbody.velocity = horizotalVelocity;
-    }
-
-    void RotationManagement(float horizontal, float vertical)
-    {
-        if (behaviourController.IsGrounded())
-        {
-            behaviourController.myRigidbody.useGravity = true;
-        }
-        else if (behaviourController.myRigidbody.velocity.y > 0)
-        {
-            RemoveVerticalVelocity();
-        }
-        Rotation(horizontal, vertical);
     }
 
     private void EvasionManagement()
@@ -79,12 +31,7 @@ public class EvasionBehaviour : GenericBehaviour
         {
             return;
         }
-        else
-        {
-            RotationManagement(behaviourController.Horizontal, behaviourController.Vertical);
-        }    
     }
-
 
     private IEnumerator ToggleEvasionOn()
     {
@@ -103,7 +50,6 @@ public class EvasionBehaviour : GenericBehaviour
             behaviourController.myAnimator.SetBool(keyLock, mouseLock);
             behaviourController.LockTempBehaviour(behaviourCode);
         }
-        
     }
 
     private IEnumerator ToggleEvasionOff()
@@ -111,7 +57,7 @@ public class EvasionBehaviour : GenericBehaviour
         evasion = false;
         yield return new WaitForSeconds(evasionDelay); //회피 딜레이
         behaviourController.UnLockTempBehaviour(behaviourCode);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         behaviourController.RevokeOverridingBehaviour(this);
     }
 
@@ -130,12 +76,10 @@ public class EvasionBehaviour : GenericBehaviour
         {
             StartCoroutine(ToggleEvasionOff());
         }
-        
     }
 
     public void ReducedstaminaEvasion()
     {
         behaviourController.currentStamina -= reducedStaminaEvasion;
     }
-
 }
