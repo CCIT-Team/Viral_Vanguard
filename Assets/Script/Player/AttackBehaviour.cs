@@ -9,10 +9,10 @@ using UnityEngine;
 public class AttackBehaviour : GenericBehaviour
 {
     public PlayerAttackCollsion playerAttackCollsion;
-    private int grounded;//애니용
     private int attack1;
     private int attack2;
     private int attack3;
+
     public int clicks = 0;
     private float lastClickedTime = 0;
     public float attackDelay = 0.2f;
@@ -21,7 +21,9 @@ public class AttackBehaviour : GenericBehaviour
     public bool mouseLock;
     public GameObject damageChecker;
 
-    //각 행동 쿨타임
+    public float AttackStamina1;
+    public float AttackStamina2;
+    public float AttackStamina3;
 
     private void Start()
     {
@@ -29,52 +31,7 @@ public class AttackBehaviour : GenericBehaviour
         attack2 = Animator.StringToHash(AnimatorKey.Attack2);
         attack3 = Animator.StringToHash(AnimatorKey.Attack3);
         keyLock = Animator.StringToHash(AnimatorKey.MouseLock);
-        grounded = Animator.StringToHash(AnimatorKey.Grounded);
         mouseLock = false;
-    }
-
-    //공격전 회전값
-    Vector3 Rotation(float horizontal, float vertical)
-    {
-        Vector3 forward = behaviourController.playerCamera.TransformDirection(Vector3.forward);
-        forward.y = 0.0f;
-        forward = forward.normalized;
-
-        Vector3 right = new Vector3(forward.z, 0.0f, -forward.x);
-        Vector3 targetDirection = Vector3.zero;
-        targetDirection = forward * vertical + right * horizontal;
-
-        Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
-        Quaternion newRotation = Quaternion.Slerp(behaviourController.myRigidbody.rotation, targetRotation, behaviourController.turnSmooth);
-        behaviourController.myRigidbody.MoveRotation(newRotation);
-        behaviourController.SetLastDirection(targetDirection);
-
-        if (!(Mathf.Abs(horizontal) > 0.9f || Mathf.Abs(vertical) > 0.9f))
-        {
-            behaviourController.Repositioning();
-        }
-        return targetDirection;
-    }
-
-
-    private void RemoveVerticalVelocity()
-    {
-        Vector3 horizotalVelocity = behaviourController.myRigidbody.velocity;
-        horizotalVelocity.y = 0.0f;
-        behaviourController.myRigidbody.velocity = horizotalVelocity;
-    }
-
-    private void RotationManagment(float horizontal, float vertical)
-    {
-        if(behaviourController.IsGrounded())
-        {
-            behaviourController.myRigidbody.useGravity = true;
-        }
-        else if (behaviourController.myRigidbody.velocity.y > 0)
-        {
-            RemoveVerticalVelocity();
-        }
-        Rotation(horizontal, vertical);
     }
 
     private void AttackManagement()
@@ -82,10 +39,6 @@ public class AttackBehaviour : GenericBehaviour
         if(!behaviourController.IsGrounded()) //빅뱅이 아닌 상황
         {
             return;
-        }
-        else
-        {
-            RotationManagment(behaviourController.Horizontal, behaviourController.Vertical);
         }
     }
 
@@ -109,15 +62,13 @@ public class AttackBehaviour : GenericBehaviour
             behaviourController.LockTempBehaviour(behaviourCode);
             lastClickedTime = Time.time;
             clicks++;
-            if (clicks == 1)
+            if (clicks == 1 && behaviourController.currentStamina > 5f)
             {
                 behaviourController.myAnimator.SetBool(attack1, true);
             }
             clicks = Mathf.Clamp(clicks, 0, 3);
         }
     }
-
-    
 
     private void Update()
     {
@@ -128,33 +79,15 @@ public class AttackBehaviour : GenericBehaviour
             clicks = 0;
         }
 
-        //if (Input.GetButtonDown(ButtonKey.Attack))
-
         if (Input.GetAxisRaw(ButtonKey.Attack) != 0)
         {
             StartCoroutine(Attack());
         }
-
-            //if (Input.GetAxisRaw(ButtonKey.Attack) != 0)
-            //{
-            //    StartCoroutine(Attack());
-            //    //mouseLock = true;
-            //    //behaviourController.myAnimator.SetBool(keyLock, mouseLock);
-            //    //behaviourController.OverrideWithBehaviour(this);
-            //    //behaviourController.LockTempBehaviour(behaviourCode);
-            //    //lastClickedTime = Time.time;
-            //    //clicks++;
-            //    //if (clicks == 1)
-            //    //{
-            //    //    behaviourController.myAnimator.SetBool(attack1, true);
-            //    //}
-            //    //clicks = Mathf.Clamp(clicks, 0, 3);
-            //}
-        }
+    }
 
     public void AttackReturn1()
     {
-        if(clicks >= 2)
+        if(clicks >= 2 && behaviourController.currentStamina > 7f)
         {
             behaviourController.myAnimator.SetBool(attack2, true);
             behaviourController.myAnimator.SetBool(attack1, false);
@@ -167,7 +100,7 @@ public class AttackBehaviour : GenericBehaviour
     }
     public void AttackReturn2()
     {
-        if (clicks >= 3)
+        if (clicks >= 3 && behaviourController.currentStamina > 10f)
         {
             behaviourController.myAnimator.SetBool(attack3, true);
         }
@@ -183,9 +116,7 @@ public class AttackBehaviour : GenericBehaviour
         behaviourController.myAnimator.SetBool(attack2, false);
         behaviourController.myAnimator.SetBool(attack3, false);
         clicks = 0;
-
     }
-
     public void AttackReturnReSet()
     {
         if(behaviourController.myAnimator.GetBool(attack1) && behaviourController.myAnimator.GetBool(attack2) && behaviourController.myAnimator.GetBool(attack3))
@@ -198,12 +129,12 @@ public class AttackBehaviour : GenericBehaviour
         }
     }
 
-    public void StiffenCheckStart()
+    public void ComboAttackStiffenCheckStart()
     {
         damageChecker.SetActive(true);
     }
 
-    public void StiffenCheckEnd()
+    public void ComboAttackStiffenCheckEnd()
     {
         damageChecker.SetActive(false);
     }
@@ -215,5 +146,29 @@ public class AttackBehaviour : GenericBehaviour
     public void StiffenAttackDelay()
     {
         attackDelay = 0.5f;
+    }
+    public void Attack1Shake()
+    {
+        behaviourController.camScript.CamShakeTime(0.1f, 0.05f);
+    }
+    public void Attack2Shake()
+    {
+        behaviourController.camScript.CamShakeTime(0.1f, 0.06f);
+    }
+    public void Attack3Shake()
+    {
+        behaviourController.camScript.CamShakeTime(0.15f, 0.08f);
+    }
+    public void ReducedstaminaAttack1()
+    {
+        behaviourController.currentStamina -= AttackStamina1;
+    }
+    public void ReducedstaminaAttack2()
+    {
+        behaviourController.currentStamina -= AttackStamina2;
+    }
+    public void ReducedstaminaAttack3()
+    {
+        behaviourController.currentStamina -= AttackStamina3;
     }
 }

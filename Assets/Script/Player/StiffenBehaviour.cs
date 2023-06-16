@@ -11,6 +11,7 @@ public class StiffenBehaviour : GenericBehaviour
     [HideInInspector]
     public int keyLock;
     public bool mouseLock;
+
     private void Start()
     {
         attack1 = Animator.StringToHash(AnimatorKey.Attack1);
@@ -25,7 +26,6 @@ public class StiffenBehaviour : GenericBehaviour
         {
             StartCoroutine(StiffenDelay());
         }
-        
     }
 
     private IEnumerator StiffenDelay()
@@ -64,5 +64,4 @@ public class StiffenBehaviour : GenericBehaviour
         behaviourController.LeftStiffen = false;
         behaviourController.myAnimator.SetBool("LeftStiffen", false);
     }
-
 }

@@ -32,6 +32,7 @@ public class BehaviourController : MonoBehaviour
     private bool changedFieldOfView;
 
     private Vector3 lastDirection;
+    private int speedFloat;
     private int horizontalFloat;
     private int verticalFloat;
     private int groundedBool;
@@ -44,12 +45,15 @@ public class BehaviourController : MonoBehaviour
     private bool rightStiffen;
     private bool leftStiffen;
 
-    private bool staminaCharge;
+    public bool staminaCharge;
     public float staminaChargeSpeed;
     public float currentStamina = 100f;
     public float maxStamina;
     public float maxKineticEnergy = 100f;
     public float currentKineticEnergy;
+
+    public float staminaCoolTime;
+    private float currentStaminaTime = 0f;
 
     public bool isDead;
     public bool isBigBang = false;
@@ -207,28 +211,40 @@ public class BehaviourController : MonoBehaviour
         maxHealthPoint = currentHealthPoint;
         maxStamina = currentStamina;
         isDead = false;
+        speedFloat = Animator.StringToHash(AnimatorKey.Speed);
         horizontalFloat = Animator.StringToHash(AnimatorKey.Horizontal);
         verticalFloat = Animator.StringToHash(AnimatorKey.Vertical);
         groundedBool = Animator.StringToHash(AnimatorKey.Grounded);
         colliderExtents = GetComponent<Collider>().bounds.extents;
         lockOn = Animator.StringToHash(AnimatorKey.LockOn);
     }
-    public IEnumerator StaminaChargeOn()
+
+    public void StaminaChargeOn()
     {
-        yield return new WaitForSeconds(2f);
-        if (maxStamina >= currentStamina)
-            staminaCharge = true;
+        if (guard)
+            staminaCoolTime = 3f;
+        if(currentStaminaTime < staminaCoolTime)
+        {
+            staminaCoolTime -= Time.deltaTime;
+            if(currentStaminaTime >= staminaCoolTime)
+            {
+                staminaCharge = true;
+                staminaCoolTime = 3f;
+            }
+        }
     }
 
     public void StaminaChargeOff()
     {
         staminaCharge = false;
+        staminaCoolTime = 3f;
     }
 
     private void IsDead()
     {
         isDead = true;
         gameObject.tag = "Untagged";
+        myAnimator.SetFloat(AnimatorKey.Speed, 0f);
         myAnimator.SetBool(AnimatorKey.Dead, isDead);
         myAnimator.SetBool(AnimatorKey.Attack1, false);
         myAnimator.SetBool(AnimatorKey.Attack2, false);
@@ -265,19 +281,41 @@ public class BehaviourController : MonoBehaviour
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
 
-        myAnimator.SetFloat(horizontalFloat, horizontal, 0.1f, Time.deltaTime);
-        myAnimator.SetFloat(verticalFloat, vertical, 0.1f, Time.deltaTime);
-
-
+        myAnimator.SetFloat(horizontalFloat, horizontal);
+        myAnimator.SetFloat(verticalFloat, vertical);
+        Vector3 dir = new Vector3(Horizontal, 0, Vertical);
+        float speeds = dir.sqrMagnitude;
+        
+        
+        myAnimator.SetFloat(speedFloat, speeds);
 
         myAnimator.SetBool(groundedBool, IsGrounded());
+
         if (staminaCharge == true)
         {
-            if(currentStamina <= maxStamina)
+            if (currentStamina <= maxStamina)
                 currentStamina += staminaChargeSpeed * Time.deltaTime;
             stageUIManager.PlayerUpdateStamina();
         }
-        
+        else if (staminaCharge == false)
+        {
+            StaminaChargeOn();
+        }
+
+        if (currentKineticEnergy >= 50f)
+        {
+            gameObjectsEffects[0].SetActive(true);
+        }
+        else if (currentKineticEnergy >= 99f)
+        {
+            gameObjectsEffects[1].SetActive(true);
+        }
+        else if(currentKineticEnergy < 50f)
+        {
+            gameObjectsEffects[0].SetActive(false);
+            gameObjectsEffects[1].SetActive(false);
+        }
+
     }
 
     //³¦ ¹æÁö

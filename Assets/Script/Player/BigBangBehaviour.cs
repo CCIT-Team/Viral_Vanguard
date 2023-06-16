@@ -4,63 +4,20 @@ using UnityEngine;
 
 public class BigBangBehaviour : GenericBehaviour
 {
-    private int grounded;//애니용
     private int bigBangTrigger;
     private bool bigBang;
     public Transform myTransform;
     [HideInInspector]
     public int keyLock;
     public bool mouseLock;
+    public GameObject bigBangDamageChecker;
+    public PlayerAttackCollsion attackCollsion;
     //게이지 카운트 필요
 
     private void Start()
     {
-        grounded = Animator.StringToHash(AnimatorKey.Grounded);
         bigBangTrigger = Animator.StringToHash(AnimatorKey.BigBang);
         keyLock = Animator.StringToHash(AnimatorKey.MouseLock);
-    }
-
-    Vector3 Rotation(float horizontal, float vertical)
-    {
-        Vector3 forward = behaviourController.playerCamera.TransformDirection(Vector3.forward);
-        forward.y = 0.0f;
-        forward = forward.normalized;
-
-        Vector3 right = new Vector3(forward.z, 0.0f, -forward.x);
-        Vector3 targetDirection = Vector3.zero;
-        targetDirection = forward * vertical + right * horizontal;
-
-        Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
-        Quaternion newRotation = Quaternion.Slerp(behaviourController.myRigidbody.rotation, targetRotation, behaviourController.turnSmooth);
-        behaviourController.myRigidbody.MoveRotation(newRotation);
-        behaviourController.SetLastDirection(targetDirection);
-
-        if (!(Mathf.Abs(horizontal) > 0.9f || Mathf.Abs(vertical) > 0.9f))
-        {
-            behaviourController.Repositioning();
-        }
-        return targetDirection;
-    }
-
-
-    private void RemoveVerticalVelocity()
-    {
-        Vector3 horizotalVelocity = behaviourController.myRigidbody.velocity;
-        horizotalVelocity.y = 0.0f;
-        behaviourController.myRigidbody.velocity = horizotalVelocity;
-    }
-
-    private void RotationManagment(float horizontal, float vertical)
-    {
-        if (behaviourController.IsGrounded())
-        {
-            behaviourController.myRigidbody.useGravity = true;
-        }
-        else if (behaviourController.myRigidbody.velocity.y > 0)
-        {
-            RemoveVerticalVelocity();
-        }
-        Rotation(horizontal, vertical);
     }
 
     private void BigBangManagement()
@@ -69,11 +26,8 @@ public class BigBangBehaviour : GenericBehaviour
         {
             return;
         }
-        else
-        {
-            RotationManagment(behaviourController.Horizontal, behaviourController.Vertical);
-        }
     }
+
     private IEnumerator ToggleBigBangOn()
     {
         yield return new WaitForSeconds(0.05f);
@@ -133,10 +87,34 @@ public class BigBangBehaviour : GenericBehaviour
     {
         behaviourController.isBigBang = false;
     }
-
+    public void BigBangEffect1()
+    {
+        behaviourController.camScript.CamShakeTime(0.3f, 0.3f);
+        behaviourController.particleSystems[5].Play();
+    }
     public void BigBangEffect2()
     {
-        behaviourController.camScript.CamShakeTime(0.2f, 0.1f);
+        behaviourController.camScript.CamShakeTime(0.1f, 0.1f);
         behaviourController.particleSystems[2].Play();
     }
+
+    public void BigBangkStiffenCheckStart()
+    {
+        bigBangDamageChecker.SetActive(true);
+    }
+
+    public void BigBangStiffenCheckEnd()
+    {
+        bigBangDamageChecker.SetActive(false);
+    }
+
+    //모든 몬슨터가 사용하는 이벤트
+    public IEnumerator BigBangTimeScaleChage()
+    {
+        behaviourController.myAnimator.speed = 0f;
+        yield return new WaitForSeconds(0.7f);
+        behaviourController.myAnimator.speed = 1f;
+    }
+
+    
 }

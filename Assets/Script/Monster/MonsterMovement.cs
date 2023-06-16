@@ -27,14 +27,21 @@ public class MonsterMovement : MonoBehaviour
 
     public float patrolRange = 5;
 
+    public ParticleSystem[] blood;
+
+    float[] damage = { 5, 6, 13, 10 };
+    bool isDead = false;
+
     public bool Stiffen
     {
         get { return stiffen; }
         set
         {
             stiffen = value;
-            animator.SetBool("Stiffen",true);
-            if(value)
+
+            animator.SetBool("Stiffen", true);
+            blood[Random.Range(0, 2)].Play();
+            if(value && !isDead)
             {
                 agent.isStopped = true;
             }
@@ -49,12 +56,14 @@ public class MonsterMovement : MonoBehaviour
         set
         {
             healthPoint = value;
-            if(healthPoint <= 0)
+            if(healthPoint <= 0&&!isDead)
             {
-                agent.enabled = false;
-                animator.SetTrigger("Die");
-                animator.SetBool("Dead",true);
                 this.enabled = false;
+                attackRange.enabled = false;
+                agent.enabled = false;
+                isDead = true;
+                animator.SetTrigger("Die");
+                animator.SetBool("Dead",isDead);
             }
         }
     }
@@ -84,13 +93,26 @@ public class MonsterMovement : MonoBehaviour
     {
         if(other.CompareTag("MonsterPoint"))
         {
-            if(!chase)
+            if(Vector3.SqrMagnitude(this.transform.position - startPoint.position) <= 1)
             {
-                animator.SetBool("FindPlayer", chase);
-                chase = true;
+                if (!chase)
+                {
+                    animator.SetBool("FindPlayer", chase);
+                    chase = true;
+                }
+                animator.SetBool("Patrol", false);
+                StartCoroutine("Patrol");
             }
-            animator.SetBool("Patrol", false);
-            StartCoroutine("Patrol");
+        }
+        else if(other.CompareTag("PlayerAttackCollsion"))
+        {
+            Stiffen = true;
+            HealthPoint -= damage[
+                                    BehaviourController.instance.myAnimator.GetBool(AnimatorKey.Attack1) ? 0 :
+                                    BehaviourController.instance.myAnimator.GetBool(AnimatorKey.Attack2) ? 1 :
+                                    BehaviourController.instance.myAnimator.GetBool(AnimatorKey.Attack3) ? 2 :
+                                    3
+                                 ];
         }
     }
 
@@ -115,7 +137,7 @@ public class MonsterMovement : MonoBehaviour
 
     public void Attack()
     {
-        if(!attack)
+        if(!attack&&!isDead)
         {
             attack = true;
             animator.SetInteger("AttackType", Random.Range(0, 2));
