@@ -36,4 +36,3 @@ public class MonsterMovementSub : MonoBehaviour
     }
 }
 
-public enum RangeType { None = -1, Attack, Search }
