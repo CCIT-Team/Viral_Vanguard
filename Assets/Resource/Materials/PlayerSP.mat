@@ -23,8 +23,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: UIGaugeTest
-  m_Shader: {fileID: -6465566751694194690, guid: e05a5aa092ff44948a25d37a5d51eb57,
+  m_Name: PlayerSP
+  m_Shader: {fileID: -6465566751694194690, guid: 1f73360aba92e19438c72a2482a39980,
     type: 3}
   m_ValidKeywords:
   - _ALPHATEST_ON
@@ -179,7 +179,7 @@ Material:
     - _DoubleSidedGIMode: 2
     - _DoubleSidedNormalMode: 1
     - _DstBlend: 0
-    - _EmissionStrength: 250000
+    - _EmissionStrength: 200000
     - _EmissiveColorMode: 1
     - _EmissiveExposureWeight: 1
     - _EmissiveIntensity: 1
@@ -188,7 +188,7 @@ Material:
     - _EnableFogOnTransparent: 1
     - _EnableGeometricSpecularAA: 0
     - _EnergyConservingSpecularColor: 1
-    - _GaugeParameter: 69.8
+    - _GaugeParameter: 86.5
     - _HeightAmplitude: 0.02
     - _HeightCenter: 0.5
     - _HeightMapParametrization: 0
@@ -270,7 +270,7 @@ Material:
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissiveColor: {r: 0, g: 0, b: 0, a: 1}
     - _EmissiveColorLDR: {r: 0, g: 0, b: 0, a: 1}
-    - _GaugeColor: {r: 1, g: 0, b: 0.082353115, a: 1}
+    - _GaugeColor: {r: 0.2941177, g: 1, b: 0, a: 1}
     - _GaugeEmissionColor: {r: 1, g: 0, b: 0.082353115, a: 1}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
