@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerFootStep : MonoBehaviour
 {
+    public BehaviourController behaviourController;
     public AudioClip[] stepSounds;
     public AudioManager audioManager;
     public Animator myAnimator;
     private int index;
-    private Transform leftFoot, rightFoot;
     private float dist;
     private int groundedBool;
     private bool grounded;
@@ -24,8 +24,6 @@ public class PlayerFootStep : MonoBehaviour
 
     private void Awake()
     {
-        leftFoot = myAnimator.GetBoneTransform(HumanBodyBones.LeftFoot);
-        rightFoot = myAnimator.GetBoneTransform(HumanBodyBones.RightFoot);
         groundedBool = Animator.StringToHash(AnimatorKey.Grounded);
     }
 
@@ -60,7 +58,7 @@ public class PlayerFootStep : MonoBehaviour
             switch (step)
             {
                 case Foot.LEFT:
-                    dist = leftFoot.position.y - transform.position.y;
+                    dist = behaviourController.leftFootTransform.position.y - transform.position.y;
                     maxDist = dist > maxDist ? dist : maxDist;
                     if (dist <= factor)
                     {
@@ -69,7 +67,7 @@ public class PlayerFootStep : MonoBehaviour
                     }
                     break;
                 case Foot.RIGHT:
-                    dist = rightFoot.position.y - transform.position.y;
+                    dist = behaviourController.rightFootTranform.position.y - transform.position.y;
                     maxDist = dist > maxDist ? dist : maxDist;
                     if (dist <= factor)
                     {

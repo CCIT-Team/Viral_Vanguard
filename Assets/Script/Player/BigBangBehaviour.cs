@@ -50,7 +50,7 @@ public class BigBangBehaviour : GenericBehaviour
     private IEnumerator ToggleBigBangOff()
     {
         bigBang = false;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         behaviourController.UnLockTempBehaviour(behaviourCode);
         behaviourController.RevokeOverridingBehaviour(this);
     }
@@ -111,10 +111,8 @@ public class BigBangBehaviour : GenericBehaviour
     //모든 몬슨터가 사용하는 이벤트
     public IEnumerator BigBangTimeScaleChage()
     {
-        behaviourController.myAnimator.speed = 0f;
-        yield return new WaitForSeconds(0.7f);
+        behaviourController.myAnimator.speed = 0.0f;
+        yield return new WaitForSeconds(0.5f);
         behaviourController.myAnimator.speed = 1f;
     }
-
-    
 }

@@ -7,7 +7,7 @@ public class PlayerAttackCollsion : MonoBehaviour
     public BehaviourController behaviourController;
     public float[] damages;
     public float[] increasekineticEnergy;
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         if (behaviourController.currentKineticEnergy >= 100)
         {

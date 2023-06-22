@@ -10,6 +10,7 @@ TagManager:
   - NormalMonster
   - BossEvent
   - PlayerAttackCollsion
+  - WalkableGround
   layers:
   - Default
   - TransparentFX

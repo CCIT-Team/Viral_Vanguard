@@ -248,6 +248,9 @@ public class PlayerCamera : MonoBehaviour
             Vector3 smoothed_position = Vector3.Lerp(transform.position, camPosition, smooth);
             transform.position = smoothed_position;
             previousTransform = smoothed_position;
+
+            myCamera.fieldOfView = Mathf.Lerp(myCamera.fieldOfView, targetFieldOfView, Time.deltaTime);
+
             //카메라 흔들기
             previousTransform = transform.position;
             if (shakeTime > 0f)
