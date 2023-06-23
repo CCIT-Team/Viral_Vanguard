@@ -251,6 +251,19 @@ public class PlayerCamera : MonoBehaviour
 
             myCamera.fieldOfView = Mathf.Lerp(myCamera.fieldOfView, targetFieldOfView, Time.deltaTime);
 
+            //Vector3 baseTempPosition = camPosition - player.position;
+            //Vector3 noCollisionOffset = smoothCamOffset;
+
+            //for (float zOffset = targetCamOffset.z; zOffset <= 0f; zOffset += 0.5f)
+            //{
+            //    noCollisionOffset.z = zOffset;
+            //    if (DoubleViewingCheck(baseTempPosition + targetRotation * noCollisionOffset, Mathf.Abs(zOffset)) || zOffset == 0f)
+            //    {
+            //        break;
+            //    }
+            //}
+
+
             //카메라 흔들기
             previousTransform = transform.position;
             if (shakeTime > 0f)

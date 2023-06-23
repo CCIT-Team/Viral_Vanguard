@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class PlayerFootStep : MonoBehaviour
 {
     public BehaviourController behaviourController;
     public AudioClip[] stepSounds;
-    public AudioManager audioManager;
+    public AudioSource audioSource;
+    //public AudioManager audioManager;
     public Animator myAnimator;
     private int index;
     private float dist;
     private int groundedBool;
     private bool grounded;
     public float factor = 0.15f;
+
     public enum Foot
     {
         LEFT,
@@ -24,6 +27,7 @@ public class PlayerFootStep : MonoBehaviour
 
     private void Awake()
     {
+        //audioManager = GetComponent<AudioManager>();
         groundedBool = Animator.StringToHash(AnimatorKey.Grounded);
     }
 
@@ -40,7 +44,10 @@ public class PlayerFootStep : MonoBehaviour
         {
             index = Random.Range(0, stepSounds.Length - 1);
         }
-        //매니저에서 플레이 배열 받아와서 재생해주기
+        audioSource.PlayOneShot(stepSounds[index]); //audioSource.PlayClipAtPoint 이걸로 변경 예정
+
+
+        Debug.Log(index);
     }
 
     private void Update()
@@ -50,7 +57,7 @@ public class PlayerFootStep : MonoBehaviour
             PlayFootStep();
         }
         grounded = myAnimator.GetBool(groundedBool);
-        float factor = 0.15f;
+        //float factor = 0.15f;
 
         if (grounded && myAnimator.velocity.magnitude > 1.6f) //움직이고 있다면
         {
