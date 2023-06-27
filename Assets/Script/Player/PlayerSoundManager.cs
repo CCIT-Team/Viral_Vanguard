@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class PlayerSoundManager : MonoBehaviour
+public class SoundManager1 : MonoBehaviour
 {
     public AudioSource audioSource;
     public AudioClip[] clips;

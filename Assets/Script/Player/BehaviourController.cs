@@ -28,7 +28,7 @@ public class BehaviourController : MonoBehaviour
     public Rigidbody myRigidbody;
     public PlayerCamera camScript;
     public StageUIManager stageUIManager;
-    public PlayerSoundManager playerSoundManager;
+    public SoundManager1 playerSoundManager;
 
     private float horizontal;
     private float vertical;
