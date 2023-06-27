@@ -3,27 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Monster
-  - MonsterSpawn
-  - MonsterPoint
-  - NormalMonster
-<<<<<<< HEAD
-  - WalkableGround
-=======
-  - BossEvent
-  - PlayerAttackCollsion
->>>>>>> 889ad32bab1d7bc0a42c8125d7c74f04f7fe4025
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Player
+  - 
   - Water
   - UI
-  - Monster
-  - Indicater
-  - NormalMonster
+  - 
+  - 
+  - 
   - 
   - 
   - 
