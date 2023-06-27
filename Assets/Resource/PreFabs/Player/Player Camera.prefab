@@ -44,7 +44,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4822846413045343796}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -226,11 +226,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myCamera: {fileID: 4822846413045343802}
-  behaviourController: {fileID: 144543998850936503, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
-    type: 3}
-  player: {fileID: 6116357599887717622, guid: 0e28c07e91a3cf34ab0f47657e1e3656, type: 3}
+  behaviourController: {fileID: 0}
+  player: {fileID: 0}
   pivotOffset: {x: 0, y: 2, z: 0}
-  camOffset: {x: 0, y: 0, z: -4}
+  camOffset: {x: 0, y: 0, z: -3}
   smooth: 10
   horizontalAimingSpeed: 10
   verticalAimingSpeed: 10
@@ -251,8 +250,7 @@ MonoBehaviour:
   isLockOning: 0
   minLockOnTime: 0.5
   isDelay: 0
-  indicater: {fileID: 2251672632231258801, guid: 9c0b0d073b4848449b0af85e6115a596,
-    type: 3}
+  indicater: {fileID: 0}
 --- !u!114 &7733017383863361002
 MonoBehaviour:
   m_ObjectHideFlags: 0

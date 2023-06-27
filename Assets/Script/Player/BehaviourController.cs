@@ -28,6 +28,7 @@ public class BehaviourController : MonoBehaviour
     public Rigidbody myRigidbody;
     public PlayerCamera camScript;
     public StageUIManager stageUIManager;
+    public PlayerSoundManager playerSoundManager;
 
     private float horizontal;
     private float vertical;
@@ -66,11 +67,13 @@ public class BehaviourController : MonoBehaviour
     private bool guardBreak;
     private bool monsterAttack;
     private bool normalMosterAttack;
+    private int soundIndex;
     [HideInInspector]
     public int lockOn;
     public ParticleSystem[] particleSystems;  //0 저스트 가드, 1 가드 히트, 2 빅뱅, 3피격 왼, 4 피격 오, 5 가드 브레이크 6:플레이어 오른공, 7: 플레이어 왼공
     public VisualEffect[] visualEffects; //0 빅뱅
     public GameObject[] gameObjectsEffects; //키네틱 온 오프
+    public Transform[] soundPosition;
 
     public bool GuardHit
     {
@@ -154,6 +157,7 @@ public class BehaviourController : MonoBehaviour
             {
                 myAnimator.SetBool("RightStiffen", value);
                 particleSystems[4].Play();
+                playerSoundManager.PlayerSoundOneShot(14, soundPosition[3].position);
             }
         }
     }
@@ -168,6 +172,7 @@ public class BehaviourController : MonoBehaviour
             {
                 myAnimator.SetBool("LeftStiffen", value);
                 particleSystems[3].Play();
+                playerSoundManager.PlayerSoundOneShot(15, soundPosition[3].position);
             }
         }
     }
@@ -534,6 +539,55 @@ public class BehaviourController : MonoBehaviour
     {
         lastDirection = direction;
     }
+
+    #region 플레이어 사운드 이벤트
+    public void AttackSound1()
+    {
+        playerSoundManager.PlayerSoundOneShot(8, soundPosition[5].position);
+    }
+    public void AttackSound2()
+    {
+        playerSoundManager.PlayerSoundOneShot(9, soundPosition[5].position);
+    }
+    public void AttackSound3()
+    {
+        playerSoundManager.PlayerSoundOneShot(10, soundPosition[5].position);
+    }
+    public void AttackBreath1()
+    {
+        playerSoundManager.PlayerSoundOneShot(11, soundPosition[0].position);
+    }
+    public void AttackBreath2()
+    {
+        playerSoundManager.PlayerSoundOneShot(12, soundPosition[0].position);
+    }
+    public void AttackBreath3()
+    {
+        playerSoundManager.PlayerSoundOneShot(13, soundPosition[0].position);
+    }
+    public void BigBangSound()
+    {
+        playerSoundManager.PlayerSoundOneShot(0, soundPosition[4].position);
+    }
+    public void GuardSound()//랜덤 사운드로 적용 필요
+    {
+        int oldindex = soundIndex;
+        while (oldindex == soundIndex)
+        {
+            soundIndex = Random.Range(3, playerSoundManager.clips.Length - 12);
+        }
+        playerSoundManager.PlayerSoundOneShot(soundIndex, soundPosition[1].position);
+    }
+    public void GuradBreakSound()
+    {
+        playerSoundManager.PlayerSoundOneShot(5, soundPosition[1].position);
+    }
+    public void JustGuardSound()
+    {
+        playerSoundManager.PlayerSoundOneShot(6, soundPosition[1].position);
+        playerSoundManager.PlayerSoundOneShot(7, soundPosition[1].position);
+    }
+        #endregion
 }
 
 

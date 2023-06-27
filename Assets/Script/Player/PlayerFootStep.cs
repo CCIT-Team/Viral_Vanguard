@@ -44,10 +44,8 @@ public class PlayerFootStep : MonoBehaviour
         {
             index = Random.Range(0, stepSounds.Length - 1);
         }
-        audioSource.PlayOneShot(stepSounds[index]); //audioSource.PlayClipAtPoint 이걸로 변경 예정
-
-
-        Debug.Log(index);
+        //audioSource.PlayOneShot(stepSounds[index]); //audioSource.PlayClipAtPoint 이걸로 변경 예정
+        AudioSource.PlayClipAtPoint(stepSounds[index], behaviourController.leftFootTransform.position);
     }
 
     private void Update()

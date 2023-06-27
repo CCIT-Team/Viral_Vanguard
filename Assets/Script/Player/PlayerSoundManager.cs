@@ -10,7 +10,8 @@ public class PlayerSoundManager : MonoBehaviour
 
     public void PlayerSoundOneShot(int index, Vector3 position)
     {
-        audioSource.PlayOneShot(clips[index]); //audioSource.PlayClipAtPoint 이걸로 변경 예정
+        //audioSource.PlayOneShot(clips[index]); //audioSource.PlayClipAtPoint 이걸로 변경 예정
+        AudioSource.PlayClipAtPoint(clips[index], position);
     }
 
     public void PlayerSoundReset()
