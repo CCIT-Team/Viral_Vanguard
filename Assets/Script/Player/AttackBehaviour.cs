@@ -151,15 +151,15 @@ public class AttackBehaviour : GenericBehaviour
     }
     public void Attack1Shake()
     {
-        behaviourController.camScript.CamShakeTime(0.1f, 0.05f);
+        behaviourController.camScript.CamShakeTime(0.15f, 0.08f);
     }
     public void Attack2Shake()
     {
-        behaviourController.camScript.CamShakeTime(0.1f, 0.06f);
+        behaviourController.camScript.CamShakeTime(0.15f, 0.1f);
     }
     public void Attack3Shake()
     {
-        behaviourController.camScript.CamShakeTime(0.15f, 0.08f);
+        behaviourController.camScript.CamShakeTime(0.2f, 0.15f);
     }
     public void ReducedstaminaAttack1()
     {
