@@ -4,21 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 
-public class SoundManager1 : MonoBehaviour
+public class SoundManager : MonoBehaviour
 {
     public AudioSource sfxAudioSource;
     public AudioSource bgmAudioSource;
-    public AudioClip[] clips;
     public Sound[] bgmSound;
     public Sound[] sfxSound;
 
-    public void PlayerSoundOneShot(int index, Vector3 position)
-    {
-        //audioSource.PlayOneShot(clips[index]); //audioSource.PlayClipAtPoint 이걸로 변경 예정
-        //AudioSource.PlayClipAtPoint(sfxClips[index], position);
-    }
-
-    public static SoundManager1 instance;
+    public static SoundManager instance;
     public Dictionary<string, int> SFX = new Dictionary<string, int>();
     public Dictionary<string, int> BGM = new Dictionary<string, int>();
     public AudioMixer audioMixer;

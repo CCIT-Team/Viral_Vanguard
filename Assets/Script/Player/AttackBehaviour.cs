@@ -117,7 +117,7 @@ public class AttackBehaviour : GenericBehaviour
         behaviourController.myAnimator.SetBool(attack2, false);
         behaviourController.myAnimator.SetBool(attack3, false);
         clicks = 0;
-        behaviourController.playerSoundManager.PlayerSoundReset();
+        
     }
     public void AttackReturnReSet()
     {
