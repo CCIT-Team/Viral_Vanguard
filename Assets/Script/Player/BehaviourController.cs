@@ -61,6 +61,7 @@ public class BehaviourController : MonoBehaviour
 
     public bool isDead;
     public bool isBigBang = false;
+    public bool isBigBang1 = false;
     public bool guard;
     private bool guardHit;       //가드중 몬스터가 때리면
     private bool justGuard;
@@ -71,7 +72,6 @@ public class BehaviourController : MonoBehaviour
     [HideInInspector]
     public int lockOn;
     public ParticleSystem[] particleSystems;  //0 저스트 가드, 1 가드 히트, 2 빅뱅, 3피격 왼, 4 피격 오, 5 가드 브레이크 6:플레이어 오른공, 7: 플레이어 왼공
-    public VisualEffect[] visualEffects; //0 빅뱅
     public GameObject[] gameObjectsEffects; //키네틱 온 오프
     public Transform[] soundPosition;
 
@@ -309,20 +309,20 @@ public class BehaviourController : MonoBehaviour
         {
             StaminaChargeOn();
         }
-
-        if (currentKineticEnergy >= 50f)
-        {
-            gameObjectsEffects[0].SetActive(true);
-        }
-        else if (currentKineticEnergy >= 99f)
-        {
-            gameObjectsEffects[1].SetActive(true);
-        }
-        else if(currentKineticEnergy < 50f)
-        {
-            gameObjectsEffects[0].SetActive(false);
-            gameObjectsEffects[1].SetActive(false);
-        }
+        //나중에 이펙트 추가시 사용
+        //if (currentKineticEnergy >= 50f)
+        //{
+        //    gameObjectsEffects[0].SetActive(true);
+        //}
+        //else if (currentKineticEnergy >= 99f)
+        //{
+        //    gameObjectsEffects[1].SetActive(true);
+        //}
+        //else if(currentKineticEnergy < 50f)
+        //{
+        //    gameObjectsEffects[0].SetActive(false);
+        //    gameObjectsEffects[1].SetActive(false);
+        //}
 
     }
 
