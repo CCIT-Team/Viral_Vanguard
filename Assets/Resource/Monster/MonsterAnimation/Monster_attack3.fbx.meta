@@ -672,10 +672,42 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
+      - time: 0.52136755
+        functionName: MonsterAttackCheck
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 511e0c5d1063d7d43a769aaf8d0f98ac,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.52287155
+        functionName: OnHitBox
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 511e0c5d1063d7d43a769aaf8d0f98ac,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.57264954
+        functionName: OffHitBox
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 511e0c5d1063d7d43a769aaf8d0f98ac,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.5741536
+        functionName: MonsterAttackCheck
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 511e0c5d1063d7d43a769aaf8d0f98ac,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 1
         functionName: AttackDelay
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: e57ccbec45c7e8d45a47681add225818,
+        objectReferenceParameter: {fileID: 11500000, guid: 511e0c5d1063d7d43a769aaf8d0f98ac,
           type: 3}
         floatParameter: 0
         intParameter: 0

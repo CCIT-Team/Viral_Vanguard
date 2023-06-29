@@ -23,6 +23,7 @@ public enum EMonsterState
 
 public enum EMonsterType
 {
+    None = -1,
     Normal,
     Crawling,
     Hiding,

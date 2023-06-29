@@ -21,10 +21,6 @@ public class MonsterRange : MonoBehaviour
                         mainmove.UnMimic();
                         mainmove.SetTarget(other.transform);
                     }
-                    else if(mainmove.MType == EMonsterType.Hiding)
-                    {
-                        mainmove.SetTarget(other.transform);
-                    }
                     break;
             }
         }
@@ -37,7 +33,17 @@ public class MonsterRange : MonoBehaviour
             switch (rangeType)
             {
                 case RangeType.Attack:
-                    mainmove.Attack();
+                    if (mainmove.MType == EMonsterType.Hiding)
+                    {
+                        mainmove.UnMimic();
+                        mainmove.searchRange.gameObject.SetActive(true);
+                        mainmove.SetTarget(other.transform);
+                        mainmove.Attack(2);
+                        mainmove.MType = EMonsterType.Normal;
+                        GetComponent<BoxCollider>().size -= new Vector3(0.5f, 0, 0.85f);
+                    }
+                    else
+                        mainmove.Attack(); 
                     break;
             }
         }

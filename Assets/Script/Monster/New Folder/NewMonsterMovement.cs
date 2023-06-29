@@ -8,11 +8,40 @@ public class NewMonsterMovement : MonoBehaviour
 
     //State 받아올 값들
     public MonsterState monsterStat;
-    EMonsterType type;
+    EMonsterType type = EMonsterType.None;
     public EMonsterType MType
     {
         get { return type; }
-        set { type = value; }
+        set
+        {
+            if (type == value)
+                return;
+            type = value;
+            switch (type)
+            {
+                case EMonsterType.Normal:
+                    searchRange.gameObject.SetActive(true);
+                    detectRange.gameObject.SetActive(false);
+                    patrolPoint.gameObject.SetActive(true);
+                    target = patrolPoint;
+                    StartCoroutine(SetAgent());
+                    break;
+                case EMonsterType.Hiding:
+                    searchRange.gameObject.SetActive(false);
+                    detectRange.gameObject.SetActive(false);
+                    patrolPoint.gameObject.SetActive(false);
+                    agent.isStopped = true;
+                    attackRange.GetComponent<BoxCollider>().size += new Vector3(0.5f,0,0.85f);
+                    break;
+                case EMonsterType.Mimicking:
+                    searchRange.gameObject.SetActive(false);
+                    detectRange.gameObject.SetActive(true);
+                    patrolPoint.gameObject.SetActive(false);
+                    agent.isStopped = true;
+                    animator.SetBool("FakeDead", true);
+                    break;
+            }
+        }
     }
     [HideInInspector]
     public float Health
@@ -24,18 +53,14 @@ public class NewMonsterMovement : MonoBehaviour
         set
         {
             health = value;
-            if (health <= 0)
+            if (health <= 0 && State != EMonsterState.Dead)
             {
-                health = value;
-                if (health <= 0 && State != EMonsterState.Dead)
-                {
-                    State = EMonsterState.Dead;
-                }
+                State = EMonsterState.Dead;
             }
         }
     }
     float health;
-    float damage;
+    float[] damage = new float[3];
 
     //-------------------------------------------------------------
 
@@ -48,7 +73,7 @@ public class NewMonsterMovement : MonoBehaviour
     //-------------------------------------------------------------
 
     //공격, 피격 관련
-    public MonsterAttack hitBox;
+    public MonsterAttack[] hitBox;
     public MonsterRange attackRange;
     bool isAttack = false;
 
@@ -126,8 +151,8 @@ public class NewMonsterMovement : MonoBehaviour
     }
     void Start()
     {
-        GetMonsterState();
         StartSetting();
+        GetMonsterState(); 
     }
 
     private void OnTriggerEnter(Collider other)
@@ -148,9 +173,11 @@ public class NewMonsterMovement : MonoBehaviour
 
     void GetMonsterState()
     {
-        type = monsterStat.type;
+        MType = monsterStat.type;
         Health = monsterStat.maxHealth;
-        damage = monsterStat.damage;
+        damage[0] = monsterStat.damage;
+        damage[1] = monsterStat.damage;
+        damage[2] = monsterStat.damage * 1.5f;
     }
 
     void StartSetting()
@@ -159,30 +186,11 @@ public class NewMonsterMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         spawnPoint = transform.position;
-        TypeChange((int)type);
-
     }
 
     void TypeChange(int i)
     {
-        type = (EMonsterType)i;
-        switch (type)
-        {
-            case EMonsterType.Normal:
-                patrolPoint.gameObject.SetActive(true);
-                target = patrolPoint;
-                StartCoroutine(SetAgent());
-                break;
-            case EMonsterType.Crawling:
-                break;
-            case EMonsterType.Hiding:
-                agent.isStopped = true;
-                break;
-            case EMonsterType.Mimicking:
-                agent.isStopped = true;
-                animator.SetBool("FakeDead", true);
-                break;
-        }
+        
     }
 
     public void SetTarget(Transform transform)
@@ -193,15 +201,15 @@ public class NewMonsterMovement : MonoBehaviour
             animator.SetBool("Patrol", false);
             animator.SetBool("FindPlayer", true);
         }
-
     }
 
-    public void Attack(int AType = 0)
+    public void Attack(int AType = -1)
     {
         if (!isAttack && State != EMonsterState.Dead)
         {
             isAttack = true;
-            animator.SetInteger("AttackType", Random.Range(0, 2));
+            if(AType == -1)
+                animator.SetInteger("AttackType", Random.Range(0, 2));
             agent.isStopped = true;
             animator.SetTrigger("Attack");
         }
@@ -210,6 +218,7 @@ public class NewMonsterMovement : MonoBehaviour
     public void UnMimic()
     {
         animator.SetBool("FakeDead", false);
+        attackRange.gameObject.SetActive(true);
         patrolPoint.gameObject.SetActive(true);
     }
 
@@ -229,12 +238,15 @@ public class NewMonsterMovement : MonoBehaviour
 
     public void OnHitBox(int direction)
     {
-        hitBox.OnCollider(direction);
+        hitBox[direction].OnCollider(direction);
     }
 
     public void OffHitBox()
     {
-        hitBox.OffCollider();
+        for(int i = 0; i< hitBox.Length; i++)
+        {
+            hitBox[i].OffCollider();
+        }
     }
 
     void OffStiffen()
@@ -262,6 +274,13 @@ public class NewMonsterMovement : MonoBehaviour
         
     }
 
+    IEnumerator DelayMotion()
+    {
+        animator.SetBool("AttackDelayed", true);
+        yield return new WaitForSecondsRealtime(0.3f);
+        animator.SetBool("AttackDelayed", false);
+    }
+
     //---------------------------------------------------------
 
     public void PlayerStiffen(int direction)
@@ -269,12 +288,12 @@ public class NewMonsterMovement : MonoBehaviour
         if (direction == 1)
         {
             BehaviourController.instance.RightStiffen = true;
-            BehaviourController.instance.HealthPoint -= damage;
+            BehaviourController.instance.HealthPoint -= damage[direction];
         }
         else
         {
             BehaviourController.instance.LeftStiffen = true;
-            BehaviourController.instance.HealthPoint -= damage;
+            BehaviourController.instance.HealthPoint -= damage[direction];
         }
     }
 
@@ -289,13 +308,13 @@ public class NewMonsterMovement : MonoBehaviour
             if (BehaviourController.instance.currentStamina >= 0)
             {
                 BehaviourController.instance.GuardHit = true;
-                BehaviourController.instance.currentStamina -= damage;
+                BehaviourController.instance.currentStamina -= damage[direction];
                 BehaviourController.instance.camScript.CamShakeTime(0.1f, 0.02f);
             }
-            else if (BehaviourController.instance.currentStamina <= damage)
+            else if (BehaviourController.instance.currentStamina <= damage[direction])
             {
                 BehaviourController.instance.GuardBreak = true;
-                BehaviourController.instance.HealthPoint -= damage - BehaviourController.instance.currentStamina;
+                BehaviourController.instance.HealthPoint -= damage[direction] - BehaviourController.instance.currentStamina;
                 BehaviourController.instance.currentStamina = 0;
             }
         }
