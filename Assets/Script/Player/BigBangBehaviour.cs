@@ -150,11 +150,13 @@ public class BigBangBehaviour : GenericBehaviour
     public void ChargeMaceOn()
     {
         behaviourController.gameObjectsEffects[0].SetActive(true);
+        behaviourController.gameObjectsEffects[1].SetActive(true);
     }
 
     public void ChargeMaceOff()
     {
         behaviourController.gameObjectsEffects[0].SetActive(false);
+        behaviourController.gameObjectsEffects[1].SetActive(false);
     }
 
 }

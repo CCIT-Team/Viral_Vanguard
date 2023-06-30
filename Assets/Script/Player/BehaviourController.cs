@@ -97,7 +97,7 @@ public class BehaviourController : MonoBehaviour
             if(guard == true)
             {
                 myAnimator.SetTrigger("GuardBreak");
-                particleSystems[5].Play();
+                particleSystems[9].Play();
             }
         }
     }
