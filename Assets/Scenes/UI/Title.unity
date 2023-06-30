@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 261.8021, g: 324.32925, b: 429.24924, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2736,12 +2736,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2314531550320875098, guid: 40e471d5ce8bbbe448b1deb92d73cbde,
         type: 3}
-      propertyPath: audioMixer
-      value: 
-      objectReference: {fileID: 24100000, guid: 038714c4b0b06864ea553748c33fd265,
-        type: 2}
-    - target: {fileID: 2314531550320875098, guid: 40e471d5ce8bbbe448b1deb92d73cbde,
-        type: 3}
       propertyPath: bgmScrollbar
       value: 
       objectReference: {fileID: 989624525}
@@ -2755,12 +2749,6 @@ PrefabInstance:
       propertyPath: masterScrollbar
       value: 
       objectReference: {fileID: 586975393}
-    - target: {fileID: 2314531550320875098, guid: 40e471d5ce8bbbe448b1deb92d73cbde,
-        type: 3}
-      propertyPath: masterMixerGroup
-      value: 
-      objectReference: {fileID: 24100000, guid: 038714c4b0b06864ea553748c33fd265,
-        type: 2}
     - target: {fileID: 2314531550320875099, guid: 40e471d5ce8bbbe448b1deb92d73cbde,
         type: 3}
       propertyPath: m_RootOrder

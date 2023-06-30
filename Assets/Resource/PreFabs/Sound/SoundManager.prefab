@@ -84,9 +84,10 @@ MonoBehaviour:
     audio: {fileID: 8300000, guid: 5b02d1cb97ccdb04493fcd51e2f93032, type: 3}
   - soundName: PlayerDeath2
     audio: {fileID: 8300000, guid: 3f6817621b8e8a6419000c5bde0d1bea, type: 3}
-  audioMixer: {fileID: 24100000, guid: fae97766134415646a9d8a158bae2dbd, type: 2}
-  bgmSlider: {fileID: 0}
-  sfxSlider: {fileID: 0}
+  audioMixer: {fileID: 24100000, guid: 038714c4b0b06864ea553748c33fd265, type: 2}
+  masterScrollbar: {fileID: 0}
+  bgmScrollbar: {fileID: 0}
+  sfxScrollbar: {fileID: 0}
 --- !u!1 &2314531551137103672
 GameObject:
   m_ObjectHideFlags: 0
