@@ -100,6 +100,10 @@ public class UIManager : Singleton<UIManager>
         {
             SceneFader.Instance.StartFadeOut("NikeMainRoad",3f);
         }
+
+        if (masterVolume.value <= 0) masterVolume.value = 0.001f;
+        if (bgmVolume.value <= 0) bgmVolume.value = 0.001f;
+        if (sfxVolume.value <= 0) sfxVolume.value = 0.001f;
     }
 
 }
