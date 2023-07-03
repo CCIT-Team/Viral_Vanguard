@@ -4385,6 +4385,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 511e0c5d1063d7d43a769aaf8d0f98ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bodyParts:
+  - {fileID: 7154145842517812080}
+  - {fileID: 7153791265601145762}
+  - {fileID: 7153808743594767078}
+  - {fileID: 7153420571096439114}
+  - {fileID: 7154108279093192786}
+  - {fileID: 7154081880267006390}
+  - {fileID: 7153784698847039230}
+  - {fileID: 7153899934054119368}
+  - {fileID: 7153982014814553530}
+  - {fileID: 7153410652389867502}
+  - {fileID: 7154486095722347792}
+  - {fileID: 7153818963941389896}
+  - {fileID: 7153152317623032764}
+  mat: {fileID: 2100000, guid: a4e0a340ecbc78b4ea226e462e57f2d7, type: 2}
   monsterStat: {fileID: 11400000, guid: ddaf2e768a013e84bafe3fff2781d25e, type: 2}
   patrolPoint: {fileID: 8214622081658032143}
   hitBox:

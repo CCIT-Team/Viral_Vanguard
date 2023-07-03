@@ -5,7 +5,9 @@ using UnityEngine.AI;
 public class NewMonsterMovement : MonoBehaviour
 {
     //-------------------------------------------------------------
-
+    public SkinnedMeshRenderer[] bodyParts;
+    public Material mat;
+    Material matClone;
     //State 받아올 값들
     public MonsterState monsterStat;
     EMonsterType type = EMonsterType.None;
@@ -81,7 +83,6 @@ public class NewMonsterMovement : MonoBehaviour
 
     Animator animator;
      
-    [HideInInspector]
     EMonsterState state = EMonsterState.Patrol;
     public EMonsterState State
     {
@@ -112,6 +113,8 @@ public class NewMonsterMovement : MonoBehaviour
                     agent.isStopped = true;
                     animator.SetTrigger("Die");
                     animator.SetBool("Dead", true);
+                    //this.gameObject.GetComponent<BoxCollider>().enabled = false;
+                    //animator.enabled = false;
                     break;
             }
         }
@@ -160,7 +163,7 @@ public class NewMonsterMovement : MonoBehaviour
         if (other.CompareTag("PlayerAttackCollsion"))
         {
             Stiffen = true;
-            health -= playerDamage[
+            Health -= playerDamage[
                                     BehaviourController.instance.myAnimator.GetBool(AnimatorKey.Attack1) ? 0 :
                                     BehaviourController.instance.myAnimator.GetBool(AnimatorKey.Attack2) ? 1 :
                                     BehaviourController.instance.myAnimator.GetBool(AnimatorKey.Attack3) ? 2 :
@@ -186,6 +189,12 @@ public class NewMonsterMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         spawnPoint = transform.position;
+        matClone = Instantiate(mat);
+        foreach (SkinnedMeshRenderer mesh in bodyParts)
+        {
+            
+            mesh.material = matClone;
+        }
     }
 
     void TypeChange(int i)
@@ -262,6 +271,12 @@ public class NewMonsterMovement : MonoBehaviour
         StartCoroutine(SetAgent());
     }
 
+    void StartDissolve()
+    {
+        StartCoroutine(AAAA());
+
+    }
+
     //---------------------------------------------------------
 
     IEnumerator SetAgent()
@@ -279,6 +294,17 @@ public class NewMonsterMovement : MonoBehaviour
         animator.SetBool("AttackDelayed", true);
         yield return new WaitForSecondsRealtime(0.3f);
         animator.SetBool("AttackDelayed", false);
+    }
+
+    IEnumerator AAAA()
+    {
+        float i = 0;
+        while (i <= 2)
+        {
+            yield return new WaitForSecondsRealtime(0.05f);
+            i += 0.1f;
+            matClone.SetFloat("_Float", i);
+        }
     }
 
     //---------------------------------------------------------
