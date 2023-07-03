@@ -11,6 +11,7 @@ public class BigBangBehaviour : GenericBehaviour
     public int keyLock;
     public bool mouseLock;
     public GameObject bigBangDamageChecker;
+    public GameObject bigBangDamageChecker1;
     public PlayerAttackCollsion attackCollsion;
     //게이지 카운트 필요
 
@@ -87,6 +88,15 @@ public class BigBangBehaviour : GenericBehaviour
     {
         behaviourController.isBigBang = false;
     }
+    public void IsBigBangTrue1()
+    {
+        behaviourController.isBigBang1 = true;
+    }
+
+    public void IsBigBangFalse1()
+    {
+        behaviourController.isBigBang1 = false;
+    }
     public void BigBangEffect1()
     {
         behaviourController.camScript.CamShakeTime(0.3f, 0.3f);
@@ -94,8 +104,13 @@ public class BigBangBehaviour : GenericBehaviour
     }
     public void BigBangEffect2()
     {
-        behaviourController.camScript.CamShakeTime(0.1f, 0.1f);
+        behaviourController.camScript.CamShakeTime(0.3f, 0.4f);
         behaviourController.particleSystems[2].Play();
+    }
+    public void BigBangEffect3()
+    {
+        behaviourController.camScript.CamShakeTime(0.3f, 0.6f);
+        behaviourController.particleSystems[6].Play();
     }
 
     public void BigBangkStiffenCheckStart()
@@ -107,6 +122,15 @@ public class BigBangBehaviour : GenericBehaviour
     {
         bigBangDamageChecker.SetActive(false);
     }
+    public void BigBangkStiffenCheckStart1()
+    {
+        bigBangDamageChecker1.SetActive(true);
+    }
+
+    public void BigBangStiffenCheckEnd1()
+    {
+        bigBangDamageChecker1.SetActive(false);
+    }
 
     //모든 몬슨터가 사용하는 이벤트
     public IEnumerator BigBangTimeScaleChage()
@@ -115,4 +139,24 @@ public class BigBangBehaviour : GenericBehaviour
         yield return new WaitForSeconds(0.5f);
         behaviourController.myAnimator.speed = 1f;
     }
+
+    public IEnumerator BigBangTimeScaleChage1()
+    {
+        behaviourController.myAnimator.speed = 0.3f;
+        yield return new WaitForSeconds(0.5f);
+        behaviourController.myAnimator.speed = 1f;
+    }
+
+    public void ChargeMaceOn()
+    {
+        behaviourController.gameObjectsEffects[0].SetActive(true);
+        behaviourController.gameObjectsEffects[1].SetActive(true);
+    }
+
+    public void ChargeMaceOff()
+    {
+        behaviourController.gameObjectsEffects[0].SetActive(false);
+        behaviourController.gameObjectsEffects[1].SetActive(false);
+    }
+
 }

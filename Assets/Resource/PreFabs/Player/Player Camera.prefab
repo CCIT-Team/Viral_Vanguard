@@ -226,9 +226,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myCamera: {fileID: 4822846413045343802}
-  behaviourController: {fileID: 1956281250195285527, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
-    type: 3}
-  player: {fileID: 5604228058913995862, guid: 0e28c07e91a3cf34ab0f47657e1e3656, type: 3}
+  behaviourController: {fileID: 0}
+  player: {fileID: 0}
   pivotOffset: {x: 0, y: 2, z: 0}
   camOffset: {x: 0, y: 0, z: -3}
   smooth: 10
@@ -251,8 +250,7 @@ MonoBehaviour:
   isLockOning: 0
   minLockOnTime: 0.5
   isDelay: 0
-  indicater: {fileID: 1315931363688312516, guid: fdc77fb24298ebb49a07544b9370aa54,
-    type: 3}
+  indicater: {fileID: 0}
 --- !u!114 &7733017383863361002
 MonoBehaviour:
   m_ObjectHideFlags: 0
