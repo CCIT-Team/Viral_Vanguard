@@ -288,6 +288,11 @@ public class BossMove : MonoBehaviour
         animator.SetTrigger("Dead");
     }
 
+    public void SFXShot(string soundName)
+    {
+        SoundManager1.instance.OnShot(soundName);
+    }
+
     #region 플레이어 방향으로 돌기
 
     Quaternion targetRotation;

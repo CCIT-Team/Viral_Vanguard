@@ -126757,6 +126757,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 11
     messageOptions: 0
+  - time: 1.4666667
+    functionName: SFXShot
+    data: ActionAttack_1
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 1.5
     functionName: OnEffectObject
     data: 
@@ -126786,6 +126793,13 @@ AnimationClip:
     intParameter: 11
     messageOptions: 0
   - time: 2.1666667
+    functionName: CanJustGuard
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 2.1666667
     functionName: ActiveCollider
     data: 
     objectReferenceParameter: {fileID: 0}
@@ -126799,9 +126813,9 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 2.1666667
-    functionName: CanJustGuard
-    data: 
+  - time: 2.2
+    functionName: SFXShot
+    data: ActionAttack_1
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
