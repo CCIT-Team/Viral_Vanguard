@@ -290,7 +290,7 @@ public class BossMove : MonoBehaviour
 
     public void SFXShot(string soundName)
     {
-        SoundManager1.instance.OnShot(soundName);
+        SoundManager.instance.OnShot(soundName);
     }
 
     #region 플레이어 방향으로 돌기
