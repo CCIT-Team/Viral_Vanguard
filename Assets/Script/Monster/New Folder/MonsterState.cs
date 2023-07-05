@@ -25,8 +25,6 @@ public enum EMonsterType
 {
     None = -1,
     Normal,
-    Crawling,
     Hiding,
     Mimicking,
-    Bait
 }

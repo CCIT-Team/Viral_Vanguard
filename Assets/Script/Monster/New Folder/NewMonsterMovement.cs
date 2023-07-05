@@ -5,7 +5,7 @@ using UnityEngine.AI;
 public class NewMonsterMovement : MonoBehaviour
 {
     //-------------------------------------------------------------
-    public SkinnedMeshRenderer[] bodyParts;
+    public SkinnedMeshRenderer[] ragdollParts;
     public Material mat;
     Material matClone;
     //State 받아올 값들
@@ -109,12 +109,18 @@ public class NewMonsterMovement : MonoBehaviour
                     State = EMonsterState.Patrol;
                     break;
                 case EMonsterState.Dead:
+                    patrolPoint.gameObject.SetActive(false);
                     attackRange.enabled = false;
                     agent.isStopped = true;
-                    animator.SetTrigger("Die");
-                    animator.SetBool("Dead", true);
-                    //this.gameObject.GetComponent<BoxCollider>().enabled = false;
-                    //animator.enabled = false;
+                    if(ragdoll == null)
+                    {
+                        animator.SetTrigger("Die");
+                        animator.SetBool("Dead", true);
+                    }
+                    else
+                    {
+                        DeadWithRagdoll();
+                    }
                     break;
             }
         }
@@ -146,11 +152,23 @@ public class NewMonsterMovement : MonoBehaviour
 
     public ParticleSystem[] blood;
 
+    public GameObject ragdoll = null;
+
+    public GameObject bodys;
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha0))
             Health -= 20;
+
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            gameObject.GetComponent<BoxCollider>().enabled = false;
+            bodys.SetActive(false);
+            ragdoll.SetActive(true);
+
+        }
+            
     }
     void Start()
     {
@@ -190,9 +208,8 @@ public class NewMonsterMovement : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         spawnPoint = transform.position;
         matClone = Instantiate(mat);
-        foreach (SkinnedMeshRenderer mesh in bodyParts)
+        foreach (SkinnedMeshRenderer mesh in ragdollParts)
         {
-            
             mesh.material = matClone;
         }
     }
@@ -229,6 +246,16 @@ public class NewMonsterMovement : MonoBehaviour
         animator.SetBool("FakeDead", false);
         attackRange.gameObject.SetActive(true);
         patrolPoint.gameObject.SetActive(true);
+    }
+
+    void DeadWithRagdoll()
+    {
+        GetComponent<BoxCollider>().enabled = false;
+        OffHitBox();
+        animator.enabled = false;
+        bodys.SetActive(false);
+        ragdoll.SetActive(true);
+        Invoke("StartDissolve", 4);
     }
 
     //---------------------------------------------
@@ -274,7 +301,6 @@ public class NewMonsterMovement : MonoBehaviour
     void StartDissolve()
     {
         StartCoroutine(AAAA());
-
     }
 
     //---------------------------------------------------------
@@ -302,9 +328,10 @@ public class NewMonsterMovement : MonoBehaviour
         while (i <= 2)
         {
             yield return new WaitForSecondsRealtime(0.05f);
-            i += 0.1f;
+            i += 0.05f;
             matClone.SetFloat("_Float", i);
         }
+        gameObject.SetActive(false);
     }
 
     //---------------------------------------------------------

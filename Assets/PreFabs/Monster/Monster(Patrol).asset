@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Monster(Patrol)
   m_EditorClassIdentifier: 
   type: 0
-  maxHealth: 1
+  maxHealth: 50
   damage: 5
   moveSpeed: 1
