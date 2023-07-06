@@ -6,10 +6,23 @@ public class SynchronizeTransform : MonoBehaviour
 {
     [SerializeField]
     Transform root;
-    // Start is called before the first frame update
-    void Start()
+
+    [SerializeField]
+    SkinnedMeshRenderer[] bodyMesh;
+
+    [SerializeField]
+    Material dissolveMaterial;
+    Material mat;
+
+    private void OnEnable()
     {
-        BoneSynchronizing(this.transform,root);
+        mat = Instantiate(dissolveMaterial);
+        foreach (SkinnedMeshRenderer mesh in bodyMesh)
+        {
+            mesh.material = mat;
+        }
+        BoneSynchronizing(this.transform, root);
+        StartCoroutine(Dissolve(4));
     }
 
     void BoneSynchronizing(Transform rag,Transform origin)
@@ -23,5 +36,20 @@ public class SynchronizeTransform : MonoBehaviour
             rag.GetChild(i).localPosition = origin.transform.GetChild(i).localPosition;
             rag.GetChild(i).localRotation = origin.transform.GetChild(i).localRotation;
         }
+    }
+
+    //-----------------------------------------------
+
+    IEnumerator Dissolve(float time = 0.01f)
+    {
+        yield return new WaitForSeconds(time);
+        float i = 0;
+        while (i <= 2)
+        {
+            yield return new WaitForSecondsRealtime(0.05f);
+            i += 0.05f;
+            mat.SetFloat("_Float", i);
+        }
+        transform.root.gameObject.SetActive(false);
     }
 }

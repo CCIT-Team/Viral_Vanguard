@@ -5,9 +5,6 @@ using UnityEngine.AI;
 public class NewMonsterMovement : MonoBehaviour
 {
     //-------------------------------------------------------------
-    public SkinnedMeshRenderer[] ragdollParts;
-    public Material mat;
-    Material matClone;
     //State 받아올 값들
     public MonsterState monsterStat;
     EMonsterType type = EMonsterType.None;
@@ -33,7 +30,7 @@ public class NewMonsterMovement : MonoBehaviour
                     detectRange.gameObject.SetActive(false);
                     patrolPoint.gameObject.SetActive(false);
                     agent.isStopped = true;
-                    attackRange.GetComponent<BoxCollider>().size += new Vector3(0.5f,0,0.85f);
+                    attackRange.GetComponent<BoxCollider>().size += new Vector3(0.5f, 0, 0.85f);
                     break;
                 case EMonsterType.Mimicking:
                     searchRange.gameObject.SetActive(false);
@@ -65,7 +62,6 @@ public class NewMonsterMovement : MonoBehaviour
     float[] damage = new float[3];
 
     //-------------------------------------------------------------
-
     //네비메쉬 관련
     NavMeshAgent agent;
     Transform target;               //메쉬 타겟
@@ -73,8 +69,8 @@ public class NewMonsterMovement : MonoBehaviour
     public Transform patrolPoint;   //패트롤 다닐 위치
 
     //-------------------------------------------------------------
-
     //공격, 피격 관련
+
     public MonsterAttack[] hitBox;
     public MonsterRange attackRange;
     bool isAttack = false;
@@ -82,6 +78,10 @@ public class NewMonsterMovement : MonoBehaviour
     //-------------------------------------------------------------
 
     Animator animator;
+
+    AudioSource audioSource;
+    [SerializeField]
+    AudioClip[] clips;
      
     EMonsterState state = EMonsterState.Patrol;
     public EMonsterState State
@@ -173,7 +173,8 @@ public class NewMonsterMovement : MonoBehaviour
     void Start()
     {
         StartSetting();
-        GetMonsterState(); 
+        GetMonsterState();
+        StartCoroutine(IdleSound());
     }
 
     private void OnTriggerEnter(Collider other)
@@ -186,7 +187,14 @@ public class NewMonsterMovement : MonoBehaviour
                                     BehaviourController.instance.myAnimator.GetBool(AnimatorKey.Attack2) ? 1 :
                                     BehaviourController.instance.myAnimator.GetBool(AnimatorKey.Attack3) ? 2 :
                                     3
-                                 ];
+                                  ];
+            if (!audioSource.isPlaying)
+                audioSource.PlayOneShot(clips[
+                                                BehaviourController.instance.myAnimator.GetBool(AnimatorKey.Attack1) ? 3 :
+                                                BehaviourController.instance.myAnimator.GetBool(AnimatorKey.Attack2) ? 4 :
+                                                BehaviourController.instance.myAnimator.GetBool(AnimatorKey.Attack3) ? 5 :
+                                                3
+                                              ]);
         }
     }
 
@@ -206,12 +214,8 @@ public class NewMonsterMovement : MonoBehaviour
         instance = this;
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
+        audioSource = GetComponent<AudioSource>();
         spawnPoint = transform.position;
-        matClone = Instantiate(mat);
-        foreach (SkinnedMeshRenderer mesh in ragdollParts)
-        {
-            mesh.material = matClone;
-        }
     }
 
     void TypeChange(int i)
@@ -237,6 +241,7 @@ public class NewMonsterMovement : MonoBehaviour
             if(AType == -1)
                 animator.SetInteger("AttackType", Random.Range(0, 2));
             agent.isStopped = true;
+            audioSource.PlayOneShot(clips[2]);
             animator.SetTrigger("Attack");
         }
     }
@@ -250,12 +255,15 @@ public class NewMonsterMovement : MonoBehaviour
 
     void DeadWithRagdoll()
     {
+        animator.SetBool("Dead", true);
+        StopCoroutine(IdleSound());
+        audioSource.Stop();
+        audioSource.PlayOneShot(clips[0]);
         GetComponent<BoxCollider>().enabled = false;
         OffHitBox();
         animator.enabled = false;
         bodys.SetActive(false);
         ragdoll.SetActive(true);
-        Invoke("StartDissolve", 4);
     }
 
     //---------------------------------------------
@@ -298,11 +306,6 @@ public class NewMonsterMovement : MonoBehaviour
         StartCoroutine(SetAgent());
     }
 
-    void StartDissolve()
-    {
-        StartCoroutine(AAAA());
-    }
-
     //---------------------------------------------------------
 
     IEnumerator SetAgent()
@@ -322,16 +325,14 @@ public class NewMonsterMovement : MonoBehaviour
         animator.SetBool("AttackDelayed", false);
     }
 
-    IEnumerator AAAA()
+    IEnumerator IdleSound()
     {
-        float i = 0;
-        while (i <= 2)
+        yield return new WaitForSeconds(Random.Range(5f,10f));
+        if(!animator.GetBool("Dead"))
         {
-            yield return new WaitForSecondsRealtime(0.05f);
-            i += 0.05f;
-            matClone.SetFloat("_Float", i);
+            audioSource.PlayOneShot(clips[1]);
+            StartCoroutine(IdleSound());
         }
-        gameObject.SetActive(false);
     }
 
     //---------------------------------------------------------
