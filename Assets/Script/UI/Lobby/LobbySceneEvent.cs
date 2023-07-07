@@ -70,6 +70,14 @@ public class LobbySceneEvent : MonoBehaviour
             SaveDataManager.Instance.saveDatas[SaveDataManager.Instance.currentSaveFileIndex].isStateTutorialClear = true;
         else if(index == 2)
             SaveDataManager.Instance.saveDatas[SaveDataManager.Instance.currentSaveFileIndex].isOperatorTutorialClear = true;
+    }
 
+    public void EnableSettingCanvas()
+    {
+        if (UIManager.Instance.optionCanvas != null)
+        {
+            UIManager.Instance.optionCanvas.SetActive(true);
+            UIManager.Instance.OpenUI(UIManager.Instance.optionCanvas);
+        }
     }
 }

@@ -216,7 +216,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &56748165
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2008,7 +2008,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 455000843}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 890081420}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1401222149}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &455000843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2296,6 +2320,7 @@ GameObject:
   - component: {fileID: 686259033}
   - component: {fileID: 686259032}
   - component: {fileID: 686259031}
+  - component: {fileID: 686259034}
   m_Layer: 5
   m_Name: OperationsButton
   m_TagString: Untagged
@@ -2431,6 +2456,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 686259034}
+        m_TargetAssemblyTypeName: ImageHover, Assembly-CSharp
+        m_MethodName: EnabledImageHover
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &686259032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2469,6 +2506,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 686259029}
   m_CullTransparentMesh: 1
+--- !u!114 &686259034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686259029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8783e3a4fc51fb045a33676abbf03046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 686259032}
+  originalSprite: {fileID: 21300000, guid: df603aef265700f43b3621aff666a1bc, type: 3}
+  hoverSprite: {fileID: 21300000, guid: 63e3c36bd926aac4eb759501ca3aee34, type: 3}
 --- !u!1 &686950182
 GameObject:
   m_ObjectHideFlags: 0
@@ -3894,6 +3946,7 @@ GameObject:
   - component: {fileID: 1068367724}
   - component: {fileID: 1068367723}
   - component: {fileID: 1068367722}
+  - component: {fileID: 1068367725}
   m_Layer: 5
   m_Name: StatesButton
   m_TagString: Untagged
@@ -4029,6 +4082,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1068367725}
+        m_TargetAssemblyTypeName: ImageHover, Assembly-CSharp
+        m_MethodName: EnabledImageHover
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1068367723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4067,6 +4132,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1068367720}
   m_CullTransparentMesh: 1
+--- !u!114 &1068367725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068367720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8783e3a4fc51fb045a33676abbf03046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 1068367723}
+  originalSprite: {fileID: 21300000, guid: 0d9f51bd6a295bf4ab5929f3ac038cf7, type: 3}
+  hoverSprite: {fileID: 21300000, guid: faa9d958af9647148848e4645b352a82, type: 3}
 --- !u!1 &1086040894
 GameObject:
   m_ObjectHideFlags: 0
@@ -4165,7 +4245,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1086040898}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 368780917}
+        m_TargetAssemblyTypeName: LobbySceneEvent, Assembly-CSharp
+        m_MethodName: EnableSettingCanvas
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1086040898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4834,7 +4926,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1401222150
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5788,7 +5880,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fbb51f1360335794f902bda56705861f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5b79b37a9c7b9d94fb524c7fde43c70b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6512,6 +6604,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 21300000, guid: d78b59b5bf4829240a8832414465a220,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2076563045}
+        m_TargetAssemblyTypeName: ImageHover, Assembly-CSharp
+        m_MethodName: EnabledImageHover
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

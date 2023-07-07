@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using System;
 
 public class UIManager : Singleton<UIManager>
 {
@@ -10,6 +12,9 @@ public class UIManager : Singleton<UIManager>
     public Scrollbar masterVolume;
     public Scrollbar bgmVolume;
     public Scrollbar sfxVolume;
+    public TextMeshProUGUI masterVolumeText;
+    public TextMeshProUGUI bgmVolumeText;
+    public TextMeshProUGUI sfxVolumeText;
     public GameObject optionCanvas;
 
 
@@ -104,6 +109,10 @@ public class UIManager : Singleton<UIManager>
         if (masterVolume.value <= 0) masterVolume.value = 0.001f;
         if (bgmVolume.value <= 0) bgmVolume.value = 0.001f;
         if (sfxVolume.value <= 0) sfxVolume.value = 0.001f;
+
+        masterVolumeText.text = Mathf.Round(masterVolume.value * 100).ToString();
+        bgmVolumeText.text = Mathf.Round(bgmVolume.value * 100).ToString();
+        sfxVolumeText.text = Mathf.Round(sfxVolume.value * 100).ToString();
     }
 
 }
