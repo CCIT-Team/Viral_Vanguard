@@ -84,6 +84,8 @@ MonoBehaviour:
     audio: {fileID: 8300000, guid: 5b02d1cb97ccdb04493fcd51e2f93032, type: 3}
   - soundName: PlayerDeath2
     audio: {fileID: 8300000, guid: 3f6817621b8e8a6419000c5bde0d1bea, type: 3}
+  - soundName: JustGuardSwing
+    audio: {fileID: 8300000, guid: 22e3d0fdf1b029a44b5c80cc0b2a0ebe, type: 3}
   - soundName: Walk
     audio: {fileID: 8300000, guid: 615463dc472fa0e488a122b3fc0609ad, type: 3}
   - soundName: NormalAttack_1

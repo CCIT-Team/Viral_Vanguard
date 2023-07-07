@@ -129,6 +129,7 @@ public class BehaviourController : MonoBehaviour
             if (justGuard == true)
             {
                 particleSystems[0].Play();
+                JustGuardSound();
                 StartCoroutine(JustGuardTimeScale());
             }
         }
@@ -589,6 +590,11 @@ public class BehaviourController : MonoBehaviour
     {
         SoundManager.instance.OnShot("PlayerJustGuard1");
         SoundManager.instance.OnShot("PlayerJustGuard2");
+    }
+
+    public void JustGuardSwingSound()
+    {
+        SoundManager.instance.OnShot("JustGuardSwing");
     }
         #endregion
 }
