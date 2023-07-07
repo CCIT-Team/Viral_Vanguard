@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEditor.Animations;
 
 /// <summary>
 /// 가드 행동 카메라가 보고 있는 방향으로 가드가 진행됨
@@ -18,6 +18,7 @@ public class GuardBehaviour : GenericBehaviour
     private BigBangBehaviour bigBangBehaviour;
     public float reducedStaminaGuard;
     public bool isJustGuardDelay;
+    public AvatarMask avatarMask;
 
     //각 행동 쿨타임
 
@@ -138,4 +139,5 @@ public class GuardBehaviour : GenericBehaviour
     {
         Time.timeScale = 1f;
     }
+
 }
