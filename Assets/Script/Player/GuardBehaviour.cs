@@ -90,8 +90,9 @@ public class GuardBehaviour : GenericBehaviour
         {
             guardMouseLock = true;
             behaviourController.myAnimator.SetTrigger("JustGuard");
+            behaviourController.JustGuardSwingSound();
             behaviourController.currentStamina -= 20f;
-            if (behaviourController.MonsterAttack && !isJustGuardDelay)
+            if (behaviourController.MonsterAttack)
             {
                 behaviourController.JustGuard = true;
                 BossMove.instacne.SetStiffen(0);
@@ -106,7 +107,7 @@ public class GuardBehaviour : GenericBehaviour
                 behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
                 
             }
-            else if (behaviourController.NormalMonsterAttack && !isJustGuardDelay)
+            else if (behaviourController.NormalMonsterAttack)
             {
                 behaviourController.JustGuard = true;
                 MonsterMovement.instance.Stiffen = true;
