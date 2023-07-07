@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shock
-  m_Shader: {fileID: -6465566751694194690, guid: d600bdda08c0e8640b4daeff6cd6b8de,
+  m_Name: ShockWave
+  m_Shader: {fileID: -6465566751694194690, guid: a9f24cd820277404599d748d7f540c41,
     type: 3}
   m_ValidKeywords:
   - _DISABLE_SSR_TRANSPARENT
@@ -30,8 +30,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: -3812510725392781086, guid: 64e616aba2b73c24a86bc667fb3e4f78,
-          type: 2}
+        m_Texture: {fileID: 2800000, guid: 7b157b7fdfc24f34aa86e1698a5fd4b6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -54,6 +53,7 @@ Material:
     - _AlphaSrcBlend: 1
     - _AlphaToMask: 0
     - _AlphaToMaskInspectorValue: 0
+    - _Amplitude: 0.36
     - _BlendMode: 0
     - _ConservativeDepthOffsetEnable: 0
     - _CullMode: 0
@@ -63,9 +63,12 @@ Material:
     - _DoubleSidedGIMode: 0
     - _DoubleSidedNormalMode: 2
     - _DstBlend: 0
+    - _EdgeBlend: 0.78
+    - _EffectRadius: 4.42
     - _EnableBlendModePreserveSpecularLighting: 1
     - _EnableFogOnTransparent: 1
-    - _Magnification: -0.2
+    - _Frequency: 0.5
+    - _GradientEdge: 1.14
     - _OpaqueCullMode: 2
     - _RayTracing: 0
     - _ReceivesSSR: 1
@@ -73,8 +76,8 @@ Material:
     - _RefractionModel: 0
     - _RenderQueueType: 1
     - _RequireSplitLighting: 0
-    - _Size: 0.02
-    - _Speed: 0.34
+    - _RippleDensity: 0.25
+    - _Speed: 2.37
     - _SrcBlend: 1
     - _StencilRef: 0
     - _StencilRefDepth: 8
@@ -103,9 +106,10 @@ Material:
     m_Colors:
     - _DoubleSidedConstants: {r: 1, g: 1, b: 1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _FocalPoint: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - _GradientColor: {r: 1, g: 0.0916364, b: 0, a: 0}
+    - _RippleOrigin: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &760734764209209360
+--- !u!114 &2332265842066564555
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
