@@ -126716,6 +126716,13 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.93333334
+    functionName: StartDash
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0.15
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.93333334
     functionName: DoAttack
     data: 
     objectReferenceParameter: {fileID: 0}
@@ -126723,20 +126730,6 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.93333334
-    functionName: CanJustGuard
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.93333334
-    functionName: StartDash
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0.15
-    intParameter: 0
-    messageOptions: 0
-  - time: 1.4
     functionName: CanJustGuard
     data: 
     objectReferenceParameter: {fileID: 0}
@@ -126756,6 +126749,13 @@ AnimationClip:
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 11
+    messageOptions: 0
+  - time: 1.4
+    functionName: CanJustGuard
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
     messageOptions: 0
   - time: 1.4666667
     functionName: SFXShot
@@ -126772,6 +126772,13 @@ AnimationClip:
     intParameter: 1
     messageOptions: 0
   - time: 1.6
+    functionName: ActiveCollider
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 11
+    messageOptions: 0
+  - time: 1.6
     functionName: DoAttack
     data: 
     objectReferenceParameter: {fileID: 0}
@@ -126785,7 +126792,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.6
+  - time: 2.1666667
     functionName: ActiveCollider
     data: 
     objectReferenceParameter: {fileID: 0}
@@ -126798,13 +126805,6 @@ AnimationClip:
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
-    messageOptions: 0
-  - time: 2.1666667
-    functionName: ActiveCollider
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 11
     messageOptions: 0
   - time: 2.1666667
     functionName: DoAttack
