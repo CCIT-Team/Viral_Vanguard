@@ -128,10 +128,16 @@ public class BehaviourController : MonoBehaviour
             justGuard = value;
             if (justGuard == true)
             {
-                myAnimator.SetTrigger("JustGuard");
                 particleSystems[0].Play();
+                StartCoroutine(JustGuardTimeScale());
             }
         }
+    }
+    IEnumerator JustGuardTimeScale()
+    {
+        Time.timeScale = 0.1f;
+        yield return new WaitForSeconds(0.1f);
+        Time.timeScale = 1f;
     }
 
     public bool Stiffen

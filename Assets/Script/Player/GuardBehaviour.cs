@@ -19,11 +19,13 @@ public class GuardBehaviour : GenericBehaviour
     public float reducedStaminaGuard;
     public bool isJustGuardDelay;
     public AvatarMask avatarMask;
+    public bool guardMouseLock;
 
     //각 행동 쿨타임
 
     private void Start()
     {
+        guardMouseLock = false;
         guardBool = Animator.StringToHash(AnimatorKey.Guard);
         evasionBehaviour = GetComponent<EvasionBehaviour>();
         attackBehaviour = GetComponent<AttackBehaviour>();
@@ -68,24 +70,27 @@ public class GuardBehaviour : GenericBehaviour
             evasionBehaviour.mouseLock = false;
             attackBehaviour.mouseLock = false;
             bigBangBehaviour.mouseLock = false;
+            guardMouseLock = false;
             behaviourController.myAnimator.SetBool(evasionBehaviour.keyLock, evasionBehaviour.mouseLock);
             behaviourController.myAnimator.SetBool(attackBehaviour.keyLock, attackBehaviour.mouseLock);
             behaviourController.myAnimator.SetBool(bigBangBehaviour.keyLock, bigBangBehaviour.mouseLock);
         }
 
-        if (Input.GetAxisRaw(ButtonKey.Guard) != 0 && !behaviourController.guard && !evasionBehaviour.mouseLock && !attackBehaviour.mouseLock && !bigBangBehaviour.mouseLock && behaviourController.currentStamina >= 0.1) //스테미나 없으면 불가능
+        if (Input.GetAxisRaw(ButtonKey.Guard) != 0 && !behaviourController.guard && !guardMouseLock && !evasionBehaviour.mouseLock && !attackBehaviour.mouseLock && !bigBangBehaviour.mouseLock && behaviourController.currentStamina >= 0.1 ) //스테미나 없으면 불가능
         {
             StartCoroutine(ToggleGuardOn());
 
         }
-        else if (behaviourController.guard && Input.GetAxisRaw(ButtonKey.Guard) == 0 || evasionBehaviour.mouseLock || attackBehaviour.mouseLock || bigBangBehaviour.mouseLock || behaviourController.currentStamina <= 0)
+        else if (behaviourController.guard && Input.GetAxisRaw(ButtonKey.Guard) == 0 || guardMouseLock || evasionBehaviour.mouseLock || attackBehaviour.mouseLock || bigBangBehaviour.mouseLock || behaviourController.currentStamina <= 0)
         {
             StartCoroutine(ToggleGuardOff());
         }
 
-        if(Input.GetKeyDown(KeyCode.Space) && behaviourController.guard)
+        if(Input.GetKeyDown(KeyCode.Space) && behaviourController.guard && !isJustGuardDelay && behaviourController.currentStamina > 20f)
         {
-            
+            guardMouseLock = true;
+            behaviourController.myAnimator.SetTrigger("JustGuard");
+            behaviourController.currentStamina -= 20f;
             if (behaviourController.MonsterAttack && !isJustGuardDelay)
             {
                 behaviourController.JustGuard = true;
@@ -130,14 +135,4 @@ public class GuardBehaviour : GenericBehaviour
         behaviourController.JustGuard = false;
         behaviourController.guard = false;
     }
-
-    public void JustGuardTimeScaleChage()
-    {
-        Time.timeScale = 0.1f;
-    }
-    public void JustGuardTimeScaleCurrent()
-    {
-        Time.timeScale = 1f;
-    }
-
 }
