@@ -10,17 +10,11 @@ public class ThrowMonster : MonoBehaviour
     void Start()
     {
         transform.rotation = new Quaternion(0, 0, 0, 0);
+        throwMonster[0].AddForce(Vector3.right * throwforce * 3);
+        throwMonster[0].AddForce(Vector3.up * throwforce);
+        throwMonster[1].AddForce(Vector3.right * throwforce * 3);
+        throwMonster[1].AddForce(Vector3.up * throwforce);
+        throwMonster[2].AddForce(Vector3.right * throwforce * 3);
+        throwMonster[2].AddForce(Vector3.up * throwforce);
     }
-
-    private void Update()
-    {
-        transform.rotation = new Quaternion(0,0,0,0);
-        throwMonster[0].AddForce(Vector3.right * throwforce);
-        throwMonster[0].AddForce(Vector3.up * throwforce * 2);
-        throwMonster[1].AddForce(Vector3.right * throwforce);
-        throwMonster[1].AddForce(Vector3.up * throwforce * 2);
-        throwMonster[2].AddForce(Vector3.right * throwforce);
-        throwMonster[2].AddForce(Vector3.up * throwforce * 2);
-    }
-
 }
