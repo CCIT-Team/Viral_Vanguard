@@ -79151,13 +79151,6 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.8
-    functionName: OnEffectObject
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 7
-    messageOptions: 0
   - time: 1.8333334
     functionName: CanJustGuard
     data: 
@@ -79166,11 +79159,11 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 1.8333334
-    functionName: DoAttack
+    functionName: OnEffectObject
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 12
     messageOptions: 0
   - time: 1.8333334
     functionName: ActiveCollider
@@ -79178,6 +79171,13 @@ AnimationClip:
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 7
+    messageOptions: 0
+  - time: 1.8333334
+    functionName: DoAttack
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
     messageOptions: 0
   - time: 3.0666666
     functionName: OnEffectObject
