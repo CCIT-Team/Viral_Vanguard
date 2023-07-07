@@ -6,7 +6,10 @@ public class NewMonsterMovement : MonoBehaviour
 {
     //-------------------------------------------------------------
     //State 받아올 값들
+    [Header("State")]
     public MonsterState monsterStat;
+    
+
     EMonsterType type = EMonsterType.None;
     public EMonsterType MType
     {
@@ -63,16 +66,21 @@ public class NewMonsterMovement : MonoBehaviour
 
     //-------------------------------------------------------------
     //네비메쉬 관련
+
+    [Space(10)]
+    [Header("Nev")]
+    public Transform patrolPoint;   //패트롤 다닐 위치
     NavMeshAgent agent;
     Transform target;               //메쉬 타겟
-    Vector3 spawnPoint;           //전투 이탈시 복귀장소
-    public Transform patrolPoint;   //패트롤 다닐 위치
+    Vector3 spawnPoint;           //전투 이탈시 복귀장소 
+    
 
     //-------------------------------------------------------------
     //공격, 피격 관련
-
-    public MonsterAttack[] hitBox;
+    [Header("Collisoin")]
     public MonsterRange attackRange;
+    public MonsterAttack[] hitBox;
+   
     bool isAttack = false;
 
     //-------------------------------------------------------------
@@ -80,8 +88,9 @@ public class NewMonsterMovement : MonoBehaviour
     Animator animator;
 
     AudioSource audioSource;
+    [Header("Sound")]
     [SerializeField]
-    AudioClip[] clips;
+    AudioClip[] sounds;
      
     EMonsterState state = EMonsterState.Patrol;
     public EMonsterState State
@@ -147,7 +156,6 @@ public class NewMonsterMovement : MonoBehaviour
     bool stiffen;
 
     public MonsterRange detectRange;
-
     public MonsterRange searchRange;
 
     public ParticleSystem[] blood;
@@ -189,12 +197,10 @@ public class NewMonsterMovement : MonoBehaviour
                                     3
                                   ];
             if (!audioSource.isPlaying)
-                audioSource.PlayOneShot(clips[
-                                                BehaviourController.instance.myAnimator.GetBool(AnimatorKey.Attack1) ? 3 :
-                                                BehaviourController.instance.myAnimator.GetBool(AnimatorKey.Attack2) ? 4 :
-                                                BehaviourController.instance.myAnimator.GetBool(AnimatorKey.Attack3) ? 5 :
-                                                3
-                                              ]);
+                if (BehaviourController.instance.myAnimator.GetBool(AnimatorKey.Attack3))
+                    audioSource.PlayOneShot(sounds[5]);
+                else
+                    audioSource.PlayOneShot(sounds[Random.Range(3, 5)]);
         }
     }
 
@@ -241,7 +247,7 @@ public class NewMonsterMovement : MonoBehaviour
             if(AType == -1)
                 animator.SetInteger("AttackType", Random.Range(0, 2));
             agent.isStopped = true;
-            audioSource.PlayOneShot(clips[2]);
+            audioSource.PlayOneShot(sounds[2]);
             animator.SetTrigger("Attack");
         }
     }
@@ -258,7 +264,7 @@ public class NewMonsterMovement : MonoBehaviour
         animator.SetBool("Dead", true);
         StopCoroutine(IdleSound());
         audioSource.Stop();
-        audioSource.PlayOneShot(clips[0]);
+        audioSource.PlayOneShot(sounds[0]);
         GetComponent<BoxCollider>().enabled = false;
         OffHitBox();
         animator.enabled = false;
@@ -330,7 +336,7 @@ public class NewMonsterMovement : MonoBehaviour
         yield return new WaitForSeconds(Random.Range(5f,10f));
         if(!animator.GetBool("Dead"))
         {
-            audioSource.PlayOneShot(clips[1]);
+            audioSource.PlayOneShot(sounds[1]);
             StartCoroutine(IdleSound());
         }
     }

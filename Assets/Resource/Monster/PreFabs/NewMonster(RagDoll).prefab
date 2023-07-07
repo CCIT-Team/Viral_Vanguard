@@ -3784,12 +3784,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterStat: {fileID: 11400000, guid: ddaf2e768a013e84bafe3fff2781d25e, type: 2}
   patrolPoint: {fileID: 5683415898228625885}
+  attackRange: {fileID: 2386599822438938622}
   hitBox:
   - {fileID: 6442282980862255040}
   - {fileID: 3205072736386768625}
   - {fileID: 5653196782875225850}
-  attackRange: {fileID: 2386599822438938622}
-  clips:
+  sounds:
   - {fileID: 8300000, guid: 0d461b53886fcfa41b96a452d7b7fb6e, type: 3}
   - {fileID: 8300000, guid: 1ec5798b7b13e9e4aa63debd0805dcde, type: 3}
   - {fileID: 8300000, guid: fb3943713108ba7479ac345cda5b0a14, type: 3}
