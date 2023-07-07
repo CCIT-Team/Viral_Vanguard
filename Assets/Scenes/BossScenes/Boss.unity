@@ -130,6 +130,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 213664446, guid: 1b969a6f49e974a47be9c63ae35eb637, type: 3}
+      propertyPath: m_TagString
+      value: BossAttackCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 903104873, guid: 1b969a6f49e974a47be9c63ae35eb637, type: 3}
+      propertyPath: m_TagString
+      value: BossAttackCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 1752752380, guid: 1b969a6f49e974a47be9c63ae35eb637, type: 3}
+      propertyPath: m_TagString
+      value: BossAttackCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 2144467631, guid: 1b969a6f49e974a47be9c63ae35eb637, type: 3}
+      propertyPath: m_TagString
+      value: BossAttackCollider
+      objectReference: {fileID: 0}
     - target: {fileID: 6923057538337079492, guid: 1b969a6f49e974a47be9c63ae35eb637,
         type: 3}
       propertyPath: m_RootOrder
@@ -184,6 +200,46 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7465030136957794004, guid: 1b969a6f49e974a47be9c63ae35eb637,
+        type: 3}
+      propertyPath: m_TagString
+      value: BossAttackCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 7465030137129863586, guid: 1b969a6f49e974a47be9c63ae35eb637,
+        type: 3}
+      propertyPath: m_TagString
+      value: BossAttackCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 7465030137332675122, guid: 1b969a6f49e974a47be9c63ae35eb637,
+        type: 3}
+      propertyPath: m_TagString
+      value: BossAttackCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 7465030137590315248, guid: 1b969a6f49e974a47be9c63ae35eb637,
+        type: 3}
+      propertyPath: m_TagString
+      value: BossAttackCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 7465030137663554727, guid: 1b969a6f49e974a47be9c63ae35eb637,
+        type: 3}
+      propertyPath: m_TagString
+      value: BossAttackCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 7465030137692664668, guid: 1b969a6f49e974a47be9c63ae35eb637,
+        type: 3}
+      propertyPath: m_TagString
+      value: BossAttackCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 7465030138032853314, guid: 1b969a6f49e974a47be9c63ae35eb637,
+        type: 3}
+      propertyPath: m_TagString
+      value: BossAttackCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 7465030138089089601, guid: 1b969a6f49e974a47be9c63ae35eb637,
+        type: 3}
+      propertyPath: m_TagString
+      value: BossAttackCollider
       objectReference: {fileID: 0}
     - target: {fileID: 7735060496845134462, guid: 1b969a6f49e974a47be9c63ae35eb637,
         type: 3}
