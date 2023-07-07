@@ -15,7 +15,13 @@ public class SpawnMonster : MonoBehaviour
         for(int i = 0; i<monsterAmount;i++)
         {
             GameObject monster = Instantiate(monsterPrefab, this.transform.position + new Vector3(Mathf.Cos(Mathf.PI * 2 / monsterAmount * i), 0, Mathf.Sin(Mathf.PI * 2 / monsterAmount * i)) * spawnRange, Quaternion.identity);
-            monster.GetComponentInChildren<MonsterMovement>().patrolRange = patrolRange -2;
+            if(monster.TryGetComponent(out NewMonsterMovement movement))
+            {
+            }
+            else
+            {
+                monster.GetComponentInChildren<MonsterMovement>().patrolRange = patrolRange - 2;
+            }
         }
     }
 }

@@ -97,7 +97,7 @@ public class GuardBehaviour : GenericBehaviour
         if (behaviourController.NormalMonsterAttack && !isJustGuardDelay && Input.GetKeyDown(KeyCode.Space) && behaviourController.guard)
         {
             behaviourController.JustGuard = true;
-            MonsterMovement.instance.Stiffen = true;
+            NewMonsterMovement.instance.Stiffen = true;
             behaviourController.currentKineticEnergy += 5f;
             behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
             //StartCoroutine(JustGuardOnce());

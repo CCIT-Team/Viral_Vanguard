@@ -5,8 +5,14 @@ using UnityEngine;
 public class MonsterAttack : MonoBehaviour
 {
     int attackType = 0;
-    public MonsterMovement monster;
-    public Collider col;
+    NewMonsterMovement monster;
+    Collider col;
+
+    private void Start()
+    {
+        monster = GetComponentInParent<NewMonsterMovement>();
+        col = GetComponent<Collider>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {

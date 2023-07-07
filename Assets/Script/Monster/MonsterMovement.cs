@@ -29,7 +29,7 @@ public class MonsterMovement : MonoBehaviour
 
     public ParticleSystem[] blood;
 
-    float[] damage = { 5, 6, 13, 10 };
+    float[] damage = { 5, 6, 13, 100 };
     bool isDead = false;
 
     public bool Stiffen
