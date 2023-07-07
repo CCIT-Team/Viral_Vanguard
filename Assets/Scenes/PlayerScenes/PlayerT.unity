@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 261.8021, g: 324.32925, b: 429.24924, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6999,6 +6999,7 @@ MonoBehaviour:
   reducedStaminaGuard: 10
   isJustGuardDelay: 0
   avatarMask: {fileID: 0}
+  guardMouseLock: 0
 --- !u!114 &6764242949971911991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7287,6 +7288,7 @@ MonoBehaviour:
   reducedStaminaGuard: 10
   isJustGuardDelay: 0
   avatarMask: {fileID: 0}
+  guardMouseLock: 0
 --- !u!114 &6832512289473269508
 MonoBehaviour:
   m_ObjectHideFlags: 0
