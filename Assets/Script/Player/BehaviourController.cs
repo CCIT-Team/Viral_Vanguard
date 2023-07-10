@@ -74,6 +74,8 @@ public class BehaviourController : MonoBehaviour
     public GameObject[] gameObjectsEffects; //키네틱 온 오프
     public Transform[] soundPosition;
 
+    public bool justGuardChecker = false;
+
     public bool GuardHit
     {
         get { return guardHit; }
@@ -126,11 +128,13 @@ public class BehaviourController : MonoBehaviour
         set
         {
             justGuard = value;
-            if (justGuard == true)
+            if (justGuardChecker == true && justGuard == true)
             {
                 particleSystems[0].Play();
                 JustGuardSound();
+                BossMove.instacne.SetStiffen(0);
                 StartCoroutine(JustGuardTimeScale());
+                Debug.Log("실행돰");
             }
         }
     }

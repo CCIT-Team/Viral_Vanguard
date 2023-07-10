@@ -21,6 +21,9 @@ public class GuardBehaviour : GenericBehaviour
     public AvatarMask avatarMask;
     public bool guardMouseLock;
 
+
+    public BoxCollider bossAttackCheckCollider;
+
     //각 행동 쿨타임
 
     private void Start()
@@ -94,8 +97,8 @@ public class GuardBehaviour : GenericBehaviour
             behaviourController.currentStamina -= 20f;
             if (behaviourController.MonsterAttack)
             {
+                Debug.Log("보스 공격 확인");
                 behaviourController.JustGuard = true;
-                BossMove.instacne.SetStiffen(0);
                 if (behaviourController.currentKineticEnergy >= behaviourController.maxKineticEnergy)
                 {
                     behaviourController.currentKineticEnergy = 100f;
