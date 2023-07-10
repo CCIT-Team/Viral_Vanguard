@@ -7000,6 +7000,7 @@ MonoBehaviour:
   isJustGuardDelay: 0
   avatarMask: {fileID: 0}
   guardMouseLock: 0
+  bossAttackCheckCollider: {fileID: 0}
 --- !u!114 &6764242949971911991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7057,6 +7058,7 @@ MonoBehaviour:
   particleSystems: []
   gameObjectsEffects: []
   soundPosition: []
+  justGuardChecker: 0
 --- !u!136 &6764242949971911993
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7202,6 +7204,7 @@ MonoBehaviour:
   particleSystems: []
   gameObjectsEffects: []
   soundPosition: []
+  justGuardChecker: 0
 --- !u!136 &6832512289473269503
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7289,6 +7292,7 @@ MonoBehaviour:
   isJustGuardDelay: 0
   avatarMask: {fileID: 0}
   guardMouseLock: 0
+  bossAttackCheckCollider: {fileID: 0}
 --- !u!114 &6832512289473269508
 MonoBehaviour:
   m_ObjectHideFlags: 0
