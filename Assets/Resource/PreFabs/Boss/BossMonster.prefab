@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 213664448}
   m_Layer: 0
   m_Name: NormalAttack3_2
-  m_TagString: Untagged
+  m_TagString: BossAttackCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 213664446}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.024, y: 0.067, z: -0.273}
+  m_LocalPosition: {x: -0.08, y: 0.255, z: -0.289}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -43,8 +43,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.36129564
-  m_Height: 0.9408699
+  m_Radius: 0.2
+  m_Height: 0.2
   m_Direction: 1
   m_Center: {x: -0.000000013129857, y: 0.07940586, z: -0.0000000111538165}
 --- !u!114 &213664448
@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 903104875}
   m_Layer: 0
   m_Name: ActionAttack1_2
-  m_TagString: Untagged
+  m_TagString: BossAttackCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -92,7 +92,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 903104873}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.001, y: 0.054, z: -0.016}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -109,8 +109,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.36129564
-  m_Height: 0.9408699
+  m_Radius: 0.2
+  m_Height: 0.2
   m_Direction: 1
   m_Center: {x: -0.000000013129857, y: 0.07940586, z: -0.0000000111538165}
 --- !u!114 &903104875
@@ -171,6 +171,8 @@ Transform:
   - {fileID: 3140056870264268259}
   - {fileID: 3140056871104444170}
   - {fileID: 3140056870759696882}
+  - {fileID: 3740961848982337655}
+  - {fileID: 4177437303608518806}
   m_Father: {fileID: 6923057538337079492}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -187,7 +189,7 @@ GameObject:
   - component: {fileID: 1752752382}
   m_Layer: 0
   m_Name: NormalAttack3_1
-  m_TagString: Untagged
+  m_TagString: BossAttackCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -200,7 +202,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1752752380}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.052, z: -0.278}
+  m_LocalPosition: {x: 0.063, y: 0.265, z: -0.297}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -217,8 +219,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.36129564
-  m_Height: 0.9408699
+  m_Radius: 0.2
+  m_Height: 0.2
   m_Direction: 1
   m_Center: {x: -0.000000013129857, y: 0.07940586, z: -0.0000000111538165}
 --- !u!114 &1752752382
@@ -253,7 +255,7 @@ GameObject:
   - component: {fileID: 2144467633}
   m_Layer: 0
   m_Name: ActionAttack1_1
-  m_TagString: Untagged
+  m_TagString: BossAttackCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -266,7 +268,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2144467631}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.016, y: 0.069, z: -0.052}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -283,8 +285,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.36129564
-  m_Height: 0.9408699
+  m_Radius: 0.2
+  m_Height: 0.2
   m_Direction: 1
   m_Center: {x: -0.000000013129857, y: 0.07940586, z: -0.0000000111538165}
 --- !u!114 &2144467633
@@ -2732,7 +2734,7 @@ GameObject:
   - component: {fileID: 7465030136957794006}
   m_Layer: 0
   m_Name: NormalAttack2_2
-  m_TagString: Untagged
+  m_TagString: BossAttackCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2745,7 +2747,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7465030136957794004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.044, y: 0.149, z: -0.013}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2762,8 +2764,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.36129564
-  m_Height: 0.9408699
+  m_Radius: 0.2
+  m_Height: 0.2
   m_Direction: 1
   m_Center: {x: -0.000000013129857, y: 0.07940586, z: -0.0000000111538165}
 --- !u!114 &7465030136957794006
@@ -2798,7 +2800,7 @@ GameObject:
   - component: {fileID: 7465030137129863596}
   m_Layer: 0
   m_Name: NormalAttack2_1
-  m_TagString: Untagged
+  m_TagString: BossAttackCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2811,7 +2813,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7465030137129863586}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.119, y: 0.175, z: -0.012}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2828,8 +2830,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.36129564
-  m_Height: 0.9408699
+  m_Radius: 0.2
+  m_Height: 0.2
   m_Direction: 1
   m_Center: {x: -0.000000013129857, y: 0.07940586, z: -0.0000000111538165}
 --- !u!114 &7465030137129863596
@@ -2984,7 +2986,7 @@ GameObject:
   - component: {fileID: 7465030137332675132}
   m_Layer: 0
   m_Name: SpecialAttack2_1
-  m_TagString: Untagged
+  m_TagString: BossAttackCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2997,7 +2999,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7465030137332675122}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.289, y: -0.067, z: 0.032}
+  m_LocalPosition: {x: 0.101, y: 0.112, z: 0.005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3014,8 +3016,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.57
-  m_Height: 0.9408699
+  m_Radius: 0.2
+  m_Height: 0.2
   m_Direction: 1
   m_Center: {x: -0.000000013129857, y: 0.07940586, z: -0.0000000111538165}
 --- !u!114 &7465030137332675132
@@ -3110,7 +3112,7 @@ GameObject:
   - component: {fileID: 7465030137590315250}
   m_Layer: 0
   m_Name: NormalAttack1
-  m_TagString: Untagged
+  m_TagString: BossAttackCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3123,7 +3125,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7465030137590315248}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.047, y: 0.157, z: -0.014}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3140,8 +3142,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.36129564
-  m_Height: 0.9408699
+  m_Radius: 0.2
+  m_Height: 0.2
   m_Direction: 1
   m_Center: {x: -0.000000013129857, y: 0.07940586, z: -0.0000000111538165}
 --- !u!114 &7465030137590315250
@@ -3176,7 +3178,7 @@ GameObject:
   - component: {fileID: 7465030137663554721}
   m_Layer: 0
   m_Name: SpecialAttack2_2
-  m_TagString: Untagged
+  m_TagString: BossAttackCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3189,7 +3191,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7465030137663554727}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.203, y: -0.095, z: 0}
+  m_LocalPosition: {x: -0.074, y: 0.12, z: -0.029}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3206,8 +3208,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.57
-  m_Height: 0.9408699
+  m_Radius: 0.2
+  m_Height: 0.2
   m_Direction: 1
   m_Center: {x: -0.000000013129857, y: 0.07940586, z: -0.0000000111538165}
 --- !u!114 &7465030137663554721
@@ -3242,7 +3244,7 @@ GameObject:
   - component: {fileID: 7465030137692664670}
   m_Layer: 0
   m_Name: SpecialAttack1_1
-  m_TagString: Untagged
+  m_TagString: BossAttackCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3255,7 +3257,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7465030137692664668}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.037, y: 0.124, z: -0.011}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3272,8 +3274,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.36129564
-  m_Height: 0.9408699
+  m_Radius: 0.5
+  m_Height: 0.5
   m_Direction: 1
   m_Center: {x: -0.000000013129857, y: 0.07940586, z: -0.0000000111538165}
 --- !u!114 &7465030137692664670
@@ -3428,7 +3430,7 @@ GameObject:
   - component: {fileID: 7465030138032853324}
   m_Layer: 0
   m_Name: SpecialAttack3
-  m_TagString: Untagged
+  m_TagString: BossAttackCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3440,8 +3442,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7465030138032853314}
-  m_LocalRotation: {x: 0.4128826, y: -0.7325099, z: -0.5190641, w: 0.15339358}
-  m_LocalPosition: {x: 0.66411585, y: 0.5894326, z: 0.52115923}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.063, y: -0.909, z: 0.193}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3458,8 +3460,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.36129564
-  m_Height: 0.9408699
+  m_Radius: 0.4
+  m_Height: 0.4
   m_Direction: 1
   m_Center: {x: -0.000000013129857, y: 0.07940586, z: -0.0000000111538165}
 --- !u!114 &7465030138032853324
@@ -3494,7 +3496,7 @@ GameObject:
   - component: {fileID: 7465030138089089603}
   m_Layer: 0
   m_Name: SpecialAttack1_2
-  m_TagString: Untagged
+  m_TagString: BossAttackCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3507,7 +3509,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7465030138089089601}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.046, y: 0.153, z: -0.013}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3524,8 +3526,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.36129564
-  m_Height: 0.9408699
+  m_Radius: 0.5
+  m_Height: 0.5
   m_Direction: 1
   m_Center: {x: -0.000000013129857, y: 0.07940586, z: -0.0000000111538165}
 --- !u!114 &7465030138089089603
@@ -3695,7 +3697,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6923057538337079492
 Transform:
   m_ObjectHideFlags: 0
@@ -3769,6 +3771,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70d16e0da7f512d4b9a11b500292b99b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  leftFoot: {fileID: 0}
+  rightFoot: {fileID: 0}
+  groundTransform: {fileID: 0}
   bossName: RedArms
   maxHealthPoint: 100
   currentHealthPoint: 100
@@ -3826,23 +3834,24 @@ MonoBehaviour:
   canBigStiffen: 0
   canAttack: 0
   attackDetections:
-  - {fileID: 7465030137590315248}
-  - {fileID: 7465030137129863586}
-  - {fileID: 7465030136957794004}
-  - {fileID: 7465030137692664668}
-  - {fileID: 7465030138089089601}
-  - {fileID: 7465030137332675122}
-  - {fileID: 7465030137663554727}
-  - {fileID: 7465030138032853314}
-  - {fileID: 1752752380}
-  - {fileID: 213664446}
-  - {fileID: 2144467631}
-  - {fileID: 903104873}
+  - {fileID: 7465030136397828673}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   listener: {fileID: 7735060496845134457}
   stageUIManager: {fileID: 0}
   bodyCollider: {fileID: 7735060496845134463}
   particleSystems: []
-  visualEffects: []
+  visualEffects:
+  - {fileID: 0}
   effectObject:
   - {fileID: 1457210786424224944}
   - {fileID: 6496175083735989933}
@@ -3855,6 +3864,8 @@ MonoBehaviour:
   - {fileID: 6496175084651987643}
   - {fileID: 6496175085223202898}
   - {fileID: 6496175085163163306}
+  - {fileID: 3746949829543199453}
+  - {fileID: 4173846089818853948}
   effectParent: {fileID: 1707237354}
   leftHand: {fileID: 4302875065094156084}
 --- !u!114 &7735060496845134457
@@ -3890,7 +3901,7 @@ MonoBehaviour:
     weight: 110
     bossAction: {fileID: 11400000, guid: d7a12a18998163e42bfbbd2202bf13ad, type: 2}
   - behaviorName: NormalAttack3
-    weight: 110
+    weight: 5000000
     bossAction: {fileID: 11400000, guid: 06a2b01cd7df81a4ca7cc44b543f6e91, type: 2}
   - behaviorName: ActionAttack1
     weight: 30
@@ -4196,6 +4207,228 @@ Transform:
   m_Father: {fileID: 4742901942448951890}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1555994983
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1707237355}
+    m_Modifications:
+    - target: {fileID: 3547639100066473954, guid: a9366c4d57730c84cbfaf1faec9526ca,
+        type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3547639100066473954, guid: a9366c4d57730c84cbfaf1faec9526ca,
+        type: 3}
+      propertyPath: stopAction
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3740961850114695440, guid: a9366c4d57730c84cbfaf1faec9526ca,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3740961850114695440, guid: a9366c4d57730c84cbfaf1faec9526ca,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 3740961850114695440, guid: a9366c4d57730c84cbfaf1faec9526ca,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 3740961850114695440, guid: a9366c4d57730c84cbfaf1faec9526ca,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 3740961850114695440, guid: a9366c4d57730c84cbfaf1faec9526ca,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3740961850114695440, guid: a9366c4d57730c84cbfaf1faec9526ca,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3740961850114695440, guid: a9366c4d57730c84cbfaf1faec9526ca,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.088
+      objectReference: {fileID: 0}
+    - target: {fileID: 3740961850114695440, guid: a9366c4d57730c84cbfaf1faec9526ca,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3740961850114695440, guid: a9366c4d57730c84cbfaf1faec9526ca,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3740961850114695440, guid: a9366c4d57730c84cbfaf1faec9526ca,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 3740961850114695440, guid: a9366c4d57730c84cbfaf1faec9526ca,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3740961850114695440, guid: a9366c4d57730c84cbfaf1faec9526ca,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 3740961850114695440, guid: a9366c4d57730c84cbfaf1faec9526ca,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3740961850114695440, guid: a9366c4d57730c84cbfaf1faec9526ca,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3746949830692084666, guid: a9366c4d57730c84cbfaf1faec9526ca,
+        type: 3}
+      propertyPath: m_Name
+      value: atk_ground1_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3746949830692084666, guid: a9366c4d57730c84cbfaf1faec9526ca,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a9366c4d57730c84cbfaf1faec9526ca, type: 3}
+--- !u!4 &3740961848982337655 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3740961850114695440, guid: a9366c4d57730c84cbfaf1faec9526ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 1555994983}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3746949829543199453 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3746949830692084666, guid: a9366c4d57730c84cbfaf1faec9526ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 1555994983}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &726115156669680006
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1707237355}
+    m_Modifications:
+    - target: {fileID: 3547639100066473954, guid: a9366c4d57730c84cbfaf1faec9526ca,
+        type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3547639100066473954, guid: a9366c4d57730c84cbfaf1faec9526ca,
+        type: 3}
+      propertyPath: stopAction
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3740961850114695440, guid: a9366c4d57730c84cbfaf1faec9526ca,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3740961850114695440, guid: a9366c4d57730c84cbfaf1faec9526ca,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 3740961850114695440, guid: a9366c4d57730c84cbfaf1faec9526ca,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 3740961850114695440, guid: a9366c4d57730c84cbfaf1faec9526ca,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 3740961850114695440, guid: a9366c4d57730c84cbfaf1faec9526ca,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.143
+      objectReference: {fileID: 0}
+    - target: {fileID: 3740961850114695440, guid: a9366c4d57730c84cbfaf1faec9526ca,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3740961850114695440, guid: a9366c4d57730c84cbfaf1faec9526ca,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.127
+      objectReference: {fileID: 0}
+    - target: {fileID: 3740961850114695440, guid: a9366c4d57730c84cbfaf1faec9526ca,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3740961850114695440, guid: a9366c4d57730c84cbfaf1faec9526ca,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3740961850114695440, guid: a9366c4d57730c84cbfaf1faec9526ca,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 3740961850114695440, guid: a9366c4d57730c84cbfaf1faec9526ca,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3740961850114695440, guid: a9366c4d57730c84cbfaf1faec9526ca,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 3740961850114695440, guid: a9366c4d57730c84cbfaf1faec9526ca,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3740961850114695440, guid: a9366c4d57730c84cbfaf1faec9526ca,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3746949830692084666, guid: a9366c4d57730c84cbfaf1faec9526ca,
+        type: 3}
+      propertyPath: m_Name
+      value: atk_jump
+      objectReference: {fileID: 0}
+    - target: {fileID: 3746949830692084666, guid: a9366c4d57730c84cbfaf1faec9526ca,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a9366c4d57730c84cbfaf1faec9526ca, type: 3}
+--- !u!1 &4173846089818853948 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3746949830692084666, guid: a9366c4d57730c84cbfaf1faec9526ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 726115156669680006}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4177437303608518806 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3740961850114695440, guid: a9366c4d57730c84cbfaf1faec9526ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 726115156669680006}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7465030136185072308
 PrefabInstance:
   m_ObjectHideFlags: 0

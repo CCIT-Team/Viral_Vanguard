@@ -126715,19 +126715,12 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.93333334
-    functionName: DoAttack
+  - time: 0
+    functionName: TrailActive
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.93333334
-    functionName: CanJustGuard
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
+    intParameter: 2
     messageOptions: 0
   - time: 0.93333334
     functionName: StartDash
@@ -126736,7 +126729,14 @@ AnimationClip:
     floatParameter: 0.15
     intParameter: 0
     messageOptions: 0
-  - time: 1.4
+  - time: 0.93333334
+    functionName: DoAttack
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.93333334
     functionName: CanJustGuard
     data: 
     objectReferenceParameter: {fileID: 0}
@@ -126756,6 +126756,20 @@ AnimationClip:
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 11
+    messageOptions: 0
+  - time: 1.4
+    functionName: CanJustGuard
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.4666667
+    functionName: SFXShot
+    data: ActionAttack_1
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
     messageOptions: 0
   - time: 1.5
     functionName: OnEffectObject
@@ -126765,6 +126779,13 @@ AnimationClip:
     intParameter: 1
     messageOptions: 0
   - time: 1.6
+    functionName: ActiveCollider
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 11
+    messageOptions: 0
+  - time: 1.6
     functionName: DoAttack
     data: 
     objectReferenceParameter: {fileID: 0}
@@ -126778,7 +126799,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.6
+  - time: 2.1666667
     functionName: ActiveCollider
     data: 
     objectReferenceParameter: {fileID: 0}
@@ -126786,11 +126807,11 @@ AnimationClip:
     intParameter: 11
     messageOptions: 0
   - time: 2.1666667
-    functionName: ActiveCollider
+    functionName: CanJustGuard
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 11
+    intParameter: 0
     messageOptions: 0
   - time: 2.1666667
     functionName: DoAttack
@@ -126799,9 +126820,9 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 2.1666667
-    functionName: CanJustGuard
-    data: 
+  - time: 2.2
+    functionName: SFXShot
+    data: ActionAttack_1
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
@@ -126814,14 +126835,14 @@ AnimationClip:
     intParameter: 2
     messageOptions: 0
   - time: 2.3666666
-    functionName: DoAttack
+    functionName: CanJustGuard
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 2.3666666
-    functionName: CanJustGuard
+    functionName: DoAttack
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -126840,6 +126861,13 @@ AnimationClip:
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 1
+    messageOptions: 0
+  - time: 3
+    functionName: TrailActive
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 2
     messageOptions: 0
   - time: 3.8666666
     functionName: OnEffectObject

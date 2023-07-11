@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEditor.Animations;
 
 /// <summary>
 /// 가드 행동 카메라가 보고 있는 방향으로 가드가 진행됨
@@ -17,12 +17,18 @@ public class GuardBehaviour : GenericBehaviour
     private AttackBehaviour attackBehaviour;
     private BigBangBehaviour bigBangBehaviour;
     public float reducedStaminaGuard;
-    private bool isJustGuardDelay;
+    public bool isJustGuardDelay;
+    public AvatarMask avatarMask;
+    public bool guardMouseLock;
+
+
+    public BoxCollider bossAttackCheckCollider;
 
     //각 행동 쿨타임
 
     private void Start()
     {
+        guardMouseLock = false;
         guardBool = Animator.StringToHash(AnimatorKey.Guard);
         evasionBehaviour = GetComponent<EvasionBehaviour>();
         attackBehaviour = GetComponent<AttackBehaviour>();
@@ -67,54 +73,70 @@ public class GuardBehaviour : GenericBehaviour
             evasionBehaviour.mouseLock = false;
             attackBehaviour.mouseLock = false;
             bigBangBehaviour.mouseLock = false;
+            guardMouseLock = false;
             behaviourController.myAnimator.SetBool(evasionBehaviour.keyLock, evasionBehaviour.mouseLock);
             behaviourController.myAnimator.SetBool(attackBehaviour.keyLock, attackBehaviour.mouseLock);
             behaviourController.myAnimator.SetBool(bigBangBehaviour.keyLock, bigBangBehaviour.mouseLock);
         }
 
-        if (Input.GetAxisRaw(ButtonKey.Guard) != 0 && !behaviourController.guard && !evasionBehaviour.mouseLock && !attackBehaviour.mouseLock && !bigBangBehaviour.mouseLock && behaviourController.currentStamina >= 0.1) //스테미나 없으면 불가능
+        if (Input.GetAxisRaw(ButtonKey.Guard) != 0 && !behaviourController.guard && !guardMouseLock && !evasionBehaviour.mouseLock && !attackBehaviour.mouseLock && !bigBangBehaviour.mouseLock && behaviourController.currentStamina >= 0.1 ) //스테미나 없으면 불가능
         {
             StartCoroutine(ToggleGuardOn());
 
         }
-        else if (behaviourController.guard && Input.GetAxisRaw(ButtonKey.Guard) == 0 || evasionBehaviour.mouseLock || attackBehaviour.mouseLock || bigBangBehaviour.mouseLock || behaviourController.currentStamina <= 0)
+        else if (behaviourController.guard && Input.GetAxisRaw(ButtonKey.Guard) == 0 || guardMouseLock || evasionBehaviour.mouseLock || attackBehaviour.mouseLock || bigBangBehaviour.mouseLock || behaviourController.currentStamina <= 0)
         {
             StartCoroutine(ToggleGuardOff());
         }
 
-
-        //저스트 가드
-        if (behaviourController.MonsterAttack && !isJustGuardDelay && Input.GetKeyDown(KeyCode.Space) && behaviourController.guard)
+        if(Input.GetKeyDown(KeyCode.Space) && behaviourController.guard && !isJustGuardDelay && behaviourController.currentStamina > 20f)
         {
-            behaviourController.JustGuard = true;
-            BossMove.instacne.SetStiffen(0);
-            behaviourController.currentKineticEnergy += 20f;
-            behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
-            //StartCoroutine(JustGuardOnce());
-        }
-
-        //일반 몬스터 저스트 가드
-        if (behaviourController.NormalMonsterAttack && !isJustGuardDelay && Input.GetKeyDown(KeyCode.Space) && behaviourController.guard)
-        {
-            behaviourController.JustGuard = true;
-            NewMonsterMovement.instance.Stiffen = true;
-            behaviourController.currentKineticEnergy += 5f;
-            behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
-            //StartCoroutine(JustGuardOnce());
+            guardMouseLock = true;
+            behaviourController.myAnimator.SetTrigger("JustGuard");
+            behaviourController.JustGuardSwingSound();
+            behaviourController.currentStamina -= 20f;
+            if (behaviourController.MonsterAttack)
+            {
+                Debug.Log("보스 공격 확인");
+                behaviourController.JustGuard = true;
+                if (behaviourController.currentKineticEnergy >= behaviourController.maxKineticEnergy)
+                {
+                    behaviourController.currentKineticEnergy = 100f;
+                }
+                else
+                {
+                    behaviourController.currentKineticEnergy += 20f;
+                }
+                behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
+                
+            }
+            else if (behaviourController.NormalMonsterAttack)
+            {
+                behaviourController.JustGuard = true;
+                MonsterMovement.instance.Stiffen = true;
+                if (behaviourController.currentKineticEnergy >= behaviourController.maxKineticEnergy)
+                {
+                    behaviourController.currentKineticEnergy = 100f;
+                }
+                else
+                {
+                    behaviourController.currentKineticEnergy += 5f;
+                }
+                behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
+            }
+            isJustGuardDelay = true;
+            StartCoroutine(JustGuardOnce());
         }
     }
 
     IEnumerator JustGuardOnce()
     {
-        isJustGuardDelay = true;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         isJustGuardDelay = false;
     }
-
     public void playerJustGuardFalse()
     {
         behaviourController.JustGuard = false;
-        //behaviourController.MonsterAttack = false;
-        //behaviourController.NormalMonsterAttack = false;
+        behaviourController.guard = false;
     }
 }

@@ -23,6 +23,12 @@ public class BossMove : MonoBehaviour
         }
     }
 
+    [Header("애니메이션 IK 부위")]
+    public LayerMask layerMask;
+    public Transform leftFoot;
+    public Transform rightFoot;
+    public Transform groundTransform;
+
     [Header("보스 스테이터스")]
     public string bossName;
     public float maxHealthPoint;
@@ -128,6 +134,7 @@ public class BossMove : MonoBehaviour
     [Header("이펙트 위치")]
     public GameObject effectParent;
     public GameObject leftHand;
+    public GameObject[] trails;
 
     void StartTracking()
     {
@@ -282,6 +289,29 @@ public class BossMove : MonoBehaviour
         animator.SetTrigger("Dead");
     }
 
+    public void SFXShot(string soundName)
+    {
+        SoundManager.instance.OnShot(soundName);
+    }
+
+    public void TrailActive(int i)
+    {
+        switch(i)
+        {
+            case 0:
+                trails[0].SetActive(trails[0].activeSelf ? false : true);
+                break;
+            case 1:
+                trails[1].SetActive(trails[1].activeSelf ? false : true);
+                break;
+            case 2:
+                Debug.Log(123123);
+                trails[0].SetActive(trails[0].activeSelf ? false : true);
+                trails[1].SetActive(trails[1].activeSelf ? false : true);
+                break;
+        }
+    }
+
     #region 플레이어 방향으로 돌기
 
     Quaternion targetRotation;
@@ -365,6 +395,55 @@ public class BossMove : MonoBehaviour
 
         effectObject[i].SetActive(b);
     }
+    #endregion
+
+    #region IK
+    //void OnAnimatorIK()
+    //{
+    //    if(animator)
+    //    {
+    //        animator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, 1);
+    //        animator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, 1);
+
+    //        float offset = (leftFoot.position - new Vector3(leftFoot.position.x, groundTransform.position.y, leftFoot.position.z)).sqrMagnitude;
+    //        float leftFootDistance = offset * offset + 0.4f;
+    //        Ray leftRay = new Ray(animator.GetIKPosition(AvatarIKGoal.LeftFoot) + Vector3.up, Vector3.down);
+
+    //        if(Physics.Raycast(leftRay, out RaycastHit leftHit, leftFootDistance + 1f, layerMask))
+    //        {
+    //            if(leftHit.transform.tag == "WalkableGround")
+    //            {
+    //                Vector3 footPosition = leftHit.point;
+    //                footPosition.y += leftFootDistance;
+
+    //                animator.SetIKPosition(AvatarIKGoal.LeftFoot, footPosition);
+    //                animator.SetIKRotation(AvatarIKGoal.LeftFoot, Quaternion.LookRotation(transform.forward, leftHit.normal));
+    //            }
+    //        }
+    //    }
+
+    //    if (animator)
+    //    {
+    //        animator.SetIKPositionWeight(AvatarIKGoal.RightFoot, 1);
+    //        animator.SetIKRotationWeight(AvatarIKGoal.RightFoot, 1);
+
+    //        float offset = (rightFoot.position - new Vector3(rightFoot.position.x, groundTransform.position.y, rightFoot.position.z)).sqrMagnitude;
+    //        float rightFootDistance = offset * offset + 0.4f;
+    //        Ray rightRay = new Ray(animator.GetIKPosition(AvatarIKGoal.RightFoot) + Vector3.up, Vector3.down);
+
+    //        if (Physics.Raycast(rightRay, out RaycastHit rightHit, rightFootDistance + 1f, layerMask))
+    //        {
+    //            if (rightHit.transform.tag == "WalkableGround")
+    //            {
+    //                Vector3 footPosition = rightHit.point;
+    //                footPosition.y += rightFootDistance;
+
+    //                animator.SetIKPosition(AvatarIKGoal.RightFoot, footPosition);
+    //                animator.SetIKRotation(AvatarIKGoal.RightFoot, Quaternion.LookRotation(transform.forward, rightHit.normal));
+    //            }
+    //        }
+    //    }
+    //}
     #endregion
 }
 

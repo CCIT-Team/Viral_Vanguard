@@ -109669,6 +109669,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0
+    functionName: TrailActive
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 2
+    messageOptions: 0
   - time: 0.36666667
     functionName: StartDash
     data: 
@@ -109693,6 +109700,13 @@ AnimationClip:
   - time: 0.8
     functionName: DoAttack
     data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.9
+    functionName: SFXShot
+    data: NormalAttack_2
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
@@ -109740,6 +109754,13 @@ AnimationClip:
     intParameter: 2
     messageOptions: 0
   - time: 1.9666667
+    functionName: SFXShot
+    data: NormalAttack_2
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.9666667
     functionName: DoAttack
     data: 
     objectReferenceParameter: {fileID: 0}
@@ -109769,6 +109790,13 @@ AnimationClip:
     messageOptions: 0
   - time: 2.1
     functionName: ActiveCollider
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 2
+    messageOptions: 0
+  - time: 2.4
+    functionName: TrailActive
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

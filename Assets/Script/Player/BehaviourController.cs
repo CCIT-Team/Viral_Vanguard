@@ -19,6 +19,9 @@ public class BehaviourController : MonoBehaviour
     private int defaultBehaviour;
     private int behaviourLocked;
 
+    public LayerMask playerIKLayerMask;
+    public Transform leftFootTransform;
+    public Transform rightFootTranform;
     public Transform playerCamera;
     public Transform myTransform;
     public Animator myAnimator;
@@ -32,6 +35,7 @@ public class BehaviourController : MonoBehaviour
     private bool changedFieldOfView;
 
     private Vector3 lastDirection;
+    private int speedFloat;
     private int horizontalFloat;
     private int verticalFloat;
     private int groundedBool;
@@ -44,26 +48,33 @@ public class BehaviourController : MonoBehaviour
     private bool rightStiffen;
     private bool leftStiffen;
 
-    private bool staminaCharge;
+    public bool staminaCharge;
     public float staminaChargeSpeed;
     public float currentStamina = 100f;
     public float maxStamina;
     public float maxKineticEnergy = 100f;
     public float currentKineticEnergy;
 
+    public float staminaCoolTime;
+    private float currentStaminaTime = 0f;
+
     public bool isDead;
     public bool isBigBang = false;
+    public bool isBigBang1 = false;
     public bool guard;
     private bool guardHit;       //가드중 몬스터가 때리면
     private bool justGuard;
     private bool guardBreak;
     private bool monsterAttack;
     private bool normalMosterAttack;
+    private int soundIndex;
     [HideInInspector]
     public int lockOn;
     public ParticleSystem[] particleSystems;  //0 저스트 가드, 1 가드 히트, 2 빅뱅, 3피격 왼, 4 피격 오, 5 가드 브레이크 6:플레이어 오른공, 7: 플레이어 왼공
-    public VisualEffect[] visualEffects; //0 빅뱅
     public GameObject[] gameObjectsEffects; //키네틱 온 오프
+    public Transform[] soundPosition;
+
+    public bool justGuardChecker = false;
 
     public bool GuardHit
     {
@@ -88,7 +99,7 @@ public class BehaviourController : MonoBehaviour
             if(guard == true)
             {
                 myAnimator.SetTrigger("GuardBreak");
-                particleSystems[5].Play();
+                particleSystems[9].Play();
             }
         }
     }
@@ -117,12 +128,21 @@ public class BehaviourController : MonoBehaviour
         set
         {
             justGuard = value;
-            if (justGuard == true)
+            if (justGuardChecker == true && justGuard == true)
             {
-                myAnimator.SetTrigger("JustGuard");
                 particleSystems[0].Play();
+                JustGuardSound();
+                BossMove.instacne.SetStiffen(0);
+                StartCoroutine(JustGuardTimeScale());
+                Debug.Log("실행돰");
             }
         }
+    }
+    IEnumerator JustGuardTimeScale()
+    {
+        Time.timeScale = 0.1f;
+        yield return new WaitForSeconds(0.1f);
+        Time.timeScale = 1f;
     }
 
     public bool Stiffen
@@ -134,6 +154,7 @@ public class BehaviourController : MonoBehaviour
             if (guard == false)
             {
                 myAnimator.SetBool("Stiffen", value);
+                SoundManager.instance.OnShot("PlayerHitFormBoss");
             }
         }
     }
@@ -147,6 +168,7 @@ public class BehaviourController : MonoBehaviour
             {
                 myAnimator.SetBool("RightStiffen", value);
                 particleSystems[4].Play();
+                SoundManager.instance.OnShot("PlayerHit1");
             }
         }
     }
@@ -161,6 +183,7 @@ public class BehaviourController : MonoBehaviour
             {
                 myAnimator.SetBool("LeftStiffen", value);
                 particleSystems[3].Play();
+                SoundManager.instance.OnShot("PlayerHit2");
             }
         }
     }
@@ -207,28 +230,40 @@ public class BehaviourController : MonoBehaviour
         maxHealthPoint = currentHealthPoint;
         maxStamina = currentStamina;
         isDead = false;
+        speedFloat = Animator.StringToHash(AnimatorKey.Speed);
         horizontalFloat = Animator.StringToHash(AnimatorKey.Horizontal);
         verticalFloat = Animator.StringToHash(AnimatorKey.Vertical);
         groundedBool = Animator.StringToHash(AnimatorKey.Grounded);
         colliderExtents = GetComponent<Collider>().bounds.extents;
         lockOn = Animator.StringToHash(AnimatorKey.LockOn);
     }
-    public IEnumerator StaminaChargeOn()
+
+    public void StaminaChargeOn()
     {
-        yield return new WaitForSeconds(2f);
-        if (maxStamina >= currentStamina)
-            staminaCharge = true;
+        if (guard)
+            staminaCoolTime = 3f;
+        if(currentStaminaTime < staminaCoolTime)
+        {
+            staminaCoolTime -= Time.deltaTime;
+            if(currentStaminaTime >= staminaCoolTime)
+            {
+                staminaCharge = true;
+                staminaCoolTime = 3f;
+            }
+        }
     }
 
     public void StaminaChargeOff()
     {
         staminaCharge = false;
+        staminaCoolTime = 3f;
     }
 
     private void IsDead()
     {
         isDead = true;
         gameObject.tag = "Untagged";
+        myAnimator.SetFloat(AnimatorKey.Speed, 0f);
         myAnimator.SetBool(AnimatorKey.Dead, isDead);
         myAnimator.SetBool(AnimatorKey.Attack1, false);
         myAnimator.SetBool(AnimatorKey.Attack2, false);
@@ -241,6 +276,7 @@ public class BehaviourController : MonoBehaviour
             behaviour.enabled = false;
         }
         stageUIManager.BossFailAnimation();
+        SoundManager.instance.OnShot("PlayerDeath1"); //이거도 랜덤으로 나와야함
         //사운드 or 이펙트
     }
 
@@ -265,19 +301,89 @@ public class BehaviourController : MonoBehaviour
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
 
-        myAnimator.SetFloat(horizontalFloat, horizontal, 0.1f, Time.deltaTime);
-        myAnimator.SetFloat(verticalFloat, vertical, 0.1f, Time.deltaTime);
-
-
+        myAnimator.SetFloat(horizontalFloat, horizontal);
+        myAnimator.SetFloat(verticalFloat, vertical);
+        Vector3 dir = new Vector3(Horizontal, 0, Vertical);
+        float speeds = dir.sqrMagnitude;
+        
+        
+        myAnimator.SetFloat(speedFloat, speeds);
 
         myAnimator.SetBool(groundedBool, IsGrounded());
+
         if (staminaCharge == true)
         {
-            if(currentStamina <= maxStamina)
+            if (currentStamina <= maxStamina)
                 currentStamina += staminaChargeSpeed * Time.deltaTime;
             stageUIManager.PlayerUpdateStamina();
         }
-        
+        else if (staminaCharge == false)
+        {
+            StaminaChargeOn();
+        }
+        //나중에 이펙트 추가시 사용
+        //if (currentKineticEnergy >= 50f)
+        //{
+        //    gameObjectsEffects[0].SetActive(true);
+        //}
+        //else if (currentKineticEnergy >= 99f)
+        //{
+        //    gameObjectsEffects[1].SetActive(true);
+        //}
+        //else if(currentKineticEnergy < 50f)
+        //{
+        //    gameObjectsEffects[0].SetActive(false);
+        //    gameObjectsEffects[1].SetActive(false);
+        //}
+
+    }
+
+    public void OnAnimatorIK()
+    {
+        animatorIKSetting();
+    }
+
+    public void animatorIKSetting()
+    {
+        //왼발
+        myAnimator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, 1);
+        myAnimator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, 1);
+
+        Ray leftFoot = new Ray(myAnimator.GetIKPosition(AvatarIKGoal.LeftFoot) + Vector3.up, Vector3.down);
+
+        float leftFootDistance = leftFootTransform.position.y - transform.position.y;
+
+        if (Physics.Raycast(leftFoot, out RaycastHit leftHit, leftFootDistance + 1f, playerIKLayerMask))
+        {
+            if(leftHit.transform.CompareTag("WalkableGround"))
+            {
+                Vector3 footPosition = leftHit.point;
+                footPosition.y += leftFootDistance;
+
+                myAnimator.SetIKPosition(AvatarIKGoal.LeftFoot, footPosition);
+                myAnimator.SetIKRotation(AvatarIKGoal.LeftFoot, Quaternion.LookRotation(transform.forward, leftHit.normal));
+            }
+        }
+
+        //오른발
+        myAnimator.SetIKPositionWeight(AvatarIKGoal.RightFoot, 1);
+        myAnimator.SetIKRotationWeight(AvatarIKGoal.RightFoot, 1);
+
+        Ray rightFoot = new Ray(myAnimator.GetIKPosition(AvatarIKGoal.RightFoot) + Vector3.up, Vector3.down);
+
+        float rightFootDistance = rightFootTranform.position.y - transform.position.y;
+
+        if (Physics.Raycast(rightFoot, out RaycastHit rightHit, rightFootDistance + 1f, playerIKLayerMask))
+        {
+            if (rightHit.transform.CompareTag("WalkableGround"))
+            {
+                Vector3 footPosition = rightHit.point;
+                footPosition.y += rightFootDistance;
+
+                myAnimator.SetIKPosition(AvatarIKGoal.RightFoot, footPosition);
+                myAnimator.SetIKRotation(AvatarIKGoal.RightFoot, Quaternion.LookRotation(transform.forward, rightHit.normal));
+            }
+        }
     }
 
     //낌 방지
@@ -445,6 +551,56 @@ public class BehaviourController : MonoBehaviour
     {
         lastDirection = direction;
     }
+
+    #region 플레이어 사운드 이벤트
+    public void AttackSound1()
+    {
+        SoundManager.instance.OnShot("PlayerAttack1");
+    }
+    public void AttackSound2()
+    {
+        SoundManager.instance.OnShot("PlayerAttack2");
+    }
+    public void AttackSound3()
+    {
+        SoundManager.instance.OnShot("PlayerAttack3");
+    }
+    public void AttackBreath1()
+    {
+        SoundManager.instance.OnShot("PlayerBreath1");
+    }
+    public void AttackBreath2()
+    {
+        SoundManager.instance.OnShot("PlayerBreath2");
+    }
+    public void AttackBreath3()
+    {
+        SoundManager.instance.OnShot("PlayerBreath3");
+    }
+    public void BigBangSound()
+    {
+        SoundManager.instance.OnShot("BigBang");
+    }
+    public void GuardSound()//랜덤 사운드로 적용 필요
+    {
+        //랜덤으로 나와야함
+        SoundManager.instance.OnShot("PlayerGuard1");
+    }
+    public void GuradBreakSound()
+    {
+        SoundManager.instance.OnShot("GuardBreak");
+    }
+    public void JustGuardSound()
+    {
+        SoundManager.instance.OnShot("PlayerJustGuard1");
+        SoundManager.instance.OnShot("PlayerJustGuard2");
+    }
+
+    public void JustGuardSwingSound()
+    {
+        SoundManager.instance.OnShot("JustGuardSwing");
+    }
+        #endregion
 }
 
 

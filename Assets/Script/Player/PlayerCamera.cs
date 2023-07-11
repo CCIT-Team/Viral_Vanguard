@@ -91,6 +91,10 @@ public class PlayerCamera : MonoBehaviour
             LockOnTarget();
             LockOnBillboardIndicater();
         }
+        else if(currentLockOnTarget == null) 
+        {
+            LockOnDeactivate();
+        }
 
 
         if (Input.GetKeyDown(KeyCode.F) && !isLockOn)
@@ -101,32 +105,34 @@ public class PlayerCamera : MonoBehaviour
         {
             LockOnDeactivate();
         }
-            //아래는 r키 길게 누르면 락온되는 코드
-            //if (Input.GetKey(KeyCode.R) && !isLockOn && !isDelay) //계속 누르면 나중에 r한번 누르면 작동됨 따라서 변경 필요
-            //{
-            //    isLockOning = true;
-            //    if(isLockOning)
-            //    {
-            //        lockOnTime += Time.deltaTime;
-            //        if(lockOnTime >= minLockOnTime)
-            //        {
-            //            LockOnActivate();
-            //        }
-            //    }
-            //}
-            //else if(Input.GetKey(KeyCode.R) && isLockOn && !isDelay)
-            //{
-            //    isLockOning = true;
-            //    if(isLockOning)
-            //    {
-            //        lockOnTime += Time.deltaTime;
-            //        if (lockOnTime >= minLockOnTime)
-            //        {
-            //            LockOnDeactivate();
-            //        }
-            //    }
-            //}
-            if (currentLockOnTarget == null)
+        #region 아래 코드는 r 길게 누르면 락온됨
+        //아래는 r키 길게 누르면 락온되는 코드
+        //if (Input.GetKey(KeyCode.R) && !isLockOn && !isDelay) //계속 누르면 나중에 r한번 누르면 작동됨 따라서 변경 필요
+        //{
+        //    isLockOning = true;
+        //    if(isLockOning)
+        //    {
+        //        lockOnTime += Time.deltaTime;
+        //        if(lockOnTime >= minLockOnTime)
+        //        {
+        //            LockOnActivate();
+        //        }
+        //    }
+        //}
+        //else if(Input.GetKey(KeyCode.R) && isLockOn && !isDelay)
+        //{
+        //    isLockOning = true;
+        //    if(isLockOning)
+        //    {
+        //        lockOnTime += Time.deltaTime;
+        //        if (lockOnTime >= minLockOnTime)
+        //        {
+        //            LockOnDeactivate();
+        //        }
+        //    }
+        //}
+        #endregion
+        if (currentLockOnTarget == null)
         {
             isLockOn = false;
         }
@@ -140,7 +146,6 @@ public class PlayerCamera : MonoBehaviour
 
     public void DefaultCamera()
     {
-        
         angleHorizontal += Mathf.Clamp(Input.GetAxis("Mouse X"), -1f, 1f) * horizontalAimingSpeed;
         angleVertical += Mathf.Clamp(Input.GetAxis("Mouse Y"), -1f, 1f) * verticalAimingSpeed;
         angleVertical = Mathf.Clamp(angleVertical, minVerticalAngle, targetMaxVerticleAngle);
@@ -243,6 +248,22 @@ public class PlayerCamera : MonoBehaviour
             Vector3 smoothed_position = Vector3.Lerp(transform.position, camPosition, smooth);
             transform.position = smoothed_position;
             previousTransform = smoothed_position;
+
+            myCamera.fieldOfView = Mathf.Lerp(myCamera.fieldOfView, targetFieldOfView, Time.deltaTime);
+
+            //Vector3 baseTempPosition = camPosition - player.position;
+            //Vector3 noCollisionOffset = smoothCamOffset;
+
+            //for (float zOffset = targetCamOffset.z; zOffset <= 0f; zOffset += 0.5f)
+            //{
+            //    noCollisionOffset.z = zOffset;
+            //    if (DoubleViewingCheck(baseTempPosition + targetRotation * noCollisionOffset, Mathf.Abs(zOffset)) || zOffset == 0f)
+            //    {
+            //        break;
+            //    }
+            //}
+
+
             //카메라 흔들기
             previousTransform = transform.position;
             if (shakeTime > 0f)
