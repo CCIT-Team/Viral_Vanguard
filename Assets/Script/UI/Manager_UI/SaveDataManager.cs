@@ -70,7 +70,7 @@ public class SaveDataManager : Singleton<SaveDataManager>
 
     public bool isSaveDataExist = false;
 
-    private string[] saveFileNumber = { "0","1","2", "3","4" };
+    public string[] saveFileNumber = { "0","1","2", "3","4" };
     public int currentSaveFileIndex; // 현재 몇번 세이브 파일로 진행?
 
     public void Awake()
