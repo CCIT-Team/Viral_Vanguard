@@ -22,6 +22,7 @@ public class ButtonManager : MonoBehaviour
     public void SaveDataSelect(int index)
     {
         SaveDataManager.Instance.currentSaveFileIndex = index;
+        SaveDataManager.Instance.GameSave("/SaveFile" + index + ".txt", index);
     }
 
     public void GameStartInSaveDataList()

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Resource/Cinemachine.meta
 guid: 8a54171977952b346ad2da0cc3242b05
+========
+guid: 2e3f07d343ba2ab4c8f133f704caf085
+>>>>>>>> feature/UI:Assets/Resource/Player/FBX.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

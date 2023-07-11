@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Resource/FBX.meta
 guid: ae6abad2e37305a4e868df36a75b548e
+========
+guid: 182e15bc30c9cd84d98c860c0126f107
+>>>>>>>> feature/UI:Assets/Resource/Player/Textures.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

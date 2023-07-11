@@ -61,9 +61,17 @@ public class SceneFader : Singleton<SceneFader>
     // 체인을 걸어서 이 함수는 매 씬마다 호출된다.
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        //Debug.Log("OnSceneLoaded: " + scene.name);
-        //Debug.Log(mode);
         //여기에 씬을 넘기고 한번 실행해줘야 하는 걸 넣어주세요~
+
+        // Option UI Translate ---> Just Once
+        if(scene.name == "Title")
+        {
+            UIManager.Instance.optionCanvas.transform.GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -178);
+        }
+        else
+        {
+            UIManager.Instance.optionCanvas.transform.GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -48);
+        }
     }
 
     void OnDisable()
