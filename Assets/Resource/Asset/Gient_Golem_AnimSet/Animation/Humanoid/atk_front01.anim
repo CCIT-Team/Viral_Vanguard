@@ -92965,6 +92965,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.6666667
+    functionName: TrailActive
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 1.6666666
     functionName: ActiveCollider
     data: 
@@ -93016,6 +93023,13 @@ AnimationClip:
     messageOptions: 0
   - time: 1.9
     functionName: CanJustGuard
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 2
+    functionName: TrailActive
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

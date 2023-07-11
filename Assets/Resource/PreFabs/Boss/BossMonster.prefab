@@ -3697,7 +3697,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6923057538337079492
 Transform:
   m_ObjectHideFlags: 0
@@ -3774,8 +3774,8 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 0
-  leftFoot: {fileID: 7740116037858238584}
-  rightFoot: {fileID: 441203388254960482}
+  leftFoot: {fileID: 0}
+  rightFoot: {fileID: 0}
   groundTransform: {fileID: 0}
   bossName: RedArms
   maxHealthPoint: 100
@@ -3834,18 +3834,18 @@ MonoBehaviour:
   canBigStiffen: 0
   canAttack: 0
   attackDetections:
-  - {fileID: 7465030137590315248}
-  - {fileID: 7465030137129863586}
-  - {fileID: 7465030136957794004}
-  - {fileID: 7465030137692664668}
-  - {fileID: 7465030138089089601}
-  - {fileID: 7465030137332675122}
-  - {fileID: 7465030137663554727}
-  - {fileID: 7465030138032853314}
-  - {fileID: 1752752380}
-  - {fileID: 213664446}
-  - {fileID: 2144467631}
-  - {fileID: 903104873}
+  - {fileID: 7465030136397828673}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   listener: {fileID: 7735060496845134457}
   stageUIManager: {fileID: 0}
   bodyCollider: {fileID: 7735060496845134463}
@@ -3901,7 +3901,7 @@ MonoBehaviour:
     weight: 110
     bossAction: {fileID: 11400000, guid: d7a12a18998163e42bfbbd2202bf13ad, type: 2}
   - behaviorName: NormalAttack3
-    weight: 110
+    weight: 5000000
     bossAction: {fileID: 11400000, guid: 06a2b01cd7df81a4ca7cc44b543f6e91, type: 2}
   - behaviorName: ActionAttack1
     weight: 30
