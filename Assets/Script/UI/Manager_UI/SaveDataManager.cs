@@ -70,7 +70,7 @@ public class SaveDataManager : Singleton<SaveDataManager>
 
     public bool isSaveDataExist = false;
 
-    private string[] saveFileNumber = { "0","1","2", "3","4" };
+    public string[] saveFileNumber = { "0","1","2", "3","4" };
     public int currentSaveFileIndex; // 현재 몇번 세이브 파일로 진행?
 
     public void Awake()
@@ -91,10 +91,10 @@ public class SaveDataManager : Singleton<SaveDataManager>
         saveDatas[4] = saveData4;
 
         GameSave("/SaveFile" + saveFileNumber[0] + ".txt",0);
-        GameSave("/SaveFile" + saveFileNumber[1] + ".txt",1);
-        GameSave("/SaveFile" + saveFileNumber[2] + ".txt",2);
-        GameSave("/SaveFile" + saveFileNumber[3] + ".txt",3);
-        GameSave("/SaveFile" + saveFileNumber[4] + ".txt",4);
+        GameSave("/SaveFile" + saveFileNumber[1] + ".txt", 1);
+        GameSave("/SaveFile" + saveFileNumber[2] + ".txt", 2);
+        GameSave("/SaveFile" + saveFileNumber[3] + ".txt", 3);
+        GameSave("/SaveFile" + saveFileNumber[4] + ".txt", 4);
         GameLoadAllData();
     }
 

@@ -84,41 +84,10 @@ MonoBehaviour:
     audio: {fileID: 8300000, guid: 5b02d1cb97ccdb04493fcd51e2f93032, type: 3}
   - soundName: PlayerDeath2
     audio: {fileID: 8300000, guid: 3f6817621b8e8a6419000c5bde0d1bea, type: 3}
-  - soundName: JustGuardSwing
-    audio: {fileID: 8300000, guid: 22e3d0fdf1b029a44b5c80cc0b2a0ebe, type: 3}
-  - soundName: Walk
-    audio: {fileID: 8300000, guid: 615463dc472fa0e488a122b3fc0609ad, type: 3}
-  - soundName: NormalAttack_1
-    audio: {fileID: 8300000, guid: 927d94942d516c74e8ac725b0b75e6df, type: 3}
-  - soundName: PlayerDeath2
-    audio: {fileID: 8300000, guid: 3f6817621b8e8a6419000c5bde0d1bea, type: 3}
-  - soundName: NormalAttack_2
-    audio: {fileID: 8300000, guid: 591bc2ba23f4ea44e99f20dbe9a9edb5, type: 3}
-  - soundName: ' NormalAttack_3'
-    audio: {fileID: 8300000, guid: 0ba1b4023f6308448ab744ac8e4eb605, type: 3}
-  - soundName: SpecialAttack_1
-    audio: {fileID: 8300000, guid: 90604c2225bca96438482f85525cf8b3, type: 3}
-  - soundName: ActionAttack_1
-    audio: {fileID: 8300000, guid: 394b54d8fefba214ca151857eb6efa5a, type: 3}
-  - soundName: SpecialAttack_2
-    audio: {fileID: 8300000, guid: c5c7bfff79813ef448f2df7d891a3459, type: 3}
-  - soundName: SpecialAttack_3
-    audio: {fileID: 8300000, guid: 2dc6ddff03507d546ae0ee8126e8eccf, type: 3}
-  - soundName: PoHyo
-    audio: {fileID: 8300000, guid: d30967aa9ebbe2e49bdbfaddbb528c17, type: 3}
-  - soundName: BeShot_0
-    audio: {fileID: 8300000, guid: d3bed4a05388b034d8cbd51518ddf952, type: 3}
-  - soundName: BeShot_1
-    audio: {fileID: 8300000, guid: d3bed4a05388b034d8cbd51518ddf952, type: 3}
-  - soundName: Breathing_0
-    audio: {fileID: 8300000, guid: b4f70c5196303b246893cdafa4dcf01c, type: 3}
-  - soundName: Breathing_1
-    audio: {fileID: 8300000, guid: 87ae2baa5feaedd40820603fd2d22748, type: 3}
-  - soundName: Breathing_2
-    audio: {fileID: 8300000, guid: 505e6d5337d194b48ba5713375ef7e53, type: 3}
-  audioMixer: {fileID: 24100000, guid: fae97766134415646a9d8a158bae2dbd, type: 2}
-  bgmSlider: {fileID: 0}
-  sfxSlider: {fileID: 0}
+  audioMixer: {fileID: 24100000, guid: 038714c4b0b06864ea553748c33fd265, type: 2}
+  masterScrollbar: {fileID: 0}
+  bgmScrollbar: {fileID: 0}
+  sfxScrollbar: {fileID: 0}
 --- !u!1 &2314531551137103672
 GameObject:
   m_ObjectHideFlags: 0

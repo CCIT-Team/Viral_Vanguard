@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/ForLevel.meta
 guid: c0b52d5401d24384a9d5ffc1eb4e83ee
+========
+guid: 778c35dfef1fcbf42ac8baf897f4edb2
+>>>>>>>> develop/integrated:Assets/Resource/PreFabs/Sound.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

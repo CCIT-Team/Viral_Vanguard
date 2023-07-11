@@ -28,11 +28,17 @@ public class TitleSceneEvent : MonoBehaviour
         // 외부에서 Awake로 세이브 데이터를 로드하므로 순서중요!
         if (SaveDataManager.Instance.isSaveDataExist)
         {
+            buttonArrays.noSaveDataVisualizationElement.SetActive(false);
+            buttonArrays.mainMenuSlotFirstPlay.SetActive(false);
+
             buttonArrays.saveDataVisualizationElement.SetActive(true);
             buttonArrays.mainMenuSlotNonFirstPlay.SetActive(true);
         }
         else if(!SaveDataManager.Instance.isSaveDataExist)
         {
+            buttonArrays.saveDataVisualizationElement.SetActive(false);
+            buttonArrays.mainMenuSlotNonFirstPlay.SetActive(false);
+
             buttonArrays.noSaveDataVisualizationElement.SetActive(true);
             buttonArrays.mainMenuSlotFirstPlay.SetActive(true);
         }

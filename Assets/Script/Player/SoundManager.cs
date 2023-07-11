@@ -15,8 +15,9 @@ public class SoundManager : MonoBehaviour
     public Dictionary<string, int> SFX = new Dictionary<string, int>();
     public Dictionary<string, int> BGM = new Dictionary<string, int>();
     public AudioMixer audioMixer;
-    public Slider bgmSlider;
-    public Slider sfxSlider;
+    public Scrollbar masterScrollbar;
+    public Scrollbar bgmScrollbar;
+    public Scrollbar sfxScrollbar;
 
     void Awake() => Init();
 
@@ -47,14 +48,19 @@ public class SoundManager : MonoBehaviour
             instance.bgmAudioSource.Play();
     }
 
+    public void SetMasterVolume()
+    {
+        audioMixer.SetFloat("MasterVolume", Mathf.Log10(masterScrollbar.value) * 20);
+    }
+
     public void SetBGMVolume()
     {
-        audioMixer.SetFloat("BGM", Mathf.Log10(bgmSlider.value) * 20);
+        audioMixer.SetFloat("BgmVolume", Mathf.Log10(bgmScrollbar.value) * 20);
     }
 
     public void SetSFXVolume()
     {
-        audioMixer.SetFloat("SFX", Mathf.Log10(sfxSlider.value) * 20);
+        audioMixer.SetFloat("SfxVolume", Mathf.Log10(sfxScrollbar.value) * 20);
     }
 
     public void PlayerSoundReset()

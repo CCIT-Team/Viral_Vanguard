@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Resource/Player/Electro hit.prefab.meta
 guid: 3fb50ebdb62b629439d4f39e3c3af23b
+========
+guid: 40e471d5ce8bbbe448b1deb92d73cbde
+>>>>>>>> develop/integrated:Assets/Resource/PreFabs/Sound/SoundManager.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 

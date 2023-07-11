@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Resource/Effect.meta
 guid: a6600f418fbedc8429aa06e5ffb57871
+========
+guid: b4bf724e74343274cbf42a809336aa96
+>>>>>>>> feature/UI:Assets/Resource/Player/Materials.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

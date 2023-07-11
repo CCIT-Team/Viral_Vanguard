@@ -216,7 +216,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &56748165
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1599,142 +1599,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!1 &340574235
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 340574236}
-  - component: {fileID: 340574238}
-  - component: {fileID: 340574237}
-  m_Layer: 5
-  m_Name: Coin
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &340574236
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 340574235}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2132905029}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 639.7, y: 489.6}
-  m_SizeDelta: {x: 200, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &340574237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 340574235}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: 0404
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 64e616aba2b73c24a86bc667fb3e4f78, type: 2}
-  m_sharedMaterial: {fileID: -4501304318796700424, guid: 64e616aba2b73c24a86bc667fb3e4f78,
-    type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 1
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &340574238
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 340574235}
-  m_CullTransparentMesh: 1
 --- !u!1 &342567045
 GameObject:
   m_ObjectHideFlags: 0
@@ -1869,7 +1733,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bf7e902e6ad05e344939a4ab11ba1531, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 416ab8dce11fe324fa891a09cf0bf020, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1937,7 +1801,7 @@ MonoBehaviour:
   - {fileID: 56748164}
   - {fileID: 890081420}
   lobbyBackGrounds: []
-  lobbyBackgroundImage: {fileID: 0}
+  backgroundImage: {fileID: 360094640}
   mapSelects:
   - {fileID: 1561755791}
   - {fileID: 1030461878}
@@ -2042,7 +1906,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueLines:
-  - "\uB85C\uBE44 \uC624\uD37C\uB808\uC774\uD130 \uAD6C\uD604 \uC644\uB8CC"
+  - "\uBC18\uAC11\uC2B5\uB2C8\uB2E4 \uBC45\uAC00\uB4DC."
+  - "\uC800\uB294 \uB2F9\uC2E0\uC758 \uC11C\uD3EC\uD2B8\uB97C \uB9E1\uC740 \uC624\uD37C\uB808\uC774\uD130\uC785\uB2C8\uB2E4."
+  - "\uC800\uD76C\uB294 \uD604\uC7AC \uB2C9\uC2A4\uC5D0\uC11C \uBC14\uC774\uB7EC\uC2A4
+    \uD575\uC2EC \uBCC0\uC774\uCCB4\uB4E4\uC758 \uC704\uCE58\uB97C \uCD94\uC801\uD558\uACE0
+    \uC788\uC2B5\uB2C8\uB2E4."
+  - "Operation \uD0ED\uC744 \uB20C\uB7EC\uC8FC\uC2ED\uC2DC\uC624."
   dialogueText: {fileID: 689487398}
   operatorDialogButton: {fileID: 1151781806}
   operatorParent: {fileID: 1099688217}
@@ -2144,7 +2013,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 455000843}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 890081420}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1401222149}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &455000843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2381,7 +2274,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 602749807}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 368780917}
+        m_TargetAssemblyTypeName: LobbySceneEvent, Assembly-CSharp
+        m_MethodName: SaveDataFile
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &602749807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2432,6 +2337,7 @@ GameObject:
   - component: {fileID: 686259033}
   - component: {fileID: 686259032}
   - component: {fileID: 686259031}
+  - component: {fileID: 686259034}
   m_Layer: 5
   m_Name: OperationsButton
   m_TagString: Untagged
@@ -2456,7 +2362,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 612.5, y: -46}
+  m_AnchoredPosition: {x: 389.7, y: -46}
   m_SizeDelta: {x: 357, y: 92}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &686259031
@@ -2567,6 +2473,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 686259034}
+        m_TargetAssemblyTypeName: ImageHover, Assembly-CSharp
+        m_MethodName: EnabledImageHover
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 368780917}
+        m_TargetAssemblyTypeName: LobbySceneEvent, Assembly-CSharp
+        m_MethodName: ChangeBackGroundSprite
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 21300000, guid: 2bbef8cff8214de44ab04a4a440a54c0,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &686259032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2605,6 +2536,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 686259029}
   m_CullTransparentMesh: 1
+--- !u!114 &686259034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686259029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8783e3a4fc51fb045a33676abbf03046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 686259032}
+  originalSprite: {fileID: 21300000, guid: df603aef265700f43b3621aff666a1bc, type: 3}
+  hoverSprite: {fileID: 21300000, guid: 63e3c36bd926aac4eb759501ca3aee34, type: 3}
 --- !u!1 &686950182
 GameObject:
   m_ObjectHideFlags: 0
@@ -2808,8 +2754,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3201,8 +3147,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueLines:
-  - "\uC624\uD37C\uB808\uC774\uD130 \uB2E4\uC774\uC5BC\uB85C\uADF8 \uAD6C\uD604 \uC644\uB8CC!"
-  - "\uB2E4\uC74C \uB300\uD654 \uAD6C\uD604 \uC644\uB8CC!"
+  - "\uC774\uACF3\uC5D0\uC11C \uCD94\uC801\uC911\uC778 \uBCC0\uC774\uCCB4\uB4E4\uC758
+    \uC704\uCE58\uB97C \uBCF4\uB0B4\uB4DC\uB9AC\uACA0\uC2B5\uB2C8\uB2E4."
+  - "\uC9C0\uB3C4 \uC704\uC758 \uC544\uC774\uCF58\uC744 \uB20C\uB7EC \uCD94\uC801\uC744
+    \uC2DC\uC791\uD558\uC138\uC694."
+  - "\uD589\uC6B4\uC744 \uBE55\uB2C8\uB2E4 \uBC45\uAC00\uB4DC."
   dialogueText: {fileID: 1434616335}
   operatorDialogButton: {fileID: 1995754409}
   operatorParent: {fileID: 1161354872}
@@ -4030,13 +3979,14 @@ GameObject:
   - component: {fileID: 1068367724}
   - component: {fileID: 1068367723}
   - component: {fileID: 1068367722}
+  - component: {fileID: 1068367725}
   m_Layer: 5
   m_Name: StatesButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1068367721
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4165,6 +4115,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1068367725}
+        m_TargetAssemblyTypeName: ImageHover, Assembly-CSharp
+        m_MethodName: EnabledImageHover
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1068367723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4203,6 +4165,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1068367720}
   m_CullTransparentMesh: 1
+--- !u!114 &1068367725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068367720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8783e3a4fc51fb045a33676abbf03046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 1068367723}
+  originalSprite: {fileID: 21300000, guid: 0d9f51bd6a295bf4ab5929f3ac038cf7, type: 3}
+  hoverSprite: {fileID: 21300000, guid: faa9d958af9647148848e4645b352a82, type: 3}
 --- !u!1 &1086040894
 GameObject:
   m_ObjectHideFlags: 0
@@ -4301,7 +4278,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1086040898}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 368780917}
+        m_TargetAssemblyTypeName: LobbySceneEvent, Assembly-CSharp
+        m_MethodName: EnableSettingCanvas
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1086040898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4416,7 +4405,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -819.4, y: 438.8}
+  m_AnchoredPosition: {x: -819.4, y: 432.8}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1151781806
@@ -4970,7 +4959,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1401222150
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5190,8 +5179,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5902,7 +5891,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_SizeDelta: {x: 1913, y: 1043}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1891477277
 MonoBehaviour:
@@ -5924,7 +5913,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fbb51f1360335794f902bda56705861f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7499bfaf3ca6caa4aaef3a32c3f33419, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6390,7 +6379,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2007539435}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 368780917}
+        m_TargetAssemblyTypeName: LobbySceneEvent, Assembly-CSharp
+        m_MethodName: LoadDataFile
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2007539435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6653,6 +6654,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2076563045}
+        m_TargetAssemblyTypeName: ImageHover, Assembly-CSharp
+        m_MethodName: EnabledImageHover
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 368780917}
+        m_TargetAssemblyTypeName: LobbySceneEvent, Assembly-CSharp
+        m_MethodName: ChangeBackGroundSprite
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 21300000, guid: 416ab8dce11fe324fa891a09cf0bf020,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2076563043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6807,7 +6833,6 @@ RectTransform:
   - {fileID: 102334934}
   - {fileID: 56748165}
   - {fileID: 890081421}
-  - {fileID: 340574236}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6853,7 +6878,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1737.3, y: -52.9}
+  m_AnchoredPosition: {x: 1737.3, y: -53.8}
   m_SizeDelta: {x: 184, y: 77}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2138166055

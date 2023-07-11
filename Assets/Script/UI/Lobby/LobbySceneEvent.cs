@@ -11,7 +11,7 @@ public class LobbySceneEvent : MonoBehaviour
 {
     public GameObject[] panels;
     public Sprite[] lobbyBackGrounds;
-    public Image lobbyBackgroundImage;
+    public Image backgroundImage;
 
     /// <summary>
     /// Operations Panel
@@ -35,7 +35,12 @@ public class LobbySceneEvent : MonoBehaviour
             operatorCall[2].SetActive(true);
     }
 
+    #region For The Button Event
 
+    public void ChangeBackGroundSprite(Sprite source)
+    {
+        backgroundImage.sprite = source;
+    }
     public void ChangeLobbyMenuImage(int backgroundimageNumber)
     {
         for(int i=0; i < panels.Length; i++) { panels[i].SetActive(false); }
@@ -70,6 +75,33 @@ public class LobbySceneEvent : MonoBehaviour
             SaveDataManager.Instance.saveDatas[SaveDataManager.Instance.currentSaveFileIndex].isStateTutorialClear = true;
         else if(index == 2)
             SaveDataManager.Instance.saveDatas[SaveDataManager.Instance.currentSaveFileIndex].isOperatorTutorialClear = true;
-
     }
+
+    public void EnableSettingCanvas()
+    {
+        if (UIManager.Instance.optionCanvas != null)
+        {
+            UIManager.Instance.optionCanvas.SetActive(true);
+            UIManager.Instance.OpenUI(UIManager.Instance.optionCanvas);
+        }
+    }
+
+    public void SaveDataFile()
+    {
+        if(SaveDataManager.Instance != null)
+        {
+            SaveDataManager.Instance.GameSave(
+                "/SaveFile" + SaveDataManager.Instance.saveFileNumber[SaveDataManager.Instance.currentSaveFileIndex] + ".txt", 
+                SaveDataManager.Instance.currentSaveFileIndex);
+        }
+    }
+
+    public void LoadDataFile()
+    {
+        if (SaveDataManager.Instance != null)
+        {
+            SaveDataManager.Instance.GameLoad();
+        }
+    }
+    #endregion
 }
