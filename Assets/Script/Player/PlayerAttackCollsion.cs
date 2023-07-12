@@ -39,11 +39,6 @@ public class PlayerAttackCollsion : MonoBehaviour
             else if(behaviourController.isBigBang)
             {
                 BossMove.instacne.CurrentHealthPoint -= damages[3];
-                behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
-            }
-            else if (behaviourController.isBigBang1)
-            {
-                BossMove.instacne.CurrentHealthPoint -= damages[4];
                 BossMove.instacne.SetStiffen(1);
                 behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
             }
