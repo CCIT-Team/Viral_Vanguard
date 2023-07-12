@@ -956,9 +956,9 @@ MonoBehaviour:
   playerMaxHealthPoint: 0
   playerCurrentHealthPoint: 0
   playerMaxStamina: 0
-  playerCurrentStamina: 0
+  playerCurrentStamina: 100.17833
   playerMaxKineticEnergy: 0
-  playerCurrentKineticEnergy: 0
+  playerCurrentKineticEnergy: 80
   bossName: 
   bossMaxHp: 0
   bossCurrentHp: 0
@@ -966,6 +966,8 @@ MonoBehaviour:
   playerHpT: 0
   playerSpT: 0
   playerKpT: 0
+  clearAnimationObject: {fileID: 0}
+  failAnimationObject: {fileID: 0}
 --- !u!1 &3847436021680441829
 GameObject:
   m_ObjectHideFlags: 0

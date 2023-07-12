@@ -100,6 +100,10 @@ public class ButtonManager : MonoBehaviour
     public void GameClose()
     {
         Debug.Log("게임을 종료합니다.");
+        TimeManager.Instance.SetTimeValue();
+        SaveDataManager.Instance.GameSave(
+                "/SaveFile" + SaveDataManager.Instance.saveFileNumber[SaveDataManager.Instance.currentSaveFileIndex] + ".txt",
+                SaveDataManager.Instance.currentSaveFileIndex);
         Application.Quit();
     }
 

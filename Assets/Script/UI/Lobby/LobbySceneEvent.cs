@@ -106,6 +106,10 @@ public class LobbySceneEvent : MonoBehaviour
 
     public void ExitGame()
     {
+        TimeManager.Instance.SetTimeValue();
+        SaveDataManager.Instance.GameSave(
+                "/SaveFile" + SaveDataManager.Instance.saveFileNumber[SaveDataManager.Instance.currentSaveFileIndex] + ".txt",
+                SaveDataManager.Instance.currentSaveFileIndex);
         Application.Quit();
     }
     #endregion
