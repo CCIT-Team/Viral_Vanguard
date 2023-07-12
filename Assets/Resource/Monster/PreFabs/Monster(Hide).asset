@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Monster(Hide)
   m_EditorClassIdentifier: 
   type: 1
-  maxHealth: 50
+  maxHealth: 20
   damage: 5
   moveSpeed: 1
