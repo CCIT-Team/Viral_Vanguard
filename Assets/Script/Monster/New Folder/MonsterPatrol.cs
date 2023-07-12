@@ -26,7 +26,6 @@ public class MonsterPatrol : MonoBehaviour
     IEnumerator Patrol()
     {
         yield return new WaitForSeconds(Random.Range(3f, 8));
-        Debug.Log("Patrol");
         float x = Random.Range(-patrolRange, patrolRange);
         float z = Random.Range(-patrolRange, patrolRange);
         if (Vector3.SqrMagnitude(this.transform.localPosition - new Vector3(x, this.transform.localPosition.y, z)) >= 0.4)
