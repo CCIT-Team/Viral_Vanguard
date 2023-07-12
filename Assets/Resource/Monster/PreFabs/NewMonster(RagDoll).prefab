@@ -3739,6 +3739,7 @@ GameObject:
   - component: {fileID: 3482807542050717311}
   - component: {fileID: 1208089716678971303}
   - component: {fileID: 5461789711133701264}
+  - component: {fileID: 4645848560250536406}
   m_Layer: 8
   m_Name: NewMonster(RagDoll)
   m_TagString: NormalMonster
@@ -3970,6 +3971,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4645848560250536406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6805808634756283070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f52ea2797f950424a8a1fb96ed8d39d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lockOnTransform: {fileID: 6809309645112905410}
 --- !u!1 &6805824926111039798
 GameObject:
   m_ObjectHideFlags: 0
