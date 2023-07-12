@@ -362,7 +362,9 @@ public class NewMonsterMovement : MonoBehaviour
     {
         if (BehaviourController.instance.JustGuard == true)
         {
+            BehaviourController.instance.justGuardChecker = true;
             animator.SetBool("Stiffen", true);
+            BehaviourController.instance.JustGuard = true;
         }
         else if (BehaviourController.instance.guard == true)
         {

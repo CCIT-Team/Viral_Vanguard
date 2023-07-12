@@ -68,7 +68,6 @@ public class GuardBehaviour : GenericBehaviour
 
     private void Update()
     {
-        behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
         if (Input.GetMouseButtonDown(1))
         {
             evasionBehaviour.mouseLock = false;
@@ -96,25 +95,25 @@ public class GuardBehaviour : GenericBehaviour
             behaviourController.myAnimator.SetTrigger("JustGuard");
             behaviourController.JustGuardSwingSound();
             behaviourController.currentStamina -= 20f;
+            behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
             if (behaviourController.MonsterAttack)
             {
-                Debug.Log("���� ���� Ȯ��");
                 behaviourController.JustGuard = true;         
             }
-            else if (behaviourController.NormalMonsterAttack)
-            {
-                behaviourController.JustGuard = true;
-                MonsterMovement.instance.Stiffen = true;
-                if (behaviourController.currentKineticEnergy >= behaviourController.maxKineticEnergy)
-                {
-                    behaviourController.currentKineticEnergy = 100f;
-                }
-                else
-                {
-                    behaviourController.currentKineticEnergy += 5f;
-                }
-                behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
-            }
+            //else if (behaviourController.NormalMonsterAttack)
+            //{
+            //    behaviourController.JustGuard = true;
+            //    MonsterMovement.instance.Stiffen = true;
+            //    if (behaviourController.currentKineticEnergy >= behaviourController.maxKineticEnergy)
+            //    {
+            //        behaviourController.currentKineticEnergy = 100f;
+            //    }
+            //    else
+            //    {
+            //        behaviourController.currentKineticEnergy += 5f;
+            //    }
+            //    behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
+            //}
             isJustGuardDelay = true;
             StartCoroutine(JustGuardOnce());
         }

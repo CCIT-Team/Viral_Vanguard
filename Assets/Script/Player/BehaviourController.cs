@@ -75,6 +75,8 @@ public class BehaviourController : MonoBehaviour
 
     public bool justGuardChecker = false;
 
+    public GameObject bossative;
+
     public bool GuardHit
     {
         get { return guardHit; }
@@ -132,9 +134,11 @@ public class BehaviourController : MonoBehaviour
                 
                 particleSystems[0].Play();
                 JustGuardSound();
-                BossMove.instacne.SetStiffen(0);
+                if(bossative.activeSelf == true)
+                {
+                    BossMove.instacne.SetStiffen(0);
+                }
                 StartCoroutine(JustGuardTimeScale());
-                Debug.Log("½ÇÇà‰³");
                 if (currentKineticEnergy >= maxKineticEnergy)
                 {
                     currentKineticEnergy = 100f;
@@ -307,7 +311,6 @@ public class BehaviourController : MonoBehaviour
 
     private void Update()
     {
-        //stageUIManager.PlayerUpdateKineticEnergy();
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
 

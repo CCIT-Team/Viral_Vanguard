@@ -97,6 +97,14 @@ public class ButtonManager : MonoBehaviour
         SceneFader.Instance.StartFadeOut("Lobby",3f);
     }
 
+    public void GO()
+    {
+        int dataIndex = SaveDataManager.Instance.currentSaveFileIndex;
+        SaveDataManager.Instance.GameSave("/SaveFile" + dataIndex + ".txt", dataIndex);
+
+        SceneFader.Instance.StartFadeOut("Lobby", 3f);
+    }
+
     public void GameClose()
     {
         Debug.Log("게임을 종료합니다.");

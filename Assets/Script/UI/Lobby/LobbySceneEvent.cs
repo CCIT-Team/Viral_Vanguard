@@ -26,7 +26,6 @@ public class LobbySceneEvent : MonoBehaviour
     public GameObject[] operatorCall;
 
     public Image test;
-    public TextMeshProUGUI fillAmount;
     public TMP_Text percent;
     public TMP_Text time;
 
@@ -109,6 +108,12 @@ public class LobbySceneEvent : MonoBehaviour
         }
     }
 
+    public void GoTitle()
+    {
+        SceneFader.Instance.StartFadeOut("Title", 3f);
+    }
+
+
     public void ExitGame()
     {
         TimeManager.Instance.SetTimeValue();
@@ -126,7 +131,7 @@ public class LobbySceneEvent : MonoBehaviour
         test.fillAmount = Mathf.Clamp(Mathf.Round(TimeManager.Instance.limitTime / 60), 0, 100) / 100;
 
         percent.text = Mathf.Clamp(Mathf.Round(TimeManager.Instance.limitTime / 60), 0, 100).ToString() + "%";
-        time.text = Mathf.Round(TimeManager.Instance.limitTime / 60).ToString() + "M";
+        time.text = (60 - Mathf.Round(TimeManager.Instance.limitTime / 60)).ToString() + "M";
 
         //Debug.Log(Mathf.Round(TimeManager.Instance.limitTime / 60));
         //Debug.Log(Mathf.Clamp(Mathf.Round(TimeManager.Instance.limitTime / 60), 0, 100));

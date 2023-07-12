@@ -9,9 +9,7 @@ public class ShieldCheck : MonoBehaviour
     {
         if(other.gameObject.CompareTag("BossAttackCollider"))
         {
-            Debug.Log("checkµÊ1");
             behaviourController.justGuardChecker = true;
-            Debug.Log("checkµÊ2");
         }
         else
         {
