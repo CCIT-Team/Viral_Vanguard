@@ -378,24 +378,74 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 368780917}
-        m_TargetAssemblyTypeName: LobbySceneEvent, Assembly-CSharp
-        m_MethodName: Dispatch
-        m_Mode: 2
+      - m_Target: {fileID: 82207227}
+        m_TargetAssemblyTypeName: ImageHover, Assembly-CSharp
+        m_MethodName: EnabledImageHover
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 82207227}
-          m_ObjectArgumentAssemblyTypeName: ImageHover, Assembly-CSharp
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 82207229}
+      - m_Target: {fileID: 368780917}
+        m_TargetAssemblyTypeName: LobbySceneEvent, Assembly-CSharp
+        m_MethodName: ChangeLobbyMenuImage
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 686259032}
         m_TargetAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
         m_MethodName: set_sprite
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 21300000, guid: 1b7ff8ccfa499be4da51de403567757c,
+          m_ObjectArgument: {fileID: 21300000, guid: a3f5ec0e94fa29f4ba698443a69b77e8,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2076563043}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
+        m_MethodName: set_sprite
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 21300000, guid: ca1fc55daf9fc16439fe3fde71f0a19b,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 686259034}
+        m_TargetAssemblyTypeName: ImageHover, Assembly-CSharp
+        m_MethodName: EnabledImageHover
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 368780917}
+        m_TargetAssemblyTypeName: LobbySceneEvent, Assembly-CSharp
+        m_MethodName: ChangeBackGroundSprite
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 21300000, guid: 2bbef8cff8214de44ab04a4a440a54c0,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
           m_IntArgument: 0
@@ -3652,7 +3702,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &847600543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5147,7 +5197,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1161354873
 RectTransform:
   m_ObjectHideFlags: 0
