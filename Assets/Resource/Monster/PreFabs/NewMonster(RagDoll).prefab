@@ -1199,7 +1199,7 @@ GameObject:
   - component: {fileID: 7542679405918721357}
   m_Layer: 8
   m_Name: AttackBoxR
-  m_TagString: BossAttackCollider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2578,7 +2578,7 @@ GameObject:
   - component: {fileID: 4095227340364349856}
   m_Layer: 8
   m_Name: AttackBoxM
-  m_TagString: BossAttackCollider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9996,7 +9996,7 @@ GameObject:
   - component: {fileID: 5583093197734221377}
   m_Layer: 8
   m_Name: AttackBoxL
-  m_TagString: BossAttackCollider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

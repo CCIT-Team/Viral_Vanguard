@@ -24,11 +24,8 @@ public class LockOnIndicator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(playerCamera.currentLockOnTarget != null)
-        {
-            Thick.transform.Rotate(0, 0, ThickRotationSpeed * Time.deltaTime);
-            Slim.transform.Rotate(0, 0, SlimRotationSpeed * Time.deltaTime);
-            Outer.transform.Rotate(0, 0, OuterRotationSpeed * Time.deltaTime);
-        }
+        Thick.transform.Rotate(0, 0, ThickRotationSpeed * Time.deltaTime);
+        Slim.transform.Rotate(0, 0, SlimRotationSpeed * Time.deltaTime);
+        Outer.transform.Rotate(0, 0, OuterRotationSpeed * Time.deltaTime);
     }
 }
