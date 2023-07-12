@@ -2117,11 +2117,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueLines:
   - "\uBC18\uAC11\uC2B5\uB2C8\uB2E4 \uBC45\uAC00\uB4DC."
-  - "\uC800\uB294 \uB2F9\uC2E0\uC758 \uC11C\uD3EC\uD2B8\uB97C \uB9E1\uC740 n\uC624\uD37C\uB808\uC774\uD130\uC785\uB2C8\uB2E4."
-  - "\uC800\uD76C\uB294 \uD604\uC7AC \uB2C9\uC2A4\uC5D0\uC11C n\uBC14\uC774\uB7EC\uC2A4
-    \uD575\uC2EC \uBCC0\uC774\uCCB4\uB4E4\uC758 n\uC704\uCE58\uB97C \uCD94\uC801\uD558\uACE0
+  - "\uC800\uB294 \uB2F9\uC2E0\uC758 \uC11C\uD3EC\uD2B8\uB97C \uB9E1\uC740 9\uC624\uD37C\uB808\uC774\uD130\uC785\uB2C8\uB2E4."
+  - "\uC800\uD76C\uB294 \uD604\uC7AC \uB2C9\uC2A4\uC5D0\uC11C 9\uBC14\uC774\uB7EC\uC2A4
+    \uD575\uC2EC \uBCC0\uC774\uCCB4\uB4E4\uC758 9\uC704\uCE58\uB97C \uCD94\uC801\uD558\uACE0
     \uC788\uC2B5\uB2C8\uB2E4."
-  - "Operation \uD0ED\uC744 n\uB20C\uB7EC\uC8FC\uC2ED\uC2DC\uC624."
+  - "Operation \uD0ED\uC744 9\uB20C\uB7EC\uC8FC\uC2ED\uC2DC\uC624."
   dialogueText: {fileID: 689487398}
   operatorDialogButton: {fileID: 1151781806}
   operatorParent: {fileID: 1099688217}
@@ -2942,7 +2942,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uAE5D\uCE58\uC9C0\uB9C8\uB77C"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3cd080ae1ffa36e4892a41538bbd9619, type: 2}
   m_sharedMaterial: {fileID: 2527948580618427863, guid: 3cd080ae1ffa36e4892a41538bbd9619,
@@ -3363,9 +3363,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueLines:
-  - "\uC774\uACF3\uC5D0\uC11C \uCD94\uC801\uC911\uC778 n\uBCC0\uC774\uCCB4\uB4E4\uC758
-    \uC704\uCE58\uB97C n\uBCF4\uB0B4\uB4DC\uB9AC\uACA0\uC2B5\uB2C8\uB2E4."
-  - "\uC9C0\uB3C4 \uC704\uC758 \uC544\uC774\uCF58\uC744 \uB20C\uB7EC n\uCD94\uC801\uC744
+  - "\uC774\uACF3\uC5D0\uC11C \uCD94\uC801\uC911\uC778 9\uBCC0\uC774\uCCB4\uB4E4\uC758
+    \uC704\uCE58\uB97C 9\uBCF4\uB0B4\uB4DC\uB9AC\uACA0\uC2B5\uB2C8\uB2E4."
+  - "\uC9C0\uB3C4 \uC704\uC758 \uC544\uC774\uCF58\uC744 \uB20C\uB7EC 9\uCD94\uC801\uC744
     \uC2DC\uC791\uD558\uC138\uC694."
   - "\uD589\uC6B4\uC744 \uBE55\uB2C8\uB2E4 \uBC45\uAC00\uB4DC."
   dialogueText: {fileID: 1434616335}
@@ -4678,7 +4678,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_RaycastPadding: {x: -477.04, y: 81.3, z: -25.85, w: 85}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -5368,7 +5368,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uAE5D\uCE58\uC9C0\uB9C8\uB77C"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3cd080ae1ffa36e4892a41538bbd9619, type: 2}
   m_sharedMaterial: {fileID: 2527948580618427863, guid: 3cd080ae1ffa36e4892a41538bbd9619,
@@ -5936,7 +5936,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1762108103}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 368780917}
+        m_TargetAssemblyTypeName: LobbySceneEvent, Assembly-CSharp
+        m_MethodName: ExitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1762108103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6596,7 +6608,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: -30, y: -30, z: -30, w: -30}
+  m_RaycastPadding: {x: -477.04, y: 81.3, z: -25.85, w: 85}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

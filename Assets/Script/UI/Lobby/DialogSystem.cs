@@ -50,7 +50,7 @@ public class DialogSystem : MonoBehaviour
         dialogueText.text = "";
         foreach (char c in text)
         {
-            if (c == 'n')
+            if (c == '9')
             {
                 dialogueText.text += System.Environment.NewLine;
             }
