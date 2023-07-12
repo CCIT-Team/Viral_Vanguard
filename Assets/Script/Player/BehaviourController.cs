@@ -60,7 +60,6 @@ public class BehaviourController : MonoBehaviour
 
     public bool isDead;
     public bool isBigBang = false;
-    public bool isBigBang1 = false;
     public bool guard;
     private bool guardHit;       //가드중 몬스터가 때리면
     private bool justGuard;
