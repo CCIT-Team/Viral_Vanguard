@@ -10,6 +10,10 @@ public class RedArmsSoundTrigger : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             audioSource.PlayOneShot(audioSource.clip);
+            if(!audioSource.isPlaying)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
