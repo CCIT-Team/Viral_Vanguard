@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 261.8021, g: 324.32925, b: 429.24924, a: 1}
+  m_IndirectSpecularColor: {r: 262.11768, g: 324.74365, b: 429.81006, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7999,8 +7999,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 1235601305}
-  originalSprite: {fileID: 21300000, guid: aedb20045aa39a4488a89b97de825681, type: 3}
-  hoverSprite: {fileID: 21300000, guid: a756328206230d24294a4724ad28897c, type: 3}
+  originalSprite: {fileID: 21300000, guid: ded9042c9446a714a8d99a9e72fc403e, type: 3}
+  hoverSprite: {fileID: 21300000, guid: cebbd116b9b03a6468a5d76fc99c9a2e, type: 3}
 --- !u!114 &1235601304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8077,7 +8077,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: aedb20045aa39a4488a89b97de825681, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ded9042c9446a714a8d99a9e72fc403e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
