@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Monster(Mimic)
   m_EditorClassIdentifier: 
   type: 2
-  maxHealth: 50
+  maxHealth: 20
   damage: 5
   moveSpeed: 1
