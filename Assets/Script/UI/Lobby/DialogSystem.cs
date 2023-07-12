@@ -50,7 +50,14 @@ public class DialogSystem : MonoBehaviour
         dialogueText.text = "";
         foreach (char c in text)
         {
-            dialogueText.text += c;
+            if (c == 'n')
+            {
+                dialogueText.text += System.Environment.NewLine;
+            }
+            else
+            {
+                dialogueText.text += c;
+            }
             yield return new WaitForSeconds(0.1f); // 글자 간 딜레이 조정 가능
         }
         operatorDialogButton.SetActive(true);
