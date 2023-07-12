@@ -7,6 +7,9 @@ TagManager:
   - PlayerAttackCollsion
   - Monster
   - BossAttackCollider
+  - NormalMonster
+  - BossEvent
+  - WalkableGround
   layers:
   - Default
   - TransparentFX
@@ -14,10 +17,10 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - VFX
+  - Boss
+  - NomalMonster
+  - Indicater
   - 
   - 
   - 

@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.Animations;
+
 
 /// <summary>
-/// °¡µå Çàµ¿ Ä«¸Þ¶ó°¡ º¸°í ÀÖ´Â ¹æÇâÀ¸·Î °¡µå°¡ ÁøÇàµÊ
+/// ï¿½ï¿½ï¿½ï¿½ ï¿½àµ¿ Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½å°¡ ï¿½ï¿½ï¿½ï¿½ï¿½
 /// </summary>
 public class GuardBehaviour : GenericBehaviour
 {
@@ -24,7 +24,7 @@ public class GuardBehaviour : GenericBehaviour
 
     public BoxCollider bossAttackCheckCollider;
 
-    //°¢ Çàµ¿ ÄðÅ¸ÀÓ
+    //ï¿½ï¿½ ï¿½àµ¿ ï¿½ï¿½Å¸ï¿½ï¿½
 
     private void Start()
     {
@@ -68,6 +68,7 @@ public class GuardBehaviour : GenericBehaviour
 
     private void Update()
     {
+        behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
         if (Input.GetMouseButtonDown(1))
         {
             evasionBehaviour.mouseLock = false;
@@ -79,7 +80,7 @@ public class GuardBehaviour : GenericBehaviour
             behaviourController.myAnimator.SetBool(bigBangBehaviour.keyLock, bigBangBehaviour.mouseLock);
         }
 
-        if (Input.GetAxisRaw(ButtonKey.Guard) != 0 && !behaviourController.guard && !guardMouseLock && !evasionBehaviour.mouseLock && !attackBehaviour.mouseLock && !bigBangBehaviour.mouseLock && behaviourController.currentStamina >= 0.1 ) //½ºÅ×¹Ì³ª ¾øÀ¸¸é ºÒ°¡´É
+        if (Input.GetAxisRaw(ButtonKey.Guard) != 0 && !behaviourController.guard && !guardMouseLock && !evasionBehaviour.mouseLock && !attackBehaviour.mouseLock && !bigBangBehaviour.mouseLock && behaviourController.currentStamina >= 0.1 ) //ï¿½ï¿½ï¿½×¹Ì³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò°ï¿½ï¿½ï¿½
         {
             StartCoroutine(ToggleGuardOn());
 
@@ -97,18 +98,8 @@ public class GuardBehaviour : GenericBehaviour
             behaviourController.currentStamina -= 20f;
             if (behaviourController.MonsterAttack)
             {
-                Debug.Log("º¸½º °ø°Ý È®ÀÎ");
-                behaviourController.JustGuard = true;
-                if (behaviourController.currentKineticEnergy >= behaviourController.maxKineticEnergy)
-                {
-                    behaviourController.currentKineticEnergy = 100f;
-                }
-                else
-                {
-                    behaviourController.currentKineticEnergy += 20f;
-                }
-                behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
-                
+                Debug.Log("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½");
+                behaviourController.JustGuard = true;         
             }
             else if (behaviourController.NormalMonsterAttack)
             {

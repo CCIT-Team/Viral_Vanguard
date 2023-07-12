@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using UnityEngine.EventSystems;
 using Unity.VisualScripting;
 
@@ -24,6 +25,10 @@ public class LobbySceneEvent : MonoBehaviour
     /// </summary>
     public GameObject[] operatorCall;
 
+    public Image test;
+    public TextMeshProUGUI fillAmount;
+    public TMP_Text percent;
+    public TMP_Text time;
 
     public void Start()
     {
@@ -113,4 +118,17 @@ public class LobbySceneEvent : MonoBehaviour
         Application.Quit();
     }
     #endregion
+
+    public void Update()
+    {
+        //test.fillAmount = Mathf.Clamp01(Mathf.Round(TimeManager.Instance.limitTime));
+
+        test.fillAmount = Mathf.Clamp(Mathf.Round(TimeManager.Instance.limitTime / 60), 0, 100) / 100;
+
+        percent.text = Mathf.Clamp(Mathf.Round(TimeManager.Instance.limitTime / 60), 0, 100).ToString() + "%";
+        time.text = Mathf.Round(TimeManager.Instance.limitTime / 60).ToString() + "M";
+
+        //Debug.Log(Mathf.Round(TimeManager.Instance.limitTime / 60));
+        //Debug.Log(Mathf.Clamp(Mathf.Round(TimeManager.Instance.limitTime / 60), 0, 100));
+    }
 }

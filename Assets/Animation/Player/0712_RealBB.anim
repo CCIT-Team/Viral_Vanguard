@@ -66926,7 +66926,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 3.15
-    functionName: BigBangkStiffenCheckStart1
+    functionName: BigBangkStiffenCheckStart
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -66954,7 +66954,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 3.3
-    functionName: BigBangStiffenCheckEnd1
+    functionName: BigBangStiffenCheckEnd
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
