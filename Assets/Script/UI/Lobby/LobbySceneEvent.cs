@@ -103,5 +103,10 @@ public class LobbySceneEvent : MonoBehaviour
             SaveDataManager.Instance.GameLoad();
         }
     }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
     #endregion
 }
