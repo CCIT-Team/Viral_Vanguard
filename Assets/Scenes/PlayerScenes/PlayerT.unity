@@ -779,6 +779,90 @@ PrefabInstance:
       objectReference: {fileID: 498770688}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00c49b4cc84b26548988acb94af22e1b, type: 3}
+--- !u!1001 &356285083
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3098218802340629313, guid: 6ae64bc89b090dc41b56175d545c74ee,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3098218802340629315, guid: 6ae64bc89b090dc41b56175d545c74ee,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 3098218802340629315, guid: 6ae64bc89b090dc41b56175d545c74ee,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3098218802340629315, guid: 6ae64bc89b090dc41b56175d545c74ee,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3098218802340629315, guid: 6ae64bc89b090dc41b56175d545c74ee,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3098218802340629315, guid: 6ae64bc89b090dc41b56175d545c74ee,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3098218802340629315, guid: 6ae64bc89b090dc41b56175d545c74ee,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3098218802340629315, guid: 6ae64bc89b090dc41b56175d545c74ee,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3098218802340629315, guid: 6ae64bc89b090dc41b56175d545c74ee,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3098218802340629315, guid: 6ae64bc89b090dc41b56175d545c74ee,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3098218802340629315, guid: 6ae64bc89b090dc41b56175d545c74ee,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3098218802340629315, guid: 6ae64bc89b090dc41b56175d545c74ee,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3098218802340629324, guid: 6ae64bc89b090dc41b56175d545c74ee,
+        type: 3}
+      propertyPath: m_Name
+      value: bigbang_trail (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3098218802340629324, guid: 6ae64bc89b090dc41b56175d545c74ee,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3098218802340629327, guid: 6ae64bc89b090dc41b56175d545c74ee,
+        type: 3}
+      propertyPath: Target
+      value: 
+      objectReference: {fileID: 434620033}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6ae64bc89b090dc41b56175d545c74ee, type: 3}
 --- !u!1001 &377513156
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -863,6 +947,12 @@ PrefabInstance:
       objectReference: {fileID: 1822245355}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ae64bc89b090dc41b56175d545c74ee, type: 3}
+--- !u!4 &434620033 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7453098351750716965, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
+    type: 3}
+  m_PrefabInstance: {fileID: 1424834726}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &461387545
 GameObject:
   m_ObjectHideFlags: 0
@@ -1591,6 +1681,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78a8ce50ee87eed4fb79cecbffa8fd20, type: 3}
+--- !u!1 &983946656 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3098218802340629324, guid: 6ae64bc89b090dc41b56175d545c74ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 356285083}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1012135238
 GameObject:
   m_ObjectHideFlags: 0
@@ -2305,6 +2401,16 @@ PrefabInstance:
       propertyPath: gameObjectsEffects.Array.data[1]
       value: 
       objectReference: {fileID: 1760291321}
+    - target: {fileID: 1956281250195285527, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
+        type: 3}
+      propertyPath: gameObjectsEffects.Array.data[3]
+      value: 
+      objectReference: {fileID: 983946656}
+    - target: {fileID: 3705077071347648746, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 5083973639157065452, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
         type: 3}
       propertyPath: m_Name
@@ -2364,6 +2470,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9038512818875422500, guid: 0e28c07e91a3cf34ab0f47657e1e3656,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e28c07e91a3cf34ab0f47657e1e3656, type: 3}
@@ -6941,7 +7052,6 @@ MonoBehaviour:
   keyLock: 0
   mouseLock: 0
   bigBangDamageChecker: {fileID: 0}
-  bigBangDamageChecker1: {fileID: 0}
   attackCollsion: {fileID: 0}
 --- !u!114 &6764242949971911988
 MonoBehaviour:
@@ -7052,7 +7162,6 @@ MonoBehaviour:
   staminaCoolTime: 0
   isDead: 0
   isBigBang: 0
-  isBigBang1: 0
   guard: 0
   lockOn: 0
   particleSystems: []
@@ -7198,7 +7307,6 @@ MonoBehaviour:
   staminaCoolTime: 0
   isDead: 0
   isBigBang: 0
-  isBigBang1: 0
   guard: 0
   lockOn: 0
   particleSystems: []
@@ -7309,7 +7417,6 @@ MonoBehaviour:
   keyLock: 0
   mouseLock: 0
   bigBangDamageChecker: {fileID: 0}
-  bigBangDamageChecker1: {fileID: 0}
   attackCollsion: {fileID: 0}
 --- !u!114 &6832512289473269509
 MonoBehaviour:
