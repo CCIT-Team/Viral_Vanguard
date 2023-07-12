@@ -211,7 +211,7 @@ public class NewMonsterMovement : MonoBehaviour
         MType = monsterStat.type;
         Health = monsterStat.maxHealth;
         damage[0] = monsterStat.damage;
-        damage[1] = monsterStat.damage;
+        damage[1] = monsterStat.damage * 0.9f;
         damage[2] = monsterStat.damage * 1.5f;
     }
 
@@ -328,7 +328,7 @@ public class NewMonsterMovement : MonoBehaviour
     IEnumerator DelayMotion()
     {
         animator.SetBool("AttackDelayed", true);
-        yield return new WaitForSecondsRealtime(0.3f);
+        yield return new WaitForSecondsRealtime(0.6f);
         animator.SetBool("AttackDelayed", false);
     }
 
@@ -364,6 +364,7 @@ public class NewMonsterMovement : MonoBehaviour
         {
             BehaviourController.instance.justGuardChecker = true;
             animator.SetBool("Stiffen", true);
+            StartCoroutine(DelayMotion());
             BehaviourController.instance.JustGuard = true;
         }
         else if (BehaviourController.instance.guard == true)
