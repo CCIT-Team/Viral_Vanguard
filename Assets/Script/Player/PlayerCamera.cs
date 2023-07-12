@@ -91,7 +91,7 @@ public class PlayerCamera : MonoBehaviour
             LockOnTarget();
             LockOnBillboardIndicater();
         }
-        else if(currentLockOnTarget == null) 
+        else if(currentLockOnTarget == null || !currentLockOnTarget.gameObject.activeSelf) 
         {
             LockOnDeactivate();
         }

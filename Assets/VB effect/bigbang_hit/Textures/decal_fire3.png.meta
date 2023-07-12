@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/VB effect/bigbang_hit/Textures/decal_fire3.png.meta
 guid: e0bb57b242089b6439ccfb44aebe4a63
-========
-guid: aedb20045aa39a4488a89b97de825681
->>>>>>>> develop/integrated:Assets/Resource/UI/2023-06-15/ApplyIdle.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -11,11 +7,7 @@ TextureImporter:
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
-<<<<<<<< HEAD:Assets/VB effect/bigbang_hit/Textures/decal_fire3.png.meta
     sRGBTexture: 0
-========
-    sRGBTexture: 1
->>>>>>>> develop/integrated:Assets/Resource/UI/2023-06-15/ApplyIdle.png.meta
     linearTexture: 0
     fadeOut: 0
     borderMipMap: 0
@@ -46,11 +38,7 @@ TextureImporter:
     mipBias: 0
     wrapU: 1
     wrapV: 1
-<<<<<<<< HEAD:Assets/VB effect/bigbang_hit/Textures/decal_fire3.png.meta
     wrapW: 1
-========
-    wrapW: 0
->>>>>>>> develop/integrated:Assets/Resource/UI/2023-06-15/ApplyIdle.png.meta
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -65,7 +53,7 @@ TextureImporter:
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 8
+  textureType: 0
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -74,11 +62,7 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
-<<<<<<<< HEAD:Assets/VB effect/bigbang_hit/Textures/decal_fire3.png.meta
   applyGammaDecoding: 1
-========
-  applyGammaDecoding: 0
->>>>>>>> develop/integrated:Assets/Resource/UI/2023-06-15/ApplyIdle.png.meta
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -116,28 +100,13 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-<<<<<<<< HEAD:Assets/VB effect/bigbang_hit/Textures/decal_fire3.png.meta
-========
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
->>>>>>>> develop/integrated:Assets/Resource/UI/2023-06-15/ApplyIdle.png.meta
   spriteSheet:
     serializedVersion: 2
     sprites: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 

@@ -22,6 +22,7 @@ public class SaveData
 
     //Time
     public float playTime = 0;
+    public float limitTime = 0;
 
     //
     public bool isLobbyTutorialClear = false;
@@ -90,11 +91,11 @@ public class SaveDataManager : Singleton<SaveDataManager>
         saveDatas[3] = saveData3;
         saveDatas[4] = saveData4;
 
-        GameSave("/SaveFile" + saveFileNumber[0] + ".txt",0);
-        GameSave("/SaveFile" + saveFileNumber[1] + ".txt", 1);
-        GameSave("/SaveFile" + saveFileNumber[2] + ".txt", 2);
-        GameSave("/SaveFile" + saveFileNumber[3] + ".txt", 3);
-        GameSave("/SaveFile" + saveFileNumber[4] + ".txt", 4);
+        //GameSave("/SaveFile" + saveFileNumber[0] + ".txt",0);
+        //GameSave("/SaveFile" + saveFileNumber[1] + ".txt", 1);
+        //GameSave("/SaveFile" + saveFileNumber[2] + ".txt", 2);
+        //GameSave("/SaveFile" + saveFileNumber[3] + ".txt", 3);
+        //GameSave("/SaveFile" + saveFileNumber[4] + ".txt", 4);
         GameLoadAllData();
     }
 

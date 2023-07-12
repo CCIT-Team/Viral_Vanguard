@@ -129,11 +129,21 @@ public class BehaviourController : MonoBehaviour
             justGuard = value;
             if (justGuardChecker == true && justGuard == true)
             {
+                
                 particleSystems[0].Play();
                 JustGuardSound();
                 BossMove.instacne.SetStiffen(0);
                 StartCoroutine(JustGuardTimeScale());
                 Debug.Log("½ÇÇà‰³");
+                if (currentKineticEnergy >= maxKineticEnergy)
+                {
+                    currentKineticEnergy = 100f;
+                }
+                else
+                {
+                    currentKineticEnergy += 20f;
+                }
+                stageUIManager.PlayerUpdateKineticEnergy();
             }
         }
     }
@@ -297,6 +307,7 @@ public class BehaviourController : MonoBehaviour
 
     private void Update()
     {
+        //stageUIManager.PlayerUpdateKineticEnergy();
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
 
@@ -309,12 +320,11 @@ public class BehaviourController : MonoBehaviour
         myAnimator.SetFloat(speedFloat, speeds);
 
         myAnimator.SetBool(groundedBool, IsGrounded());
-
+        stageUIManager.PlayerUpdateStamina();
         if (staminaCharge == true)
         {
             if (currentStamina <= maxStamina)
                 currentStamina += staminaChargeSpeed * Time.deltaTime;
-            stageUIManager.PlayerUpdateStamina();
         }
         else if (staminaCharge == false)
         {

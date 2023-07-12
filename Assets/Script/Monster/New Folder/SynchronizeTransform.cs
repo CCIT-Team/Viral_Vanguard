@@ -14,6 +14,9 @@ public class SynchronizeTransform : MonoBehaviour
     Material dissolveMaterial;
     Material mat;
 
+    [SerializeField]
+    Transform lockontransform;
+
     private void OnEnable()
     {
         mat = Instantiate(dissolveMaterial);
@@ -42,6 +45,7 @@ public class SynchronizeTransform : MonoBehaviour
 
     IEnumerator Dissolve(float time = 0.01f)
     {
+        Destroy(lockontransform.gameObject);
         yield return new WaitForSeconds(time);
         float i = 0;
         while (i <= 2)

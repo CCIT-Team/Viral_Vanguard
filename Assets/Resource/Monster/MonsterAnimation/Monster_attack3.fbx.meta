@@ -672,15 +672,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.5003659
-        functionName: MonsterAttackCheck
-        data: 
-        objectReferenceParameter: {fileID: 11500000, guid: 511e0c5d1063d7d43a769aaf8d0f98ac,
-          type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.5018699
+      - time: 0.48009083
         functionName: OnHitBox
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 511e0c5d1063d7d43a769aaf8d0f98ac,
@@ -688,7 +680,15 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.5839581
+      - time: 0.48393437
+        functionName: MonsterAttackCheck
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 511e0c5d1063d7d43a769aaf8d0f98ac,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.5967137
         functionName: OffHitBox
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 511e0c5d1063d7d43a769aaf8d0f98ac,
@@ -696,7 +696,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.58546215
+      - time: 0.5982177
         functionName: MonsterAttackCheck
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 511e0c5d1063d7d43a769aaf8d0f98ac,

@@ -256,6 +256,7 @@ public class NewMonsterMovement : MonoBehaviour
     {
         animator.SetBool("FakeDead", false);
         attackRange.gameObject.SetActive(true);
+        searchRange.gameObject.SetActive(true);
         patrolPoint.gameObject.SetActive(true);
     }
 
@@ -361,7 +362,7 @@ public class NewMonsterMovement : MonoBehaviour
     {
         if (BehaviourController.instance.JustGuard == true)
         {
-
+            animator.SetBool("Stiffen", true);
         }
         else if (BehaviourController.instance.guard == true)
         {
