@@ -50,6 +50,7 @@ public class SynchronizeTransform : MonoBehaviour
             i += 0.05f;
             mat.SetFloat("_Float", i);
         }
-        transform.root.gameObject.SetActive(false);
+
+        transform.parent.parent.gameObject.SetActive(false);
     }
 }
