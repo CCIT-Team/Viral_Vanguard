@@ -680,6 +680,14 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.0099180965
+        functionName: DelayMotion
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 511e0c5d1063d7d43a769aaf8d0f98ac,
+          type: 3}
+        floatParameter: -1
+        intParameter: 0
+        messageOptions: 0
       - time: 0.08968609
         functionName: OffStiffen
         data: 
@@ -688,7 +696,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 1
+      - time: 0.9564315
         functionName: AttackDelay
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 511e0c5d1063d7d43a769aaf8d0f98ac,

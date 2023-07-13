@@ -325,11 +325,20 @@ public class NewMonsterMovement : MonoBehaviour
         
     }
 
-    IEnumerator DelayMotion()
+    IEnumerator DelayMotion(float time)
     {
-        animator.SetBool("AttackDelayed", true);
-        yield return new WaitForSecondsRealtime(0.6f);
-        animator.SetBool("AttackDelayed", false);
+        if (time == -1)
+        {
+            yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length / animator.GetCurrentAnimatorStateInfo(0).speed);
+            isAttack = false;
+            agent.isStopped = false;
+        }
+        else
+        {
+            animator.SetBool("AttackDelayed", true);
+            yield return new WaitForSecondsRealtime(time);
+            animator.SetBool("AttackDelayed", false);
+        }  
     }
 
     IEnumerator IdleSound()
@@ -364,7 +373,7 @@ public class NewMonsterMovement : MonoBehaviour
         {
             BehaviourController.instance.justGuardChecker = true;
             animator.SetBool("Stiffen", true);
-            StartCoroutine(DelayMotion());
+            StartCoroutine(DelayMotion(0.6f));
             BehaviourController.instance.JustGuard = true;
         }
         else if (BehaviourController.instance.guard == true)
