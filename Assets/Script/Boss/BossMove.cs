@@ -312,6 +312,14 @@ public class BossMove : MonoBehaviour
         }
     }
 
+    public void OffAttackCollider()
+    {
+        foreach (var item in attackDetections)
+        {
+            item.SetActive(false);
+        }
+    }
+
     #region 플레이어 방향으로 돌기
 
     Quaternion targetRotation;
