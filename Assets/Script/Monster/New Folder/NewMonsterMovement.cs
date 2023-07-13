@@ -164,6 +164,8 @@ public class NewMonsterMovement : MonoBehaviour
 
     public GameObject bodys;
 
+    bool coroutineRun = false;
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha0))
@@ -241,8 +243,9 @@ public class NewMonsterMovement : MonoBehaviour
 
     public void Attack(int AType = -1)
     {
-        if (!isAttack && State != EMonsterState.Dead)
+        if (!isAttack && State != EMonsterState.Dead && !coroutineRun)
         {
+            StopCoroutine(AttackDelay());
             isAttack = true;
             if(AType == -1)
                 animator.SetInteger("AttackType", Random.Range(0, 2));
@@ -276,11 +279,7 @@ public class NewMonsterMovement : MonoBehaviour
     //---------------------------------------------
 
     //애니메이션 이벤트
-    public void AttackDelay()
-    {
-        isAttack = false;
-        agent.isStopped = false;
-    }
+
 
     public void MonsterDead()
     {
@@ -324,21 +323,27 @@ public class NewMonsterMovement : MonoBehaviour
         }
         
     }
-
-    IEnumerator DelayMotion(float time)
+    IEnumerator AttackDelay()
     {
-        if (time == -1)
+        if (coroutineRun == true)
         {
-            yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length / animator.GetCurrentAnimatorStateInfo(0).speed);
-            isAttack = false;
-            agent.isStopped = false;
+            yield return new WaitForSecondsRealtime(0.01f);
         }
         else
         {
-            animator.SetBool("AttackDelayed", true);
-            yield return new WaitForSecondsRealtime(time);
-            animator.SetBool("AttackDelayed", false);
-        }  
+            coroutineRun = true;
+            yield return new WaitForSecondsRealtime(animator.GetCurrentAnimatorStateInfo(0).length/ animator.GetCurrentAnimatorStateInfo(0).speed + 0.05f);
+            isAttack = false;
+            agent.isStopped = false;
+            coroutineRun = false;
+        }
+    }
+
+    IEnumerator DelayMotion(float time)
+    {
+        animator.SetBool("AttackDelayed", true);
+        yield return new WaitForSecondsRealtime(time);
+        animator.SetBool("AttackDelayed", false);
     }
 
     IEnumerator IdleSound()
