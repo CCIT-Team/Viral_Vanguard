@@ -97,14 +97,14 @@ public class UIManager : Singleton<UIManager>
             CloseLastUI();
         }
 
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            SceneFader.Instance.StartFadeOut("Lobby",3f);
-        }
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            SceneFader.Instance.StartFadeOut("NikeMainRoad",3f);
-        }
+        //if (Input.GetKeyDown(KeyCode.L))
+        //{
+        //    SceneFader.Instance.StartFadeOut("Lobby",3f);
+        //}
+        //if (Input.GetKeyDown(KeyCode.N))
+        //{
+        //    SceneFader.Instance.StartFadeOut("NikeMainRoad",3f);
+        //}
 
         if (masterVolume.value <= 0) masterVolume.value = 0.001f;
         if (bgmVolume.value <= 0) bgmVolume.value = 0.001f;

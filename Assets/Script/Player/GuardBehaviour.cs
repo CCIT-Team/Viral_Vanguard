@@ -23,6 +23,7 @@ public class GuardBehaviour : GenericBehaviour
 
 
     public BoxCollider bossAttackCheckCollider;
+    public MeshRenderer meshRenderer;
 
     //�� �ൿ ��Ÿ��
 
@@ -128,5 +129,12 @@ public class GuardBehaviour : GenericBehaviour
     {
         behaviourController.JustGuard = false;
         behaviourController.guard = false;
+    }
+
+    public IEnumerator shieldShaderOn()
+    {
+        meshRenderer.materials[0].SetFloat("_Speed", 1f);
+        yield return new WaitForSeconds(0.5f);
+        meshRenderer.materials[0].SetFloat("_Speed", 0f);
     }
 }
