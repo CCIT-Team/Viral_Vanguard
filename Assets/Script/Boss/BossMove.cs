@@ -318,6 +318,11 @@ public class BossMove : MonoBehaviour
         {
             item.SetActive(false);
         }
+
+        foreach (var item in trails)
+        {
+            item.SetActive(false);
+        }
     }
 
     #region 플레이어 방향으로 돌기
