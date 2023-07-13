@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.VFX;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// 현재, 기본, 오버라이딩, 잠긴 동작들 + 마우스 이동값, 땅 확인, GenericBehaviour업데이트 시켜줌
