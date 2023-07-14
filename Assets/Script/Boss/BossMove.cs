@@ -19,6 +19,9 @@ public class BossMove : MonoBehaviour
         while(true)
         {
             agent.SetDestination(target.position);
+
+            if (Input.GetKeyDown(KeyCode.Z))
+                CurrentHealthPoint -= 800;
             yield return new WaitForSeconds(0.5f);
         }
     }
