@@ -312,8 +312,11 @@ public class BehaviourController : MonoBehaviour
 
     private void Update()
     {
-        horizontal = Input.GetAxis("Horizontal");
-        vertical = Input.GetAxis("Vertical");
+        if(isDead == false)
+        {
+            horizontal = Input.GetAxis("Horizontal");
+            vertical = Input.GetAxis("Vertical");
+        }
 
         myAnimator.SetFloat(horizontalFloat, horizontal);
         myAnimator.SetFloat(verticalFloat, vertical);

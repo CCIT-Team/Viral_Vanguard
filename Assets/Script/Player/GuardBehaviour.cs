@@ -94,6 +94,7 @@ public class GuardBehaviour : GenericBehaviour
         {
             guardMouseLock = true;
             behaviourController.myAnimator.SetTrigger("JustGuard");
+            behaviourController.myAnimator.SetBool("JustGuardCheck", true);
             behaviourController.JustGuardSwingSound();
             behaviourController.currentStamina -= 20f;
             behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
@@ -128,6 +129,7 @@ public class GuardBehaviour : GenericBehaviour
     public void playerJustGuardFalse()
     {
         behaviourController.JustGuard = false;
+        behaviourController.myAnimator.SetBool("JustGuardCheck", false);
         behaviourController.guard = false;
     }
 

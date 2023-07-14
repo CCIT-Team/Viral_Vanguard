@@ -119,6 +119,8 @@ public class NewMonsterMovement : MonoBehaviour
                     break;
                 case EMonsterState.Dead:
                     patrolPoint.gameObject.SetActive(false);
+                    coroutineRun = true;
+                    StopCoroutine(AttackDelay());
                     attackRange.enabled = false;
                     agent.isStopped = true;
                     if(ragdoll == null)
@@ -321,7 +323,6 @@ public class NewMonsterMovement : MonoBehaviour
             yield return 0;
             agent.SetDestination(target.position);
         }
-        
     }
     IEnumerator AttackDelay()
     {
