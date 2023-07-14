@@ -333,7 +333,7 @@ public class NewMonsterMovement : MonoBehaviour
         else
         {
             coroutineRun = true;
-            yield return new WaitForSecondsRealtime(animator.GetCurrentAnimatorStateInfo(0).length/ animator.GetCurrentAnimatorStateInfo(0).speed + 0.05f);
+            yield return new WaitForSecondsRealtime(animator.GetCurrentAnimatorStateInfo(0).length/ animator.GetCurrentAnimatorStateInfo(0).speed - 0.025f);
             isAttack = false;
             agent.isStopped = false;
             coroutineRun = false;
