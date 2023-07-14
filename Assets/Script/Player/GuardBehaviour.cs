@@ -139,4 +139,14 @@ public class GuardBehaviour : GenericBehaviour
         yield return new WaitForSeconds(0.5f);
         meshRenderer.materials[0].SetFloat("_Speed", 0f);
     }
+
+    public void GuardHitEffect()
+    {
+        behaviourController.particleSystems[1].Play();
+    }
+
+    public void GuardBreakFalse()
+    {
+        behaviourController.myAnimator.SetBool("GuardBreakTrue", false);
+    }
 }

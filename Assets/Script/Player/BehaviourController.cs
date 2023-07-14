@@ -87,7 +87,7 @@ public class BehaviourController : MonoBehaviour
             if (guard == true)
             {
                 myAnimator.SetTrigger("GuardHit");
-                particleSystems[1].Play();
+                //particleSystems[1].Play();
             }
         }
     }
@@ -100,6 +100,7 @@ public class BehaviourController : MonoBehaviour
             guardBreak = value;
             if(guard == true)
             {
+                myAnimator.SetBool("GuardBreakTrue", true);
                 myAnimator.SetTrigger("GuardBreak");
                 particleSystems[9].Play();
             }
@@ -617,6 +618,7 @@ public class BehaviourController : MonoBehaviour
         SoundManager.instance.OnShot("JustGuardSwing");
     }
         #endregion
+
 }
 
 
