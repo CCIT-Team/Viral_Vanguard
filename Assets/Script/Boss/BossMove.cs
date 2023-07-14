@@ -407,6 +407,11 @@ public class BossMove : MonoBehaviour
         bool b = effectObject[i].activeSelf ? false : true;
 
         effectObject[i].SetActive(b);
+
+        if (b)
+            effectObject[i].transform.parent = null;
+        else
+            effectObject[i].transform.parent = effectParent.transform;
     }
     #endregion
 
