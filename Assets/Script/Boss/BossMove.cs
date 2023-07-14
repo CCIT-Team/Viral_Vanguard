@@ -20,8 +20,8 @@ public class BossMove : MonoBehaviour
         {
             agent.SetDestination(target.position);
 
-            if (Input.GetKeyDown(KeyCode.Z))
-                CurrentHealthPoint -= 800;
+            //if (Input.GetKeyDown(KeyCode.Z))
+            //    CurrentHealthPoint -= 800;
             yield return new WaitForSeconds(0.5f);
         }
     }
@@ -143,6 +143,12 @@ public class BossMove : MonoBehaviour
     {
         StartCoroutine(update());
         animator.SetBool("Walk", true);
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Z))
+            CurrentHealthPoint -= 800;
     }
 
     public void TargetTracking(bool b)
