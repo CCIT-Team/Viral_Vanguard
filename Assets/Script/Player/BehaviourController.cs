@@ -149,6 +149,7 @@ public class BehaviourController : MonoBehaviour
                 {
                     currentKineticEnergy += 20f;
                 }
+                currentStamina = Mathf.Clamp(currentStamina, 0, 100);
                 stageUIManager.PlayerUpdateKineticEnergy();
             }
         }
@@ -313,7 +314,8 @@ public class BehaviourController : MonoBehaviour
 
     private void Update()
     {
-        if(isDead == false)
+        currentStamina = Mathf.Clamp(currentStamina, 0, 100);
+        if (isDead == false)
         {
             horizontal = Input.GetAxis("Horizontal");
             vertical = Input.GetAxis("Vertical");
