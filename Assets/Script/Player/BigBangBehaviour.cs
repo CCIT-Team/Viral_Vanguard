@@ -74,7 +74,7 @@ public class BigBangBehaviour : GenericBehaviour
 
     public void ReducedKineticEnergyBigBang()
     {
-        behaviourController.currentKineticEnergy -= 20;
+        behaviourController.currentKineticEnergy -= 100;
         behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
     }
 
@@ -122,7 +122,7 @@ public class BigBangBehaviour : GenericBehaviour
         behaviourController.myAnimator.speed = 1f;
     }
 
-    public void ChargeMaceOn()
+    public void ChargeMaceOn()//차지
     {
         behaviourController.gameObjectsEffects[0].SetActive(true);
     }
@@ -132,7 +132,7 @@ public class BigBangBehaviour : GenericBehaviour
         behaviourController.gameObjectsEffects[0].SetActive(false);
     }
 
-    public void ChargeMaceOn1()
+    public void ChargeMaceOn1()//방패
     {
         behaviourController.gameObjectsEffects[3].SetActive(true);
     }
@@ -140,7 +140,7 @@ public class BigBangBehaviour : GenericBehaviour
     {
         behaviourController.gameObjectsEffects[3].SetActive(false);
     }
-    public void ChargeMaceOn2()
+    public void ChargeMaceOn2()//메이스
     {
         behaviourController.gameObjectsEffects[1].SetActive(true);
     }
