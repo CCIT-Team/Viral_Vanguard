@@ -93,7 +93,7 @@ Material:
     - _EmissionIntensity: 10
     - _EnableBlendModePreserveSpecularLighting: 1
     - _EnableFogOnTransparent: 1
-    - _Frequency: 4.01
+    - _Frequency: 8
     - _GradientEdge: 4.34
     - _MeltalicStrength: 1
     - _NormalStrength: 1

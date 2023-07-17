@@ -119,6 +119,11 @@ public class GuardBehaviour : GenericBehaviour
             isJustGuardDelay = true;
             StartCoroutine(JustGuardOnce());
         }
+        //if(Input.GetKeyDown(KeyCode.K))
+        //{
+        //    StartCoroutine(shieldShaderOn());
+        //    behaviourController.particleSystems[1].Play();
+        //}
     }
 
     IEnumerator JustGuardOnce()
@@ -136,7 +141,7 @@ public class GuardBehaviour : GenericBehaviour
     public IEnumerator shieldShaderOn()
     {
         meshRenderer.materials[0].SetFloat("_EffectRadius", 1f);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
         meshRenderer.materials[0].SetFloat("_EffectRadius", 0.001f);
     }
 
