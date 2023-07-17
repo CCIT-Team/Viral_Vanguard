@@ -29,6 +29,12 @@ public class LobbySceneEvent : MonoBehaviour
     public TMP_Text percent;
     public TMP_Text time;
 
+    public void Awake()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
     public void Start()
     {
         if (!SaveDataManager.Instance.saveDatas[SaveDataManager.Instance.currentSaveFileIndex].isLobbyTutorialClear)
