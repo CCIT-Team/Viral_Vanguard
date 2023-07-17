@@ -18,8 +18,14 @@ public class UIManager : Singleton<UIManager>
     public GameObject optionCanvas;
 
 
-    public Stack<GameObject> uiStack = new Stack<GameObject>();   
+    public Stack<GameObject> uiStack = new Stack<GameObject>();
 
+    public void Awake()
+    {
+        mv = masterVolume.value;
+        bv = bgmVolume.value;
+        sv = sfxVolume.value;
+    }
 
     // Close UI
     // 매개변수에는 해당 ui를 켰을 때 그걸 끄는 버튼을 할당해주세요
@@ -37,7 +43,7 @@ public class UIManager : Singleton<UIManager>
             uiStack.Pop();
             uiobject.SetActive(false);
             
-            if(uiobject.name == "OptionUI" && isApplySoundSetting == false)
+            if(uiobject.name == "OptionCanvas" && isApplySoundSetting == false)
             {
                 masterVolume.value = mv;
                 bgmVolume.value = bv;
@@ -60,7 +66,7 @@ public class UIManager : Singleton<UIManager>
             if (button == null) Debug.Log("버튼이 없어요");
             else if (button != null) button.onClick.Invoke();
 
-            if (lastUI.name == "OptionUI" && isApplySoundSetting == false)
+            if (lastUI.name == "OptionCanvas" && isApplySoundSetting == false)
             {
                 masterVolume.value = mv;
                 bgmVolume.value = bv;
@@ -73,14 +79,14 @@ public class UIManager : Singleton<UIManager>
 
 
     // SoundOption
-    float mv = 0, bv = 0, sv = 0;
+    public float mv = 0, bv = 0, sv = 0;
     public void GetSoundVolumeValue()
     {
         isApplySoundSetting = false;
 
-        mv = masterVolume.value;
-        bv = bgmVolume.value;
-        sv = sfxVolume.value;
+        masterVolume.value = mv;
+        bgmVolume.value = bv;
+        sfxVolume.value = sv;
     }
 
     public void SetSoundVolumeValue()
