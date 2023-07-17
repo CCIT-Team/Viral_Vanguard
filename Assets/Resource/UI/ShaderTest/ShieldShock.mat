@@ -103,7 +103,7 @@ Material:
     - _EmissionIntensity: 10
     - _EnableBlendModePreserveSpecularLighting: 1
     - _EnableFogOnTransparent: 1
-    - _Magnification: 0.13
+    - _Magnification: 1
     - _MeltalicStrength: 1
     - _NormalStrength: 0.12
     - _OpaqueCullMode: 2
@@ -113,9 +113,9 @@ Material:
     - _RefractionModel: 0
     - _RenderQueueType: 4
     - _RequireSplitLighting: 0
-    - _Size: 0.01
+    - _Size: 1
     - _SmoothnessStrength: 0.479
-    - _Speed: 0.01
+    - _Speed: 1
     - _SrcBlend: 1
     - _StencilRef: 0
     - _StencilRefDepth: 8

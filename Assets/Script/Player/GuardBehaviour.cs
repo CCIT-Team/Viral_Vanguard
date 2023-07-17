@@ -135,9 +135,9 @@ public class GuardBehaviour : GenericBehaviour
 
     public IEnumerator shieldShaderOn()
     {
-        meshRenderer.materials[0].SetFloat("_Speed", 1f);
+        meshRenderer.materials[0].SetFloat("_EffectRadius", 1f);
         yield return new WaitForSeconds(0.5f);
-        meshRenderer.materials[0].SetFloat("_Speed", 0f);
+        meshRenderer.materials[0].SetFloat("_EffectRadius", 0f);
     }
 
     public void GuardHitEffect()
