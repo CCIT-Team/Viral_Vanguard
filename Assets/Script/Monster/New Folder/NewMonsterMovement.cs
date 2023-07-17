@@ -119,6 +119,9 @@ public class NewMonsterMovement : MonoBehaviour
                     break;
                 case EMonsterState.Dead:
                     patrolPoint.gameObject.SetActive(false);
+                    coroutineRun = true;
+                    StopCoroutine(SetAgent());
+                    StopCoroutine(AttackDelay());
                     attackRange.enabled = false;
                     agent.isStopped = true;
                     if(ragdoll == null)
@@ -309,7 +312,6 @@ public class NewMonsterMovement : MonoBehaviour
     void OnAgent()
     {
         agent.isStopped = false;
-        StartCoroutine(SetAgent());
     }
 
     //---------------------------------------------------------
@@ -321,7 +323,6 @@ public class NewMonsterMovement : MonoBehaviour
             yield return 0;
             agent.SetDestination(target.position);
         }
-        
     }
     IEnumerator AttackDelay()
     {
@@ -332,10 +333,12 @@ public class NewMonsterMovement : MonoBehaviour
         else
         {
             coroutineRun = true;
-            yield return new WaitForSecondsRealtime(animator.GetCurrentAnimatorStateInfo(0).length/ animator.GetCurrentAnimatorStateInfo(0).speed + 0.05f);
-            isAttack = false;
-            agent.isStopped = false;
-            coroutineRun = false;
+            yield return new WaitForSecondsRealtime(animator.GetCurrentAnimatorStateInfo(0).length/ animator.GetCurrentAnimatorStateInfo(0).speed);
+            if (State != EMonsterState.Dead)
+            {
+                isAttack = false;
+                coroutineRun = false;
+            }
         }
     }
 
