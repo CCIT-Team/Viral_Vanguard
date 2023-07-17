@@ -137,7 +137,7 @@ public class GuardBehaviour : GenericBehaviour
     {
         meshRenderer.materials[0].SetFloat("_EffectRadius", 1f);
         yield return new WaitForSeconds(0.5f);
-        meshRenderer.materials[0].SetFloat("_EffectRadius", 0f);
+        meshRenderer.materials[0].SetFloat("_EffectRadius", 0.001f);
     }
 
     public void GuardHitEffect()
