@@ -84,7 +84,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AOStrength: 1
+    - _AOStrength: 0
     - _AddPrecomputedVelocity: 0
     - _AlphaCutoffEnable: 0
     - _AlphaDstBlend: 10
@@ -103,9 +103,9 @@ Material:
     - _EmissionIntensity: 10
     - _EnableBlendModePreserveSpecularLighting: 1
     - _EnableFogOnTransparent: 1
-    - _Magnification: 0
+    - _Magnification: 1
     - _MeltalicStrength: 1
-    - _NormalStrength: 1
+    - _NormalStrength: 0.12
     - _OpaqueCullMode: 2
     - _RayTracing: 0
     - _ReceivesSSR: 1
@@ -113,9 +113,9 @@ Material:
     - _RefractionModel: 0
     - _RenderQueueType: 4
     - _RequireSplitLighting: 0
-    - _Size: 0
-    - _SmoothnessStrength: 1
-    - _Speed: 0
+    - _Size: 1
+    - _SmoothnessStrength: 0.479
+    - _Speed: 1
     - _SrcBlend: 1
     - _StencilRef: 0
     - _StencilRefDepth: 8
@@ -142,7 +142,7 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0, g: 0, b: 0, a: 1}
+    - _Color: {r: 0, g: 36.858635, b: 170.89003, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: 1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _FocalPoint: {r: 0, g: 0, b: 0, a: 0}

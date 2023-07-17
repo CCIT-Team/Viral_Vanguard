@@ -67,6 +67,7 @@ public class AttackBehaviour : GenericBehaviour
                 behaviourController.myAnimator.SetBool(attack1, true);
             }
             clicks = Mathf.Clamp(clicks, 0, 3);
+            behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
         }
     }
 
@@ -77,6 +78,7 @@ public class AttackBehaviour : GenericBehaviour
             behaviourController.UnLockTempBehaviour(behaviourCode);
             behaviourController.RevokeOverridingBehaviour(this);
             clicks = 0;
+
         }
 
         if (Input.GetAxisRaw(ButtonKey.Attack) != 0)
@@ -91,12 +93,13 @@ public class AttackBehaviour : GenericBehaviour
         {
             behaviourController.myAnimator.SetBool(attack2, true);
             behaviourController.myAnimator.SetBool(attack1, false);
-            
+            behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
         }
         else
         {
             behaviourController.myAnimator.SetBool(attack1, false);
             clicks = 0;
+            behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
         }
     }
     public void AttackReturn2()
@@ -104,11 +107,13 @@ public class AttackBehaviour : GenericBehaviour
         if (clicks >= 3 && behaviourController.currentStamina > 10f)
         {
             behaviourController.myAnimator.SetBool(attack3, true);
+            behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
         }
         else
         {
             behaviourController.myAnimator.SetBool(attack2, false);
             clicks = 0;
+            behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
         }
     }
     public void AttackReturn3()
@@ -117,7 +122,8 @@ public class AttackBehaviour : GenericBehaviour
         behaviourController.myAnimator.SetBool(attack2, false);
         behaviourController.myAnimator.SetBool(attack3, false);
         clicks = 0;
-        
+        behaviourController.stageUIManager.PlayerUpdateKineticEnergy();
+
     }
     public void AttackReturnReSet()
     {
