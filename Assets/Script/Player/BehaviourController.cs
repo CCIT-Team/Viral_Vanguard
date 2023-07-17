@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.VFX;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// 현재, 기본, 오버라이딩, 잠긴 동작들 + 마우스 이동값, 땅 확인, GenericBehaviour업데이트 시켜줌
@@ -86,7 +87,7 @@ public class BehaviourController : MonoBehaviour
             if (guard == true)
             {
                 myAnimator.SetTrigger("GuardHit");
-                particleSystems[1].Play();
+                //particleSystems[1].Play();
             }
         }
     }
@@ -99,6 +100,7 @@ public class BehaviourController : MonoBehaviour
             guardBreak = value;
             if(guard == true)
             {
+                myAnimator.SetBool("GuardBreakTrue", true);
                 myAnimator.SetTrigger("GuardBreak");
                 particleSystems[9].Play();
             }
@@ -147,6 +149,7 @@ public class BehaviourController : MonoBehaviour
                 {
                     currentKineticEnergy += 20f;
                 }
+                currentStamina = Mathf.Clamp(currentStamina, 0, 100);
                 stageUIManager.PlayerUpdateKineticEnergy();
             }
         }
@@ -311,8 +314,12 @@ public class BehaviourController : MonoBehaviour
 
     private void Update()
     {
-        horizontal = Input.GetAxis("Horizontal");
-        vertical = Input.GetAxis("Vertical");
+        currentStamina = Mathf.Clamp(currentStamina, 0, 100);
+        if (isDead == false)
+        {
+            horizontal = Input.GetAxis("Horizontal");
+            vertical = Input.GetAxis("Vertical");
+        }
 
         myAnimator.SetFloat(horizontalFloat, horizontal);
         myAnimator.SetFloat(verticalFloat, vertical);
@@ -613,6 +620,7 @@ public class BehaviourController : MonoBehaviour
         SoundManager.instance.OnShot("JustGuardSwing");
     }
         #endregion
+
 }
 
 

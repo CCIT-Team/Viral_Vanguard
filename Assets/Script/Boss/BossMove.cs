@@ -19,6 +19,9 @@ public class BossMove : MonoBehaviour
         while(true)
         {
             agent.SetDestination(target.position);
+
+            //if (Input.GetKeyDown(KeyCode.Z))
+            //    CurrentHealthPoint -= 800;
             yield return new WaitForSeconds(0.5f);
         }
     }
@@ -140,6 +143,12 @@ public class BossMove : MonoBehaviour
     {
         StartCoroutine(update());
         animator.SetBool("Walk", true);
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Z))
+            CurrentHealthPoint -= 800;
     }
 
     public void TargetTracking(bool b)
@@ -318,6 +327,11 @@ public class BossMove : MonoBehaviour
         {
             item.SetActive(false);
         }
+
+        foreach (var item in trails)
+        {
+            item.SetActive(false);
+        }
     }
 
     #region 플레이어 방향으로 돌기
@@ -402,6 +416,11 @@ public class BossMove : MonoBehaviour
         bool b = effectObject[i].activeSelf ? false : true;
 
         effectObject[i].SetActive(b);
+
+        if (b)
+            effectObject[i].transform.parent = null;
+        else
+            effectObject[i].transform.parent = effectParent.transform;
     }
     #endregion
 
