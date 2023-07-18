@@ -294,8 +294,14 @@ public class BossMove : MonoBehaviour
     {
         bodyCollider.enabled = false;
         agent.baseOffset = 0;
-        stageUIManager.BossClearAnimation();
+        StartCoroutine(ClearUIOn());
         animator.SetTrigger("Dead");
+    }
+
+    IEnumerator ClearUIOn()
+    {
+        yield return new WaitForSecondsRealtime(3.7f);
+        stageUIManager.BossClearAnimation();
     }
 
     public void SFXShot(string soundName)
