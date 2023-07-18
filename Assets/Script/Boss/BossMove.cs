@@ -145,12 +145,6 @@ public class BossMove : MonoBehaviour
         animator.SetBool("Walk", true);
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Z))
-            CurrentHealthPoint -= 800;
-    }
-
     public void TargetTracking(bool b)
     {
         agent.isStopped = b ? false : true;

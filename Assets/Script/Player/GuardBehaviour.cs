@@ -119,11 +119,7 @@ public class GuardBehaviour : GenericBehaviour
             isJustGuardDelay = true;
             StartCoroutine(JustGuardOnce());
         }
-        //if(Input.GetKeyDown(KeyCode.K))
-        //{
-        //    StartCoroutine(shieldShaderOn());
-        //    behaviourController.particleSystems[1].Play();
-        //}
+
     }
 
     IEnumerator JustGuardOnce()
