@@ -169,20 +169,6 @@ public class NewMonsterMovement : MonoBehaviour
 
     bool coroutineRun = false;
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha0))
-            Health -= 20;
-
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            gameObject.GetComponent<BoxCollider>().enabled = false;
-            bodys.SetActive(false);
-            ragdoll.SetActive(true);
-
-        }
-            
-    }
     void Start()
     {
         StartSetting();
