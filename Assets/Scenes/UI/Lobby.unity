@@ -517,7 +517,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 92890422}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &92890424
 Camera:
   m_ObjectHideFlags: 0
@@ -569,7 +569,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 92890422}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.1, y: -3.89, z: -28.59}
+  m_LocalPosition: {x: -7623, y: -3.89, z: -28.59}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -632,7 +632,7 @@ MonoBehaviour:
   deepLearningSuperSamplingUseCustomAttributes: 0
   deepLearningSuperSamplingUseOptimalSettings: 1
   deepLearningSuperSamplingSharpening: 0
-  exposureTarget: {fileID: 1181910571}
+  exposureTarget: {fileID: 0}
   materialMipBias: 0
   m_RenderingPathCustomFrameSettings:
     bitDatas:
@@ -6980,7 +6980,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 9caa6388205cf174aaa841dcca7f4b70,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.8200073
+      value: -7622.7197
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9caa6388205cf174aaa841dcca7f4b70,
         type: 3}
@@ -7038,6 +7038,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: ddf298befcd1df44f9d099b113213da0, type: 2}
     - target: {fileID: -7652861515525994750, guid: 9caa6388205cf174aaa841dcca7f4b70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1789462360652671722, guid: 9caa6388205cf174aaa841dcca7f4b70,
         type: 3}
       propertyPath: m_IsActive
       value: 1

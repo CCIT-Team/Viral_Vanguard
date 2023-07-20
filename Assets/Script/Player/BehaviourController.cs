@@ -140,7 +140,7 @@ public class BehaviourController : MonoBehaviour
                 {
                     BossMove.instacne.SetStiffen(0);
                 }
-                StartCoroutine(JustGuardTimeScale());
+                //StartCoroutine(JustGuardTimeScale());
                 if (currentKineticEnergy >= maxKineticEnergy)
                 {
                     currentKineticEnergy = 100f;

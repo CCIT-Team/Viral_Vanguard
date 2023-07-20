@@ -66,11 +66,11 @@ public class SceneFader : Singleton<SceneFader>
         // Option UI Translate ---> Just Once
         if(scene.name == "Title")
         {
-            UIManager.Instance.optionCanvas.transform.GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -178);
+            UIManager.Instance.optionCanvas.transform.GetChild(1).GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -178);
         }
         else
         {
-            UIManager.Instance.optionCanvas.transform.GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -48);
+            UIManager.Instance.optionCanvas.transform.GetChild(1).GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -48);
         }
     }
 

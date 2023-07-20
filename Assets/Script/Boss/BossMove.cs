@@ -14,6 +14,13 @@ public class BossMove : MonoBehaviour
         stageUIManager.BossStatisInitailzation();
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Z))
+        {
+            CurrentHealthPoint -= 40;
+        }
+    }
     IEnumerator update()
     {
         while(true)

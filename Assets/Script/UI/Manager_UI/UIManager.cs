@@ -20,8 +20,10 @@ public class UIManager : Singleton<UIManager>
 
     public Stack<GameObject> uiStack = new Stack<GameObject>();
 
-    public void Awake()
+    public void Start()
     {
+        DontDestroyOnLoad(optionCanvas);
+
         mv = masterVolume.value;
         bv = bgmVolume.value;
         sv = sfxVolume.value;
@@ -92,9 +94,12 @@ public class UIManager : Singleton<UIManager>
     public void SetSoundVolumeValue()
     {
         isApplySoundSetting = true;
+
+        mv = masterVolume.value;
+        bv = bgmVolume.value;
+        sv = sfxVolume.value;
     }
 
-    private void Start() => DontDestroyOnLoad(optionCanvas);
 
     public void Update()
     {

@@ -55,7 +55,9 @@ public class SoundManager : MonoBehaviour
 
     public void SetBGMVolume()
     {
+        //audioMixer.SetFloat("BgmVolume", Mathf.Log10(bgmScrollbar.value) * 20);
         audioMixer.SetFloat("BgmVolume", Mathf.Log10(bgmScrollbar.value) * 20);
+        Debug.Log(Mathf.Log10(bgmScrollbar.value) * 20);
     }
 
     public void SetSFXVolume()
