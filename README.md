@@ -21,7 +21,7 @@
 
 
 |<img src="https://github.com/JeonSeaStar/Empathy--VR-2Team/assets/88014706/0d720e06-6b9e-497d-afbd-5922be501f78" width="150" height="150"/>|<img src="https://github.com/JeonSeaStar/Empathy--VR-2Team/assets/88014706/8362d20f-a67b-4f69-9e59-70be025e054a" width="150" height="150"/>|<img src="https://github.com/JeonSeaStar/Empathy--VR-2Team/assets/88014706/de0481a2-cad9-492f-b6ff-4b3c14bef2c6" width="150" height="150"/>|<img src="https://github.com/JeonSeaStar/Empathy--VR-2Team/assets/88014706/c94f056f-c4a2-4f56-a21b-57c6da366f3f" width="150" height="150"/>|
-|:-----------------:|:-----------------:|:-----------------:|:-----------------:|
+|:-----------------:|:-----------------:|:-----------------:|:-----------------:||:-----------------:|:-----------------:|:-----------------:|:-----------------:|:-----------------:|:-----------------:|
 |[tuost](https://github.com/tuost)|[OwlCoffee](https://github.com/OwlCoffee)|[JeonSeaStar](https://github.com/JeonSeaStar)|[Toddoward](https://github.com/Toddoward)|
 
 
