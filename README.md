@@ -37,14 +37,21 @@
 ### 게임 순환 구조
 ![image](https://github.com/JeonSeaStar/Empathy--VR-2Team/assets/88014706/1a699e78-7327-4c27-b8f7-f51adc2d9d1c)
 
+
 <br/>
 <br/>
 
 
 ### 인게임 사진
 #### * 주인공의 방
-![image](https://github.com/JeonSeaStar/Empathy--VR-2Team/assets/88014706/5601fa9f-bac6-4b23-9c41-c222b9c976bf)
-![image](https://github.com/JeonSeaStar/Empathy--VR-2Team/assets/88014706/65d5432a-8453-4c36-8f59-851d999c2bcc)
+![image](https://github.com/CCIT-Team/Viral_Vanguard/assets/10797029/958e8ee7-c8bd-4d8b-a11e-bf2bd00f4052)
+![image](https://github.com/CCIT-Team/Viral_Vanguard/assets/10797029/808dd0cd-e1a8-45a9-8449-09968fa9f690)
+![image](https://github.com/CCIT-Team/Viral_Vanguard/assets/10797029/0c712852-fd73-4a5f-b332-f5bc6d0133eb)
+![image](https://github.com/CCIT-Team/Viral_Vanguard/assets/10797029/da1d4755-7b4a-4eb6-9557-8644adc4b753)
+![image](https://github.com/CCIT-Team/Viral_Vanguard/assets/10797029/fb227220-a4c9-4939-9119-ffa3f433e47b)
+![image](https://github.com/CCIT-Team/Viral_Vanguard/assets/10797029/1b20dcfb-bf3f-4e43-aa9e-70e92b14149d)
+![image](https://github.com/CCIT-Team/Viral_Vanguard/assets/10797029/c2f81a69-db9d-4718-a099-8895250ab466)
+![image](https://github.com/CCIT-Team/Viral_Vanguard/assets/10797029/2da7d5d9-559e-4e1e-a08c-72538b0a5fd0)
 
 #### * A 시나리오(화물 정리)
 ![image](https://github.com/JeonSeaStar/Empathy--VR-2Team/assets/88014706/33b03e0c-9425-4c5f-bde7-c394e007a3fd)
